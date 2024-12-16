@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) Launch MSVC",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\main\\debug\\${fileDirnameBasename}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}\\main\\debug",
+            "environment": [],
+            "console": "internalConsole",
+            "preLaunchTask": "C: build active dir (windows, MSVC)"
+        }
+    ]
+}

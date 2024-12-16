@@ -1,0 +1,58 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C: build active dir (windows, MSVC)",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/W3",
+                "/EHsc",
+                "/nologo",
+                "/I${workspaceFolder}\\main\\src",
+                "/I${workspaceFolder}\\main\\lib\\sdl2\\include",
+                "/I${workspaceFolder}\\main\\lib\\*.c",
+                "/I${workspaceFolder}\\main\\lib\\*.h",
+                "/Fe:${workspaceFolder}\\main\\debug\\${fileDirnameBasename}.exe",
+                "/Fo:${workspaceFolder}\\main\\debug\\",
+                "/Fd:${workspaceFolder}\\main\\debug\\",
+                "${workspaceFolder}\\main\\main.c",
+                "/link",
+                "/SUBSYSTEM:WINDOWS",
+                "/DEBUG",
+                "/INCREMENTAL",
+                "/ILK:${workspaceFolder}\\main\\debug\\${fileDirnameBasename}.ilk",
+                "/LIBPATH:${workspaceFolder}\\main\\lib\\sdl2\\libs",
+                "SDL2.lib",
+                "SDL2main.lib",
+                "SDL2_image.lib",
+                "SDL2_mixer.lib",
+                "SDL2_ttf.lib",
+                "Shell32.lib"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\main",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/C",
+                        "\"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/VsDevCmd.bat\"",
+                        "&&"
+                    ]
+                }
+            },
+            "problemMatcher": {
+                "base": "$msCompile",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
