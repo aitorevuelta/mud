@@ -12,8 +12,7 @@
                 "/nologo",
                 "/I${workspaceFolder}\\main\\src",
                 "/I${workspaceFolder}\\main\\lib\\sdl2\\include",
-                "/I${workspaceFolder}\\main\\lib\\*.c",
-                "/I${workspaceFolder}\\main\\lib\\*.h",
+                "/I${workspaceFolder}\\main\\lib\\utils",
                 "/Fe:${workspaceFolder}\\main\\debug\\${fileDirnameBasename}.exe",
                 "/Fo:${workspaceFolder}\\main\\debug\\",
                 "/Fd:${workspaceFolder}\\main\\debug\\",
@@ -29,6 +28,7 @@
                 "SDL2_image.lib",
                 "SDL2_mixer.lib",
                 "SDL2_ttf.lib",
+                "SDL2_net.lib",
                 "Shell32.lib"
             ],
             "options": {
