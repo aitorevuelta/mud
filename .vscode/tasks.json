@@ -17,6 +17,7 @@
                 "/Fo:${workspaceFolder}\\main\\debug\\",
                 "/Fd:${workspaceFolder}\\main\\debug\\",
                 "${workspaceFolder}\\main\\main.c",
+                "${workspaceFolder}\\main\\core\\*.c",
                 "/link",
                 "/SUBSYSTEM:WINDOWS",
                 "/DEBUG",
