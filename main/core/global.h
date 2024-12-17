@@ -13,6 +13,7 @@ typedef struct CONFIG_S
 {
     int window_width;
     int window_height; 
+    bool fullscreen;
     int volume;
     int max_FPS;
 } CONFIG;

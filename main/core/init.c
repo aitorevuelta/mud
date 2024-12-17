@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include <global.h>
 #include <init.h>
+#include <SDL_net.h>
 
 bool init_sdl(SDL *sdl, CONFIG config) {
 
