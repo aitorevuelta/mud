@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
     SDL sdl;
-    CONFIG config = {1440, 720, 100, 60};
+    CONFIG config = {1440, 720, 100, 144};
     CONTROLS controls = {0};
 
     bool is_running = init_sdl(&sdl, config);
