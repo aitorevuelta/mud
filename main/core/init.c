@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <global.h>
+#include <init.h>
+
+bool init_sdl(SDL *sdl, CONFIG config) {
+
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+        printf("Error al inicializar SDL: %s\n", SDL_GetError());
+        return false;
+    }
+
+    sdl->window = SDL_CreateWindow("Juego", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, config.window_width, config.window_height, SDL_WINDOW_SHOWN);
+    if (sdl->window == NULL) {
+        printf("Error al crear la ventana: %s\n", SDL_GetError());
+        SDL_Quit();
+        return false;
+    }
+
+    sdl->renderer = SDL_CreateRenderer(sdl->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (sdl->renderer == NULL) {
+        printf("Error al crear el renderer: %s\n", SDL_GetError());
+        SDL_DestroyWindow(sdl->window);
+        SDL_Quit();
+        return false;
+    }
+
+    return true;
+}
