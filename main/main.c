@@ -10,13 +10,14 @@
 int main(int argc, char *argv[])
 {
     SDL sdl;
-    CONFIG config = {800, 600, 100, 60};
+    CONFIG config = {1440, 720, 100, 60};
     CONTROLS controls = {0};
 
     bool is_running = init_sdl(&sdl, config);
     
     do {
-        process_events(&controls);
+
+        is_running = process_events(&controls, sdl.window);
     }
     while (is_running);
 

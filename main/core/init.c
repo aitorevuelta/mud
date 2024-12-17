@@ -13,14 +13,27 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         return false;
     }
 
-    sdl->window = SDL_CreateWindow("Juego", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, config.window_width, config.window_height, SDL_WINDOW_SHOWN);
+        sdl->window = SDL_CreateWindow(
+        "Juego",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        config.window_width,
+        config.window_height,
+        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
+    );
+
     if (sdl->window == NULL) {
         printf("Error al crear la ventana: %s\n", SDL_GetError());
         SDL_Quit();
         return false;
     }
 
-    sdl->renderer = SDL_CreateRenderer(sdl->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+        sdl->renderer = SDL_CreateRenderer(
+            sdl->window,
+            -1,
+            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+        );
+
     if (sdl->renderer == NULL) {
         printf("Error al crear el renderer: %s\n", SDL_GetError());
         SDL_DestroyWindow(sdl->window);

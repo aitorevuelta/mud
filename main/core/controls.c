@@ -96,27 +96,61 @@ KEYS get_key_code(SDL_Keycode key) {
 }
 
 
-void update_controls(SDL_Event event, CONTROLS *controls) {
-    switch (event.type) {
-        case SDL_KEYDOWN:
-        case SDL_KEYUP:
-            controls->key = get_key_code(event.key.keysym.sym);
+
+bool process_events(CONTROLS *controls, SDL_Window *window) {
+    SDL_Event event;
+    bool run = true;
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+            case SDL_KEYDOWN:
+            case SDL_KEYUP:
+                controls->key = get_key_code(event.key.keysym.sym);
+                break;
+            case SDL_MOUSEMOTION:
+                controls->coords[0] = event.motion.x;
+                controls->coords[1] = event.motion.y;
+                break;
+            case SDL_WINDOWEVENT:
+                handle_window_event(event, window);
+                break;
+            case SDL_QUIT:
+                SDL_Quit();
+                run = false;
+            default:
+                break;
+        }
+    }
+    return run;
+}
+
+void handle_mouse_motion(SDL_Event event, CONTROLS *controls) {
+    controls->coords[0] = event.motion.x;
+    controls->coords[1] = event.motion.y;
+}
+
+void handle_window_event(SDL_Event event, SDL_Window *window) {
+    switch (event.window.event) {
+        case SDL_WINDOWEVENT_MAXIMIZED:
+            int screenWidth, screenHeight;
+            SDL_GetWindowSize(window, &screenWidth, &screenHeight);
+            SDL_SetWindowSize(window, screenWidth, screenHeight);
             break;
 
-        case SDL_MOUSEMOTION:
-            controls->coords[0] = event.motion.x;
-            controls->coords[1] = event.motion.y;
+        case SDL_WINDOWEVENT_MINIMIZED:
+
+            break;
+
+        case SDL_WINDOWEVENT_RESIZED:
+
+            break;
+
+        case SDL_WINDOWEVENT_CLOSE:
+
             break;
 
         default:
+
             break;
     }
 }
 
-
-void process_events(CONTROLS *controls) {
-    SDL_Event event;
-    if (SDL_PollEvent(&event)) {
-        update_controls(event, controls);
-    }
-}

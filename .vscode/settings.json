@@ -3,7 +3,6 @@
     "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Microsoft, InsertBraces: true}",
     "files.exclude": {
         "main/debug": true,
-        "main/lib": true,
       },
       "files.associations": {
         "global.h": "c",
@@ -11,5 +10,4 @@
         "stdio.h": "c",
         "stdbool.h": "c"
       },
-      "C_Cpp.errorSquiggles": "disabled"
 }
