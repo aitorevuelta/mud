@@ -4,7 +4,7 @@
 #include <controls.h>
 
 KEYS get_key_code(SDL_Keycode key) {
-    
+    KEYS key_code;
     switch (key) {
         case SDLK_ESCAPE: key_code = ESC_KEY; break;
         case SDLK_F1: key_code = F1_KEY; break;
