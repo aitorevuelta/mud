@@ -13,6 +13,12 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         return false;
     }
 
+    if (SDLNet_Init() < 0) {
+        printf("Error inicializando SDL_net: %s\n", SDLNet_GetError());
+        SDL_Quit(); 
+        return false;
+    }
+
         sdl->window = SDL_CreateWindow(
         "MU Dominaition",
         SDL_WINDOWPOS_CENTERED,

@@ -15,6 +15,7 @@
         "type_traits": "cpp",
         "xmemory": "cpp",
         "xutility": "cpp",
-        "controls.h": "c"
+        "controls.h": "c",
+        "stdbool.h": "c"
       },
 }

@@ -10,6 +10,7 @@
 #include <utils.h>
 #include <render.h>
 #include <texturemanager.h>
+#include <network.h>
 
 int main(int argc, char *argv[])
 {
@@ -17,7 +18,7 @@ int main(int argc, char *argv[])
     CONTROLS controls;
     CONFIG config = readConfig();
     GAMESTATE gameState = LOADSCREEN;
-
+    
     bool is_running = init_sdl(&sdl, config);
     do {
         
