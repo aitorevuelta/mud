@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <SDL.h>
+#include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <SDL_net.h>
 #include <global.h>
@@ -8,6 +9,7 @@
 #include <controls.h>
 #include <utils.h>
 #include <render.h>
+#include <texturemanager.h>
 
 int main(int argc, char *argv[])
 {

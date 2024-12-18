@@ -2,3 +2,4 @@ main/debug/*.obj
 main/debug/*.exe
 main/debug/*.pdb
 main/debug/*.ilk
+.vscode/settings.json

@@ -4,4 +4,9 @@
     "files.exclude": {
         "main/debug": true,
       },
+      "files.associations": {
+        "sdl.h": "c",
+        "sdl_image.h": "c",
+        "texturemanager.h": "c"
+      },
 }
