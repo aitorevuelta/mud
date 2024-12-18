@@ -8,7 +8,7 @@
 
 bool init_sdl(SDL *sdl, CONFIG config) {
 
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         printf("Error al inicializar SDL: %s\n", SDL_GetError());
         return false;
     }
