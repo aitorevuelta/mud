@@ -10,6 +10,7 @@
                 "/W3",
                 "/EHsc",
                 "/nologo",
+                "/D_CRT_SECURE_NO_WARNINGS",
                 "/I${workspaceFolder}\\main\\src",
                 "/I${workspaceFolder}\\main\\core",
                 "/I${workspaceFolder}\\main\\lib\\sdl2\\include",

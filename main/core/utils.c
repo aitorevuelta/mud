@@ -10,25 +10,16 @@
 CONFIG readConfig() {
     CONFIG settings = {0};
     FILE *fp;
-
+    int fullscreen;
     fp = fopen(CONFIG_FILE, "r");
-
-    if (fp == NULL) {
-        printf("Error: No se pudo abrir el archivo de configuración '%s'\n", CONFIG_FILE);
-        settings.window_width = 800; 
-        settings.window_height = 600;
-        settings.fullscreen = 0;
-        settings.max_FPS = 60;
-        settings.volume = 50;
-        return settings;
-    }
-
     fscanf(fp, "%d %d %d %d %d\n",
                &settings.window_width,
                &settings.window_height,
-               &settings.fullscreen,
+               &fullscreen,
                &settings.max_FPS,
                &settings.volume);
+
+    settings.fullscreen = fullscreen;
 
     fclose(fp);
     return settings;

@@ -8,6 +8,9 @@
         "global.h": "c",
         "sdl_ttf.h": "c",
         "stdio.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "sdl.h": "c",
+        "sdl_net.h": "c",
+        "init.h": "c"
       },
 }
