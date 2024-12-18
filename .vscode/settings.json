@@ -3,25 +3,5 @@
     "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Microsoft, InsertBraces: true}",
     "files.exclude": {
         "main/debug": true,
-<<<<<<< HEAD
       },
-      "files.associations": {
-        "global.h": "c",
-        "sdl_ttf.h": "c",
-        "stdio.h": "c",
-        "stdbool.h": "c",
-        "sdl.h": "c",
-        "sdl_net.h": "c",
-        "init.h": "c",
-        "compare": "c",
-        "cstddef": "c",
-        "limits": "c",
-        "type_traits": "c",
-        "xmemory": "c",
-        "xutility": "c"
-      },
-      "C_Cpp.errorSquiggles": "disabled",
-=======
-      }
->>>>>>> a2fa8e3 (errores de inlcudes oslucionados)
 }
