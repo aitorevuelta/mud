@@ -95,8 +95,6 @@ KEYS get_key_code(SDL_Keycode key) {
     return key_code;
 }
 
-
-
 bool process_events(CONTROLS *controls, SDL_Window *window) {
     SDL_Event event;
     bool run = true;
