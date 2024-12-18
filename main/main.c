@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     bool is_running = init_sdl(&sdl, config);
     do {
-
+        
         is_running = process_events(&controls, sdl.window);
     }
     while(is_running);

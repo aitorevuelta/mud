@@ -8,6 +8,13 @@
         "sdl.h": "c",
         "sdl_image.h": "c",
         "texturemanager.h": "c",
-        "sdl_ttf.h": "c"
+        "sdl_ttf.h": "c",
+        "compare": "cpp",
+        "cstddef": "cpp",
+        "limits": "cpp",
+        "type_traits": "cpp",
+        "xmemory": "cpp",
+        "xutility": "cpp",
+        "controls.h": "c"
       },
 }
