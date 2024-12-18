@@ -18,10 +18,12 @@ int main(int argc, char *argv[])
     CONTROLS controls;
     CONFIG config = readConfig();
     GAMESTATE gameState = LOADSCREEN;
-    
+    LOADEDTEXTURES loadedTextures[MAX_TEXTURES];
+
     bool is_running = init_sdl(&sdl, config);
+
     do {
-        
+
         is_running = process_events(&controls, sdl.window);
     }
     while(is_running);

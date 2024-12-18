@@ -16,6 +16,7 @@
         "xmemory": "cpp",
         "xutility": "cpp",
         "controls.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "stdio.h": "c"
       },
 }
