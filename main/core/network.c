@@ -7,7 +7,7 @@
 #include <network.h>
 
 
-bool connect_to_server(const char *server_ip, int server_port) {
+bool connect_to_server(char server_ip[], int server_port) {
     
    return true;
 }
