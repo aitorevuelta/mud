@@ -7,6 +7,7 @@
 #include <init.h>
 #include <controls.h>
 #include <utils.h>
+#include <render.h>
 
 int main(int argc, char *argv[])
 {

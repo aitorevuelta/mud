@@ -3,7 +3,8 @@
         {
             "name": "(Windows) MSVC",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/main/core"
             ],
             "compilerPath": "cl.exe",
             "cStandard": "c17",

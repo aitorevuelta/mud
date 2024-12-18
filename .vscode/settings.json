@@ -3,6 +3,7 @@
     "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Microsoft, InsertBraces: true}",
     "files.exclude": {
         "main/debug": true,
+<<<<<<< HEAD
       },
       "files.associations": {
         "global.h": "c",
@@ -20,4 +21,7 @@
         "xutility": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
+=======
+      }
+>>>>>>> a2fa8e3 (errores de inlcudes oslucionados)
 }
