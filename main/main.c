@@ -6,15 +6,16 @@
 #include <global.h>
 #include <init.h>
 #include <controls.h>
+#include <utils.h>
 
 int main(int argc, char *argv[])
 {
     SDL sdl;
-    CONFIG config = {1440, 720, 100, 144};
-    CONTROLS controls = {0};
+    CONFIG config = readConfig();
+    CONTROLS controls;
+
 
     bool is_running = init_sdl(&sdl, config);
-    
     do {
 
         is_running = process_events(&controls, sdl.window);
