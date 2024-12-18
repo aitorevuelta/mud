@@ -11,8 +11,9 @@
 int main(int argc, char *argv[])
 {
     SDL sdl;
-    CONFIG config = readConfig();
     CONTROLS controls;
+    CONFIG config = readConfig();
+    GAMESTATE gameState = LOADSCREEN;
 
 
     bool is_running = init_sdl(&sdl, config);

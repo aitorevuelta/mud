@@ -24,3 +24,17 @@ CONFIG readConfig() {
     fclose(fp);
     return settings;
 }
+
+void saveConfig(CONFIG config) {
+    FILE *fp;
+    fp = fopen(CONFIG_FILE, "w");
+
+    fprintf(fp, "%d %d %d %d %d\n", 
+            config.window_width, 
+            config.window_height, 
+            (config.fullscreen),
+            config.max_FPS, 
+            config.volume);
+
+    fclose(fp);
+}

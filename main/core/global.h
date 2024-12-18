@@ -2,6 +2,15 @@
 
 #define GLOBAL_H
 
+typedef enum {
+    LOADSCREEN = 0,
+    MAIN_MENU,
+    LOBBY,
+    GAME,
+    SETTINGS,
+    CREDITS,
+} GAMESTATE;
+
 typedef struct SDL_S
 {
     SDL_Window *window;

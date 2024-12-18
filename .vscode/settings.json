@@ -11,6 +11,12 @@
         "stdbool.h": "c",
         "sdl.h": "c",
         "sdl_net.h": "c",
-        "init.h": "c"
+        "init.h": "c",
+        "compare": "c",
+        "cstddef": "c",
+        "limits": "c",
+        "type_traits": "c",
+        "xmemory": "c",
+        "xutility": "c"
       },
 }
