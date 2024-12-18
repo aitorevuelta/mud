@@ -15,13 +15,14 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     GAMESTATE gameState = LOADSCREEN;
 
+    soy gay
 
     bool is_running = init_sdl(&sdl, config);
     do {
 
         is_running = process_events(&controls, sdl.window);
     }
-    while (is_running);
+    while(is_running);
 
     return 0;
 }

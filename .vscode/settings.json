@@ -19,4 +19,5 @@
         "xmemory": "c",
         "xutility": "c"
       },
+      "C_Cpp.errorSquiggles": "disabled",
 }
