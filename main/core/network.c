@@ -7,7 +7,17 @@
 #include <network.h>
 
 
-bool connect_to_server(char server_ip[], int server_port) {
-    
-   return true;
+bool pingServer(char server_ip[], int server_port) {
+    IPaddress ip;
+    if (SDLNet_ResolveHost(&ip, server_ip, server_port) < 0) {
+        return false;
+    }
+
+    TCPsocket server_socket = SDLNet_TCP_Open(&ip);
+    if (!server_socket) {
+        return false;
+    }
+
+    SDLNet_TCP_Close(server_socket);
+    return true;
 }
