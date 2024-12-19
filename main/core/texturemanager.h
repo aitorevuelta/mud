@@ -7,6 +7,6 @@ typedef struct LOADEDTEXTURES_S {
 } LOADEDTEXTURES;
 
 SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer);
-void LoadTextures(LOADEDTEXTURES** loadedTextures, GAMESTATE gameState, SDL_Renderer* renderer)
+void LoadTextures(LOADEDTEXTURES** loadedTextures, GAMESTATE gameState, SDL_Renderer* renderer);
 
 #endif
