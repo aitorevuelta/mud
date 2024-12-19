@@ -8,6 +8,25 @@
 #include <init.h>
 #include <controls.h>
 
-void update() {
-    
+void updateGameState(GAMESTATE* gameState) {
+    switch(*gameState) {
+        case LOADSCREEN:
+
+        break;
+        case MAIN_MENU:
+
+        break;
+        case LOBBY:
+
+        break;
+        case GAME:
+
+        break;
+        case SETTINGS:
+
+        break;
+        case CREDITS:
+
+        break;
+    }
 }
