@@ -43,6 +43,42 @@ int countPathsInState(GAMESTATE gamestate) {
     return wordCount;
 }
 
+char* getPathByIndex(GAMESTATE gamestate, int pathIndex) {
+    FILE* file = fopen(PATHS_FILE, "r");
+
+    char line[MAX_LINE_LENGTH];
+    int currentNumber = -1;
+    bool readingPaths = false;
+    int currentPathIndex = 0;
+    static char path[MAX_LINE_LENGTH];
+
+    while (fgets(line, sizeof(line), file)) {
+        line[strcspn(line, "\n")] = 0;
+
+        if (sscanf(line, "%d", &currentNumber) == 1) {
+            if (currentNumber == gamestate) {
+                readingPaths = true;
+                continue;
+            }
+            if (readingPaths && currentNumber != gamestate) {
+                break;
+            }
+        }
+
+        if (readingPaths && sscanf(line, "%d", &currentNumber) != 1) {
+            if (currentPathIndex == pathIndex) {
+                strncpy(path, line, MAX_LINE_LENGTH);
+                fclose(file);
+                return path;
+            }
+            currentPathIndex++;
+        }
+    }
+
+    fclose(file);
+    return NULL;
+}
+
 
 // CONFIG
 

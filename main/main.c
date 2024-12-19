@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     GAMESTATE gameState = LOADSCREEN;
     LOADEDTEXTURES loadedTextures[MAX_TEXTURES];
-
+    
     bool is_running = init_sdl(&sdl, config);
 
     do {

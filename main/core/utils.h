@@ -6,7 +6,12 @@
 
 #define MAX_LINE_LENGTH 50
 
+// TEXTURAS
+
 int countPathsInState(GAMESTATE gamestate);
+char* getPathByIndex(GAMESTATE gamestate, int pathIndex);
+
+// CONFIG
 
 CONFIG readConfig();
 void saveConfig(CONFIG config);

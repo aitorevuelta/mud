@@ -88,6 +88,7 @@ typedef enum {
 typedef struct CONTROLS_S {
     int key;
     int coords[2]; 
+    bool click;
 } CONTROLS;
 
 KEYS get_key_code(SDL_Keycode key);
