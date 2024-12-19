@@ -17,6 +17,7 @@
         "xutility": "cpp",
         "controls.h": "c",
         "stdbool.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "update.h": "c"
       },
 }

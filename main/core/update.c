@@ -7,8 +7,9 @@
 #include <global.h>
 #include <init.h>
 #include <controls.h>
+#include <update.h>
 
-void updateGameState(GAMESTATE* gameState) {
+void update(GAMESTATE* gameState) {
     switch(*gameState) {
         case LOADSCREEN:
 
