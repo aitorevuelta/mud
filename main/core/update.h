@@ -2,4 +2,6 @@
 #define UPDATE_H
 
 
+void updateGameState(GAMESTATE* gameState);
+
 #endif
