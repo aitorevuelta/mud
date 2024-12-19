@@ -9,10 +9,10 @@
 #include <controls.h>
 #include <update.h>
 
-void update(GAMESTATE* gameState) {
-    switch(*gameState) {
+GAMESTATE update(GAMESTATE gameState) {
+    switch(gameState) {
         case LOADSCREEN:
-
+            
         break;
         case MAIN_MENU:
 
@@ -30,4 +30,5 @@ void update(GAMESTATE* gameState) {
 
         break;
     }
+    return gameState;
 }

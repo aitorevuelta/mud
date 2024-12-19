@@ -24,11 +24,13 @@ int main(int argc, char *argv[])
     LoadTextures(&loadedTextures, gameState, sdl.renderer);
     do {
 
-        is_running = process_events(&controls, sdl.window);
-        render(sdl.renderer, loadedTextures);
+        is_running = process_events(&controls, sdl.window, &config);
+        render(sdl.renderer, loadedTextures, gameState);
 
     }
     while(is_running);
 
+    saveConfig(config);
+    
     return 0;
 }

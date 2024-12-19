@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <global.h>
 #include <controls.h>
+
 
 KEYS get_key_code(SDL_Keycode key) {
     KEYS key_code;
@@ -95,7 +99,7 @@ KEYS get_key_code(SDL_Keycode key) {
     return key_code;
 }
 
-bool process_events(CONTROLS *controls, SDL_Window *window) {
+bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
     SDL_Event event;
     bool run = true;
     while (SDL_PollEvent(&event)) {
@@ -109,7 +113,7 @@ bool process_events(CONTROLS *controls, SDL_Window *window) {
                 controls->coords[1] = event.motion.y;
                 break;
             case SDL_WINDOWEVENT:
-                handle_window_event(event, window);
+                handle_window_event(event, window, config);
                 break;
             case SDL_QUIT:
                 SDL_Quit();
@@ -126,29 +130,25 @@ void handle_mouse_motion(SDL_Event event, CONTROLS *controls) {
     controls->coords[1] = event.motion.y;
 }
 
-void handle_window_event(SDL_Event event, SDL_Window *window) {
+void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
+    int screenWidth, screenHeight;
+
     switch (event.window.event) {
+        case SDL_WINDOWEVENT_SIZE_CHANGED:
+        case SDL_WINDOWEVENT_RESIZED:
         case SDL_WINDOWEVENT_MAXIMIZED:
-            int screenWidth, screenHeight;
             SDL_GetWindowSize(window, &screenWidth, &screenHeight);
-            SDL_SetWindowSize(window, screenWidth, screenHeight);
+            config->window_width = screenWidth;
+            config->window_height = screenHeight;
             break;
 
         case SDL_WINDOWEVENT_MINIMIZED:
-
-            break;
-
-        case SDL_WINDOWEVENT_RESIZED:
-
             break;
 
         case SDL_WINDOWEVENT_CLOSE:
-
             break;
 
         default:
-
             break;
     }
 }
-

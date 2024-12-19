@@ -94,11 +94,11 @@ typedef struct CONTROLS_S {
 KEYS get_key_code(SDL_Keycode key);
 
 
-bool process_events(CONTROLS *controls, SDL_Window *window);
+bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config);
 
 void handle_mouse_motion(SDL_Event event, CONTROLS *controls);
 
-void handle_window_event(SDL_Event event, SDL_Window *window);
+void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config);
 
 
 
