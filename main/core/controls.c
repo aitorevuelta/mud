@@ -112,6 +112,16 @@ bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
                 controls->coords[0] = event.motion.x;
                 controls->coords[1] = event.motion.y;
                 break;
+            case SDL_MOUSEBUTTONDOWN:
+                if (event.button.button == SDL_BUTTON_LEFT) {
+                    controls->click = true;
+                }
+                break;
+            case SDL_MOUSEBUTTONUP:
+                if (event.button.button == SDL_BUTTON_LEFT) {
+                    controls->click = false;
+                }
+                break;
             case SDL_WINDOWEVENT:
                 handle_window_event(event, window, config);
                 break;
