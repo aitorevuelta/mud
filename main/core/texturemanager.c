@@ -42,8 +42,6 @@ void LoadTextures(LOADEDTEXTURES** loadedTextures, GAMESTATE gameState, SDL_Rend
 
         (*loadedTextures)[i].texture = CreateTexture(filePath, renderer);
 
-        free(path);
-
         if ((*loadedTextures)[i].texture == NULL) {
             fprintf(stderr, "Error al cargar la textura para el archivo %s\n", filePath);
         }
