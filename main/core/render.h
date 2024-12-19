@@ -1,6 +1,7 @@
 #ifndef RENDER_H
 #define RENDER_H
 
-void render(SDL_Renderer *renderer);
+void render(SDL_Renderer *renderer, LOADEDTEXTURES *loadedTextures);
+
 
 #endif

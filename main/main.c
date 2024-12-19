@@ -8,8 +8,8 @@
 #include <init.h>
 #include <controls.h>
 #include <utils.h>
-#include <render.h>
 #include <texturemanager.h>
+#include <render.h>
 #include <network.h>
 
 int main(int argc, char *argv[])
@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
     do {
 
         is_running = process_events(&controls, sdl.window);
+        render(sdl.renderer, loadedTextures);
+
     }
     while(is_running);
 
