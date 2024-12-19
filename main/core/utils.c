@@ -112,3 +112,12 @@ void saveConfig(CONFIG config) {
 
     fclose(fp);
 }
+
+void adjustFrameRate(Uint32 frameStart, int targetFPS) {
+    Uint32 frameDelay = 1000 / targetFPS;
+    Uint32 frameTime = SDL_GetTicks() - frameStart;
+
+    if (frameDelay > frameTime) {
+        SDL_Delay(frameDelay - frameTime); 
+    }
+}

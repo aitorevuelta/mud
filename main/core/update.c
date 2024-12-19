@@ -8,27 +8,28 @@
 #include <init.h>
 #include <controls.h>
 #include <update.h>
+#include <utils.h>
+
 
 GAMESTATE update(GAMESTATE gameState) {
-    switch(gameState) {
+    Uint32 frameStart = SDL_GetTicks();
+
+    switch (gameState) {
         case LOADSCREEN:
-        
-        break;
+            break;
         case MAIN_MENU:
-
-        break;
+            break;
         case LOBBY:
-
-        break;
+            break;
         case GAME:
-
-        break;
+            break;
         case SETTINGS:
-
-        break;
+            break;
         case CREDITS:
-
-        break;
+            break;
     }
+
+    int targetFPS = 60;
+    adjustFrameRate(frameStart, 144);
     return gameState;
 }

@@ -18,6 +18,8 @@
         "controls.h": "c",
         "stdbool.h": "c",
         "stdio.h": "c",
-        "update.h": "c"
+        "update.h": "c",
+        "global.h": "c",
+        "loadscreen.h": "c"
       },
 }
