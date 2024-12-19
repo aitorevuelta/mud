@@ -11,8 +11,8 @@
 
 // TEXTURAS
 
-int countPathsInState(GAMESTATE gamestate) {
-    FILE* file = fopen(PATHS_FILE, "r");
+int countPathsInState(GAMESTATE gamestate, char* path) {
+    FILE* file = fopen(path, "r");
     char line[MAX_LINE_LENGTH];
     int wordCount = 0, currentNumber = -1;
     bool readingPaths = false;
@@ -43,14 +43,14 @@ int countPathsInState(GAMESTATE gamestate) {
     return wordCount;
 }
 
-char* getPathByIndex(GAMESTATE gamestate, int pathIndex) {
-    FILE* file = fopen(PATHS_FILE, "r");
+char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex) {
+    FILE* file = fopen(path, "r");
 
     char line[MAX_LINE_LENGTH];
     int currentNumber = -1;
     bool readingPaths = false;
     int currentPathIndex = 0;
-    static char path[MAX_LINE_LENGTH];
+    static char imagepath[MAX_LINE_LENGTH];
 
     while (fgets(line, sizeof(line), file)) {
         line[strcspn(line, "\n")] = 0;
@@ -58,7 +58,6 @@ char* getPathByIndex(GAMESTATE gamestate, int pathIndex) {
         if (sscanf(line, "%d", &currentNumber) == 1) {
             if (currentNumber == gamestate) {
                 readingPaths = true;
-                continue;
             }
             if (readingPaths && currentNumber != gamestate) {
                 break;
@@ -67,14 +66,14 @@ char* getPathByIndex(GAMESTATE gamestate, int pathIndex) {
 
         if (readingPaths && sscanf(line, "%d", &currentNumber) != 1) {
             if (currentPathIndex == pathIndex) {
-                strncpy(path, line, MAX_LINE_LENGTH);
+                strncpy(imagepath, line, MAX_LINE_LENGTH);
                 fclose(file);
-                return path;
+                return imagepath;
             }
             currentPathIndex++;
         }
     }
-
+    
     fclose(file);
     return NULL;
 }

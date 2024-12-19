@@ -7,11 +7,11 @@
 #include <texturemanager.h>
 #include <render.h>
 
-void render(SDL_Renderer *renderer, LOADEDTEXTURES *loadedTextures, GAMESTATE gameState) {
+void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE gameState) {
     SDL_RenderClear(renderer);
     switch(gameState) {
             case LOADSCREEN:
-                SDL_RenderCopy(renderer, loadedTextures[0].texture, NULL, NULL);
+                SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
             break;
             case MAIN_MENU:
 

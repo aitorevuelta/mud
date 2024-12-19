@@ -18,14 +18,15 @@ int main(int argc, char *argv[])
     CONTROLS controls;
     CONFIG config = readConfig();
     GAMESTATE gameState = LOADSCREEN;
-    LOADEDTEXTURES* loadedTextures = NULL;
+    LOADEDIMAGES* loadedImages = NULL;
+    LOADEDFONTS* loadedFonts = NULL;
 
     bool is_running = init_sdl(&sdl, config);
-    LoadTextures(&loadedTextures, gameState, sdl.renderer);
+    LoadImages(&loadedImages, gameState, sdl.renderer);
     do {
 
         is_running = process_events(&controls, sdl.window, &config);
-        render(sdl.renderer, loadedTextures, gameState);
+        render(sdl.renderer, loadedImages, gameState);
 
     }
     while(is_running);

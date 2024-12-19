@@ -13,6 +13,11 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         return false;
     }
 
+    if (TTF_Init() < 0) {
+        fprintf(stderr, "Error al inicializar SDL_ttf: %s\n", TTF_GetError());
+        return false;
+    }
+
     if (SDLNet_Init() < 0) {
         printf("Error inicializando SDL_net: %s\n", SDLNet_GetError());
         SDL_Quit(); 

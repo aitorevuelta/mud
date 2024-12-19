@@ -1,15 +1,16 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#define PATHS_FILE "../data/paths.txt"
+#define IMAGES_FILE "../data/images.txt"
+#define FONTS_FILE "../data/fonts.txt"
 #define CONFIG_FILE "../data/config.txt"
 
 #define MAX_LINE_LENGTH 50
 
 // TEXTURAS
 
-int countPathsInState(GAMESTATE gamestate);
-char* getPathByIndex(GAMESTATE gamestate, int pathIndex);
+int countPathsInState(GAMESTATE gamestate, char* path);
+char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
 
 // CONFIG
 
