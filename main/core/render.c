@@ -8,10 +8,26 @@
 #include <render.h>
 
 void render(SDL_Renderer *renderer, LOADEDTEXTURES *loadedTextures, GAMESTATE gameState) {
+    SDL_RenderClear(renderer);
+    switch(gameState) {
+            case LOADSCREEN:
+                SDL_RenderCopy(renderer, loadedTextures[0].texture, NULL, NULL);
+            break;
+            case MAIN_MENU:
 
-        SDL_RenderClear(renderer);
+            break;
+            case LOBBY:
 
-        SDL_RenderCopy(renderer, loadedTextures[0].texture, NULL, NULL);
+            break;
+            case GAME:
 
+            break;
+            case SETTINGS:
+
+            break;
+            case CREDITS:
+
+            break;
+        }
         SDL_RenderPresent(renderer);
 }

@@ -12,7 +12,7 @@
 GAMESTATE update(GAMESTATE gameState) {
     switch(gameState) {
         case LOADSCREEN:
-            
+        
         break;
         case MAIN_MENU:
 
