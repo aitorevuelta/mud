@@ -29,4 +29,4 @@ Jokoak online jokatzea ahalbidetzen du, lehiaketa giroan eta mundu mailako beste
 
 1. Klonatu biltegi hau zure ordenagailu lokalera:
    ```bash
-   git clone https://github.com/usuario/mudomination-online.git
+   git clone https://github.com/aitorrevuelta/mud.git
