@@ -9,12 +9,14 @@
 #include <loadscreen.h>
 #include <utils.h>
 
-void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE gameState, CONFIG config) {
+void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
-    switch(gameState) {
+    switch(*gameState) {
             case LOADSCREEN:
-                renderLoadscreen(renderer, loadedImages, config);
+                if (renderLoadscreen(renderer, loadedImages, config)) {
+                    *gameState = MAIN_MENU;
+                }
             break;
             case MAIN_MENU:
 

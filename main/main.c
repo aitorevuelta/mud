@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
@@ -28,12 +29,12 @@ int main(int argc, char *argv[])
     do {
 
         is_running = process_events(&controls, sdl.window, &config);
-        render(sdl.renderer, loadedImages, gameState, config);
+        render(sdl.renderer, loadedImages, &gameState, config);
         gameState = update(gameState);
     }
     while(is_running);
 
     saveConfig(config);
-    
+
     return 0;
 }

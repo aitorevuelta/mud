@@ -29,7 +29,6 @@ GAMESTATE update(GAMESTATE gameState) {
             break;
     }
 
-    int targetFPS = 60;
     adjustFrameRate(frameStart, 144);
     return gameState;
 }
