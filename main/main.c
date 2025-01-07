@@ -13,6 +13,7 @@
 #include <render.h>
 #include <update.h>
 #include <network.h>
+#include <settings.h>
 
 int main(int argc, char *argv[])
 {

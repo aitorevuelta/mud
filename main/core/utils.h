@@ -14,9 +14,6 @@ void adjustFrameRate(Uint32 frameStart, int targetFPS);
 int countPathsInState(GAMESTATE gamestate, char* path);
 char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
 
-// CONFIG
 
-CONFIG readConfig();
-void saveConfig(CONFIG config);
 
 #endif
