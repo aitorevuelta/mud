@@ -11,84 +11,78 @@
 void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
+    
     switch(*gameState) {
-            case LOADSCREEN:
-                renderLoadscreen(renderer, loadedImages, config);
+        case LOADSCREEN:
+            renderLoadscreen(renderer, loadedImages, gameState);
             break;
-            case MAIN_MENU:
-
+        case MAIN_MENU:
+            renderMenu(renderer, loadedImages, gameState, config);
             break;
-            case LOBBY:
-
+        case LOBBY:
+            renderLobby(renderer, loadedImages, gameState, config);
             break;
-            case GAME:
-
+        case GAME:
+            renderGame(renderer, loadedImages, gameState, config);
             break;
-            case SETTINGS:
-
+        case SETTINGS:
+            renderSettings(renderer, loadedImages, gameState, config);
             break;
-            case CREDITS:
-
+        case CREDITS:
+            renderCredits(renderer, loadedImages, gameState, config);
             break;
-        }
-        SDL_RenderPresent(renderer);
-        adjustFrameRate(frameStart, config.max_FPS);
+    }
+    
+    SDL_RenderPresent(renderer);
+    adjustFrameRate(frameStart, config.max_FPS);
 }
 
-void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, CONFIG config) {
-    // Variables para manejar el fade
-    const int fadeDuration = 2000; // Duración del fade-in y fade-out en milisegundos
-    const int totalDuration = 5000; // Duración total de la pantalla de carga (5 segundos)
-    int elapsedTime = 0;
-    Uint32 startTime = SDL_GetTicks(); // Tiempo inicial
+void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gamestate) {
+    static Uint32 startTime = 0;
 
-    while (elapsedTime < totalDuration) {
-        elapsedTime = SDL_GetTicks() - startTime;
+    Uint32  fadeInDuration = 2000;
+    Uint32  fadeOutDuration = 2000;
+    Uint32  totalDuration = 5000;  
 
-        // Calcula el alfa según el tiempo transcurrido
-        int alpha = 255;
-        if (elapsedTime < fadeDuration) {
-            // Fade-in
-            alpha = (255 * elapsedTime) / fadeDuration;
-        } else if (elapsedTime > totalDuration - fadeDuration) {
-            // Fade-out
-            int fadeOutStart = totalDuration - fadeDuration;
-            alpha = (255 * (totalDuration - elapsedTime)) / fadeDuration;
-        }
+    if (startTime == 0) {
+        startTime = SDL_GetTicks();
+    }
 
-        // Asegúrate de que alpha esté entre 0 y 255
-        alpha = alpha < 0 ? 0 : (alpha > 255 ? 255 : alpha);
+    Uint32 elapsedTime = SDL_GetTicks() - startTime;
 
-        // Aplica el alpha a la textura
-        SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);
+    int alpha = 255;
 
-        // Renderiza la textura
-        SDL_RenderClear(renderer); // Limpia la pantalla
-        SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
-        SDL_RenderPresent(renderer);
+    if (elapsedTime < fadeInDuration) {
+        alpha = (255 * elapsedTime) / fadeInDuration;  // Fade-in
+    } else if (elapsedTime > totalDuration - fadeOutDuration) {
+        alpha = (255 * (totalDuration - elapsedTime)) / fadeOutDuration;  // Fade-out
+    }
 
-        // Pequeño retraso para evitar un bucle muy rápido
-        SDL_Delay(16); // Aproximadamente 60 FPS
+    SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
+
+    if (elapsedTime >= totalDuration) {
+        *gamestate = MAIN_MENU;
     }
 }
 
-void renderMenu(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
-{
+
+void renderMenu(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
 }
-void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
-{
+
+void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
 }
-void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
-{
+
+void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
 }
-void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
-{
+
+void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
 }
-void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
-{
+
+void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
 }
