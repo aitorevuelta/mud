@@ -5,7 +5,10 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/main/core",
-                "${workspaceFolder}/main/core/graphics"
+                "${workspaceFolder}/main/core/game",
+                "${workspaceFolder}/main/core/graphics",
+                "${workspaceFolder}/main/core/network",
+                "${workspaceFolder}/main/core/settings"
             ],
             "compilerPath": "cl.exe",
             "cStandard": "c17",

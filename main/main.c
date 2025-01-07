@@ -10,10 +10,11 @@
 #include <sdl_utils.h>
 #include <controls.h>
 #include <utils.h>
-#include <texturemanager.h>
+#include <graphics/texturemanager.h>
 #include <graphics/render.h>
 #include <update.h>
-#include <network.h>
+#include <network/server.h>
+#include <network/client.h>
 #include <settings.h>
 
 int main(int argc, char *argv[])
