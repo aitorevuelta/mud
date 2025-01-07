@@ -25,7 +25,7 @@ bool init_sdl(SDL *sdl, CONFIG config) {
     }
 
         sdl->window = SDL_CreateWindow(
-        "MU Dominaition",
+        "MU Domination",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         config.window_width,

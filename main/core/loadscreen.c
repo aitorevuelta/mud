@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h> 
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_net.h>
@@ -8,39 +9,47 @@
 #include <render.h>
 #include <loadscreen.h>
 
+
 bool renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, CONFIG config) {
-    static float percentage = 0.0f;
-    bool loaded = updateLoading(&percentage);
-    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
-    renderLoadBar(renderer, loadedImages, config.window_width, config.window_height, percentage);
-    return loaded;
-}
+    // Variables para manejar el fade
+    const int fadeDuration = 2000; // Duración del fade-in y fade-out en milisegundos
+    const int totalDuration = 5000; // Duración total de la pantalla de carga (5 segundos)
+    int elapsedTime = 0;
+    Uint32 startTime = SDL_GetTicks(); // Tiempo inicial
 
-void renderLoadBar(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, int windowWidth, int windowHeight, float percentage) {
-    if (percentage < 0) percentage = 0;
-    if (percentage > 1) percentage = 1;
+    while (elapsedTime < totalDuration) {
+        elapsedTime = SDL_GetTicks() - startTime;
 
-    int barHeight = 15;
-    int barWidth = (int)(windowWidth * percentage);
-
-    SDL_Rect barRect = { 0, windowHeight - barHeight, barWidth, barHeight };
-    SDL_SetRenderDrawColor(renderer, 245, 86, 54, 255);
-    SDL_RenderFillRect(renderer, &barRect);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-}
-
-bool updateLoading(float *percentage) {
-    static Uint32 lastTime = 0;
-    Uint32 currentTime = SDL_GetTicks();
-    float randomIncrement = 0.0f;
-    if (currentTime > lastTime + 100) { 
-        randomIncrement = (rand() % 1 + 1) / 100.0f;
-        *percentage += randomIncrement;
-        if (*percentage > 1.0f) {
-            *percentage = 1.0f;
+        // Calcula el alfa según el tiempo transcurrido
+        int alpha = 255;
+        if (elapsedTime < fadeDuration) {
+            // Fade-in
+            alpha = (255 * elapsedTime) / fadeDuration;
+        } else if (elapsedTime > totalDuration - fadeDuration) {
+            // Fade-out
+            int fadeOutStart = totalDuration - fadeDuration;
+            alpha = (255 * (totalDuration - elapsedTime)) / fadeDuration;
         }
-        lastTime = currentTime;
+
+        // Asegúrate de que alpha esté entre 0 y 255
+        alpha = alpha < 0 ? 0 : (alpha > 255 ? 255 : alpha);
+
+        // Aplica el alpha a la textura
+        SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);
+
+        // Renderiza la textura
+        SDL_RenderClear(renderer); // Limpia la pantalla
+        SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
+
+        // Renderiza la barra de carga (si corresponde)
+        float percentage = (float)elapsedTime / totalDuration;
+
+        // Presenta la pantalla
+        SDL_RenderPresent(renderer);
+
+        // Pequeño retraso para evitar un bucle muy rápido
+        SDL_Delay(16); // Aproximadamente 60 FPS
     }
 
-    return *percentage >= 1.0f;
+    return true;
 }

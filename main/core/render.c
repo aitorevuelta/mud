@@ -15,7 +15,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
     switch(*gameState) {
             case LOADSCREEN:
                 if (renderLoadscreen(renderer, loadedImages, config)) {
-                    *gameState = MAIN_MENU;
+
                 }
             break;
             case MAIN_MENU:
