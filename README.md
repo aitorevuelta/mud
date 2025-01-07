@@ -11,7 +11,7 @@ Jokoak online jokatzea ahalbidetzen du, lehiaketa giroan eta mundu mailako beste
 - Ibai Albisua
 - Aitor Revuelta
 - Ander Madariaga
-- Asier Ochoa
+- Asier Otxoa
 
 ## Ezaugarriak
 

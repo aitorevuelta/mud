@@ -21,6 +21,7 @@
         "update.h": "c",
         "global.h": "c",
         "loadscreen.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "utils.h": "c"
       },
 }

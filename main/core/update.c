@@ -7,11 +7,11 @@
 #include <global.h>
 #include <init.h>
 #include <controls.h>
+#include <texturemanager.h>
 #include <update.h>
-#include <utils.h>
 
 
-GAMESTATE update(GAMESTATE gameState) {
+GAMESTATE update(GAMESTATE gameState, LOADEDIMAGES* loadedImages) {
     Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {
