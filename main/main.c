@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
     while(is_running);
 
     saveConfig(config);
+    cleanUp_sdl(&sdl);
 
     return 0;
 }

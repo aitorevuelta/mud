@@ -88,3 +88,26 @@ void adjustFrameRate(Uint32 frameStart, int targetFPS) {
         SDL_Delay(frameDelay - frameTime); 
     }
 }
+
+void cleanUp_sdl(SDL* sdl)
+{
+    if (sdl->renderer) {
+        SDL_DestroyRenderer(sdl->renderer);
+        sdl->renderer = NULL;
+    }
+
+    if (sdl->window) {
+        SDL_DestroyWindow(sdl->window);
+        sdl->window = NULL;
+    }
+
+    Mix_CloseAudio();
+
+    if (sdl->font_small) {
+        TTF_CloseFont(sdl->font_small);
+        sdl->font_small = NULL;
+    }
+
+    TTF_Quit();
+    SDL_Quit();
+}
