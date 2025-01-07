@@ -1,5 +1,5 @@
 0
-load.png
+loadscreen.png
 1
 2
 3

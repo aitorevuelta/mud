@@ -13,9 +13,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
     SDL_RenderClear(renderer);
     switch(*gameState) {
             case LOADSCREEN:
-                if (renderLoadscreen(renderer, loadedImages, config)) {
-
-                }
+                renderLoadscreen(renderer, loadedImages, config);
             break;
             case MAIN_MENU:
 
@@ -37,7 +35,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
         adjustFrameRate(frameStart, config.max_FPS);
 }
 
-bool renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, CONFIG config) {
+void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, CONFIG config) {
     // Variables para manejar el fade
     const int fadeDuration = 2000; // Duración del fade-in y fade-out en milisegundos
     const int totalDuration = 5000; // Duración total de la pantalla de carga (5 segundos)
@@ -67,16 +65,30 @@ bool renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, CONFIG
         // Renderiza la textura
         SDL_RenderClear(renderer); // Limpia la pantalla
         SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
-
-        // Renderiza la barra de carga (si corresponde)
-        float percentage = (float)elapsedTime / totalDuration;
-
-        // Presenta la pantalla
         SDL_RenderPresent(renderer);
 
         // Pequeño retraso para evitar un bucle muy rápido
         SDL_Delay(16); // Aproximadamente 60 FPS
     }
+}
 
-    return true;
+void renderMenu(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
+{
+
+}
+void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
+{
+
+}
+void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
+{
+
+}
+void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
+{
+
+}
+void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
+{
+
 }

@@ -78,7 +78,6 @@ char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex) {
     return NULL;
 }
 
-
 // CONFIG
 
 CONFIG readConfig() {
