@@ -33,3 +33,12 @@ GAMESTATE update(GAMESTATE gameState) {
     adjustFrameRate(frameStart, 144);
     return gameState;
 }
+
+void adjustFrameRate(Uint32 frameStart, int targetFPS) {
+    Uint32 frameDelay = 1000 / targetFPS;
+    Uint32 frameTime = SDL_GetTicks() - frameStart;
+
+    if (frameDelay > frameTime) {
+        SDL_Delay(frameDelay - frameTime); 
+    }
+}

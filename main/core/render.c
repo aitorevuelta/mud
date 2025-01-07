@@ -34,7 +34,6 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
     }
     
     SDL_RenderPresent(renderer);
-    adjustFrameRate(frameStart, config.max_FPS);
 }
 
 void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gamestate) {
