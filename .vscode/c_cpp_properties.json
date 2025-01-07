@@ -4,7 +4,8 @@
             "name": "(Windows) MSVC",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/main/core"
+                "${workspaceFolder}/main/core",
+                "${workspaceFolder}/main/core/graphics"
             ],
             "compilerPath": "cl.exe",
             "cStandard": "c17",

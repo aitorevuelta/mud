@@ -11,7 +11,7 @@
 #include <controls.h>
 #include <utils.h>
 #include <texturemanager.h>
-#include <render.h>
+#include <graphics/render.h>
 #include <update.h>
 #include <network.h>
 #include <settings.h>
