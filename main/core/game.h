@@ -1,11 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
-typedef enum CARDS {
+typedef enum {
     SOLDIER,
     HORSE,
     CANNON
-};
+}CARDS;
+
 typedef struct TERRITORYINFO_S {
     char name;         // Nombre del territorio
     int owner;             // ID del jugador que controla el territorio

@@ -12,7 +12,5 @@
 int countPathsInState(GAMESTATE gamestate, char* path);
 char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
 
-//SDL
-void cleanUp_sdl(SDL* sdl);
 
 #endif

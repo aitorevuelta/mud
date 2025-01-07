@@ -5,7 +5,7 @@
 #include <SDL_net.h>
 #include <SDL_mixer.h>  // Incluir la biblioteca SDL_mixer
 #include <global.h>
-#include <init.h>
+#include <sdl_utils.h>
 
 bool init_sdl(SDL *sdl, CONFIG config) {
 
@@ -67,4 +67,22 @@ bool init_sdl(SDL *sdl, CONFIG config) {
     }
 
     return true;
+}
+
+void cleanUp_sdl(SDL* sdl)
+{
+    if (sdl->renderer) {
+        SDL_DestroyRenderer(sdl->renderer);
+        sdl->renderer = NULL;
+    }
+
+    if (sdl->window) {
+        SDL_DestroyWindow(sdl->window);
+        sdl->window = NULL;
+    }
+
+    Mix_CloseAudio();
+
+    TTF_Quit();
+    SDL_Quit();
 }

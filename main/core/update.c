@@ -5,7 +5,7 @@
 #include <SDL_ttf.h>
 #include <SDL_net.h>
 #include <global.h>
-#include <init.h>
+#include <sdl_utils.h>
 #include <controls.h>
 #include <texturemanager.h>
 #include <update.h>

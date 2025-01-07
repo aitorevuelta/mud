@@ -3,6 +3,7 @@
 #define GLOBAL_H
 
 #define MAX_STR 128
+
 typedef enum {
     LOADSCREEN = 0,
     MAIN_MENU,

@@ -64,7 +64,6 @@ void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMEST
 }
 
 
-
 void renderMenu(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
 }
@@ -73,8 +72,15 @@ void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *
 
 }
 
-void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
 
+void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
+// Lógica de renderizado para el juego
+
+    //SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);  // Renderizar la textura
+    SDL_SetRenderDrawColor(renderer, 0, 0, 50, 255); // Fondo del mapa
+    SDL_RenderClear(renderer);
+    
+    
 }
 
 void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
@@ -82,5 +88,5 @@ void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTAT
 }
 
 void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
-
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);  // Renderizar la textura
 }

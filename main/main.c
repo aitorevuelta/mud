@@ -7,7 +7,7 @@
 #include <SDL_mixer.h>
 #include <SDL_net.h>
 #include <global.h>
-#include <init.h>
+#include <sdl_utils.h>
 #include <controls.h>
 #include <utils.h>
 #include <texturemanager.h>
@@ -21,19 +21,21 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState = CREDITS;
     LOADEDIMAGES* loadedImages = NULL;
     LOADEDFONTS* loadedFonts = NULL;
 
     bool is_running = init_sdl(&sdl, config);
     LoadImages(&loadedImages, gameState, sdl.renderer);
+    LoadFonts(&loadedFonts, gameState, sdl.renderer);
+
     do {
 
         is_running = process_events(&controls, sdl.window, &config);
         render(sdl.renderer, loadedImages, &gameState, config);
         gameState = update(gameState, loadedImages);
-    }
-    while(is_running);
+
+    }while(is_running);
 
     saveConfig(config);
     cleanUp_sdl(&sdl);

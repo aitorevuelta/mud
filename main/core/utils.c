@@ -6,7 +6,7 @@
 #include <SDL_mixer.h>
 #include <SDL_net.h>
 #include <global.h>
-#include <init.h>
+#include <sdl_utils.h>
 #include <utils.h>
 
 
@@ -80,25 +80,3 @@ char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex) {
 }
 
 
-void cleanUp_sdl(SDL* sdl)
-{
-    if (sdl->renderer) {
-        SDL_DestroyRenderer(sdl->renderer);
-        sdl->renderer = NULL;
-    }
-
-    if (sdl->window) {
-        SDL_DestroyWindow(sdl->window);
-        sdl->window = NULL;
-    }
-
-    Mix_CloseAudio();
-
-    if (sdl->font_small) {
-        TTF_CloseFont(sdl->font_small);
-        sdl->font_small = NULL;
-    }
-
-    TTF_Quit();
-    SDL_Quit();
-}

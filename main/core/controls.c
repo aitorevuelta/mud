@@ -126,7 +126,6 @@ bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
                 handle_window_event(event, window, config);
                 break;
             case SDL_QUIT:
-                SDL_Quit();
                 run = false;
             default:
                 break;
