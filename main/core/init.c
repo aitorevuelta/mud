@@ -2,9 +2,10 @@
 #include <stdbool.h>
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_net.h>
+#include <SDL_mixer.h>  // Incluir la biblioteca SDL_mixer
 #include <global.h>
 #include <init.h>
-#include <SDL_net.h>
 
 bool init_sdl(SDL *sdl, CONFIG config) {
 
@@ -24,7 +25,20 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         return false;
     }
 
-        sdl->window = SDL_CreateWindow(
+    if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) == 0) {  // Inicializa SDL_mixer con soporte para MP3 y OGG
+        printf("Error al inicializar SDL_mixer: %s\n", Mix_GetError());
+        SDL_Quit();
+        return false;
+    }
+
+    if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) < 0) {  // Configura la salida de audio
+        printf("Error al abrir el audio: %s\n", Mix_GetError());
+        Mix_Quit();
+        SDL_Quit();
+        return false;
+    }
+
+    sdl->window = SDL_CreateWindow(
         "MU Domination",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
@@ -39,11 +53,11 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         return false;
     }
 
-        sdl->renderer = SDL_CreateRenderer(
-            sdl->window,
-            -1,
-            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
-        );
+    sdl->renderer = SDL_CreateRenderer(
+        sdl->window,
+        -1,
+        SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+    );
 
     if (sdl->renderer == NULL) {
         printf("Error al crear el renderer: %s\n", SDL_GetError());

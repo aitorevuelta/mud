@@ -3,6 +3,7 @@
 #include <string.h>
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <SDL_net.h>
 #include <global.h>
 #include <init.h>
