@@ -14,7 +14,7 @@
 #include <renderSettings.h>
 #include <renderCredits.h>
 
-#include <menu/menu.h>
+#include <menu.h>
 #include <render.h>
 
 
