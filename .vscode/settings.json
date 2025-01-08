@@ -33,7 +33,8 @@
         "settings_render.h": "c",
         "sdl_utils.h": "c",
         "game_logic.h": "c",
-        "loadscreen_render.h": "c"
+        "loadscreen_render.h": "c",
+        "credits_render.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }
