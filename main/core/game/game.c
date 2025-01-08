@@ -95,7 +95,7 @@ void endGame(GAMEINFO *gameInfo) {
 // Función para inicializar a un jugador
 void initPlayer(PLAYER *player, int id, const char *name) {
     player->id = id;
-    player->name = strdup(name);  // Asignar nombre al jugador
+    //player->name = strdup(name);  // Asignar nombre al jugador
     player->numTerritories = 0;   // Inicialmente no controla ningún territorio
     player->territories = NULL;   // No tiene territorios asignados
     player->troops = 0;           // Inicialmente no tiene tropas

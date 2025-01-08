@@ -12,10 +12,11 @@
 #include <utils.h>
 #include <graphics/texturemanager.h>
 #include <graphics/render.h>
+
 #include <update.h>
 #include <network/server.h>
 #include <network/client.h>
-#include <settings.h>
+#include <settings/settings.h>
 
 int main(int argc, char *argv[])
 {
