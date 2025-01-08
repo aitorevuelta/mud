@@ -1,10 +1,5 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <SDL.h>
-#include <SDL_ttf.h>
-#include <SDL_net.h>
-#include <SDL_mixer.h>  // Incluir la biblioteca SDL_mixer
 #include <global.h>
+
 #include <sdl_utils.h>
 
 bool init_sdl(SDL *sdl, CONFIG config) {

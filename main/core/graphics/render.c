@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <SDL.h>
-#include <SDL_ttf.h>
-#include <SDL_net.h>
 #include <global.h>
 #include <texturemanager.h>
 #include <utils.h>
@@ -13,8 +8,6 @@
 #include <game_render.h>
 #include <settings_render.h>
 #include <credits_render.h>
-
-#include <game_logic.h>
 
 #include <render.h>
 
@@ -29,7 +22,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
             renderLoadscreen(renderer, loadedImages, gameState);
             break;
         case MAIN_MENU:
-            renderMenu(renderer, loadedImages, gameState, config);
+            //renderMenu(renderer, loadedImages, gameState, config);
             break;
         case LOBBY:
             renderLobby(renderer, loadedImages, gameState);
