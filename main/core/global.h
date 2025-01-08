@@ -15,6 +15,8 @@
 #include <SDL_mixer.h>
 #include <SDL_net.h>
 
+// DEFINICIONES GLOBALES
+
 typedef enum {
     LOADSCREEN = 0,
     MAIN_MENU,
