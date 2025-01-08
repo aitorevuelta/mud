@@ -15,6 +15,7 @@ SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer) {
     return texture;
 }
 
+
 TTF_Font* CreateFont(const char* filePath, int fontSize) {
     TTF_Font* font = TTF_OpenFont(filePath, fontSize);
     if (!font) {
@@ -22,6 +23,7 @@ TTF_Font* CreateFont(const char* filePath, int fontSize) {
     }
     return font;
 }
+
 
 void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer) {
     int numTextures = countPathsInState(gameState, IMAGES_FILE);
@@ -56,6 +58,7 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
     }
 }
 
+
 void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
     int numFonts = countPathsInState(gameState, FONTS_FILE);
     char filePath[MAX_STR];
@@ -86,3 +89,5 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
         }
     }
 }
+
+

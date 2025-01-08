@@ -3,4 +3,4 @@
 
 void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState);
 
-#endif // RENDERCREDITS_H
+#endif // CREDITS_RENDER_H

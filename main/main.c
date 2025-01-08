@@ -12,7 +12,6 @@
 #include <utils.h>
 #include <texturemanager.h>
 #include <render.h>
-
 #include <update.h>
 #include <server.h>
 #include <client.h>

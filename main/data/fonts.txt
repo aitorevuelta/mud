@@ -1,7 +1,4 @@
 0
-KGRedHands.ttf 14
-KGRedHands.ttf 12
-KGRedHands.ttf 10
 1
 2
 3
