@@ -2,6 +2,6 @@
 #define UPDATE_H
 
 void adjustFrameRate(Uint32 frameStart, int targetFPS);
-GAMESTATE update(GAMESTATE gameState, LOADEDIMAGES* loadedImages);
+GAMESTATE update(GAMESTATE gameState);
 
-#endif
+#endif //UPDATE_H

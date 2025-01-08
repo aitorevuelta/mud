@@ -2,8 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <SDL.h>
-#include <SDL_ttf.h>
-#include <SDL_net.h>
+
 #include <global.h>
 #include <sdl_utils.h>
 #include <utils.h>
