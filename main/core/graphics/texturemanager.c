@@ -23,21 +23,40 @@ TTF_Font* CreateFont(const char* filePath, int fontSize) {
 
 
 void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer) {
-    int numTextures = countPathsInState(gameState, IMAGES_FILE);
+    int numTextures = countPathsInState(gameState, IMAGES_FILE); // Obtener número de texturas para el estado actual
     int i;
     char filePath[MAX_STR];
 
+    // Liberar recursos anteriores si existen
     if (*loadedImages != NULL) {
-        free(*loadedImages);
+        for (i = 0; i < MAX_TEXTURES; i++) {
+            if ((*loadedImages)[i].texture != NULL) {
+                SDL_DestroyTexture((*loadedImages)[i].texture);
+            }
+        }
+        free(*loadedImages); // Liberar memoria del arreglo
         *loadedImages = NULL;
     }
 
+    // Validar el número de texturas
+    if (numTextures <= 0) {
+        fprintf(stderr, "No se encontraron texturas para el estado %d\n", gameState);
+        return;
+    }
+
+    // Asignar memoria para el nuevo arreglo de texturas
     *loadedImages = (LOADEDIMAGES*)malloc(numTextures * sizeof(LOADEDIMAGES));
     if (*loadedImages == NULL) {
         fprintf(stderr, "Error al asignar memoria para loadedImages\n");
         return;
     }
 
+    // Inicializar todas las texturas a NULL
+    for (i = 0; i < numTextures; i++) {
+        (*loadedImages)[i].texture = NULL;
+    }
+
+    // Cargar cada textura
     for (i = 0; i < numTextures; i++) {
         char* path = getPathByIndex(gameState, IMAGES_FILE, i);
         if (path == NULL) {
@@ -48,7 +67,6 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
         snprintf(filePath, sizeof(filePath), "../src/img/%s", path);
 
         (*loadedImages)[i].texture = CreateTexture(filePath, renderer);
-
         if ((*loadedImages)[i].texture == NULL) {
             fprintf(stderr, "Error al cargar la textura para el archivo %s\n", filePath);
         }
