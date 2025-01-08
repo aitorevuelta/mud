@@ -2,10 +2,7 @@
 
 #include <string.h>
 
-#include <utils.h>
-
-
-// TEXTURAS
+#include <txt_utils.h>
 
 int countPathsInState(GAMESTATE gamestate, char* path) {
     FILE* file = fopen(path, "r");

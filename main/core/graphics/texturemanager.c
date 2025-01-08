@@ -1,6 +1,6 @@
 #include <global.h>
 
-#include <utils.h>
+#include <txt_utils.h>
 
 #include <texturemanager.h>
 

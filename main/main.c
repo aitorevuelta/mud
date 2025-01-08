@@ -1,7 +1,6 @@
 #include <global.h>
 #include <sdl_utils.h>
 #include <controls.h>
-#include <utils.h>
 #include <texturemanager.h>
 #include <render.h>
 #include <update.h>

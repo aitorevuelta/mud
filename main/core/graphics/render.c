@@ -1,6 +1,5 @@
 #include <global.h>
 #include <texturemanager.h>
-#include <utils.h>
 
 #include <loadscreen_render.h>
 #include <menu_render.h>

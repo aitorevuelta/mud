@@ -4,6 +4,13 @@
 
 #define MAX_STR 128
 
+// LEER TEXTO
+
+#define MAX_LINE_LENGTH 50
+
+#define IMAGES_FILE "../data/images.txt"
+#define FONTS_FILE "../data/fonts.txt"
+
 // INCLUDES GENERALES
 
 #include <stdio.h>
