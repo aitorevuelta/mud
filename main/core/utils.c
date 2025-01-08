@@ -1,5 +1,7 @@
 #include <global.h>
 
+#include <string.h>
+
 #include <utils.h>
 
 

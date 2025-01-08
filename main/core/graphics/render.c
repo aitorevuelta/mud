@@ -1,6 +1,5 @@
 #include <global.h>
 #include <texturemanager.h>
-#include <utils.h>
 
 #include <loadscreen_render.h>
 #include <menu_render.h>
@@ -13,7 +12,7 @@
 
 
 
-void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, GAMEINFO gameInfo, CONFIG config) {
+void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, GAMEINFO* gameInfo, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
     
@@ -28,7 +27,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
             renderLobby(renderer, loadedImages, gameState);
             break;
         case GAME:
-            renderGame(renderer, loadedImages, gameState, config);
+            renderGame(renderer, loadedImages, gameState, gameInfo, config);
             break;
         case SETTINGS:
             renderSettings(renderer, loadedImages, gameState);
