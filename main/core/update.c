@@ -11,7 +11,8 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState) {
+
+GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
     Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {
