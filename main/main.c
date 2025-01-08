@@ -5,10 +5,7 @@
 #include <texturemanager.h>
 #include <render.h>
 #include <update.h>
-#include <server.h>
-#include <client.h>
 #include <settings.h>
-#include <game_logic.h>
 
 int main(int argc, char *argv[])
 {
@@ -35,5 +32,5 @@ int main(int argc, char *argv[])
     saveConfig(config);
     cleanUp_sdl(&sdl);
 
-    return false;
+    return 0;
 }
