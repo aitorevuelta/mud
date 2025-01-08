@@ -73,5 +73,3 @@ char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex) {
     fclose(file);
     return NULL;
 }
-
-

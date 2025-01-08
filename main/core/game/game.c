@@ -4,7 +4,7 @@
 
 void initialize_game()
 {
-
+    
 }
 
 void update_game()

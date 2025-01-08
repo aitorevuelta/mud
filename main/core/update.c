@@ -12,17 +12,20 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
 
     switch (gameState) {
         case LOADSCREEN:
-            
             break;
         case MAIN_MENU:
+
             break;
         case LOBBY:
             break;
         case GAME:
+            
+
             break;
         case SETTINGS:
             break;
         case CREDITS:
+        
             break;
     }
 
