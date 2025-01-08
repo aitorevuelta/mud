@@ -16,6 +16,7 @@
 #include <server.h>
 #include <client.h>
 #include <settings.h>
+#include <game_logic.h>
 
 int main(int argc, char *argv[])
 {
@@ -25,6 +26,7 @@ int main(int argc, char *argv[])
     GAMESTATE gameState = LOADSCREEN;
     LOADEDIMAGES* loadedImages = NULL;
     LOADEDFONTS* loadedFonts = NULL;
+    GAMEINFO* gameInfo = NULL;
 
     bool is_running = init_sdl(&sdl, config);
     LoadImages(&loadedImages, gameState, sdl.renderer);
@@ -34,9 +36,9 @@ int main(int argc, char *argv[])
 
         is_running = process_events(&controls, sdl.window, &config);
         render(sdl.renderer, loadedImages, &gameState, config);
-        gameState = update(gameState, loadedImages);
+        gameState = update(gameState, gameInfo);
 
-    }while(is_running);
+    } while(is_running);
 
     saveConfig(config);
     cleanUp_sdl(&sdl);

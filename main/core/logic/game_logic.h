@@ -43,14 +43,5 @@ typedef struct GAMEINFO_S {
     int turn;                 // Número de turno actual
 } GAMEINFO;
 
-// Funciones para el manejo del juego
-int initGame(GAMEINFO *gameInfo);          // Inicializa el juego
-void startGame(GAMEINFO *gameInfo);        // Inicia el juego
-void updateGame(GAMEINFO *gameInfo);       // Actualiza el estado del juego
-void endGame(GAMEINFO *gameInfo);          // Termina el juego (sin implementación en este ejemplo)
-
-// Funciones para el manejo de jugadores
-void initPlayer(PLAYER *player, int id, const char *name);  // Inicializa un jugador
-void assignTerritory(PLAYER *player, int territoryIndex);   // Asigna un territorio a un jugador
 
 #endif  // GAME_LOGIC_H
