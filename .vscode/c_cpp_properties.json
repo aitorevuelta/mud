@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/main/core",
-                "${workspaceFolder}/main/core/game",
+                "${workspaceFolder}/main/core/logic",
                 "${workspaceFolder}/main/core/graphics",
                 "${workspaceFolder}/main/core/network",
                 "${workspaceFolder}/main/core/settings",

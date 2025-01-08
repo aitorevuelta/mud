@@ -2,7 +2,7 @@
 
 ## Deskribapena
 
-Mu Domination Online denbora errealean estrategia jokoa da, Mondragon Unibertsitateko Informatika lehenengo mailako ikasleek garatua. Jokoak esperientzia dinamiko eta desafiatzailea eskaintzen du, non jokalariek lurraldeak konkistatzen saiatuko diren mapa global batean. Jokalariek erabaki taktikoak hartu behar dituzte, baliabideak kudeatu eta euren mugimenduak planifikatu lurralde gehiago konkistatzeko, beste jokalariekin lehiatuz online.
+Mu Domination denbora errealean estrategia jokoa da, Mondragon Unibertsitateko Informatika lehenengo mailako ikasleek garatua. Jokoak esperientzia dinamiko eta desafiatzailea eskaintzen du, non jokalariek lurraldeak konkistatzen saiatuko diren mapa global batean. Jokalariek erabaki taktikoak hartu behar dituzte, baliabideak kudeatu eta euren mugimenduak planifikatu lurralde gehiago konkistatzeko, beste jokalariekin lehiatuz online.
 
 Jokoak online jokatzea ahalbidetzen du, lehiaketa giroan eta mundu mailako beste jokalariekin elkarreragin ahal izateko. Txandakako sistema batekin, estrategia eta aurkariaren mugimenduak aurreratzea funtsezkoak dira irabazteko.
 
