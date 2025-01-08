@@ -1,5 +1,5 @@
-#ifndef RENDERCREDITS_H
-#define RENDERCREDITS_H
+#ifndef CREDITS_RENDER_H
+#define CREDITS_RENDER_H
 
 void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState);
 

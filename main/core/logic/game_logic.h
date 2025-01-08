@@ -1,5 +1,6 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_LOGIC_H
+#define GAME_LOGIC_H
+
 
 // Definición de las cartas (un tipo de acción adicional en el juego)
 typedef enum {
@@ -52,4 +53,4 @@ void endGame(GAMEINFO *gameInfo);          // Termina el juego (sin implementaci
 void initPlayer(PLAYER *player, int id, const char *name);  // Inicializa un jugador
 void assignTerritory(PLAYER *player, int territoryIndex);   // Asigna un territorio a un jugador
 
-#endif
+#endif  // GAME_LOGIC_H

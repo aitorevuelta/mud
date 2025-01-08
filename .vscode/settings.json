@@ -26,7 +26,11 @@
         "rendergame.h": "c",
         "client.h": "c",
         "render.h": "c",
-        "menu.h": "c"
+        "menu.h": "c",
+        "lobby_render.h": "c",
+        "menu_render.h": "c",
+        "game_render.h": "c",
+        "settings_render.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }

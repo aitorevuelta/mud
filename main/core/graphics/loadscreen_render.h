@@ -1,7 +1,7 @@
-#ifndef RENDERLOADSCREEN_H
-#define RENDERLOADSCREEN_H
+#ifndef LOADSCREEN_RENDER_H
+#define LOADSCREEN_RENDER_H
 
 
 void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gamestate);
 
-#endif // RENDERLOADSCREEN_H
+#endif // LOADSCREEN_RENDER_H

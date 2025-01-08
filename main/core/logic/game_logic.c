@@ -5,7 +5,8 @@
 #include <SDL_ttf.h>
 #include <SDL_net.h>
 #include <global.h>
-#include <game.h>
+
+#include <game_logic.h>
 
 // Función que inicializa el juego
 int initGame(GAMEINFO *gameInfo) {

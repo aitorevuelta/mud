@@ -7,8 +7,10 @@
 #include <render.h>
 #include <utils.h>
 
-#include <graphics/renderLobby.h>
+#include <credits_render.h>
 
-void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState) {
+void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState) {
+
+
     
 }

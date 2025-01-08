@@ -7,14 +7,14 @@
 #include <texturemanager.h>
 #include <utils.h>
 
-#include <renderLoadscreen.h>
-#include <renderMenu.h>
-#include <renderLobby.h>
-#include <renderGame.h>
-#include <renderSettings.h>
-#include <renderCredits.h>
+#include <loadscreen_render.h>
+#include <menu_render.h>
+#include <lobby_render.h>
+#include <game_render.h>
+#include <settings_render.h>
+#include <credits_render.h>
 
-#include <menu.h>
+
 #include <render.h>
 
 

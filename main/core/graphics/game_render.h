@@ -1,6 +1,6 @@
-#ifndef RENDERGAME_H
-#define RENDERGAME_H
+#ifndef GAME_RENDER_H
+#define GAME_RENDER_H
 
 void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config);
 
-#endif // RENDERGAME_H
+#endif // GAME_RENDER_H

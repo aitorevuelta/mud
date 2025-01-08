@@ -2,9 +2,13 @@
 #include <stdbool.h>
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include <SDL_net.h>
 #include <global.h>
 #include <texturemanager.h>
 #include <render.h>
 #include <utils.h>
-#include <menu.h>
+
+#include <lobby_render.h>
+
+void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState) {
+    
+}

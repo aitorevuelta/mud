@@ -7,7 +7,7 @@
 #include <render.h>
 #include <utils.h>
 
-#include <renderLoadscreen.h>
+#include <loadscreen_render.h>
 
 void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gamestate) {
     static Uint32 startTime = 0;

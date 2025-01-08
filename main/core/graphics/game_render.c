@@ -7,7 +7,7 @@
 #include <render.h>
 #include <utils.h>
 
-#include <renderGame.h>
+#include <game_render.h>
 
 void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config)
 {
