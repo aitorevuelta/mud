@@ -29,7 +29,7 @@ void initializeButtons(BUTTON *buttons, LOADEDIMAGES *loadedImages) {
 void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
     for (int i = 0; buttonCount > i; i++) {
         if (buttons[i].visible) {
-            SDL_RenderCopy(renderer, buttons[i].texture, NULL, &buttons[i].rect);
+            //SDL_RenderCopy(renderer, buttons[i].texture, NULL, &buttons[i].rect);
         }
     }
 }
