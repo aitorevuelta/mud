@@ -14,6 +14,7 @@
 #include <renderSettings.h>
 #include <renderCredits.h>
 
+#include <menu/menu.h>
 #include <render.h>
 
 
@@ -27,7 +28,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
             renderLoadscreen(renderer, loadedImages, gameState);
             break;
         case MAIN_MENU:
-            renderCredits(renderer, loadedImages, gameState);
+            renderMenu(renderer, loadedImages, gameState, config);
             break;
         case LOBBY:
             renderLobby(renderer, loadedImages, gameState);

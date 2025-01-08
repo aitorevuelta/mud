@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = GAME;
+    GAMESTATE gameState = LOADSCREEN;
     LOADEDIMAGES* loadedImages = NULL;
     LOADEDFONTS* loadedFonts = NULL;
 
