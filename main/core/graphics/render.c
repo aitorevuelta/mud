@@ -14,12 +14,13 @@
 #include <settings_render.h>
 #include <credits_render.h>
 
+#include <game_logic.h>
 
 #include <render.h>
 
 
 
-void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, CONFIG config) {
+void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, GAMEINFO gameInfo, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
     

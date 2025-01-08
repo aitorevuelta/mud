@@ -31,7 +31,8 @@
         "menu_render.h": "c",
         "game_render.h": "c",
         "settings_render.h": "c",
-        "sdl_utils.h": "c"
+        "sdl_utils.h": "c",
+        "game_logic.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }

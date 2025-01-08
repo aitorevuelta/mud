@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     do {
 
         is_running = process_events(&controls, sdl.window, &config);
-        render(sdl.renderer, loadedImages, &gameState, config);
+        render(sdl.renderer, loadedImages, &gameState, gameInfo, config);
         gameState = update(gameState, gameInfo);
 
     } while(is_running);
