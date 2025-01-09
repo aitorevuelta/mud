@@ -22,7 +22,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
 
         Uint32 elapsedTime = SDL_GetTicks() - startTime;
         if (elapsedTime > totalDuration) {
-            gameState = MAIN_MENU;
+            gameState = GAME;
         }
     }
     
