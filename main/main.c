@@ -23,8 +23,7 @@ int main(int argc, char *argv[])
     GAMEINFO* gameInfo = NULL;
 
     bool is_running = init_sdl(&sdl, config);
-    LoadImages(&loadedImages, gameState, sdl.renderer);
-    LoadFonts(&loadedFonts, gameState, sdl.renderer);
+    LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
