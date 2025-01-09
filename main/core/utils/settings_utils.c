@@ -1,6 +1,11 @@
 #include <global.h>
+<<<<<<< HEAD
 
 
+=======
+#include <sdl_utils.h>
+#include <txt_utils.h>
+>>>>>>> a803859dfebc056ea53323b6d3e06961b824887a
 #include <settings_utils.h>
 
 // CONFIG
