@@ -2,10 +2,6 @@
 loadscreen.png
 1
 map1.png
-map1.png
-map1.png
-map1.png
-map1.png
 2
 map1.png
 3

@@ -95,25 +95,10 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
     int i;
     char filePath[MAX_STR];
 
-    // Liberar recursos anteriores si existen
-    if (*loadedImages != NULL) {
-        for (i = 0; i < MAX_TEXTURES; i++) {
-            if ((*loadedImages)[i].texture != NULL) {
-                SDL_DestroyTexture((*loadedImages)[i].texture);
-            }
-        }
-        free(*loadedImages); // Liberar memoria del arreglo
-        *loadedImages = NULL;
-    }
+    free(*loadedImages);
 
-    // Validar el número de texturas
-    if (numTextures <= 0) {
-        fprintf(stderr, "No se encontraron texturas para el estado %d\n", gameState);
-        return;
-    }
-
-    // Asignar memoria para el nuevo arreglo de texturas
     *loadedImages = (LOADEDIMAGES*)malloc(numTextures * sizeof(LOADEDIMAGES));
+    
     if (*loadedImages == NULL) {
         fprintf(stderr, "Error al asignar memoria para loadedImages\n");
         return;
@@ -146,10 +131,7 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
     int numFonts = countPathsInState(gameState, FONTS_FILE);
     char filePath[MAX_STR];
 
-    if (*loadedFonts != NULL) {
-        free(*loadedFonts);
-        *loadedFonts = NULL;
-    }
+    free(*loadedFonts);
 
     *loadedFonts = (LOADEDFONTS*)malloc(numFonts * sizeof(LOADEDFONTS));
 

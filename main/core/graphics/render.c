@@ -22,7 +22,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loa
             renderLoadscreen(renderer, loadedImages, loadedFonts, gameState);
             break;
         case MAIN_MENU:
-            //renderMenu(renderer, loadedImages, gameState, config);
+            SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
             break;
         case LOBBY:
             renderLobby(renderer, loadedImages);
