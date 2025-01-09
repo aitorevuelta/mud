@@ -1,6 +1,7 @@
 #include <global.h>
 
 #include <controls.h>
+#include <menu.h>
 
 #include <update.h>
 
@@ -15,7 +16,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
 
             break;
         case MAIN_MENU:
-
+            MENU menu = create_main_menu(); 
             break;
         case LOBBY:
             break;
