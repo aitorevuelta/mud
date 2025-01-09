@@ -1,10 +1,14 @@
 #include <global.h>
+
+//UTILS
 #include <sdl_utils.h>
+#include <settings_utils.h>
+#include <assets_utils.h>
+
 #include <controls.h>
-#include <texturemanager.h>
 #include <render.h>
 #include <update.h>
-#include <settings_utils.h>
+
 
 int main(int argc, char *argv[])
 {

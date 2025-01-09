@@ -1,7 +1,7 @@
 #include <global.h>
 
 #include <controls.h>
-#include <texturemanager.h>
+#include <assets_utils.h>
 
 #include <update.h>
 

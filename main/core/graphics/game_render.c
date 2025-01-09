@@ -1,10 +1,10 @@
 #include <global.h>
 
-#include <texturemanager.h>
+#include <assets_utils.h>
 
 #include <game_render.h>
 
-void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, GAMEINFO* gameinfo, CONFIG config)
+void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMEINFO* gameinfo, CONFIG config)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Fondo negro
     SDL_RenderClear(renderer);
@@ -21,6 +21,6 @@ void renderMap(SDL_Renderer *renderer)
 
 void renderUI(SDL_Renderer *renderer)
 {
-
+    
 
 }

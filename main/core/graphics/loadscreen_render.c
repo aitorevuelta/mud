@@ -1,6 +1,6 @@
 #include <global.h>
 
-#include <texturemanager.h>
+#include <assets_utils.h>
 
 #include <loadscreen_render.h>
 

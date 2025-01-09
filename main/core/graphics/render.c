@@ -1,5 +1,6 @@
 #include <global.h>
-#include <texturemanager.h>
+
+#include <assets_utils.h>
 
 #include <loadscreen_render.h>
 #include <menu_render.h>
@@ -24,16 +25,16 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameS
             //renderMenu(renderer, loadedImages, gameState, config);
             break;
         case LOBBY:
-            renderLobby(renderer, loadedImages, gameState);
+            renderLobby(renderer, loadedImages);
             break;
         case GAME:
-            renderGame(renderer, loadedImages, gameState, gameInfo, config);
+            renderGame(renderer, loadedImages, gameInfo, config);
             break;
         case SETTINGS:
-            renderSettings(renderer, loadedImages, gameState);
+            renderSettings(renderer, loadedImages);
             break;
         case CREDITS:
-            renderCredits(renderer, loadedImages, gameState);
+            renderCredits(renderer, loadedImages);
             break;
     }
     

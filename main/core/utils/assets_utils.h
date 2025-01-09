@@ -1,7 +1,12 @@
-#ifndef TEXTUREMANAGER_H
-#define TEXTUREMANAGER_H
+#ifndef ASSETS_UTILS_H
+#define ASSETS_UTILS_H
 
 #define MAX_TEXTURES 50
+
+int countPathsInState(GAMESTATE gamestate, char* path);
+char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
+
+
 typedef struct LOADEDIMAGES_S {
     SDL_Texture* texture;
 } LOADEDIMAGES;
@@ -16,4 +21,5 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
 TTF_Font* CreateFont(const char* filePath, int fontSize);
 void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
 
-#endif
+
+#endif // ASSETS_UTILS_H
