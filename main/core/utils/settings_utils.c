@@ -1,12 +1,7 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-#include <SDL.h>
-
 #include <global.h>
-#include <sdl_utils.h>
-#include <txt_utils.h>
-#include <settings.h>
+
+
+#include <settings_utils.h>
 
 // CONFIG
 
