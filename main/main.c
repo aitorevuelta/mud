@@ -4,6 +4,7 @@
 #include <sdl_utils.h>
 #include <settings_utils.h>
 #include <assets_utils.h>
+#include <gamestate_manager.h>
 
 #include <controls.h>
 #include <render.h>
@@ -28,7 +29,8 @@ int main(int argc, char *argv[])
 
         is_running = process_events(&controls, sdl.window, &config);
         render(sdl.renderer, loadedImages, loadedFonts, &gameState, gameInfo, config);
-        gameState = update(gameState, gameInfo, &loadedImages, &loadedFonts, sdl.renderer);
+        gameState = update(gameState, gameInfo);
+        checkGameStateChange(&loadedImages, &loadedFonts, gameState, sdl.renderer);
 
     } while(is_running);
 
