@@ -1,7 +1,7 @@
 0
 loadscreen.png
 1
-map1.png
+fondo.png
 2
 map1.png
 3

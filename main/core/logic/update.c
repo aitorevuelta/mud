@@ -1,17 +1,20 @@
 #include <global.h>
 
+#include <assets_utils.h>
 #include <controls.h>
 #include <menu.h>
 #include <settings.h>
 
+#include <loadscreen_render.h>
+
 #include <update.h>
 
 
-
 GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
+
     static Uint32 startTime = 0;
     const Uint32 totalDuration = 5000;
-
+    
     if (gameState == LOADSCREEN) {
         if (startTime == 0) {
             startTime = SDL_GetTicks();

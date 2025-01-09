@@ -4,7 +4,7 @@
 
 #include <loadscreen_render.h>
 
-void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS* loadedFonts, GAMESTATE *gamestate) {
+void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages) {
     static Uint32 startTime = 0;
     const Uint32 fadeInDuration = 2000;
     const Uint32 fadeOutDuration = 2000;
@@ -22,7 +22,6 @@ void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADED
     } else if (elapsedTime > totalDuration - fadeOutDuration) {
         alpha = (255 * (totalDuration - elapsedTime)) / fadeOutDuration;  // Fade-out
     }
-
 
     SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);  // Aplicar el alfa
     SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);  // Renderizar la textura

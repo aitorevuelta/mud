@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
     LoadImages(&loadedImages, gameState, sdl.renderer);
     LoadFonts(&loadedFonts, gameState, sdl.renderer);
 
-   
     do {
         is_running = process_events(&controls, sdl.window, &config);
         gameState = update(gameState, gameInfo);
