@@ -22,6 +22,8 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
             gameState = MAIN_MENU;
         }
     }
+    
+    Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {
         case MAIN_MENU:
