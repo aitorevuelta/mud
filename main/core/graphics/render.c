@@ -13,13 +13,13 @@
 
 
 
-void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gameState, GAMEINFO* gameInfo, CONFIG config) {
+void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMESTATE *gameState, GAMEINFO* gameInfo, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
     
     switch(*gameState) {
         case LOADSCREEN:
-            renderLoadscreen(renderer, loadedImages, gameState);
+            renderLoadscreen(renderer, loadedImages, loadedFonts, gameState);
             break;
         case MAIN_MENU:
             //renderMenu(renderer, loadedImages, gameState, config);

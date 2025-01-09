@@ -4,7 +4,7 @@
 
 #include <loadscreen_render.h>
 
-void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMESTATE *gamestate) {
+void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS* loadedFonts, GAMESTATE *gamestate) {
     static Uint32 startTime = 0;
     const Uint32 fadeInDuration = 2000;
     const Uint32 fadeOutDuration = 2000;

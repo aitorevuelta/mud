@@ -2,12 +2,13 @@
 
 #include <controls.h>
 #include <assets_utils.h>
+#include <gamestate_manager.h>
 
 #include <update.h>
 
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, LOADEDIMAGES** loadedImages, LOADEDFONTS** loadedFonts, SDL_Renderer* renderer) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -21,7 +22,6 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
         case LOBBY:
             break;
         case GAME:
-            
 
             break;
         case SETTINGS:
@@ -31,6 +31,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
             break;
     }
 
+    checkGameStateChange(loadedImages, loadedFonts,gameState, renderer);
     adjustFrameRate(frameStart, 144);
     return gameState;
 }
