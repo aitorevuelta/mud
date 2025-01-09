@@ -28,7 +28,7 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loa
             renderLobby(renderer, loadedImages);
             break;
         case GAME:
-            renderGame(renderer, loadedImages, gameInfo, config);
+            renderGame(renderer, loadedImages, loadedFonts);
             break;
         case SETTINGS:
             renderSettings(renderer, loadedImages);

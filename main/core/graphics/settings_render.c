@@ -6,7 +6,7 @@
 
 void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages){
 
-
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
 
     
 }

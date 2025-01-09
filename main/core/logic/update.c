@@ -13,7 +13,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
 
     switch (gameState) {
         case LOADSCREEN:
-
+            
             break;
         case MAIN_MENU:
             MENU menu = create_main_menu(); 

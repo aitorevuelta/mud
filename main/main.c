@@ -6,6 +6,7 @@
 #include <assets_utils.h>
 #include <gamestate_manager.h>
 
+#include <menu.h>
 #include <controls.h>
 #include <render.h>
 #include <update.h>
@@ -16,7 +17,7 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState = SETTINGS;
     LOADEDIMAGES* loadedImages = NULL;
     LOADEDFONTS* loadedFonts = NULL;
     GAMEINFO* gameInfo = NULL;

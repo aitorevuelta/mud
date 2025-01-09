@@ -154,3 +154,27 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
         }
     }
 }
+
+void renderText(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color color, int x, int y){
+
+    SDL_Surface *surface = TTF_RenderText_Solid(font, text, color);
+    if (surface == NULL) {
+        fprintf(stderr, "Error al crear la superficie de texto: %s\n", TTF_GetError());
+        return;
+    }
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (texture == NULL) {
+        fprintf(stderr, "Error al crear la textura de texto: %s\n", SDL_GetError());
+        SDL_FreeSurface(surface);
+        return;
+    }
+
+    int textWidth = surface->w;
+    int textHeight = surface->h;
+
+    SDL_FreeSurface(surface);
+    SDL_Rect dstRect = { x, y, textWidth, textHeight };
+    SDL_RenderCopy(renderer, texture, NULL, &dstRect);
+    SDL_DestroyTexture(texture);
+}

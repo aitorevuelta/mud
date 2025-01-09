@@ -13,6 +13,6 @@ typedef struct MENU_S {
     int selected_index;     // Índice del elemento actualmente seleccionado.
 } MENU;
 
-MENU create_main_menu(SDL_Renderer* renderer, TTF_Font* font);
+MENU create_main_menu();
 
 #endif // MENU_H

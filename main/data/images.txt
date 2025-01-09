@@ -7,6 +7,6 @@ map1.png
 3
 map1.png
 4
-map1.png
+fondo.png
 5
 credits.png
