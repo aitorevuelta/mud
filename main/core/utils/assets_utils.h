@@ -20,7 +20,7 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
 TTF_Font* CreateFont(const char* filePath, int fontSize);
 void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
 
-void renderText(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color color, int x, int y);
+void renderText(SDL_Renderer *renderer, LOADEDFONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
 
 
 #endif // ASSETS_UTILS_H

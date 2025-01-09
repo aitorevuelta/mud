@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = SETTINGS;
-    LOADEDIMAGES* loadedImages = NULL;
+    GAMESTATE gameState = LOADSCREEN;
+    LOADEDIMAGES* loadedImages = NULL;  
     LOADEDFONTS* loadedFonts = NULL;
     GAMEINFO* gameInfo = NULL;
 
@@ -26,13 +26,12 @@ int main(int argc, char *argv[])
     LoadImages(&loadedImages, gameState, sdl.renderer);
     LoadFonts(&loadedFonts, gameState, sdl.renderer);
 
+   
     do {
-
         is_running = process_events(&controls, sdl.window, &config);
         gameState = update(gameState, gameInfo);
         render(sdl.renderer, loadedImages, loadedFonts, &gameState, gameInfo, config);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
-
     } while(is_running);
 
     saveConfig(config);
