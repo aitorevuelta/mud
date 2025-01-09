@@ -4,7 +4,7 @@
 #include <texturemanager.h>
 #include <render.h>
 #include <update.h>
-#include <settings.h>
+#include <settings_utils.h>
 
 int main(int argc, char *argv[])
 {

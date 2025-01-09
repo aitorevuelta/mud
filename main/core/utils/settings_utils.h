@@ -1,5 +1,5 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H  
+#ifndef SETTINGS_UTILS_H
+#define SETTINGS_UTILS_H  
 
 #define CONFIG_FILE "../data/config.txt"
 
