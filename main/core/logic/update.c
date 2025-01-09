@@ -8,9 +8,13 @@
 
 
 GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
+
     Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {
+        case LOADSCREEN:
+
+            break;
         case MAIN_MENU:
 
             break;
@@ -22,7 +26,8 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
             break;
         case SETTINGS:
             break;
-        default:
+        case CREDITS:
+        
             break;
     }
 

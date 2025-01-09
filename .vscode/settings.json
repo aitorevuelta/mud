@@ -38,7 +38,8 @@
         "settings.h": "c",
         "settings_utils.h": "c",
         "txt_utils.h": "c",
-        "assets_utils.h": "c"
+        "assets_utils.h": "c",
+        "gamestate_manager.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }

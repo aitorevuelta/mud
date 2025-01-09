@@ -1,0 +1,4 @@
+#ifndef GAMESTATE_MANAGER_H
+#define GAMESTATE_MANAGER_H
+
+#endif
