@@ -9,7 +9,7 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, int fps) {
     
     Uint32 frameStart = SDL_GetTicks();
 
@@ -31,7 +31,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
             break;  
     }
 
-    adjustFrameRate(frameStart, 144);
+    adjustFrameRate(frameStart, fps);
     return gameState;
 }
 

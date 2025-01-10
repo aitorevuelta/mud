@@ -18,5 +18,4 @@ void renderMap(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages)
 void renderUI(SDL_Renderer *renderer)
 {
     
-
 }
