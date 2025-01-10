@@ -155,6 +155,11 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
     }
 }
 
+void LoadAssets(LOADEDIMAGES** loadedImages, LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
+    LoadImages(loadedImages, gameState, renderer);
+    LoadFonts(loadedFonts, gameState, renderer);
+}
+
 void renderText(SDL_Renderer *renderer, LOADEDFONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){
     SDL_Surface *surface = TTF_RenderText_Solid(loadedFonts[0].font, text, color);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);

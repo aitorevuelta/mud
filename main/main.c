@@ -4,7 +4,7 @@
 #include <sdl_utils.h>
 #include <settings_utils.h>
 #include <assets_utils.h>
-#include <gamestate_manager.h>
+#include <gamestate_utils.h>
 
 #include <menu.h>
 #include <controls.h>
@@ -26,8 +26,7 @@ int main(int argc, char *argv[])
     GAMEINFO* gameInfo = NULL;
 
     bool is_running = init_sdl(&sdl, config);
-    LoadImages(&loadedImages, gameState, sdl.renderer);
-    LoadFonts(&loadedFonts, gameState, sdl.renderer);
+    LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
 
     gameState = loadscreen(sdl.renderer, loadedImages);
 

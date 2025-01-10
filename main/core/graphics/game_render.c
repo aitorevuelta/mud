@@ -4,19 +4,15 @@
 
 #include <game_render.h>
 
-void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts)
+void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMEINFO* gameInfo)
 {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Fondo negro
-    SDL_RenderClear(renderer);
-    renderMap(renderer);
+    renderMap(renderer, loadedImages);
     renderUI(renderer);
 }
 
-void renderMap(SDL_Renderer *renderer)
+void renderMap(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Blanco
-    SDL_Rect territory = {100, 100, 200, 200};
-    SDL_RenderFillRect(renderer, &territory);
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
 }
 
 void renderUI(SDL_Renderer *renderer)
