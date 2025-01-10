@@ -1,7 +1,7 @@
 #include <global.h>
 
 #include <assets_utils.h>
-
+#include <render.h>
 #include <game_render.h>
 
 void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMEINFO gameInfo, CONFIG config)
@@ -12,7 +12,7 @@ void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS 
 
 void renderMap(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMEINFO gameInfo)
 {
-    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
+    renderTextureRelative(renderer, loadedImages[0].texture, 80, 50, 50);
 }
 
 void renderUI(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMEINFO gameInfo)

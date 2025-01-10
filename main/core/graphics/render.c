@@ -35,3 +35,25 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loa
 
     SDL_RenderPresent(renderer);
 }
+
+void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float widthPercent, float xPercent, float yPercent) {
+    
+    int windowWidth, windowHeight;
+    SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
+
+    // Get original texture dimensions
+    int textureWidth, textureHeight;
+    SDL_QueryTexture(texture, NULL, NULL, &textureWidth, &textureHeight);
+    float textureRatio = (float)textureWidth / textureHeight;
+
+    SDL_Rect dstRect;
+    // Calculate size maintaining aspect ratio
+    dstRect.w = (int)(windowWidth * (widthPercent / 100.0f));
+    dstRect.h = (int)(dstRect.w / textureRatio);
+
+    // Center at specified position
+    dstRect.x = (int)(windowWidth * (xPercent / 100.0f)) - (dstRect.w / 2);
+    dstRect.y = (int)(windowHeight * (yPercent / 100.0f)) - (dstRect.h / 2);
+
+    SDL_RenderCopy(renderer, texture, NULL, &dstRect);
+}
