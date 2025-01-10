@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
     } while(is_running);
 
+
     saveConfig(config);
     cleanUp_sdl(&sdl);
 
