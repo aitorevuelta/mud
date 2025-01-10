@@ -4,6 +4,6 @@
 
 #include <lobby_render.h>
 
-void renderLobby(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages) {
+int renderLobby(int rend_lbby, SDL_Renderer *renderer, LOADEDIMAGES *loadedImages) {
     
 }

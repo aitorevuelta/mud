@@ -1,6 +1,8 @@
-#ifndef CREDITS_RENDER_H
+#ifndef  CREDITS_RENDER_H
 #define CREDITS_RENDER_H
 
-void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages);
 
-#endif // CREDITS_RENDER_H
+int renderCredits(int rend_cred,SDL_Renderer *renderer, BUTTON **buttons, LOADEDIMAGES *loadedImages);
+void initializeButtons3(BUTTON *buttons, LOADEDIMAGES *loadedImages);
+void renderButtons3(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount);
+#endif 

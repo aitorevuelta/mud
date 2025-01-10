@@ -27,10 +27,13 @@
 typedef enum {
     LOADSCREEN = 0,
     MAIN_MENU,
-    LOBBY,
-    GAME,
+    HOWTOPLAY,
     SETTINGS,
     CREDITS,
+    LOBBY,
+    GAME,
+    EXIT,
+    EXIT_TOTAL,
 } GAMESTATE;
 
 typedef struct SDL_S
@@ -97,6 +100,15 @@ typedef struct GAMEINFO_S {
     int currentPlayerIndex;   // Índice del jugador actual
     int turn;                 // Número de turno actual
 } GAMEINFO;
+
+typedef  enum{
+    ACTION_HOWTOPLAY=2,
+    ACTION_SETTINGS,
+    ACTION_CREDITS,
+    ACTION_PLAY,
+    ACTION_EXIT=7,
+}ACTION;
+
 
 
 

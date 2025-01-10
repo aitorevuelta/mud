@@ -14,19 +14,23 @@ void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADED
         startTime = SDL_GetTicks();
     }
 
-    Uint32 elapsedTime = SDL_GetTicks() - startTime;
-    int alpha = 255;
+    Uint32 elapsedTime = 0;
+    while (elapsedTime < totalDuration) {
+        elapsedTime = SDL_GetTicks() - startTime;
+        int alpha = 255;
 
-    if (elapsedTime < fadeInDuration) {
-        alpha = (255 * elapsedTime) / fadeInDuration;  // Fade-in
-    } else if (elapsedTime > totalDuration - fadeOutDuration) {
-        alpha = (255 * (totalDuration - elapsedTime)) / fadeOutDuration;  // Fade-out
-    }
+        if (elapsedTime < fadeInDuration) {
+            alpha = (255 * elapsedTime) / fadeInDuration;  // Fade-in
+        } else if (elapsedTime > totalDuration - fadeOutDuration) {
+            alpha = (255 * (totalDuration - elapsedTime)) / fadeOutDuration;  // Fade-out
+        }
 
-    if (elapsedTime >= totalDuration) {
-        *gamestate = MAIN_MENU;  // Cambiar el estado después de la duración total
-    } else {
         SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);  // Aplicar el alfa
         SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);  // Renderizar la textura
+        SDL_RenderPresent(renderer);  // Presentar el renderizado
+
+        SDL_Delay(16);  // Añadir un pequeño retraso para limitar la velocidad del bucle (aproximadamente 60 FPS)
     }
+
+    *gamestate = MAIN_MENU;  // Cambiar el estado después de la duración total
 }

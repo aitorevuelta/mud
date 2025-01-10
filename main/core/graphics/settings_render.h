@@ -1,6 +1,9 @@
-#ifndef RENDER_SETTINGS_H
-#define RENDER_SETTINGS_H
+#ifndef SETTINGS_RENDER_H
+#define SETTINGS_RENDER_H
 
-void renderSettings(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages);
 
-#endif // RENDER_SETTINGS_H
+int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, LOADEDIMAGES *loadedImages);
+void initializeButtons2(BUTTON *buttons, LOADEDIMAGES *loadedImages);
+void renderButtons2(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount);
+
+#endif 

@@ -4,7 +4,7 @@
 
 #include <game_render.h>
 
-void renderGame(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMEINFO* gameinfo, CONFIG config)
+int renderGame(int rend_game, SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, GAMEINFO* gameinfo, CONFIG config)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Fondo negro
     SDL_RenderClear(renderer);

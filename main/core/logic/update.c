@@ -1,12 +1,14 @@
 #include <global.h>
 
+#include <menu.h>
+
 #include <controls.h>
 
 #include <update.h>
 
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo,BUTTON *buttons,CONTROLS *controls) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -15,18 +17,32 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
 
             break;
         case MAIN_MENU:
-
+            handleMenuEvents(buttons, 5, &gameState, controls);
+            if(gameState==EXIT){
+                gameState=EXIT_TOTAL;
+            }
+            break;
+       case HOWTOPLAY:
+         handleMenuEvents(buttons, 5, &gameState, controls);
+        if(gameState==EXIT){
+                  gameState=MAIN_MENU;
+            }
+            break;
+       case SETTINGS:
+        handleMenuEvents(buttons, 5, &gameState, controls);
+        if(gameState==EXIT){
+                  gameState=MAIN_MENU;
+            }
+            break;
+        case CREDITS:
+         handleMenuEvents(buttons, 5, &gameState, controls);
+         if(gameState==EXIT){
+                gameState=MAIN_MENU;
+            }
             break;
         case LOBBY:
             break;
         case GAME:
-            
-
-            break;
-        case SETTINGS:
-            break;
-        case CREDITS:
-        
             break;
     }
     adjustFrameRate(frameStart, 144);
