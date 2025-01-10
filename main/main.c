@@ -12,9 +12,6 @@
 #include <loadscreen_render.h>
 #include <update.h>
 
-
-GAMESTATE loadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages);
-
 int main(int argc, char *argv[])
 {
     SDL sdl;
@@ -27,12 +24,6 @@ int main(int argc, char *argv[])
 
     bool is_running = init_sdl(&sdl, config);
     if (!is_running) {
-        cleanUp_sdl(&sdl);
-        return -1;
-    }
-
-    if (!LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer)) {
-        fprintf(stderr, "Error al cargar recursos.\n");
         cleanUp_sdl(&sdl);
         return -1;
     }

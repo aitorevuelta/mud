@@ -18,6 +18,9 @@ void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loa
     SDL_RenderClear(renderer);
     
     switch(*gameState) {
+        case LOADSCREEN:
+            renderLoadscreen(renderer, loadedImages);
+            break;
         case MAIN_MENU:
             SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
             break;

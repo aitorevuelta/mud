@@ -11,20 +11,6 @@
 
 
 GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
-
-    static Uint32 startTime = 0;
-    const Uint32 totalDuration = 5000;
-    
-    if (gameState == LOADSCREEN) {
-        if (startTime == 0) {
-            startTime = SDL_GetTicks();
-        }
-
-        Uint32 elapsedTime = SDL_GetTicks() - startTime;
-        if (elapsedTime > totalDuration) {
-            gameState = GAME;
-        }
-    }
     
     Uint32 frameStart = SDL_GetTicks();
 
