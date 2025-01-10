@@ -1,5 +1,7 @@
 0
 loadscreen.png
+loadscreen.png
+loadscreen.png
 1
 fondo.png
 2
