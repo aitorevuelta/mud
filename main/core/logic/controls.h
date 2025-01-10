@@ -84,11 +84,12 @@ typedef enum {
     END_KEY              // Tecla Fin
 } KEYS;
 
-
 typedef struct CONTROLS_S {
     int key;
     int coords[2]; 
     bool click;
+    int scroll;
+    
 } CONTROLS;
 
 KEYS get_key_code(SDL_Keycode key);
@@ -100,6 +101,7 @@ void handle_mouse_motion(SDL_Event event, CONTROLS *controls);
 
 void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config);
 
+void handle_mouse_wheel_event(int wheel_y, CONTROLS *controls);
 
 
 #endif

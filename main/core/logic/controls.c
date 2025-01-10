@@ -105,8 +105,7 @@ bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
                 controls->key = get_key_code(event.key.keysym.sym);
                 break;
             case SDL_MOUSEMOTION:
-                controls->coords[0] = event.motion.x;
-                controls->coords[1] = event.motion.y;
+                handle_mouse_motion(event, controls);
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 if (event.button.button == SDL_BUTTON_LEFT) {
@@ -117,6 +116,9 @@ bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
                 if (event.button.button == SDL_BUTTON_LEFT) {
                     controls->click = false;
                 }
+                break;
+            case SDL_MOUSEWHEEL:
+                handle_mouse_wheel_event(event.wheel.y, controls);
                 break;
             case SDL_WINDOWEVENT:
                 handle_window_event(event, window, config);
@@ -133,6 +135,16 @@ bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
 void handle_mouse_motion(SDL_Event event, CONTROLS *controls) {
     controls->coords[0] = event.motion.x;
     controls->coords[1] = event.motion.y;
+}
+
+void handle_mouse_wheel_event(int wheel_y, CONTROLS *controls) {
+    if (wheel_y > 0) {
+        controls->scroll = 1; // Scroll hacia arriba
+    } else if (wheel_y < 0) {
+        controls->scroll = 0; // Scroll hacia abajo
+    } else {
+        controls->scroll = -1; // No se detecta movimiento de la rueda
+    }
 }
 
 void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
