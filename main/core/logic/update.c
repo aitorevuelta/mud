@@ -10,9 +10,6 @@
 #include <update.h>
 
 
-<<<<<<< HEAD
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {   
-=======
 GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
 
     static Uint32 startTime = 0;
@@ -29,7 +26,6 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
         }
     }
     
->>>>>>> 4821aaa96976c9a41525de1a057ea132bf42a193
     Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {

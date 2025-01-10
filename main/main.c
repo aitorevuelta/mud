@@ -26,15 +26,21 @@ int main(int argc, char *argv[])
     GAMEINFO* gameInfo = NULL;
 
     bool is_running = init_sdl(&sdl, config);
-    LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
+    if (!is_running) {
+        cleanUp_sdl(&sdl);
+        return -1;
+    }
 
-    gameState = loadscreen(sdl.renderer, loadedImages);
+    if (!LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer)) {
+        fprintf(stderr, "Error al cargar recursos.\n");
+        cleanUp_sdl(&sdl);
+        return -1;
+    }
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        
-        //gameState = update(gameState, gameInfo);
-        //render(sdl.renderer, loadedImages, loadedFonts, &gameState, gameInfo, config);
+        gameState = update(gameState, gameInfo);
+        render(sdl.renderer, loadedImages, loadedFonts, &gameState, gameInfo, config);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
     } while(is_running);
 
@@ -42,18 +48,4 @@ int main(int argc, char *argv[])
     cleanUp_sdl(&sdl);
 
     return 0;
-}
-
-GAMESTATE loadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages)
-{
-    Uint32 frameStart = SDL_GetTicks();
-    adjustFrameRate(frameStart, 144);
-
-    SDL_RenderClear(renderer);
-
-    renderLoadscreen(renderer, loadedImages);
-
-    SDL_RenderPresent(renderer);
-
-    return MAIN_MENU;
 }

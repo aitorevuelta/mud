@@ -61,8 +61,6 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         return false;
     }
 
-    
-
     return true;
 }
 
