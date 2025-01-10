@@ -20,15 +20,15 @@ int main(int argc, char *argv[])
     GAMESTATE gameState = LOADSCREEN;
     LOADEDIMAGES* loadedImages = NULL;  
     LOADEDFONTS* loadedFonts = NULL;
-    GAMEINFO* gameInfo = NULL;
+    GAMEINFO gameInfo;
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, gameInfo, config.max_FPS);
-        render(sdl.renderer, loadedImages, loadedFonts, gameState, &gameInfo, config);
+        gameState = update(gameState, &gameInfo, config.max_FPS);
+        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, config);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
     } while(is_running);
 

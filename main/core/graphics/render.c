@@ -13,7 +13,7 @@
 
 
 
-void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG config) {
+void render(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages, LOADEDFONTS *loadedFonts, GAMESTATE gameState, GAMEINFO gameInfo, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
     

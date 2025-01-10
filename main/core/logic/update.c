@@ -9,7 +9,7 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, int fps) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, int fps) {
     
     Uint32 frameStart = SDL_GetTicks();
 
