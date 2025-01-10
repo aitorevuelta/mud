@@ -18,12 +18,12 @@ void renderLoadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages) {
     int alpha = 255;
 
     if (elapsedTime < fadeInDuration) {
-        alpha = (255 * elapsedTime) / fadeInDuration;  // Fade-in
+        alpha = (255 * elapsedTime) / fadeInDuration;
     } else if (elapsedTime > totalDuration - fadeOutDuration) {
-        alpha = (255 * (totalDuration - elapsedTime)) / fadeOutDuration;  // Fade-out
+        alpha = (255 * (totalDuration - elapsedTime)) / fadeOutDuration;
     }
 
-    SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);  // Aplicar el alfa
-    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);  // Renderizar la textura
+    SDL_SetTextureAlphaMod(loadedImages[0].texture, alpha);
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
 
 }

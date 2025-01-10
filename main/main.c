@@ -23,10 +23,6 @@ int main(int argc, char *argv[])
     GAMEINFO* gameInfo = NULL;
 
     bool is_running = init_sdl(&sdl, config);
-    if (!is_running) {
-        cleanUp_sdl(&sdl);
-        return -1;
-    }
 
     do {
         is_running = process_events(&controls, sdl.window, &config);

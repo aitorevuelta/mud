@@ -5,5 +5,5 @@
 #include <credits_render.h>
 
 void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages) {
-    SDL_RenderCopy(renderer, loadedImages[0].texture;, NULL, NULL); 
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL); 
 }
