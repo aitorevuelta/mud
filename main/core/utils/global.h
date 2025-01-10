@@ -88,13 +88,19 @@ typedef struct MAPINFO_S {
     int numTerritories;       // Número de territorios en el mapa
 } MAPINFO;
 
+typedef struct CAMERA_S {
+    int pos[1];
+    float zoom;
+} CAMERA;
+
 // Estructura que representa la información general del juego
 typedef struct GAMEINFO_S {
     MAPINFO mapInfo;          // Información sobre el mapa
     PLAYER *players;          // Jugadores en la partida
+    CAMERA camera;   
     int numPlayers;           // Número total de jugadores
     int currentPlayerIndex;   // Índice del jugador actual
-    int turn;                 // Número de turno actual
+    int turn;   // Número de turno actual
 } GAMEINFO;
 
 

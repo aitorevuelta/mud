@@ -12,9 +12,6 @@
 #include <loadscreen_render.h>
 #include <update.h>
 
-
-GAMESTATE loadscreen(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages);
-
 int main(int argc, char *argv[])
 {
     SDL sdl;
@@ -28,13 +25,10 @@ int main(int argc, char *argv[])
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
 
-    gameState = loadscreen(sdl.renderer, loadedImages);
-
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        
-        //gameState = update(gameState, gameInfo);
-        //render(sdl.renderer, loadedImages, loadedFonts, &gameState, gameInfo, config);
+        gameState = update(gameState, gameInfo);
+        render(sdl.renderer, loadedImages, loadedFonts, &gameState, gameInfo, config);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
     } while(is_running);
 
