@@ -39,7 +39,7 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         SDL_WINDOWPOS_CENTERED,
         config.window_width,
         config.window_height,
-        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
+        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE // | SDL_WINDOW_FULLSCREEN
     );
 
     if (sdl->window == NULL) {

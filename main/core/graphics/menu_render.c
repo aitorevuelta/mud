@@ -1,4 +1,5 @@
 #include <global.h>
+<<<<<<< HEAD
 #include <assets_utils.h>
 #include <menu.h>
 #include <menu_render.h>
@@ -51,3 +52,10 @@ void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
         }
     }
 }
+=======
+
+#include <menu.h>
+
+#include <menu_render.h>
+
+>>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a

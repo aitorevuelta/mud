@@ -3,6 +3,7 @@
 #include <menu.h>
 #include <credits_render.h>
 
+<<<<<<< HEAD
 int renderCredits(int rend_cred, SDL_Renderer *renderer, BUTTON **buttons, LOADEDIMAGES *loadedImages) {
       // Variable estática para controlar la inicialización
     int buttonCount = 5;
@@ -47,4 +48,8 @@ void renderButtons3(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
             }
         }
     }
+=======
+void renderCredits(SDL_Renderer *renderer, LOADEDIMAGES *loadedImages) {
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL); 
+>>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 }

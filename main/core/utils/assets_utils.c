@@ -95,16 +95,14 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
     int i;
     char filePath[MAX_STR];
 
+<<<<<<< HEAD
  free(*loadedImages);
+=======
+    free(*loadedImages);
+>>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 
-    // Validar el número de texturas
-    if (numTextures <= 0) {
-        fprintf(stderr, "No se encontraron texturas para el estado %d\n", gameState);
-        return;
-    }
-
-    // Asignar memoria para el nuevo arreglo de texturas
     *loadedImages = (LOADEDIMAGES*)malloc(numTextures * sizeof(LOADEDIMAGES));
+    
     if (*loadedImages == NULL) {
         fprintf(stderr, "Error al asignar memoria para loadedImages\n");
         return;
@@ -137,7 +135,11 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
     int numFonts = countPathsInState(gameState, FONTS_FILE);
     char filePath[MAX_STR];
 
+<<<<<<< HEAD
  free(*loadedFonts);
+=======
+    free(*loadedFonts);
+>>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 
     *loadedFonts = (LOADEDFONTS*)malloc(numFonts * sizeof(LOADEDFONTS));
 
@@ -159,4 +161,18 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
             fprintf(stderr, "Error al cargar la fuente: %s con tamaño %d\n", fontName, fontSize);
         }
     }
+}
+
+void LoadAssets(LOADEDIMAGES** loadedImages, LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
+    LoadImages(loadedImages, gameState, renderer);
+    LoadFonts(loadedFonts, gameState, renderer);
+}
+
+void renderText(SDL_Renderer *renderer, LOADEDFONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){
+    SDL_Surface *surface = TTF_RenderText_Solid(loadedFonts[0].font, text, color);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    //SDL_Rect rect = {x, y, surface->w, surface->h};
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
 }

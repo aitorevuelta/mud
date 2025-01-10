@@ -7,6 +7,7 @@ int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, LOAD
       // Variable estática para controlar la inicialización
     int buttonCount = 5;
 
+<<<<<<< HEAD
     // Solo inicializa los botones una vez
     if (rend_sett == 0) {
         *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
@@ -47,4 +48,9 @@ void renderButtons2(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
             }
         }
     }
+=======
+    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
+    
+
+>>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 }
