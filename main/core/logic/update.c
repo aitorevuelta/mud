@@ -10,22 +10,7 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
-
-    static Uint32 startTime = 0;
-    const Uint32 totalDuration = 5000;
-    
-    if (gameState == LOADSCREEN) {
-        if (startTime == 0) {
-            startTime = SDL_GetTicks();
-        }
-
-        Uint32 elapsedTime = SDL_GetTicks() - startTime;
-        if (elapsedTime > totalDuration) {
-            gameState = MAIN_MENU;
-        }
-    }
-    
+GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {   
     Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {
@@ -41,11 +26,12 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo) {
             MENU settings_menu = create_settings_menu();
             break;
         case CREDITS:
-        
-            break;
+            
+            break;  
     }
 
-    //adjustFrameRate(frameStart, 144);
+    adjustFrameRate(frameStart, 144);
+
     return gameState;
 }
 
