@@ -31,8 +31,10 @@ int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons,BUTTON_J
     // Renderiza el fondo
     SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
     // Renderiza una imagen
-    SDL_Rect destRect = {1100, 100, 200, 100};
+    SDL_Rect destRect = {1300, 100, 200, 100};
     SDL_RenderCopy(renderer, loadedImages[8].texture, NULL, &destRect);
+    SDL_Rect destRect2 ={ 675, 50, 250, 150 };
+    SDL_RenderCopy(renderer, loadedImages[15].texture, NULL, &destRect2);
     // Renderiza los botones
     renderButtons5(renderer, *buttons,*buttons_juego, buttonCount);
     renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
@@ -44,8 +46,8 @@ int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons,BUTTON_J
 void initializeButtons5(BUTTON_JUEGO *buttons_juego,IMAGES *loadedImages) {
     buttons_juego[0] = (BUTTON_JUEGO){ .rect = { 200, 200, 150, 150 }, .texture = loadedImages[4].texture, .visible = 1 };
     buttons_juego[1] = (BUTTON_JUEGO){ .rect = { 200, 400, 150, 150 }, .texture = loadedImages[5].texture, .visible = 1 };
-    buttons_juego[2] = (BUTTON_JUEGO){ .rect = { 450, 100, 150, 150 }, .texture = loadedImages[14].texture, .visible = 1 };
-    buttons_juego[3] = (BUTTON_JUEGO){ .rect = { 700, 100, 150, 150 }, .texture = loadedImages[13].texture, .visible = 1 };
+    buttons_juego[2] = (BUTTON_JUEGO){ .rect = { 600, 200, 150, 150 }, .texture = loadedImages[14].texture, .visible = 1 };
+    buttons_juego[3] = (BUTTON_JUEGO){ .rect = { 850, 200, 150, 150 }, .texture = loadedImages[13].texture, .visible = 1 };
 
 }
 void initializeButtons6(BUTTON *buttons, IMAGES *loadedImages) {
@@ -78,12 +80,12 @@ void renderButtons5(SDL_Renderer *renderer, BUTTON *buttons,BUTTON_JUEGO *button
 }
 void renderPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
     for (int i = 0; i < playerCount; i++) {
-        SDL_Rect playerRect = {1100, (200+(i*100)), 200, 100};  // Ajusta las coordenadas y el tamaño según sea necesario
+        SDL_Rect playerRect = {1300, (300+(i*100)), 200, 100};  // Ajusta las coordenadas y el tamaño según sea necesario
         SDL_RenderCopy(renderer, loadedImages[i+9].texture, NULL, &playerRect);  // Suponiendo que la textura del jugador está en loadedImages[6]
     }
 }
 
 void renderSelectedMap(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedMap) {
-    SDL_Rect mapRect = { 600, 100, 100, 100 };  // Ajusta las coordenadas y el tamaño según sea necesario
+    SDL_Rect mapRect = { 750, 200, 100, 100 };  // Ajusta las coordenadas y el tamaño según sea necesario
     SDL_RenderCopy(renderer, loadedImages[selectedMap].texture, NULL, &mapRect);  // Suponiendo que las texturas de los mapas están en loadedImages
 }

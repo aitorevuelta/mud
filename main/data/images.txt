@@ -24,7 +24,7 @@ loadscreen.png
 credits.png
 back.png
 5
-map1.png
+azul.jpg
 loadscreen.png
 credits.png
 settings.png
@@ -39,5 +39,6 @@ jugador3.jpg
 jugador4.jpg
 der.jpg
 izq.jpg
+mapa.jpg
 6
 7
