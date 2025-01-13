@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, &gameInfo, buttons, &controls);
-        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, &buttons, config);
+        gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
+        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, &buttons, config);
     } while(is_running);
 
 

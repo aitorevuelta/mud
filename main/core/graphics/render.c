@@ -19,6 +19,7 @@ void render(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GA
     
     switch(gameState) {
         case LOADSCREEN:
+            renderLoadscreen(renderer, loadedImages);
             break;
         case MAIN_MENU:
             rend_menu = renderMenu(rend_menu, renderer, buttons, loadedImages);

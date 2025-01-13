@@ -3,9 +3,9 @@
 
 
 
-void initialize_game();
+void initialize_game(GAMEINFO *gameInfo);
 
-void update_game();
+void handleTurn(GAMEINFO *gameInfo);
 
 void cleanup_game();
 

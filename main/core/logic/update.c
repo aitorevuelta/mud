@@ -4,12 +4,13 @@
 #include <menu.h>
 #include <settings.h>
 #include <loadscreen.h>
+#include <game.h>
 
 #include <update.h>
 
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, BUTTON *buttons, CONTROLS *controls) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, BUTTON *buttons, CONTROLS *controls, int fps) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -44,10 +45,11 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, BUTTON *buttons, CONTR
         case LOBBY:
             break;
         case GAME:
+            initialize_game(&gameInfo);
             break;
     }
 
-    //adjustFrameRate(frameStart, fps);
+    adjustFrameRate(frameStart, fps);
     return gameState;
 }
 
