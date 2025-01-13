@@ -5,6 +5,7 @@
 
 #include <controls.h>
 
+void handleExitStates(GAMESTATE currentState, GAMESTATE *newState);
 void handleMenuEvents(BUTTON *buttons, int buttonCount, GAMESTATE *gameState, CONTROLS *controls);
 
 

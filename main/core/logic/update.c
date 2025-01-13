@@ -20,27 +20,15 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO* gameInfo, BUTTON *buttons, CONTR
             break;
         case MAIN_MENU:
             handleMenuEvents(buttons, 5, &gameState, controls);
-            if(gameState==EXIT){
-                gameState=EXIT_TOTAL;
-            }
             break;
        case HOWTOPLAY:
             handleMenuEvents(buttons, 5, &gameState, controls);
-            if(gameState==EXIT){
-                  gameState=MAIN_MENU;
-            }
             break;
        case SETTINGS:
             handleMenuEvents(buttons, 5, &gameState, controls);
-            if  (gameState==EXIT) {
-                  gameState=MAIN_MENU;
-            }
             break;
         case CREDITS:
             handleMenuEvents(buttons, 5, &gameState, controls);
-            if  (gameState==EXIT) {
-                gameState=MAIN_MENU;
-            }
             break;
         case LOBBY:
             break;
