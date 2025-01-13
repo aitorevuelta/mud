@@ -5,6 +5,7 @@
 #include <settings.h>
 #include <loadscreen.h>
 #include <game.h>
+#include <lobby.h>
 #include <assets_utils.h>
 #include <update.h>
 
@@ -44,7 +45,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons,BUTTON
             break;
         case LOBBY:
              handleGameStateButtons(buttons,  2, &gameState,controls);
-             handlePlayerButtons(buttons_juego, 2,gameInfo, controls,renderer,loadedImages);
+             handlePlayerButtons(buttons_juego, 4,gameInfo, controls,renderer,loadedImages);
             if  (gameState==EXIT) {
                 gameState=MAIN_MENU;
             }

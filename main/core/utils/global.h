@@ -95,6 +95,8 @@ typedef struct MAPINFO_S {
     char *mapName;            // Nombre del mapa (Ej. Mundo, Europa, etc.)
     TERRITORYINFO *territories; // Lista de territorios del mapa
     int numTerritories;       // Número de territorios en el mapa
+    int numMaps; 
+    int totalMaps; 
 } MAPINFO;
 
 typedef struct CAMERA_S {

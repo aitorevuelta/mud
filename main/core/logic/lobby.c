@@ -36,9 +36,12 @@ void handlePlayerButtons(BUTTON_JUEGO *buttons_juego, int buttonCount, GAMEINFO 
                     
                     if (i == 0 && gameInfo->numPlayers < 4) {  // Añadir jugador
                         (gameInfo->numPlayers)++;
-                    } else if (i == 1 && gameInfo->numPlayers > 1) {  // Eliminar jugador
+                    } else if (i == 1 && gameInfo->numPlayers > 2) {  // Eliminar jugador
                         (gameInfo->numPlayers)--;
-
+                    } else if (i == 2 && gameInfo->mapInfo.numMaps > 1) {  // Botón de flecha izquierda
+                        gameInfo->mapInfo.numMaps--;
+                    } else if (i == 3 && gameInfo->mapInfo.numMaps < gameInfo->mapInfo.totalMaps) {  // Botón de flecha derecha
+                        gameInfo->mapInfo.numMaps++;
                     }
                     controls->click = 0; // Resetear el estado del clic
                     

@@ -24,6 +24,8 @@ int main(int argc, char *argv[])
     BUTTON_JUEGO* buttons_juego = NULL;
     GAMEINFO gameInfo;
     gameInfo.numPlayers = 2;
+    gameInfo.mapInfo.numMaps=1;
+    gameInfo.mapInfo.totalMaps=3;
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
