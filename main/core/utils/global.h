@@ -58,6 +58,12 @@ typedef struct BUTTON_S{
     bool visible;           // Si el botón está visible
 } BUTTON;
 
+typedef struct BUTTON_JUEGO_S{
+    SDL_Rect rect;          // Rectángulo de la textura del botón
+    SDL_Texture* texture;   // Textura del botón
+    bool visible;           // Si el botón está visible
+} BUTTON_JUEGO;
+
 
 // Definición de las cartas (un tipo de acción adicional en el juego)
 typedef enum {
@@ -111,10 +117,11 @@ typedef  enum{
     ACTION_SETTINGS,
     ACTION_CREDITS,
     ACTION_PLAY,
-    ACTION_EXIT=7,
+    ACTION_GAME,
+    ACTION_EXIT,
+    ACTION_ANADIR,
+    ACTION_ELIMINAR,
 }ACTION;
-
-
 
 
 #endif

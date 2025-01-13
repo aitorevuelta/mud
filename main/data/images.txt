@@ -1,11 +1,5 @@
 0
 loadscreen.png
-<<<<<<< HEAD
-start.png
-play.png
-options.png
-settings.png
-back.png
 1
 start.png
 play.png
@@ -13,12 +7,6 @@ options.png
 settings.png
 back.png
 map1.png
-=======
-loadscreen.png
-loadscreen.png
-1
-fondo.png
->>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 2
 start.png
 play.png
@@ -33,11 +21,18 @@ settings.png
 back.png
 loadscreen.png
 4
-<<<<<<< HEAD
 credits.png
 back.png
-=======
-fondo.png
->>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 5
-credits.png
+añadir.png
+eliminar.png
+back.png
+play.png
+map1.png
+jugador.png
+jugador1.png
+jugador2.png
+jugador3.jpg
+jugador4.jpg
+6
+7

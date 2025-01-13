@@ -21,16 +21,18 @@ int main(int argc, char *argv[])
     IMAGES* loadedImages = NULL;  
     FONTS* loadedFonts = NULL;
     BUTTON* buttons = NULL;
+    BUTTON_JUEGO* buttons_juego = NULL;
     GAMEINFO gameInfo;
+    gameInfo.numPlayers = 2;
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(&loadedImages, &loadedFonts, gameState, sdl.renderer);
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS);
+        gameState = update(gameState, &gameInfo, buttons,buttons_juego, &controls, config.max_FPS,sdl.renderer, loadedImages);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
-        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, &buttons, config);
+        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, &buttons, &buttons_juego,config);
     } while(is_running);
 
 
