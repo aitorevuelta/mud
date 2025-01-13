@@ -3,17 +3,16 @@
 #include <menu.h>
 #include <settings_render.h>
 
-int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, LOADEDIMAGES *loadedImages) {
+int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
       // Variable estática para controlar la inicialización
     int buttonCount = 5;
 
-<<<<<<< HEAD
     // Solo inicializa los botones una vez
     if (rend_sett == 0) {
         *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
         if (*buttons == NULL) {
             fprintf(stderr, "Error al asignar memoria para los botones\n");
-            return;
+            return -1;
         }
 
         // Inicializa los botones
@@ -28,7 +27,7 @@ int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, LOAD
    return rend_sett;
 }
 
-void initializeButtons2(BUTTON *buttons, LOADEDIMAGES *loadedImages) {
+void initializeButtons2(BUTTON *buttons, IMAGES *loadedImages) {
 
     buttons[0] = (BUTTON){ .rect = { 200, 200, 300, 100 }, .texture = loadedImages[0].texture, .action = ACTION_PLAY, .visible = 0 };
     buttons[1] = (BUTTON){ .rect = { 200, 320, 300, 100 }, .texture = loadedImages[1].texture, .action = ACTION_HOWTOPLAY, .visible = 0 };
@@ -48,9 +47,4 @@ void renderButtons2(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
             }
         }
     }
-=======
-    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
-    
-
->>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 }

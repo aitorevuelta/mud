@@ -89,7 +89,6 @@ typedef struct CONTROLS_S {
     int coords[2]; 
     bool click;
     int scroll;
-    
 } CONTROLS;
 
 KEYS get_key_code(SDL_Keycode key);

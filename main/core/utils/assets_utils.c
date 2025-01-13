@@ -90,18 +90,14 @@ TTF_Font* CreateFont(const char* filePath, int fontSize) {
 }
 
 
-void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer) {
+void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer) {
     int numTextures = countPathsInState(gameState, IMAGES_FILE); // Obtener número de texturas para el estado actual
     int i;
     char filePath[MAX_STR];
 
-<<<<<<< HEAD
- free(*loadedImages);
-=======
     free(*loadedImages);
->>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 
-    *loadedImages = (LOADEDIMAGES*)malloc(numTextures * sizeof(LOADEDIMAGES));
+    *loadedImages = (IMAGES*)malloc(numTextures * sizeof(IMAGES));
     
     if (*loadedImages == NULL) {
         fprintf(stderr, "Error al asignar memoria para loadedImages\n");
@@ -131,17 +127,13 @@ void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* 
 }
 
 
-void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
+void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
     int numFonts = countPathsInState(gameState, FONTS_FILE);
     char filePath[MAX_STR];
 
-<<<<<<< HEAD
- free(*loadedFonts);
-=======
     free(*loadedFonts);
->>>>>>> 28e5ae7950511b77dd0dc76b4c914bd7c53bfd6a
 
-    *loadedFonts = (LOADEDFONTS*)malloc(numFonts * sizeof(LOADEDFONTS));
+    *loadedFonts = (FONTS*)malloc(numFonts * sizeof(FONTS));
 
     if (*loadedFonts == NULL) return;
 
@@ -163,12 +155,12 @@ void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* ren
     }
 }
 
-void LoadAssets(LOADEDIMAGES** loadedImages, LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
+void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
     LoadImages(loadedImages, gameState, renderer);
     LoadFonts(loadedFonts, gameState, renderer);
 }
 
-void renderText(SDL_Renderer *renderer, LOADEDFONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){
+void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){
     SDL_Surface *surface = TTF_RenderText_Solid(loadedFonts[0].font, text, color);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
     //SDL_Rect rect = {x, y, surface->w, surface->h};

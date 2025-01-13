@@ -6,23 +6,23 @@
 int countPathsInState(GAMESTATE gamestate, char* path);
 char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
 
-typedef struct LOADEDIMAGES_S {
+typedef struct IMAGES_S {
     SDL_Texture* texture;
-} LOADEDIMAGES;
+} IMAGES;
 
-typedef struct LOADEDFONTS_S {
+typedef struct FONTS_S {
     TTF_Font* font;
-} LOADEDFONTS;
+} FONTS;
 
 SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer);
-void LoadImages(LOADEDIMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer);
 
 TTF_Font* CreateFont(const char* filePath, int fontSize);
-void LoadFonts(LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
 
-void LoadAssets(LOADEDIMAGES** loadedImages, LOADEDFONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
 
-void renderText(SDL_Renderer *renderer, LOADEDFONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
+void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
 
 
 #endif // ASSETS_UTILS_H

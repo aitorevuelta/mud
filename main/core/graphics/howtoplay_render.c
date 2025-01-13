@@ -3,7 +3,7 @@
 #include <menu.h>
 #include <howtoplay_render.h>
 
-int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, LOADEDIMAGES *loadedImages) {
+int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
       // Variable estática para controlar la inicialización
     int buttonCount = 5;
 
@@ -12,7 +12,7 @@ int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, LOAD
         *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
         if (*buttons == NULL) {
             fprintf(stderr, "Error al asignar memoria para los botones\n");
-            return;
+            return -1;
         }
 
         // Inicializa los botones
@@ -27,7 +27,7 @@ int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, LOAD
    return rend_h2p;
 }
 
-void initializeButtons4(BUTTON *buttons, LOADEDIMAGES *loadedImages) {
+void initializeButtons4(BUTTON *buttons, IMAGES *loadedImages) {
 
     buttons[0] = (BUTTON){ .rect = { 200, 200, 300, 100 }, .texture = loadedImages[0].texture, .action = ACTION_PLAY, .visible = 0 };
     buttons[1] = (BUTTON){ .rect = { 200, 320, 300, 100 }, .texture = loadedImages[1].texture, .action = ACTION_HOWTOPLAY, .visible = 0 };
