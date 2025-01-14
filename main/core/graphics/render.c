@@ -11,38 +11,38 @@
 #include <render.h>
 
 
-/*
-void render(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON **buttons, BUTTON_JUEGO **buttons_juego,CONFIG config) {
+void render(SDL_Renderer* renderer, ASSETS* assets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON** buttons, BUTTON_JUEGO** buttons_juego, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
+
     static int rend_general = 0, rend_menu = 0;
-    
-    switch(gameState) {
+
+    switch (gameState) {
         case LOADSCREEN:
-            renderLoadscreen(renderer, loadedImages);
+            renderLoadscreen(renderer, assets->images);  // Usar imágenes desde `assets`
             break;
         case MAIN_MENU:
-            rend_menu = renderMenu(rend_menu, renderer, buttons, loadedImages);
+            rend_menu = renderMenu(rend_menu, renderer, buttons, assets->images);
             rend_general = 0;
             break;
         case LOBBY:
-            rend_general = renderLobby(rend_general, renderer,buttons,buttons_juego, loadedImages, &gameInfo);
+            rend_general = renderLobby(rend_general, renderer, buttons, buttons_juego, assets->images, &gameInfo);
             rend_menu = 0;
             break;
         case GAME:
-            rend_general = renderGame(renderer, loadedImages, loadedFonts, gameInfo, config, rend_general);
+            rend_general = renderGame(renderer, assets->images, assets->fonts, gameInfo, config, rend_general);
             rend_menu = 0;
             break;
         case SETTINGS:
-           rend_general = renderSettings(rend_general, renderer,buttons, loadedImages);
+            rend_general = renderSettings(rend_general, renderer, buttons, assets->images);
             rend_menu = 0;
             break;
-        case CREDITS: 
-            rend_general = renderCredits(rend_general, renderer,buttons, loadedImages);
+        case CREDITS:
+            rend_general = renderCredits(rend_general, renderer, buttons, assets->images);
             rend_menu = 0;
             break;
         case HOWTOPLAY:
-            rend_general = renderHowtoplay(rend_general, renderer,buttons, loadedImages);
+            rend_general = renderHowtoplay(rend_general, renderer, buttons, assets->images);
             rend_menu = 0;
             break;
     }

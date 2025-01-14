@@ -51,8 +51,6 @@ typedef struct CONFIG_S {
 
 typedef struct BUTTON_S {
     SDL_Rect rect;          // Rectángulo calculado del botón
-typedef struct BUTTON_S {
-    SDL_Rect rect;          // Rectángulo de la textura del botón
     SDL_Texture* texture;   // Textura del botón
     int action;             // Acción asociada al botón
     bool visible;           // Si el botón está visible
@@ -60,6 +58,10 @@ typedef struct BUTTON_S {
     float xPercent;         // Posición X relativa en porcentaje
     float yPercent;         // Posición Y relativa en porcentaje
 } BUTTON;
+
+#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
+
+
 
 #define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
