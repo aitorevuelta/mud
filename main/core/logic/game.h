@@ -7,7 +7,7 @@ void initialize_game(GAMEINFO *gameInfo);
 
 void handleTurn(GAMEINFO *gameInfo);
 
-void cleanup_game();
+void cleanup_game(GAMEINFO *gameInfo);
 
 
 
