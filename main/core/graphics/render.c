@@ -12,7 +12,7 @@
 
 
 
-void render(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON **buttons, CONFIG config) {
+void render(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON **buttons, BUTTON_JUEGO **buttons_juego,CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
     static int rend_menu = 0, rend_sett = 0, rend_cre = 0, rend_h2p = 0, rend_game = 0, rend_lbby = 0;
@@ -29,7 +29,7 @@ void render(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GA
             rend_h2p = 0;
             break;
         case LOBBY:
-            rend_lbby= renderLobby(rend_lbby, renderer, loadedImages);
+            rend_lbby= renderLobby(rend_lbby, renderer,buttons,buttons_juego, loadedImages, &gameInfo);
             rend_menu=0;
             break;
         case GAME:
