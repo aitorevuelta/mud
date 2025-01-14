@@ -7,23 +7,26 @@
 #define TERRITORY_COUNT 6
 #define MAX_PLAYERS 6
 
-void initialize_game(GAMEINFO *gameInfo)
-{
+void allocateTerritories(GAMEINFO *gameInfo) {
     // Asignar memoria para territorios y jugadores
     gameInfo->mapInfo.territories = malloc(sizeof(TERRITORYINFO) * TERRITORY_COUNT);
     if (!gameInfo->mapInfo.territories) {
         fprintf(stderr, "Error al asignar memoria para territorios.\n");
         exit(EXIT_FAILURE);
     }
+}
 
+void allocatePlayers(GAMEINFO *gameInfo) {
     gameInfo->players = malloc(sizeof(PLAYER) * MAX_PLAYERS);
     if (!gameInfo->players) {
         fprintf(stderr, "Error al asignar memoria para jugadores.\n");
         free(gameInfo->mapInfo.territories);
         exit(EXIT_FAILURE);
     }
+}
 
-    // Inicialización de datos básicos
+void initializeBasicData(GAMEINFO *gameInfo){
+
     gameInfo->mapInfo.mapName = malloc(5); // "MAPA" tiene 4 caracteres + 1 para '\0'
     if (!gameInfo->mapInfo.mapName) {
         fprintf(stderr, "Error al asignar memoria para el nombre del mapa.\n");
@@ -37,7 +40,14 @@ void initialize_game(GAMEINFO *gameInfo)
     gameInfo->numPlayers = MAX_PLAYERS;
     gameInfo->turn = 1;
     gameInfo->currentPlayerIndex = 0;
+}
 
+void initialize_game(GAMEINFO *gameInfo) {
+
+    allocateTerritories(gameInfo);
+    allocatePlayers(gameInfo);
+    initializeBasicData(gameInfo);
+    
     // Nombres de los territorios
     char *territoryNames[TERRITORY_COUNT] = {"Territorio 1", "Territorio 2", "Territorio 3",
                                              "Territorio 4", "Territorio 5", "Territorio 6"};
@@ -95,21 +105,25 @@ void handleTurn(GAMEINFO *gameInfo)
     }
 }
 
-void cleanup_game(GAMEINFO *gameInfo)
-{
+void cleanup_game(GAMEINFO *gameInfo) {
+    freeTerritories(gameInfo);
+    freePlayers(gameInfo);
+    free(gameInfo->mapInfo.mapName);
+}
+
+void freeTerritories(GAMEINFO *gameInfo) {
     // Liberar nombres de territorios
     for (int i = 0; i < gameInfo->mapInfo.numTerritories; i++) {
         free(gameInfo->mapInfo.territories[i].name);
     }
     free(gameInfo->mapInfo.territories);
+}
 
+void freePlayersAndCards(GAMEINFO *gameInfo) {
     // Liberar nombres y cartas de jugadores
     for (int i = 0; i < gameInfo->numPlayers; i++) {
         free(gameInfo->players[i].name);
         free(gameInfo->players[i].cards); // Si se asignaron cartas dinámicamente
     }
     free(gameInfo->players);
-
-    // Liberar otros datos si es necesario
-    free(gameInfo->mapInfo.mapName);
 }

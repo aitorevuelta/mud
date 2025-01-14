@@ -49,6 +49,7 @@ typedef struct CONFIG_S {
     int max_FPS;
 } CONFIG;
 
+#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 typedef struct BUTTON_S {
     SDL_Rect rect;          // Rectángulo calculado del botón
     SDL_Texture* texture;   // Textura del botón
@@ -58,8 +59,6 @@ typedef struct BUTTON_S {
     float xPercent;         // Posición X relativa en porcentaje
     float yPercent;         // Posición Y relativa en porcentaje
 } BUTTON;
-
-#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
 
 // Definición de las cartas (un tipo de acción adicional en el juego)

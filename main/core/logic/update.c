@@ -32,10 +32,10 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
         case LOBBY:
-            handleGameStateButtons(buttons,  2, &gameState,controls);
+            handleGameStateButtons(buttons,  2, &gameState, controls);
             break;
         case GAME:
-            initialize_game(&gameInfo);
+            initialize_game(gameInfo);
             break;
     }
 
