@@ -14,7 +14,7 @@ void handleTurn(GAMEINFO *gameInfo);
 
 // Memoria Hustu
 void freeTerritories(GAMEINFO *gameInfo);
-void freePlayers(GAMEINFO *gameInfo);
+void freePlayersAndCards(GAMEINFO *gameInfo);
 void cleanup_game(GAMEINFO *gameInfo);
 
 #endif // GAME_H

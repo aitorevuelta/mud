@@ -107,7 +107,6 @@ void handleTurn(GAMEINFO *gameInfo)
 
 void cleanup_game(GAMEINFO *gameInfo) {
     freeTerritories(gameInfo);
-    freePlayers(gameInfo);
     free(gameInfo->mapInfo.mapName);
 }
 
