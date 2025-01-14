@@ -155,6 +155,7 @@ void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer)
     }
 }
 
+
 void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
     LoadImages(loadedImages, gameState, renderer);
     LoadFonts(loadedFonts, gameState, renderer);
