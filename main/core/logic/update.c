@@ -21,34 +21,19 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons,BUTTON
             break;
         case MAIN_MENU:
             handleMenuEvents(buttons, 5, &gameState, controls);
-            if(gameState==EXIT){
-                gameState=EXIT_TOTAL;
-            }
             break;
        case HOWTOPLAY:
             handleMenuEvents(buttons, 1, &gameState, controls);
-            if(gameState==EXIT){
-                  gameState=MAIN_MENU;
-            }
             break;
        case SETTINGS:
             handleMenuEvents(buttons, 5, &gameState, controls);
-            if  (gameState==EXIT) {
-                  gameState=MAIN_MENU;
-            }
             break;
         case CREDITS:
             handleMenuEvents(buttons, 1, &gameState, controls);
-            if  (gameState==EXIT) {
-                gameState=MAIN_MENU;
-            }
             break;
         case LOBBY:
              handleGameStateButtons(buttons,  2, &gameState,controls);
              handlePlayerButtons(buttons_juego, 4,gameInfo, controls,renderer,loadedImages);
-            if  (gameState==EXIT) {
-                gameState=MAIN_MENU;
-            }
             break;
         case GAME:
             initialize_game(&gameInfo);
