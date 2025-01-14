@@ -11,7 +11,7 @@
 
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons,BUTTON_JUEGO *buttons_juego, CONTROLS *controls, int fps) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -33,7 +33,6 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons,BUTTON
             break;
         case LOBBY:
             handleGameStateButtons(buttons,  2, &gameState,controls);
-            handlePlayerButtons(buttons_juego, 4,gameInfo, controls);
             break;
         case GAME:
             initialize_game(&gameInfo);

@@ -12,8 +12,6 @@
 #include <loadscreen_render.h>
 #include <update.h>
 
-
-
 int main(int argc, char *argv[])
 {
     SDL sdl;
@@ -22,7 +20,6 @@ int main(int argc, char *argv[])
     GAMESTATE gameState = LOADSCREEN;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
-    BUTTON_JUEGO* buttons_juego = NULL;
     GAMEINFO gameInfo;
     
     gameInfo.numPlayers = 2;
@@ -34,9 +31,9 @@ int main(int argc, char *argv[])
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, &gameInfo, buttons, buttons_juego, &controls, config.max_FPS);
+        gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS);
         checkGameStateChange(&loadedAssets, &gameState, sdl.renderer);
-        render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, &buttons_juego, config);
+        render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
     } while(is_running);
 
 

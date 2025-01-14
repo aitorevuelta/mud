@@ -11,7 +11,7 @@
 #include <render.h>
 
 
-void render(SDL_Renderer* renderer, ASSETS* assets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON** buttons, BUTTON_JUEGO** buttons_juego, CONFIG config) {
+void render(SDL_Renderer* renderer, ASSETS* assets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON** buttons, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
 
@@ -26,7 +26,7 @@ void render(SDL_Renderer* renderer, ASSETS* assets, GAMESTATE gameState, GAMEINF
             rend_general = 0;
             break;
         case LOBBY:
-            rend_general = renderLobby(rend_general, renderer, buttons, buttons_juego, assets->images, &gameInfo);
+            //rend_general = renderLobby(rend_general, renderer, buttons, assets->images, &gameInfo);
             rend_menu = 0;
             break;
         case GAME:
