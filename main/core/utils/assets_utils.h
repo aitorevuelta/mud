@@ -30,7 +30,7 @@ void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* render
 TTF_Font* CreateFont(const char* filePath, int fontSize);
 void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
 
-void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadAssets(ASSETS *loadedAssets, GAMESTATE gameState, SDL_Renderer* renderer);
 
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
 
