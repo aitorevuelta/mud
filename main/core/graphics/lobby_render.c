@@ -30,11 +30,12 @@ int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons,BUTTON_J
 
     // Renderiza el fondo
     SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
+
     // Renderiza una imagen
-    SDL_Rect destRect = {1300, 100, 200, 100};
-    SDL_RenderCopy(renderer, loadedImages[8].texture, NULL, &destRect);
-    SDL_Rect destRect2 ={ 675, 50, 250, 150 };
-    SDL_RenderCopy(renderer, loadedImages[15].texture, NULL, &destRect2);
+    SDL_Rect destRect = {200, 150 , 200, 100};
+    SDL_RenderCopy(renderer, loadedImages[8].texture, NULL, &destRect); //JUGADOR
+    SDL_Rect destRect2 ={ 200, 250, 250, 150 };
+    SDL_RenderCopy(renderer, loadedImages[15].texture, NULL, &destRect2); //JUGADOR
     // Renderiza los botones
     renderButtons5(renderer, *buttons,*buttons_juego, buttonCount);
     renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
@@ -80,12 +81,12 @@ void renderButtons5(SDL_Renderer *renderer, BUTTON *buttons,BUTTON_JUEGO *button
 }
 void renderPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
     for (int i = 0; i < playerCount; i++) {
-        SDL_Rect playerRect = {1300, (300+(i*100)), 200, 100};  // Ajusta las coordenadas y el tamaño según sea necesario
+        SDL_Rect playerRect = {200, (250+(i*100)), 200, 100};  // Ajusta las coordenadas y el tamaño según sea necesario
         SDL_RenderCopy(renderer, loadedImages[i+9].texture, NULL, &playerRect);  // Suponiendo que la textura del jugador está en loadedImages[6]
     }
 }
 
 void renderSelectedMap(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedMap) {
-    SDL_Rect mapRect = { 750, 200, 100, 100 };  // Ajusta las coordenadas y el tamaño según sea necesario
+    SDL_Rect mapRect = { 900, 150, 350, 350 };  // Ajusta las coordenadas y el tamaño según sea necesario
     SDL_RenderCopy(renderer, loadedImages[selectedMap].texture, NULL, &mapRect);  // Suponiendo que las texturas de los mapas están en loadedImages
 }

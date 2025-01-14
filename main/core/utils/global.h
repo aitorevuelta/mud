@@ -51,12 +51,19 @@ typedef struct CONFIG_S
     int max_FPS;
 } CONFIG;
 
-typedef struct BUTTON_S{
-    SDL_Rect rect;          // Rectángulo de la textura del botón
+typedef struct BUTTON_S {
+    SDL_Rect rect;          // Rectángulo calculado del botón
     SDL_Texture* texture;   // Textura del botón
     int action;             // Acción asociada al botón
     bool visible;           // Si el botón está visible
+    float widthPercent;     // Ancho relativo del botón (y la imagen) en porcentaje
+    float xPercent;         // Posición X relativa en porcentaje
+    float yPercent;         // Posición Y relativa en porcentaje
 } BUTTON;
+
+#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
+
+
 
 typedef struct BUTTON_JUEGO_S{
     SDL_Rect rect;          // Rectángulo de la textura del botón

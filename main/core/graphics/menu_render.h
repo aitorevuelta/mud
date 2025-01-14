@@ -3,7 +3,6 @@
 
 
 int renderMenu(int rend_menu,SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages);
-void initializeButtons(BUTTON *buttons, IMAGES *loadedImages);
-void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount);
+void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages);
 
 #endif 
