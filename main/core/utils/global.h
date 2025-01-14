@@ -36,14 +36,12 @@ typedef enum {
     EXIT_TOTAL,
 } GAMESTATE;
 
-typedef struct SDL_S
-{
+typedef struct SDL_S {
     SDL_Window *window;
     SDL_Renderer *renderer;
 } SDL;
 
-typedef struct CONFIG_S
-{
+typedef struct CONFIG_S {
     int window_width;
     int window_height; 
     bool fullscreen;
@@ -53,6 +51,8 @@ typedef struct CONFIG_S
 
 typedef struct BUTTON_S {
     SDL_Rect rect;          // Rectángulo calculado del botón
+typedef struct BUTTON_S {
+    SDL_Rect rect;          // Rectángulo de la textura del botón
     SDL_Texture* texture;   // Textura del botón
     int action;             // Acción asociada al botón
     bool visible;           // Si el botón está visible
@@ -121,7 +121,7 @@ typedef struct GAMEINFO_S {
     int turn;   // Número de turno actual
 } GAMEINFO;
 
-typedef  enum{
+typedef enum {
     ACTION_HOWTOPLAY=2,
     ACTION_SETTINGS,
     ACTION_CREDITS,

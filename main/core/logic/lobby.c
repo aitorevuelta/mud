@@ -24,7 +24,7 @@ void handleGameStateButtons(BUTTON *buttons, int buttonCount, GAMESTATE *gameSta
     }
 }
 
-void handlePlayerButtons(BUTTON_JUEGO *buttons_juego, int buttonCount, GAMEINFO *gameInfo,CONTROLS *controls,SDL_Renderer *renderer, IMAGES *loadedImages) {
+void handlePlayerButtons(BUTTON_JUEGO *buttons_juego, int buttonCount, GAMEINFO *gameInfo,CONTROLS *controls) {
     if (controls->click == 1) {
         for (int i = 0; i < buttonCount; i++) {
             if (buttons_juego[i].visible) {
