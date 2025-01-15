@@ -4,7 +4,7 @@
 #include <credits_render.h>
 #include <render.h>
 
-int renderCredits(int rend_cred, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
+int renderCredits(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_cred) {
     // Variable estática para controlar la inicialización
     int buttonCount = 1;
 

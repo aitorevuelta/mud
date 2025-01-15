@@ -4,8 +4,8 @@
 #include <howtoplay_render.h>
 #include <render.h>
 
-int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
-      // Variable estática para controlar la inicialización
+int renderHowtoplay(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_h2p) {
+    // Variable estática para controlar la inicialización
     int buttonCount = 1;
 
     // Solo inicializa los botones una vez

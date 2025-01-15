@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         is_running = process_events(&controls, sdl.window, &config);
         gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS);
         checkGameStateChange(&loadedAssets, &gameState, sdl.renderer);
-        render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons,config);
+        render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
     } while(is_running);
 
 

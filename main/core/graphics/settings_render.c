@@ -4,7 +4,7 @@
 #include <settings_render.h>
 #include <render.h>
 
-int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
+int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_sett) {
       // Variable estática para controlar la inicialización
     int buttonCount = 1;
 

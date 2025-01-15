@@ -5,7 +5,7 @@
 #include <lobby_render.h>
 #include <render.h>
 
-int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo) {
+int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo, int rend_lbby) {
     int buttonCount = 6;
 
     // Solo inicializa los botones una vez
