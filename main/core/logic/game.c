@@ -26,6 +26,7 @@ void allocatePlayers(GAMEINFO *gameInfo) {
 void initializeBasicData(GAMEINFO *gameInfo) {
     
 
+    
 }
 
 void initializePlayer(GAMEINFO *gameInfo) {

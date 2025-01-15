@@ -22,7 +22,7 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
             renderLoadscreen(renderer, loadedAssets->images);
             break;
         case MAIN_MENU:
-            rend_menu = renderMenu(rend_menu, renderer, buttons, loadedAssets->images);
+            rend_menu = renderMenu(renderer, buttons, loadedAssets->images, rend_menu);
             rend_general = 0;
             break;
         case LOBBY:

@@ -2,7 +2,7 @@
 #define MENU_RENDER_H
 
 
-int renderMenu(int rend_menu,SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages);
+int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_menu);
 void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages);
 
 #endif 

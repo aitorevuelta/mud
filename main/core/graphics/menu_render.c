@@ -5,7 +5,7 @@
 #include <render.h>
 
 
-int renderMenu(int rend_menu, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
+int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_menu) {
     // Variable estática para controlar la inicialización
     int buttonCount = 5;
     if(rend_menu==0){
