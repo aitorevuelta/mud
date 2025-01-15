@@ -5,7 +5,7 @@
 #include <render.h>
 #include <lobby_render.h>
 
-void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, CONTROLS *controls, SDL_Renderer *renderer, IMAGES *loadedImages) {
+void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, CONTROLS *controls) {
     if (controls->click == 1) {
         for (int i = 0; i < buttonCount; i++) {
             if (buttons[i].visible) {

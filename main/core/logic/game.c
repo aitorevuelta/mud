@@ -63,33 +63,6 @@ void initialize_game(GAMEINFO *gameInfo) {
     }
 
     initializePlayers(gameInfo);
-
-    // Inicialización de jugadores
-    for (int i = 0; i < MAX_PLAYERS; i++) {
-        gameInfo->players[i].id = i;
-
-        // Asignar memoria para el nombre del jugador
-        char buffer[16];
-        snprintf(buffer, sizeof(buffer), "Jugador %d", i + 1);
-        gameInfo->players[i].name = malloc(strlen(buffer) + 1);
-        if (!gameInfo->players[i].name) {
-            fprintf(stderr, "Error al asignar memoria para el nombre del jugador.\n");
-            exit(EXIT_FAILURE);
-        }
-        strcpy(gameInfo->players[i].name, buffer);
-
-        gameInfo->players[i].numTerritories = 0;
-        gameInfo->players[i].troops = 30;
-        gameInfo->players[i].numCards = 0;
-        gameInfo->players[i].cards = NULL;
-
-        // Contar territorios asignados a cada jugador
-        for (int j = 0; j < TERRITORY_COUNT; j++) {
-            if (gameInfo->mapInfo.territories[j].owner == i) {
-                gameInfo->players[i].numTerritories++;
-            }
-        }
-    }
 }
 
 

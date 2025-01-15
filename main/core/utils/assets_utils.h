@@ -10,9 +10,19 @@ typedef struct IMAGES_S {
     SDL_Texture* texture;
 } IMAGES;
 
+typedef struct MUSIC_S {
+    Mix_Music *music;
+}MUSIC;
 typedef struct FONTS_S {
     TTF_Font* font;
 } FONTS;
+
+typedef struct ASSETS_S {
+    IMAGES *images;
+    MUSIC *music;
+    FONTS *fonts;
+}ASSETS;
+
 
 SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer);
 void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer);
@@ -20,7 +30,7 @@ void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* render
 TTF_Font* CreateFont(const char* filePath, int fontSize);
 void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
 
-void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadAssets(ASSETS *loadedAssets, GAMESTATE gameState, SDL_Renderer* renderer);
 
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
 
