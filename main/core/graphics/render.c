@@ -26,7 +26,7 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
             rend_general = 0;
             break;
         case LOBBY:
-            //rend_general = renderLobby(rend_general, renderer, buttons, assets->images, &gameInfo);
+            rend_general = renderLobby(rend_general, renderer, buttons, loadedAssets->images, &gameInfo);
             rend_menu = 0;
             break;
         case GAME:

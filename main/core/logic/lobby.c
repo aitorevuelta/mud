@@ -1,9 +1,10 @@
 #include <global.h>
+
 #include <controls.h>
-#include <lobby.h>
 #include <assets_utils.h>
 #include <render.h>
-#include <lobby_render.h>
+
+#include <lobby.h>
 
 void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, CONTROLS *controls) {
     if (controls->click == 1) {
@@ -44,6 +45,7 @@ void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, C
         }
     }
 }
+
 void handleGameStateButtons(BUTTON *buttons, int buttonCount, GAMESTATE *gameState, CONTROLS *controls) {
     if (controls->click == 1) {
         for (int i = 4; i < buttonCount; i++) {

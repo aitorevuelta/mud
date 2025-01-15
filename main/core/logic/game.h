@@ -1,6 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
+#define TERRITORY_COUNT 6
+#define MAX_PLAYERS 4
+
 
 void game(GAMEINFO *gameInfo);
 void updateGame(GAMEINFO *gameInfo);
@@ -19,7 +22,7 @@ void initialize_game(GAMEINFO *gameInfo);
 
 void handleTurn(GAMEINFO *gameInfo);
 
-void cleanup_game();
+void cleanup_game(GAMEINFO *gameInfo);
 
 
 

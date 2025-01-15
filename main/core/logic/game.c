@@ -2,8 +2,7 @@
 
 #include <game.h>
 
-#define TERRITORY_COUNT 6
-#define MAX_PLAYERS 6
+
 
 void allocateTerritories(GAMEINFO *gameInfo) {
     // Memoria alokatu territorioei
