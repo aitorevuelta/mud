@@ -11,9 +11,8 @@ void updateGame(GAMEINFO *gameInfo);
 // Jokoa hasieratu
 void allocateTerritories(GAMEINFO *gameInfo);
 void allocatePlayers(GAMEINFO *gameInfo);
-void initializeBasicData(GAMEINFO *gameInfo);
 
-void initializePlayer(GAMEINFO *gameInfo);
+void initializePlayer(PLAYER *player, int id);
 void initializePlayers(GAMEINFO *gameInfo);
 
 void initializeTerritories(GAMEINFO *gameInfo);

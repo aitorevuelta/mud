@@ -3,6 +3,7 @@
 #include <controls.h>
 #include <assets_utils.h>
 #include <render.h>
+#include <menu.h>
 
 #include <lobby.h>
 
@@ -18,9 +19,9 @@ void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, C
 
                     // Verifica si la acción es válida antes de ejecutarla
                     if (buttons[i].action == ACTION_NONE) { // Cambié NULL por ACTION_NONE
-                        if (i == 0 && gameInfo->numPlayers < 4) {  // Añadir jugador
+                        if (i == 0 && gameInfo->numPlayers < 4) {  // Jokalariak gehitu
                             (gameInfo->numPlayers)++;
-                        } else if (i == 1 && gameInfo->numPlayers > 2) {  // Eliminar jugador
+                        } else if (i == 1 && gameInfo->numPlayers > 2) {  // Jokalariak kendu
                             (gameInfo->numPlayers)--; 
                         } else if (i == 2) {  // Botón de flecha izquierda
                             if (gameInfo->mapInfo.numMaps == 1) {

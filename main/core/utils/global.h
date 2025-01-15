@@ -36,14 +36,12 @@ typedef enum {
     EXIT_TOTAL,
 } GAMESTATE;
 
-typedef struct SDL_S
-{
+typedef struct SDL_S {
     SDL_Window *window;
     SDL_Renderer *renderer;
 } SDL;
 
-typedef struct CONFIG_S
-{
+typedef struct CONFIG_S {
     int window_width;
     int window_height; 
     bool fullscreen;
@@ -109,7 +107,7 @@ typedef struct GAMEINFO_S {
     PLAYER *players;          // Jugadores en la partida
     CAMERA camera;   
     int numPlayers;           // Número total de jugadores
-    int currentPlayerIndex;   // Índice del jugador actual
+    int currentPlayerID;   // Índice del jugador actual
     int turn;                 // Número de turno actual
     int currentMapIndex;      // Índice del mapa actual
 } GAMEINFO;

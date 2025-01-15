@@ -36,7 +36,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
         case GAME:
-            initialize_game(gameInfo);
+            game(gameInfo);
             break;
     }
 

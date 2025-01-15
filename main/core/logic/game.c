@@ -23,45 +23,48 @@ void allocatePlayers(GAMEINFO *gameInfo) {
     }
 }
 
-void initializeBasicData(GAMEINFO *gameInfo) {
-    
+void initializePlayer(PLAYER *player, int id) {
+    player->id = id;  // ID único del jugador (por ejemplo, 1, 2, 3, ...)
 
-    
-}
+    player->territories = NULL;  // Al inicio, no poseen territorios
+    player->numTerritories = 0;  // Inicialmente no tienen territorios controlados
 
-void initializePlayer(GAMEINFO *gameInfo) {
+    player->troops = 0;  // Tropas iniciales
 
-
+    player->numCards = 0;  // Inicialmente no poseen cartas
+    player->cards = NULL;  // No poseen cartas al inicio
 }
 
 void initializePlayers(GAMEINFO *gameInfo) {
     int i = 0;
+
+    if (!gameInfo->players) {
+        fprintf(stderr, "Error al asignar memoria para los jugadores.\n");
+        exit(EXIT_FAILURE);
+    }
+
     for(i = 0; gameInfo->numPlayers > i; i++) {
-        initializePlayer(gameInfo);
+        initializePlayer(&gameInfo->players[i], i+1);
     }
 }
 
 void initializeTerritories(GAMEINFO *gameInfo) {
+    char *territoryNames[TERRITORY_COUNT] = {"Territorio 1", "Territorio 2", "Territorio 3",
+                                             "Territorio 4", "Territorio 5", "Territorio 6"};
 
+    for (int i = 0; i < TERRITORY_COUNT; i++) {
+        gameInfo->mapInfo.territories[i].name = (char *)territoryNames[i];  // Asignación directa desde el array predefinido
+        gameInfo->mapInfo.territories[i].owner = i % MAX_PLAYERS;  // Asignación de dueño al territorio
+        gameInfo->mapInfo.territories[i].troops = rand() % 10 + 1;  // Tropas aleatorias entre 1 y 10
+    }
 }
+
 
 void initialize_game(GAMEINFO *gameInfo) {
 
     allocateTerritories(gameInfo);
     allocatePlayers(gameInfo);
-    initializeBasicData(gameInfo);
     initializeTerritories(gameInfo);
-    
-    // Nombres de los territorios
-    char *territoryNames[TERRITORY_COUNT] = {"Territorio 1", "Territorio 2", "Territorio 3",
-                                             "Territorio 4", "Territorio 5", "Territorio 6"};
-
-    for (int i = 0; i < TERRITORY_COUNT; i++) {
-        gameInfo->mapInfo.territories[i].name = territoryNames[i];
-        gameInfo->mapInfo.territories[i].owner = i % MAX_PLAYERS;
-        gameInfo->mapInfo.territories[i].troops = rand() % 10 + 1;
-    }
-
     initializePlayers(gameInfo);
 }
 
@@ -72,8 +75,8 @@ void handleTurn(GAMEINFO *gameInfo)
     // Logica para acciones en el turno
 
     //Cambio al siguiente jugador 
-    gameInfo->currentPlayerIndex = (gameInfo->currentPlayerIndex + 1) % gameInfo->numPlayers;
-    if (gameInfo->currentPlayerIndex == 0) {
+    gameInfo->currentPlayerID = (gameInfo->currentPlayerID + 1) % gameInfo->numPlayers;
+    if (gameInfo->currentPlayerID == 0) {
         gameInfo->turn++;
     }
 }
@@ -100,10 +103,16 @@ void freePlayers(GAMEINFO *gameInfo) {
     free(gameInfo->players);
 }
 
+static bool is_initialized = false;
 
 void game(GAMEINFO *gameInfo) {
-    
-    initialize_game(gameInfo);
+
+    if(!is_initialized) {
+        initialize_game(gameInfo);
+        is_initialized = true;
+    }
+
+
 
     handleTurn(gameInfo);
 
