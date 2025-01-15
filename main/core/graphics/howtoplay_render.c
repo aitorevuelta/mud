@@ -2,6 +2,7 @@
 #include <assets_utils.h>
 #include <menu.h>
 #include <howtoplay_render.h>
+#include <render.h>
 
 int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
       // Variable estática para controlar la inicialización
@@ -16,31 +17,24 @@ int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, IMAG
         }
 
         // Inicializa los botones
-       initializeButtons4(*buttons, loadedImages);
+       initializeButtonsH2P(*buttons, loadedImages);
        rend_h2p =  1;
     }
 
     // Renderiza los botones
-    SDL_RenderCopy(renderer, loadedImages[0].texture, NULL, NULL);
-    renderButtons4(renderer, *buttons, buttonCount);
+    renderTextureRelative(renderer, loadedImages[0].texture, 100, 50, 50);
+    renderButtons(renderer, *buttons, buttonCount);
    
    return rend_h2p;
 }
 
-void initializeButtons4(BUTTON *buttons, IMAGES *loadedImages) {
-
-    buttons[0] = (BUTTON){ .rect = { 20, 20, 100, 50 }, .texture = loadedImages[4].texture, .action = ACTION_EXIT, .visible = 1 };
-}
-void renderButtons4(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
-    for (int i = 0; i < buttonCount; i++) {
-        if (buttons[i].visible) {
-            if (buttons[i].texture == NULL) {
-                fprintf(stderr, "Error: La textura del botón %d es NULL\n", i);
-                continue;  // Saltar este botón si la textura es NULL
-            }
-            if (SDL_RenderCopy(renderer, buttons[i].texture, NULL, &buttons[i].rect) != 0) {
-                fprintf(stderr, "Error en SDL_RenderCopy para el botón %d: %s\n", i, SDL_GetError());
-            }
-        }
-    }
+void initializeButtonsH2P(BUTTON *buttons, IMAGES *loadedImages) {
+        buttons[0] = (BUTTON){ 
+        .texture = loadedImages[1].texture, 
+        .action = ACTION_EXIT, 
+        .visible = 1, 
+        .widthPercent = 4.0, 
+        .xPercent = 3.0, 
+        .yPercent = 5.0 
+    };
 }

@@ -3,7 +3,6 @@
 
 
 int renderCredits(int rend_cred,SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages);
-void initializeButtons3(BUTTON *buttons, IMAGES *loadedImages);
-void renderButtons3(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount);
+void initializeButtonsCredits(BUTTON *buttons, IMAGES *loadedImages);
 
 #endif 

@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
     IMAGES* loadedImages = NULL;  
     FONTS* loadedFonts = NULL;
     BUTTON* buttons = NULL;
-    BUTTON_JUEGO* buttons_juego = NULL;
     GAMEINFO gameInfo;
     gameInfo.numPlayers = 2;
     gameInfo.mapInfo.numMaps=1;
@@ -32,9 +31,9 @@ int main(int argc, char *argv[])
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, &gameInfo, buttons,buttons_juego, &controls, config.max_FPS,sdl.renderer, loadedImages);
+        gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS,sdl.renderer, loadedImages);
         checkGameStateChange(&loadedImages, &loadedFonts, &gameState, sdl.renderer);
-        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, &buttons, &buttons_juego,config);
+        render(sdl.renderer, loadedImages, loadedFonts, gameState, gameInfo, &buttons,config);
     } while(is_running);
 
 

@@ -51,19 +51,17 @@ typedef struct CONFIG_S
     int max_FPS;
 } CONFIG;
 
-typedef struct BUTTON_S{
-    SDL_Rect rect;          // Rectángulo de la textura del botón
+typedef struct BUTTON_S {
+    SDL_Rect rect;          // Rectángulo calculado del botón
     SDL_Texture* texture;   // Textura del botón
     int action;             // Acción asociada al botón
     bool visible;           // Si el botón está visible
+    float widthPercent;     // Ancho relativo del botón (y la imagen) en porcentaje
+    float xPercent;         // Posición X relativa en porcentaje
+    float yPercent;         // Posición Y relativa en porcentaje
 } BUTTON;
 
-typedef struct BUTTON_JUEGO_S{
-    SDL_Rect rect;          // Rectángulo de la textura del botón
-    SDL_Texture* texture;   // Textura del botón
-    bool visible;           // Si el botón está visible
-} BUTTON_JUEGO;
-
+#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
 // Definición de las cartas (un tipo de acción adicional en el juego)
 typedef enum {
@@ -124,6 +122,8 @@ typedef  enum{
     ACTION_ANADIR,
     ACTION_ELIMINAR,
 }ACTION;
+
+#define ACTION_NONE -1
 
 
 #endif

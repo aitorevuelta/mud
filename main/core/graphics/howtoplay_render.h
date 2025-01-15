@@ -3,7 +3,6 @@
 
 
 int renderHowtoplay(int rend_game, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages);
-void initializeButtons4(BUTTON *buttons, IMAGES *loadedImages);
-void renderButtons4(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount);
+void initializeButtonsH2P(BUTTON *buttons, IMAGES *loadedImages);
 
 #endif 
