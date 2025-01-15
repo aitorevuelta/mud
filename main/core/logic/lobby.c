@@ -3,7 +3,6 @@
 #include <lobby.h>
 #include <assets_utils.h>
 #include <render.h>
-#include <lobby_render.h>
 
 void handleGameStateButtons(BUTTON *buttons, int buttonCount, GAMESTATE *gameState, CONTROLS *controls) {
     if (controls->click == 1) {

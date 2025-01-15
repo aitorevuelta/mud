@@ -7,8 +7,8 @@
 #include <game.h>
 #include <lobby.h>
 #include <assets_utils.h>
-#include <update.h>
 
+#include <update.h>
 
 
 GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps) {
@@ -17,7 +17,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
 
     switch (gameState) {
         case LOADSCREEN:
-            gameState = update_loadscreen();
+            gameState = loadscreen();
             break;
         case MAIN_MENU:
             handleMenuEvents(buttons, 5, &gameState, controls);

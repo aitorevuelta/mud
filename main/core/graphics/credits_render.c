@@ -5,7 +5,7 @@
 #include <render.h>
 
 int renderCredits(int rend_cred, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
-      // Variable estática para controlar la inicialización
+    // Variable estática para controlar la inicialización
     int buttonCount = 1;
 
     // Solo inicializa los botones una vez

@@ -8,7 +8,7 @@
 #define MAX_PLAYERS 6
 
 void allocateTerritories(GAMEINFO *gameInfo) {
-    // Asignar memoria para territorios y jugadores
+    // Memoria alokatu territorioei
     gameInfo->mapInfo.territories = malloc(sizeof(TERRITORYINFO) * TERRITORY_COUNT);
     if (!gameInfo->mapInfo.territories) {
         fprintf(stderr, "Error al asignar memoria para territorios.\n");
@@ -17,6 +17,7 @@ void allocateTerritories(GAMEINFO *gameInfo) {
 }
 
 void allocatePlayers(GAMEINFO *gameInfo) {
+    // Memoria alokatu jokalariei
     gameInfo->players = malloc(sizeof(PLAYER) * MAX_PLAYERS);
     if (!gameInfo->players) {
         fprintf(stderr, "Error al asignar memoria para jugadores.\n");
@@ -25,21 +26,9 @@ void allocatePlayers(GAMEINFO *gameInfo) {
     }
 }
 
-void initializeBasicData(GAMEINFO *gameInfo){
+void initializeBasicData(GAMEINFO *gameInfo) {
+    
 
-    gameInfo->mapInfo.mapName = malloc(5); // "MAPA" tiene 4 caracteres + 1 para '\0'
-    if (!gameInfo->mapInfo.mapName) {
-        fprintf(stderr, "Error al asignar memoria para el nombre del mapa.\n");
-        free(gameInfo->mapInfo.territories);
-        free(gameInfo->players);
-        exit(EXIT_FAILURE);
-    }
-    strcpy(gameInfo->mapInfo.mapName, "MAPA");
-
-    gameInfo->mapInfo.numTerritories = TERRITORY_COUNT;
-    gameInfo->numPlayers = MAX_PLAYERS;
-    gameInfo->turn = 1;
-    gameInfo->currentPlayerIndex = 0;
 }
 
 void initializePlayer(GAMEINFO *gameInfo) {
@@ -82,33 +71,6 @@ void initialize_game(GAMEINFO *gameInfo) {
     }
 
     initializePlayers(gameInfo);
-
-    // Inicialización de jugadores
-    for (int i = 0; i < MAX_PLAYERS; i++) {
-        gameInfo->players[i].id = i;
-
-        // Asignar memoria para el nombre del jugador
-        char buffer[16];
-        snprintf(buffer, sizeof(buffer), "Jugador %d", i + 1);
-        gameInfo->players[i].name = malloc(strlen(buffer) + 1);
-        if (!gameInfo->players[i].name) {
-            fprintf(stderr, "Error al asignar memoria para el nombre del jugador.\n");
-            exit(EXIT_FAILURE);
-        }
-        strcpy(gameInfo->players[i].name, buffer);
-
-        gameInfo->players[i].numTerritories = 0;
-        gameInfo->players[i].troops = 30;
-        gameInfo->players[i].numCards = 0;
-        gameInfo->players[i].cards = NULL;
-
-        // Contar territorios asignados a cada jugador
-        for (int j = 0; j < TERRITORY_COUNT; j++) {
-            if (gameInfo->mapInfo.territories[j].owner == i) {
-                gameInfo->players[i].numTerritories++;
-            }
-        }
-    }
 }
 
 void handleTurn(GAMEINFO *gameInfo)
@@ -126,6 +88,7 @@ void handleTurn(GAMEINFO *gameInfo)
 
 void cleanup_game(GAMEINFO *gameInfo) {
     freeTerritories(gameInfo);
+    freePlayers(gameInfo);
     free(gameInfo->mapInfo.mapName);
 }
 
@@ -144,4 +107,18 @@ void freePlayers(GAMEINFO *gameInfo) {
         free(gameInfo->players[i].cards);
     }
     free(gameInfo->players);
+}
+
+
+void game(GAMEINFO *gameInfo) {
+    
+    initialize_game(gameInfo);
+
+    handleTurn(gameInfo);
+
+    cleanup_game(gameInfo);
+}
+
+void updateGame(GAMEINFO *gameInfo) {
+
 }

@@ -19,7 +19,7 @@ void render(SDL_Renderer* renderer, ASSETS* assets, GAMESTATE gameState, GAMEINF
 
     switch (gameState) {
         case LOADSCREEN:
-            renderLoadscreen(renderer, assets->images);  // Usar imágenes desde `assets`
+            renderLoadscreen(renderer, assets->images);
             break;
         case MAIN_MENU:
             rend_menu = renderMenu(rend_menu, renderer, buttons, assets->images);
@@ -68,7 +68,6 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 
     SDL_RenderCopy(renderer, texture, NULL, &dstRect);
 }
-
 
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
     return mouseX >= rect->x && mouseX <= (rect->x + rect->w) &&

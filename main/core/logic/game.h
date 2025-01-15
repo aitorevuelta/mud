@@ -2,6 +2,8 @@
 #define GAME_H
 
 
+void game(GAMEINFO *gameInfo);
+void updateGame(GAMEINFO *gameInfo);
 
 // Jokoa hasieratu
 void allocateTerritories(GAMEINFO *gameInfo);
@@ -22,7 +24,7 @@ void handleTurn(GAMEINFO *gameInfo);
 
 // Memoria Hustu
 void freeTerritories(GAMEINFO *gameInfo);
-void freePlayersAndCards(GAMEINFO *gameInfo);
+void freePlayers(GAMEINFO *gameInfo);
 void cleanup_game(GAMEINFO *gameInfo);
 
 #endif // GAME_H

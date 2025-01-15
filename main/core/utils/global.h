@@ -2,16 +2,8 @@
 
 #define GLOBAL_H
 
-#define MAX_STR 128
 
-// LEER TEXTO
-
-#define MAX_LINE_LENGTH 50
-
-#define IMAGES_FILE "../data/images.txt"
-#define FONTS_FILE "../data/fonts.txt"
-
-// INCLUDES GENERALES
+// Beharrezko include-ak
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -22,7 +14,15 @@
 #include <SDL_mixer.h>
 #include <SDL_net.h>
 
-// DEFINICIONES GLOBALES
+// Define-ak
+
+#define MAX_STR 128
+
+#define MAX_LINE_LENGTH 50
+#define IMAGES_FILE "../data/images.txt"
+#define FONTS_FILE "../data/fonts.txt"
+
+#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
 typedef enum {
     LOADSCREEN = 0,
@@ -49,7 +49,7 @@ typedef struct CONFIG_S {
     int max_FPS;
 } CONFIG;
 
-#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
+
 typedef struct BUTTON_S {
     SDL_Rect rect;          // Rectángulo calculado del botón
     SDL_Texture* texture;   // Textura del botón
@@ -78,7 +78,7 @@ typedef struct TERRITORYINFO_S {
 // Estructura que representa a un jugador
 typedef struct PLAYER_S {
     int id;                 // Identificador único del jugador
-    char *name;             // Nombre del jugador
+    char name[MAX_STR];             // Nombre del jugador
     int *territories;       // Lista de territorios controlados por el jugador
     int numTerritories;     // Número de territorios controlados
     int troops;             // Número total de tropas del jugador
@@ -88,7 +88,7 @@ typedef struct PLAYER_S {
 
 // Estructura que representa la información del mapa
 typedef struct MAPINFO_S {
-    char *mapName;            // Nombre del mapa (Ej. Mundo, Europa, etc.)
+    char mapName[MAX_STR];            // Nombre del mapa (Ej. Mundo, Europa, etc.)
     TERRITORYINFO *territories; // Lista de territorios del mapa
     int numTerritories;       // Número de territorios en el mapa
     int numMaps; 
@@ -111,7 +111,7 @@ typedef struct GAMEINFO_S {
 } GAMEINFO;
 
 typedef enum {
-    ACTION_HOWTOPLAY=2,
+    ACTION_HOWTOPLAY = 2,
     ACTION_SETTINGS,
     ACTION_CREDITS,
     ACTION_PLAY,
