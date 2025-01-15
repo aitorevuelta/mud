@@ -29,7 +29,7 @@ void renderUI(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, 
         for (int i = 0; i < players; i++) {
             int currentY = startY - (i * (playerHeight + espacio));
             if (i == 2) {
-                 renderTextureRelative(renderer, loadedImages[1].texture, 5, 89, currentY);
+                renderTextureRelative(renderer, loadedImages[1].texture, 5, 89, currentY);
             }
             renderTextureRelative(renderer, loadedImages[0].texture, 7, 95, currentY);
         }

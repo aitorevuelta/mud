@@ -2,10 +2,41 @@
 
 #include <game.h>
 
+static bool is_initialized = false;
 
+void game(GAMEINFO *gameInfo) {
+
+    if(!is_initialized) {
+        initialize_game(gameInfo);
+        is_initialized = true;
+    }
+
+
+
+    handleTurn(gameInfo);
+
+    cleanup_game(gameInfo);
+}
+
+void initialize_game(GAMEINFO *gameInfo) {
+
+    allocateTerritories(gameInfo);
+    allocatePlayers(gameInfo);
+    initializeTerritories(gameInfo);
+    initializePlayers(gameInfo);
+}
+
+void cleanup_game(GAMEINFO *gameInfo) {
+    freeTerritories(gameInfo);
+    freePlayers(gameInfo);
+}
+
+void game_over(GAMEINFO *gameInfo){
+    cleanup_game(gameInfo);
+    is_initialized = false;
+}
 
 void allocateTerritories(GAMEINFO *gameInfo) {
-    // Memoria alokatu territorioei
     gameInfo->mapInfo.territories = malloc(sizeof(TERRITORYINFO) * TERRITORY_COUNT);
     if (!gameInfo->mapInfo.territories) {
         fprintf(stderr, "Error al asignar memoria para territorios.\n");
@@ -14,7 +45,6 @@ void allocateTerritories(GAMEINFO *gameInfo) {
 }
 
 void allocatePlayers(GAMEINFO *gameInfo) {
-    // Memoria alokatu jokalariei
     gameInfo->players = malloc(sizeof(PLAYER) * MAX_PLAYERS);
     if (!gameInfo->players) {
         fprintf(stderr, "Error al asignar memoria para jugadores.\n");
@@ -52,20 +82,11 @@ void initializeTerritories(GAMEINFO *gameInfo) {
     char *territoryNames[TERRITORY_COUNT] = {"Territorio 1", "Territorio 2", "Territorio 3",
                                              "Territorio 4", "Territorio 5", "Territorio 6"};
 
-    for (int i = 0; i < TERRITORY_COUNT; i++) {
+    for (int i = 0; TERRITORY_COUNT > i; i++) {
         gameInfo->mapInfo.territories[i].name = (char *)territoryNames[i];  // Asignación directa desde el array predefinido
         gameInfo->mapInfo.territories[i].owner = i % MAX_PLAYERS;  // Asignación de dueño al territorio
         gameInfo->mapInfo.territories[i].troops = rand() % 10 + 1;  // Tropas aleatorias entre 1 y 10
     }
-}
-
-
-void initialize_game(GAMEINFO *gameInfo) {
-
-    allocateTerritories(gameInfo);
-    allocatePlayers(gameInfo);
-    initializeTerritories(gameInfo);
-    initializePlayers(gameInfo);
 }
 
 
@@ -81,43 +102,18 @@ void handleTurn(GAMEINFO *gameInfo)
     }
 }
 
-void cleanup_game(GAMEINFO *gameInfo) {
-    freeTerritories(gameInfo);
-    free(gameInfo->mapInfo.mapName);
-}
 
 void freeTerritories(GAMEINFO *gameInfo) {
-    int i = 0;
-    for (i = 0; i < gameInfo->mapInfo.numTerritories; i++) {
-        free(gameInfo->mapInfo.territories[i].name);
-    }
     free(gameInfo->mapInfo.territories);
+    gameInfo->mapInfo.territories = NULL;
 }
 
 void freePlayers(GAMEINFO *gameInfo) {
-    int i = 0;
-    for (i = 0; i < gameInfo->numPlayers; i++) {
-        free(gameInfo->players[i].name);
-        free(gameInfo->players[i].cards);
-    }
     free(gameInfo->players);
+    gameInfo->players = NULL;
 }
 
-static bool is_initialized = false;
 
-void game(GAMEINFO *gameInfo) {
-
-    if(!is_initialized) {
-        initialize_game(gameInfo);
-        is_initialized = true;
-    }
-
-
-
-    handleTurn(gameInfo);
-
-    cleanup_game(gameInfo);
-}
 
 void updateGame(GAMEINFO *gameInfo) {
 

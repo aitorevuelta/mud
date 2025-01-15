@@ -7,15 +7,17 @@
 
 void game(GAMEINFO *gameInfo);
 void updateGame(GAMEINFO *gameInfo);
+void game_over(GAMEINFO *gameInfo);
 
 // Jokoa hasieratu
-void allocateTerritories(GAMEINFO *gameInfo);
-void allocatePlayers(GAMEINFO *gameInfo);
 
-void initializePlayer(PLAYER *player, int id);
-void initializePlayers(GAMEINFO *gameInfo);
+void allocateTerritories(GAMEINFO *gameInfo); // malloc territorioak
+void allocatePlayers(GAMEINFO *gameInfo); // malloc jokalariak
+void initializeTerritories(GAMEINFO *gameInfo); // territorioak hasieratu
+void initializePlayer(PLAYER *player, int id); // jokalari bat hasieratu
+void initializePlayers(GAMEINFO *gameInfo); // jokalariak hasieratu
 
-void initializeTerritories(GAMEINFO *gameInfo);
+
 
 void initialize_game(GAMEINFO *gameInfo);
 
@@ -27,7 +29,7 @@ void cleanup_game(GAMEINFO *gameInfo);
 
 // Memoria Hustu
 void freeTerritories(GAMEINFO *gameInfo);
-void freePlayersAndCards(GAMEINFO *gameInfo);
+void freePlayers(GAMEINFO *gameInfo);
 void cleanup_game(GAMEINFO *gameInfo);
 
 #endif // GAME_H
