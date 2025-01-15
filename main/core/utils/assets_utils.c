@@ -155,9 +155,9 @@ void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer)
     }
 }
 
-void LoadAssets(ASSETS *loadedAssets, GAMESTATE gameState, SDL_Renderer* renderer) {
-    LoadImages(&(loadedAssets->images), gameState, renderer);
-    LoadFonts(&(loadedAssets->fonts), gameState, renderer);
+void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
+    LoadImages(loadedImages, gameState, renderer);
+    LoadFonts(loadedFonts, gameState, renderer);
 }
 
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){

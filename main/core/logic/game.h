@@ -17,14 +17,15 @@ void initializeTerritories(GAMEINFO *gameInfo);
 
 void initialize_game(GAMEINFO *gameInfo);
 
-
-
 void handleTurn(GAMEINFO *gameInfo);
+
+void cleanup_game();
+
 
 
 // Memoria Hustu
 void freeTerritories(GAMEINFO *gameInfo);
-void freePlayers(GAMEINFO *gameInfo);
+void freePlayersAndCards(GAMEINFO *gameInfo);
 void cleanup_game(GAMEINFO *gameInfo);
 
 #endif // GAME_H

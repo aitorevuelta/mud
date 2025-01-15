@@ -24,14 +24,9 @@ MAP3.png
 añadir.png
 eliminar.png
 back.png
-play.png
+start.png
 jugador.png
-jugador1.png
-jugador2.png
-jugador3.jpg
-jugador4.jpg
 der.png
 izq.png
-mapa.jpg
 6
 7

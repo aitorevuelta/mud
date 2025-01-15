@@ -11,7 +11,7 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps, SDL_Renderer *renderer, IMAGES *loadedImages) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -32,10 +32,11 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
         case LOBBY:
-            handleGameStateButtons(buttons,  2, &gameState, controls);
+            handleGameStateButtons(buttons,  6, &gameState,controls);
+            handlePlayerButtons(buttons, 4,gameInfo, controls,renderer,loadedImages);
             break;
         case GAME:
-            initialize_game(gameInfo);
+            initialize_game(&gameInfo);
             break;
     }
 

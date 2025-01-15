@@ -36,12 +36,14 @@ typedef enum {
     EXIT_TOTAL,
 } GAMESTATE;
 
-typedef struct SDL_S {
+typedef struct SDL_S
+{
     SDL_Window *window;
     SDL_Renderer *renderer;
 } SDL;
 
-typedef struct CONFIG_S {
+typedef struct CONFIG_S
+{
     int window_width;
     int window_height; 
     bool fullscreen;
@@ -60,6 +62,7 @@ typedef struct BUTTON_S {
     float yPercent;         // Posición Y relativa en porcentaje
 } BUTTON;
 
+#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
 // Definición de las cartas (un tipo de acción adicional en el juego)
 typedef enum {
@@ -107,11 +110,12 @@ typedef struct GAMEINFO_S {
     CAMERA camera;   
     int numPlayers;           // Número total de jugadores
     int currentPlayerIndex;   // Índice del jugador actual
-    int turn;   // Número de turno actual
+    int turn;                 // Número de turno actual
+    int currentMapIndex;      // Índice del mapa actual
 } GAMEINFO;
 
 typedef enum {
-    ACTION_HOWTOPLAY = 2,
+    ACTION_HOWTOPLAY=2,
     ACTION_SETTINGS,
     ACTION_CREDITS,
     ACTION_PLAY,
@@ -120,6 +124,8 @@ typedef enum {
     ACTION_ANADIR,
     ACTION_ELIMINAR,
 }ACTION;
+
+#define ACTION_NONE -1
 
 
 #endif
