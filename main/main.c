@@ -17,21 +17,21 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = GAME;
+    GAMESTATE gameState = LOADSCREEN;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
     gameInfo.numPlayers = 4;
-    gameInfo.mapInfo.numMaps=1;
-    gameInfo.mapInfo.totalMaps=3;
+    gameInfo.mapInfo.numMaps = 1;
+    gameInfo.mapInfo.totalMaps = 3;
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(&loadedAssets, gameState, sdl.renderer);
 
     do {
         is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS,sdl.renderer, loadedImages);
+        gameState = update(gameState, &gameInfo, buttons, &controls, config.max_FPS);
         checkGameStateChange(&loadedAssets, &gameState, sdl.renderer);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons,config);
     } while(is_running);

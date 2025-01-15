@@ -7,6 +7,7 @@
 #include <game.h>
 #include <lobby.h>
 #include <assets_utils.h>
+#include <camera.h>
 
 #include <update.h>
 
