@@ -2,6 +2,7 @@
 
 #include <controls.h>
 #include <assets_utils.h>
+#include <menu.h>
 #include <render.h>
 #include <menu.h>
 

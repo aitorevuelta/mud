@@ -97,7 +97,7 @@ typedef struct MAPINFO_S {
 } MAPINFO;
 
 typedef struct CAMERA_S {
-    int pos[1];
+    int pos[2];
     float zoom;
 } CAMERA;
 

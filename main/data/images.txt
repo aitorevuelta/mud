@@ -29,4 +29,8 @@ jugador.png
 der.png
 izq.png
 6
+marco.png
+der.png
+map.jpg
+mapd.png
 7
