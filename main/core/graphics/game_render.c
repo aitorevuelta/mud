@@ -18,6 +18,9 @@ void renderMap(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts,
 
 void renderUI(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GAMEINFO gameInfo)
 {
+    
+
+    //player ui
     int players = gameInfo.numPlayers;
     int espacio = 5;
     int playerHeight = 10;
