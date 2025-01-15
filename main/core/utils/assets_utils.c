@@ -155,9 +155,9 @@ void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer)
     }
 }
 
-void LoadAssets(IMAGES** loadedImages, FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
-    LoadImages(loadedImages, gameState, renderer);
-    LoadFonts(loadedFonts, gameState, renderer);
+void LoadAssets(ASSETS *loadedAssets, GAMESTATE gameState, SDL_Renderer* renderer) {
+    LoadImages(&(loadedAssets->images), gameState, renderer);
+    LoadFonts(&(loadedAssets->fonts), gameState, renderer);
 }
 
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){
@@ -167,4 +167,48 @@ void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SD
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(texture);
+}
+
+SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {
+    if (!texture) {
+        fprintf(stderr, "Error: La textura proporcionada es NULL.\n");
+        return (SDL_Color){0, 0, 0, 0}; // Color negro como valor predeterminado
+    }
+
+    SDL_Color color = {0, 0, 0, 0};
+    void *pixels;
+    int pitch;
+
+    // Bloquear la textura para acceder a los píxeles
+    if (SDL_LockTexture(texture, NULL, &pixels, &pitch) != 0) {
+        fprintf(stderr, "Error al bloquear la textura: %s\n", SDL_GetError());
+        return color;
+    }
+
+    // Obtener el formato de píxeles de la textura
+    Uint32 format;
+    SDL_QueryTexture(texture, &format, NULL, NULL, NULL);
+
+    // Crear un descriptor de formato
+    SDL_PixelFormat *mappingFormat = SDL_AllocFormat(format);
+    if (!mappingFormat) {
+        fprintf(stderr, "Error al asignar formato de píxeles: %s\n", SDL_GetError());
+        SDL_UnlockTexture(texture);
+        return color;
+    }
+
+    // Calcular el píxel en las coordenadas x, y
+    Uint8 *pixelData = (Uint8 *)pixels + y * pitch + x * (SDL_BYTESPERPIXEL(format));
+    Uint32 pixelValue = 0;
+
+    memcpy(&pixelValue, pixelData, SDL_BYTESPERPIXEL(format));
+
+    // Convertir a componentes RGBA
+    SDL_GetRGBA(pixelValue, mappingFormat, &color.r, &color.g, &color.b, &color.a);
+
+    // Liberar los recursos
+    SDL_FreeFormat(mappingFormat);
+    SDL_UnlockTexture(texture);
+
+    return color;
 }

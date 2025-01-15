@@ -2,7 +2,6 @@
 #define MENU_H
 
 #include <global.h>
-
 #include <controls.h>
 
 void handleExitStates(GAMESTATE currentState, GAMESTATE *newState);

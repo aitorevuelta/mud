@@ -23,6 +23,20 @@ int renderHowtoplay(int rend_h2p, SDL_Renderer *renderer, BUTTON **buttons, IMAG
 
     // Renderiza los botones
     renderTextureRelative(renderer, loadedImages[0].texture, 100, 50, 50);
+
+    renderTextureRelative(renderer, loadedImages[2].texture, 23, 20, 25);
+    renderTextureRelative(renderer, loadedImages[3].texture, 18, 40, 25);
+    renderTextureRelative(renderer, loadedImages[4].texture, 20, 60, 25);
+
+    renderTextureRelative(renderer, loadedImages[5].texture, 26, 18, 50);
+    renderTextureRelative(renderer, loadedImages[6].texture, 24, 38, 50);
+
+    renderTextureRelative(renderer, loadedImages[9].texture, 40, 80, 65);
+
+    renderTextureRelative(renderer, loadedImages[7].texture, 23, 20, 85);
+    renderTextureRelative(renderer, loadedImages[8].texture, 22, 40, 85);
+
+
     renderButtons(renderer, *buttons, buttonCount);
    
    return rend_h2p;

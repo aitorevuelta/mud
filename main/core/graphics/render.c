@@ -11,42 +11,39 @@
 #include <render.h>
 
 
-
-void render(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedFonts, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON **buttons,CONFIG config) {
+void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON** buttons, CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
-    static int rend_menu = 0, rend_sett = 0, rend_cre = 0, rend_h2p = 0, rend_game = 0, rend_lbby = 0;
-    
-    switch(gameState) {
+
+    static int rend_general = 0, rend_menu = 0;
+
+    switch (gameState) {
         case LOADSCREEN:
-            renderLoadscreen(renderer, loadedImages);
+            renderLoadscreen(renderer, loadedAssets->images);
             break;
         case MAIN_MENU:
-            rend_menu = renderMenu(rend_menu, renderer, buttons, loadedImages);
-            rend_lbby = 0;
-            rend_cre = 0;
-            rend_sett = 0;
-            rend_h2p = 0;
+            rend_menu = renderMenu(rend_menu, renderer, buttons, loadedAssets->images);
+            rend_general = 0;
             break;
         case LOBBY:
-            rend_lbby= renderLobby(rend_lbby, renderer,buttons, loadedImages, &gameInfo);
-            rend_menu=0;
+            rend_general = renderLobby(rend_general, renderer, buttons, loadedAssets->images, &gameInfo);
+            rend_menu = 0;
             break;
         case GAME:
-            rend_game = renderGame(renderer, loadedImages, loadedFonts, gameInfo, config, rend_game);
-            rend_menu=0;
+            rend_general = renderGame(renderer, loadedAssets->images, loadedAssets->fonts, gameInfo, config, rend_general);
+            rend_menu = 0;
             break;
         case SETTINGS:
-           rend_sett = renderSettings(rend_sett, renderer,buttons, loadedImages);
-            rend_menu=0;
+            rend_general = renderSettings(rend_general, renderer, buttons, loadedAssets->images, &gameInfo);
+            rend_menu = 0;
             break;
-        case CREDITS: 
-            rend_cre = renderCredits(rend_cre, renderer,buttons, loadedImages);
-            rend_menu=0;
+        case CREDITS:
+            rend_general = renderCredits(rend_general, renderer, buttons, loadedAssets->images);
+            rend_menu = 0;
             break;
         case HOWTOPLAY:
-            rend_h2p = renderHowtoplay(rend_h2p, renderer,buttons, loadedImages);
-            rend_menu=0;
+            rend_general = renderHowtoplay(rend_general, renderer, buttons, loadedAssets->images);
+            rend_menu = 0;
             break;
     }
 
@@ -71,7 +68,6 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 
     SDL_RenderCopy(renderer, texture, NULL, &dstRect);
 }
-
 
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
     return mouseX >= rect->x && mouseX <= (rect->x + rect->w) &&

@@ -2,7 +2,7 @@
 
 #include <loadscreen.h>
 
-GAMESTATE update_loadscreen() {
+GAMESTATE loadscreen() {
     static Uint32 startTime = 0;
     if (startTime == 0) {
         startTime = SDL_GetTicks();

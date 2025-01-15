@@ -5,10 +5,8 @@
 #include <lobby_render.h>
 #include <render.h>
 
-
-int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages,GAMEINFO *gameInfo){  // Variable estática para controlar la inicialización
+int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo) {
     int buttonCount = 6;
-    
 
     // Solo inicializa los botones una vez
     if (rend_lbby == 0) {
@@ -18,73 +16,75 @@ int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES 
             return -1;
         }
         // Inicializa los botones
-       initializeButtonsLobby(*buttons, loadedImages);
-       rend_lbby =  1;
+        initializeButtonsLobby(*buttons, loadedImages);
+        rend_lbby = 1;
     }
 
     // Renderiza el fondo
     renderTextureRelative(renderer, loadedImages[0].texture, 100, 50, 50);
 
-    //Renderiza los botones
+    // Renderiza los botones
     renderButtons(renderer, *buttons, buttonCount);
-    renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
-    renderSelectedMap(renderer, loadedImages, gameInfo->mapInfo.numMaps);
-   
-   return rend_lbby;
-}
-
-void initializeButtonsLobby(BUTTON *buttons,IMAGES *loadedImages) {
     
-    buttons[0] = (BUTTON){ //BOTON AÑADIR
-        .texture = loadedImages[4].texture, 
-        .action = ACTION_NONE, 
-        .visible = 1, 
-        .widthPercent = 4.0, 
-        .xPercent = 15.0, 
-        .yPercent = 80.0 
-    };
-     buttons[1] = (BUTTON){ //BOTON ELIMINAR
-        .texture = loadedImages[5].texture, 
-        .action = ACTION_NONE, 
-        .visible = 1, 
-        .widthPercent = 4.0, 
-        .xPercent = 20.0, 
-        .yPercent = 80.0 
-    };
-     buttons[2] = (BUTTON){ //BOTON PASAR MAPA IZQUIERDA
-        .texture = loadedImages[10].texture, 
-        .action = ACTION_NONE, 
-        .visible = 1, 
-        .widthPercent = 5.0, 
-        .xPercent = 75.0, 
-        .yPercent = 90.0 
-    };
-     buttons[3] = (BUTTON){ //BOTON PASAR MAPA DERECHA
-        .texture = loadedImages[9].texture, 
-        .action = ACTION_NONE, 
-        .visible = 1, 
-        .widthPercent = 5.0, 
-        .xPercent = 85.0, 
-        .yPercent = 90.0 
-    };
-     buttons[4] = (BUTTON){ //BOTON JUGAR
-        .texture = loadedImages[7].texture, 
-        .action = ACTION_GAME, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 50.0, 
-        .yPercent = 90.0 
-    };
-     buttons[5] = (BUTTON){ //BOTON BACK
-        .texture = loadedImages[6].texture, 
-        .action = ACTION_EXIT, 
-        .visible = 1, 
-        .widthPercent = 5.0, 
-        .xPercent = 4.0, 
-        .yPercent = 6.0 
-    };
+    // Renderiza los jugadores
+    renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
+
+    // Renderiza el mapa actual
+    renderSelectedMap(renderer, loadedImages, gameInfo->mapInfo.numMaps);
+
+    return rend_lbby;
 }
 
+void initializeButtonsLobby(BUTTON *buttons, IMAGES *loadedImages) {
+    buttons[0] = (BUTTON){ // BOTON AÑADIR
+        .texture = loadedImages[4].texture,
+        .action = ACTION_NONE,
+        .visible = 1,
+        .widthPercent = 4.0,
+        .xPercent = 15.0,
+        .yPercent = 80.0
+    };
+    buttons[1] = (BUTTON){ // BOTON ELIMINAR
+        .texture = loadedImages[5].texture,
+        .action = ACTION_NONE,
+        .visible = 1,
+        .widthPercent = 4.0,
+        .xPercent = 20.0,
+        .yPercent = 80.0
+    };
+    buttons[2] = (BUTTON){ // BOTON PASAR MAPA IZQUIERDA
+        .texture = loadedImages[10].texture,
+        .action = ACTION_NONE,
+        .visible = 1,
+        .widthPercent = 5.0,
+        .xPercent = 75.0,
+        .yPercent = 90.0
+    };
+    buttons[3] = (BUTTON){ // BOTON PASAR MAPA DERECHA
+        .texture = loadedImages[9].texture,
+        .action = ACTION_NONE,
+        .visible = 1,
+        .widthPercent = 5.0,
+        .xPercent = 85.0,
+        .yPercent = 90.0
+    };
+    buttons[4] = (BUTTON){ // BOTON JUGAR
+        .texture = loadedImages[7].texture,
+        .action = ACTION_GAME,
+        .visible = 1,
+        .widthPercent = 15.0,
+        .xPercent = 50.0,
+        .yPercent = 90.0
+    };
+    buttons[5] = (BUTTON){ // BOTON BACK
+        .texture = loadedImages[6].texture,
+        .action = ACTION_EXIT,
+        .visible = 1,
+        .widthPercent = 3.7,
+        .xPercent = 3.0,
+        .yPercent = 6.0
+    };
+}
 void renderPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
     for (float i = 0; i < playerCount; i++) {
     if(i<2){

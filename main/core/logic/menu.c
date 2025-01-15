@@ -3,6 +3,7 @@
 #include <controls.h>
 
 #include <menu.h>
+
 void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
     if (*newState == EXIT) {
         switch (currentState) {
@@ -15,7 +16,7 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
             case LOBBY:
                 *newState = MAIN_MENU;
                 break;
-        }
+        }   
     }
 }
 void handleMenuEvents(BUTTON *buttons, int buttonCount, GAMESTATE *gameState, CONTROLS *controls) {

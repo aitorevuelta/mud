@@ -7,17 +7,17 @@
 #include <game.h>
 #include <lobby.h>
 #include <assets_utils.h>
+
 #include <update.h>
 
 
-
-GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps, SDL_Renderer *renderer, IMAGES *loadedImages) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps) {
 
     Uint32 frameStart = SDL_GetTicks();
 
     switch (gameState) {
         case LOADSCREEN:
-            gameState = update_loadscreen();
+            gameState = loadscreen();
             break;
         case MAIN_MENU:
             handleMenuEvents(buttons, 5, &gameState, controls);
@@ -26,17 +26,18 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
        case SETTINGS:
-            handleMenuEvents(buttons, 5, &gameState, controls);
+            handleResolutionButtons(buttons,4, gameInfo,controls);
+            handleGameStateButtonsSettings(buttons, 1, &gameState,controls);
             break;
         case CREDITS:
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
         case LOBBY:
-             handleGameStateButtons(buttons,  6, &gameState,controls);
-             handlePlayerButtons(buttons, 4,gameInfo, controls,renderer,loadedImages);
+            handleGameStateButtons(buttons,  6, &gameState, controls);
+            handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
         case GAME:
-            initialize_game(&gameInfo);
+            initialize_game(gameInfo);
             break;
     }
 
