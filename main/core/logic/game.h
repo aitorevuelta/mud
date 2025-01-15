@@ -7,7 +7,15 @@
 void allocateTerritories(GAMEINFO *gameInfo);
 void allocatePlayers(GAMEINFO *gameInfo);
 void initializeBasicData(GAMEINFO *gameInfo);
+
+void initializePlayer(GAMEINFO *gameInfo);
+void initializePlayers(GAMEINFO *gameInfo);
+
+void initializeTerritories(GAMEINFO *gameInfo);
+
 void initialize_game(GAMEINFO *gameInfo);
+
+
 
 void handleTurn(GAMEINFO *gameInfo);
 

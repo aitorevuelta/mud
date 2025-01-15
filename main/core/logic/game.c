@@ -42,11 +42,28 @@ void initializeBasicData(GAMEINFO *gameInfo){
     gameInfo->currentPlayerIndex = 0;
 }
 
+void initializePlayer(GAMEINFO *gameInfo) {
+
+
+}
+
+void initializePlayers(GAMEINFO *gameInfo) {
+    int i = 0;
+    for(i = 0; gameInfo->numPlayers > i; i++) {
+        initializePlayer(gameInfo);
+    }
+}
+
+void initializeTerritories(GAMEINFO *gameInfo) {
+
+}
+
 void initialize_game(GAMEINFO *gameInfo) {
 
     allocateTerritories(gameInfo);
     allocatePlayers(gameInfo);
     initializeBasicData(gameInfo);
+    initializeTerritories(gameInfo);
     
     // Nombres de los territorios
     char *territoryNames[TERRITORY_COUNT] = {"Territorio 1", "Territorio 2", "Territorio 3",
@@ -63,6 +80,8 @@ void initialize_game(GAMEINFO *gameInfo) {
         gameInfo->mapInfo.territories[i].owner = i % MAX_PLAYERS;
         gameInfo->mapInfo.territories[i].troops = rand() % 10 + 1; // Tropas aleatorias entre 1 y 10
     }
+
+    initializePlayers(gameInfo);
 
     // Inicialización de jugadores
     for (int i = 0; i < MAX_PLAYERS; i++) {
@@ -112,18 +131,18 @@ void cleanup_game(GAMEINFO *gameInfo) {
 }
 
 void freeTerritories(GAMEINFO *gameInfo) {
-    // Liberar nombres de territorios
-    for (int i = 0; i < gameInfo->mapInfo.numTerritories; i++) {
+    int i = 0;
+    for (i = 0; i < gameInfo->mapInfo.numTerritories; i++) {
         free(gameInfo->mapInfo.territories[i].name);
     }
     free(gameInfo->mapInfo.territories);
 }
 
-void freePlayersAndCards(GAMEINFO *gameInfo) {
-    // Liberar nombres y cartas de jugadores
-    for (int i = 0; i < gameInfo->numPlayers; i++) {
+void freePlayers(GAMEINFO *gameInfo) {
+    int i = 0;
+    for (i = 0; i < gameInfo->numPlayers; i++) {
         free(gameInfo->players[i].name);
-        free(gameInfo->players[i].cards); // Si se asignaron cartas dinámicamente
+        free(gameInfo->players[i].cards);
     }
     free(gameInfo->players);
 }

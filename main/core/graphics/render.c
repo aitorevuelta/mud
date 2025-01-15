@@ -85,7 +85,7 @@ void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
             int textureWidth, textureHeight;
             SDL_QueryTexture(buttons[i].texture, NULL, NULL, &textureWidth, &textureHeight);
 
-            SDL_Rect adjustedRect = buttons[i].rect; // Copia local
+            SDL_Rect adjustedRect = buttons[i].rect;
             float textureRatio = (float)textureWidth / textureHeight;
             float scaleFactor = isMouseOverButton(&buttons[i].rect, mouseX, mouseY) ? HOVER_SCALE : 1.0f;
 
@@ -94,12 +94,16 @@ void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
             adjustedRect.x = (int)(windowWidth * (buttons[i].xPercent / 100.0f)) - (adjustedRect.w / 2);
             adjustedRect.y = (int)(windowHeight * (buttons[i].yPercent / 100.0f)) - (adjustedRect.h / 2);
 
-            if (SDL_RenderCopy(renderer, buttons[i].texture, NULL, &adjustedRect) != 0) {
-                fprintf(stderr, "Error en SDL_RenderCopy para el botón %d: %s\n", i, SDL_GetError());
+            // Validar dimensiones antes de renderizar
+            if (adjustedRect.w > 0 && adjustedRect.h > 0) {
+                SDL_RenderCopy(renderer, buttons[i].texture, NULL, &adjustedRect);
+            } else {
+                fprintf(stderr, "Advertencia: Dimensiones inválidas para el botón %d\n", i);
             }
         } else if (!buttons[i].texture) {
             fprintf(stderr, "Error: La textura del botón %d es NULL\n", i);
         }
     }
 }
+
 
