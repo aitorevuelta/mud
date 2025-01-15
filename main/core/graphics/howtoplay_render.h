@@ -2,7 +2,7 @@
 #define  HOWTOPLAY_RENDER_H
 
 
-int renderHowtoplay(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_h2p);
+int renderHowtoplay(int rend_game, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages);
 void initializeButtonsH2P(BUTTON *buttons, IMAGES *loadedImages);
 
 #endif 

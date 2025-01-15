@@ -40,9 +40,7 @@
         "txt_utils.h": "c",
         "assets_utils.h": "c",
         "gamestate_manager.h": "c",
-        "game.h": "c",
-        "gamestate_utils.h": "c",
-        "lobby.h": "c"
+        "game.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }

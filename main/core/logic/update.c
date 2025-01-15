@@ -1,13 +1,13 @@
 #include <global.h>
 
 #include <controls.h>
-#include <loadscreen.h>
 #include <menu.h>
 #include <settings.h>
+#include <loadscreen.h>
 #include <game.h>
 #include <lobby.h>
 #include <assets_utils.h>
-#include <camera.h>
+
 #include <update.h>
 
 
@@ -26,7 +26,8 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
        case SETTINGS:
-            handleMenuEvents(buttons, 5, &gameState, controls);
+            handleResolutionButtons(buttons,4, gameInfo,controls);
+            handleGameStateButtonsSettings(buttons, 1, &gameState,controls);
             break;
         case CREDITS:
             handleMenuEvents(buttons, 1, &gameState, controls);

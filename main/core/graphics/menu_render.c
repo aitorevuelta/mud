@@ -5,7 +5,7 @@
 #include <render.h>
 
 
-int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, int rend_menu) {
+int renderMenu(int rend_menu, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
     // Variable estática para controlar la inicialización
     int buttonCount = 5;
     if(rend_menu==0){
@@ -24,6 +24,7 @@ int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, i
     }
     // Renderiza los botones
    renderTextureRelative(renderer, loadedImages[5].texture, 100, 50, 50);
+   renderTextureRelative(renderer, loadedImages[6].texture, 60, 50, 20);
    renderButtons(renderer, *buttons, buttonCount);
 
    return rend_menu;
@@ -34,33 +35,33 @@ void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages) {
         .texture = loadedImages[0].texture, 
         .action = ACTION_PLAY, 
         .visible = 1, 
-        .widthPercent = 25.0, 
-        .xPercent = 30.0, 
-        .yPercent = 25.0 
+        .widthPercent = 20.0, 
+        .xPercent = 50.0, 
+        .yPercent = 50.0 
     };
     buttons[1] = (BUTTON){ //BOTON HOW TO PLAY
         .texture = loadedImages[1].texture, 
         .action = ACTION_HOWTOPLAY, 
         .visible = 1, 
         .widthPercent = 15.0, 
-        .xPercent = 30.0, 
-        .yPercent = 50.0 
+        .xPercent = 25.0, 
+        .yPercent = 80.0 
     };
     buttons[2] = (BUTTON){ //BOTON CREDITOS
         .texture = loadedImages[2].texture, 
         .action = ACTION_CREDITS, 
         .visible = 1, 
         .widthPercent = 15.0, 
-        .xPercent = 30.0, 
-        .yPercent = 70.0 
+        .xPercent = 50.0, 
+        .yPercent = 80.0 
     };
     buttons[3] = (BUTTON){ //BOTON SETTINGS
         .texture = loadedImages[3].texture, 
         .action = ACTION_SETTINGS, 
         .visible = 1, 
         .widthPercent = 15.0, 
-        .xPercent = 30.0, 
-        .yPercent = 90.0 
+        .xPercent = 75.0, 
+        .yPercent = 80.0 
     };
     buttons[4] = (BUTTON){ //BOTON SALIR
         .texture = loadedImages[4].texture, 

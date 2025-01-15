@@ -2,7 +2,6 @@
 
 #include <controls.h>
 #include <assets_utils.h>
-#include <menu.h>
 #include <render.h>
 #include <menu.h>
 
@@ -36,8 +35,6 @@ void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, C
                             } else {
                                 gameInfo->mapInfo.numMaps++;
                             }
-                        } else if (buttons[i].action == ACTION_GAME) {
-                            // Acción personalizada si es necesario
                         }
                     }
                     controls->click = 0; // Resetear el estado del clic

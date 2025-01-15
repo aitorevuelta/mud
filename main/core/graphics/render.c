@@ -22,11 +22,11 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
             renderLoadscreen(renderer, loadedAssets->images);
             break;
         case MAIN_MENU:
-            rend_menu = renderMenu(renderer, buttons, loadedAssets->images, rend_menu);
+            rend_menu = renderMenu(rend_menu, renderer, buttons, loadedAssets->images);
             rend_general = 0;
             break;
         case LOBBY:
-            rend_general = renderLobby(renderer, buttons, loadedAssets->images, &gameInfo, rend_general);
+            rend_general = renderLobby(rend_general, renderer, buttons, loadedAssets->images, &gameInfo);
             rend_menu = 0;
             break;
         case GAME:
@@ -34,15 +34,15 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
             rend_menu = 0;
             break;
         case SETTINGS:
-            rend_general = renderSettings(renderer, buttons, loadedAssets->images, rend_general);
+            rend_general = renderSettings(rend_general, renderer, buttons, loadedAssets->images, &gameInfo);
             rend_menu = 0;
             break;
         case CREDITS:
-            rend_general = renderCredits(renderer, buttons, loadedAssets->images, rend_general);
+            rend_general = renderCredits(rend_general, renderer, buttons, loadedAssets->images);
             rend_menu = 0;
             break;
         case HOWTOPLAY:
-            rend_general = renderHowtoplay(renderer, buttons, loadedAssets->images, rend_general);
+            rend_general = renderHowtoplay(rend_general, renderer, buttons, loadedAssets->images);
             rend_menu = 0;
             break;
     }
