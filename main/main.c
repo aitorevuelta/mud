@@ -17,12 +17,12 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState = GAME;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
-    gameInfo.numPlayers = 2;
+    gameInfo.numPlayers = 4;
     gameInfo.mapInfo.numMaps=1;
     gameInfo.mapInfo.totalMaps=3;
 

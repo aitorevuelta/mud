@@ -1,13 +1,13 @@
 #include <global.h>
 
 #include <controls.h>
+#include <loadscreen.h>
 #include <menu.h>
 #include <settings.h>
-#include <loadscreen.h>
 #include <game.h>
 #include <lobby.h>
 #include <assets_utils.h>
-
+#include <camera.h>
 #include <update.h>
 
 
@@ -36,7 +36,8 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
         case GAME:
-            initialize_game(gameInfo);
+            //initialize_game(gameInfo);
+            updateCamera(&gameInfo->camera, &controls);
             break;
     }
 
