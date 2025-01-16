@@ -16,7 +16,8 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
     // Get current renderer dimensions
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
-
+    int mapWidth = (int)100 * gameInfo.camera.zoom;
+    printf("%d\n", mapWidth);
     // Calculate map position based on camera
     float mapX = (float)gameInfo.camera.pos[0] / windowWidth * 100;
     float mapY = (float)gameInfo.camera.pos[1] / windowHeight * 100;
@@ -24,7 +25,7 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
     // Render map with camera offset
     renderTextureRelative(renderer, 
                          loadedAssets->images[2].texture, 
-                         100 * gameInfo.camera.zoom,  // width percentage
+                         mapWidth,  // width percentage
                          mapX, // x position adjusted by camera
                          mapY  // y position adjusted by camera
     );
