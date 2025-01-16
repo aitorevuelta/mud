@@ -16,10 +16,7 @@ void allocatePlayers(GAMEINFO *gameInfo); // malloc jokalariak
 void initializeTerritories(GAMEINFO *gameInfo); // territorioak hasieratu
 void initializePlayer(PLAYER *player, int id); // jokalari bat hasieratu
 void initializePlayers(GAMEINFO *gameInfo); // jokalariak hasieratu
-
-
-
-void initialize_game(GAMEINFO *gameInfo);
+void initialize_game(GAMEINFO *gameInfo); // hasieratu jolasa
 
 void handleTurn(GAMEINFO *gameInfo);
 
@@ -28,7 +25,7 @@ void cleanup_game(GAMEINFO *gameInfo);
 
 
 // Memoria Hustu
-void freeTerritories(GAMEINFO *gameInfo);
+void freeTerritories(GAMEINFO *gameInfo); 
 void freePlayers(GAMEINFO *gameInfo);
 void cleanup_game(GAMEINFO *gameInfo);
 

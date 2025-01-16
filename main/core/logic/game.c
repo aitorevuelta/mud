@@ -54,15 +54,15 @@ void allocatePlayers(GAMEINFO *gameInfo) {
 }
 
 void initializePlayer(PLAYER *player, int id) {
-    player->id = id;  // ID único del jugador (por ejemplo, 1, 2, 3, ...)
+    player->id = id;  // Jokalarien  ID-a
 
     player->territories = NULL;  // Al inicio, no poseen territorios
-    player->numTerritories = 0;  // Inicialmente no tienen territorios controlados
+    player->numTerritories = 0;  // territorio kopurua
 
-    player->troops = 0;  // Tropas iniciales
+    player->troops = 0;  // hasierako tropak
 
-    player->numCards = 0;  // Inicialmente no poseen cartas
-    player->cards = NULL;  // No poseen cartas al inicio
+    player->cards = NULL; 
+    player->numCards = 0;  // karta kopurua
 }
 
 void initializePlayers(GAMEINFO *gameInfo) {

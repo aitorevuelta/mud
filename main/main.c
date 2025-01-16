@@ -9,7 +9,6 @@
 #include <menu.h>
 #include <controls.h>
 #include <render.h>
-#include <loadscreen_render.h>
 #include <update.h>
 
 int main(int argc, char *argv[])
