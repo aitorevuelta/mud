@@ -12,7 +12,7 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, int fps) {
+GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -39,11 +39,12 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             break;
         case GAME:
             game(gameInfo);
-            updateCamera(&gameInfo->camera, controls);
+            updateCamera(&gameInfo->camera, controls, config->window_width, config->window_height);
+            printf("zoom %f\n", gameInfo->camera.zoom);
             break;
     }
 
-    adjustFrameRate(frameStart, fps);
+    adjustFrameRate(frameStart, config->max_FPS);
     return gameState;
 }
 
