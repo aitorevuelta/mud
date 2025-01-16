@@ -4,7 +4,7 @@
 #include <settings_render.h>
 #include <render.h>
 
-int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo) {
+int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo, int rend_sett) {
       // Variable estática para controlar la inicialización
     int buttonCount = 4;
 
@@ -17,14 +17,14 @@ int renderSettings(int rend_sett, SDL_Renderer *renderer, BUTTON **buttons, IMAG
         }
 
         // Inicializa los botones
-       initializeButtonsSettings(*buttons, loadedImages);
+       initializeButtonsSettings(*buttons, loadedAssets->images);
        rend_sett =  1;
     }
 
     // Renderiza los botones
-    renderTextureRelative(renderer, loadedImages[8].texture, 100, 50, 50);
+    renderTextureRelative(renderer, loadedAssets->images[8].texture, 100, 50, 50);
     renderButtons(renderer, *buttons, buttonCount);
-    renderSelectedResolution(renderer, loadedImages, gameInfo->config.resolution);
+    renderSelectedResolution(renderer, loadedAssets->images, gameInfo->config.resolution);
    
    return rend_sett;
 }
