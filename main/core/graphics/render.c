@@ -70,7 +70,7 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 }
 
 
-void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, COLOR shapeColor) {
+void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, COLOUR shapeColor) {
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
@@ -97,7 +97,6 @@ void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPer
     // Restablecer el color del pincel al predeterminado (opcional)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Negro por defecto
 }
-
 
 
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
@@ -138,32 +137,4 @@ void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
             buttons[i].rect.y = (int)(windowHeight * (buttons[i].yPercent / 100.0f)) - (buttons[i].rect.h / 2);
         }
     }
-}
-
-void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, COLOR shapeColor) {
-    int windowWidth, windowHeight;
-    SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
-
-    // Establecer el color del pincel
-    SDL_SetRenderDrawColor(renderer, shapeColor.r, shapeColor.g, shapeColor.b, shapeColor.a);
-
-    // Calcular las dimensiones relativas a la ventana
-    int shapeWidth = (int)(windowWidth * (widthPercent / 100.0f));
-    int shapeHeight = (int)(windowHeight * (heightPercent / 100.0f));
-
-    // Calcular la posición basada en los porcentajes especificados
-    int posX = (int)(windowWidth * (xPercent / 100.0f));
-    int posY = (int)(windowHeight * (yPercent / 100.0f));
-
-    // Ajustar la posición para el alto en relación al centro vertical
-    posY -= shapeHeight / 2;
-
-    // Crear el rectángulo con las dimensiones y posición calculadas
-    SDL_Rect rect = {posX, posY, shapeWidth, shapeHeight};
-
-    // Dibujar el rectángulo con el color especificado
-    SDL_RenderFillRect(renderer, &rect);
-
-    // Restablecer el color del pincel al predeterminado (opcional)
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Negro por defecto
 }
