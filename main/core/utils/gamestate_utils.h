@@ -1,6 +1,6 @@
 #ifndef GAMESTATE_UTILS_H
 #define GAMESTATE_UTILS_H
 
-void checkGameStateChange(ASSETS *loadedAssets, GAMESTATE* gameState, SDL_Renderer* renderer);
+void checkGameStateChange(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE* gameState);
 
 #endif //GAMESTATE_UTILS_H

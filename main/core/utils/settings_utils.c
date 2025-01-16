@@ -3,7 +3,6 @@
 
 #include <settings_utils.h>
 
-// CONFIG
 
 CONFIG readConfig() {
     CONFIG settings = {0};
@@ -11,8 +10,8 @@ CONFIG readConfig() {
     int fullscreen;
     fp = fopen(CONFIG_FILE, "r");
     fscanf(fp, "%d %d %d %d %d\n",
-               &settings.window_width,
-               &settings.window_height,
+               &settings.window_size.width,
+               &settings.window_size.height,
                &fullscreen,
                &settings.max_FPS,
                &settings.volume);
@@ -28,8 +27,8 @@ void saveConfig(CONFIG config) {
     fp = fopen(CONFIG_FILE, "w");
 
     fprintf(fp, "%d %d %d %d %d\n", 
-            config.window_width, 
-            config.window_height, 
+            config.window_size.width, 
+            config.window_size.height, 
             (config.fullscreen),
             config.max_FPS, 
             config.volume);

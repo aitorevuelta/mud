@@ -26,12 +26,13 @@ int main(int argc, char *argv[])
     gameInfo.mapInfo.totalMaps = 3;
 
     bool is_running = init_sdl(&sdl, config);
-    LoadAssets(&loadedAssets, gameState, sdl.renderer);
+    LoadAssets(sdl.renderer, &loadedAssets, gameState);
     gameInfo.camera.zoom = 1.0f;
+    
     do {
-        is_running = process_events(&controls, sdl.window, &config);
-        gameState = update(gameState, &gameInfo, buttons, &controls, &config);
-        checkGameStateChange(&loadedAssets, &gameState, sdl.renderer);
+        is_running = process_events(sdl.window, &controls, &config);
+        gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
+        checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
     } while(is_running);
 

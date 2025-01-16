@@ -34,7 +34,7 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
             rend_menu = 0;
             break;
         case SETTINGS:
-            rend_general = renderSettings(renderer, buttons, loadedAssets, &gameInfo, rend_general);
+            rend_general = renderSettings(renderer, buttons, loadedAssets, &config, rend_general);
             rend_menu = 0;
             break;
         case CREDITS:
@@ -97,7 +97,6 @@ void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPer
     // Restablecer el color del pincel al predeterminado (opcional)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Negro por defecto
 }
-
 
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
     return mouseX >= rect->x && mouseX <= (rect->x + rect->w) &&

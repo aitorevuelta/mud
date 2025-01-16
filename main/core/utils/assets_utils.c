@@ -90,7 +90,7 @@ TTF_Font* CreateFont(const char* filePath, int fontSize) {
 }
 
 
-void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer) {
+void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameState) {
     int numTextures = countPathsInState(gameState, IMAGES_FILE); // Obtener número de texturas para el estado actual
     int i;
     char filePath[MAX_STR];
@@ -127,7 +127,7 @@ void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* render
 }
 
 
-void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer) {
+void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState) {
     int numFonts = countPathsInState(gameState, FONTS_FILE);
     char filePath[MAX_STR];
 
@@ -155,9 +155,9 @@ void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer)
     }
 }
 
-void LoadAssets(ASSETS *loadedAssets, GAMESTATE gameState, SDL_Renderer* renderer) {
-    LoadImages(&(loadedAssets->images), gameState, renderer);
-    LoadFonts(&(loadedAssets->fonts), gameState, renderer);
+void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState) {
+    LoadImages( renderer, &(loadedAssets->images), gameState);
+    LoadFonts(renderer, &(loadedAssets->fonts), gameState);
 }
 
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){

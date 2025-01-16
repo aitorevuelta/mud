@@ -24,6 +24,26 @@
 
 #define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
+typedef struct SDL_S {
+    SDL_Window *window;
+    SDL_Renderer *renderer;
+} SDL;
+
+typedef struct RESOLUTION_S {
+    int width;
+    int height; 
+} RESOLUTION;
+
+typedef struct CONFIG_S {
+    RESOLUTION window_size;
+    bool fullscreen;
+    int volume;
+    int max_FPS;
+    int current_res;
+    int total_res;
+    RESOLUTION *resolutions;
+} CONFIG;
+
 typedef enum {
     LOADSCREEN = 0,
     MAIN_MENU,
@@ -36,20 +56,22 @@ typedef enum {
     EXIT_TOTAL,
 } GAMESTATE;
 
-typedef struct SDL_S {
-    SDL_Window *window;
-    SDL_Renderer *renderer;
-} SDL;
+typedef struct IMAGES_S {
+    SDL_Texture* texture;
+} IMAGES;
 
-typedef struct CONFIG_S {
-    int window_width;
-    int window_height; 
-    bool fullscreen;
-    int volume;
-    int max_FPS;
-    int resolution;
-    int totalRes;
-} CONFIG;
+typedef struct MUSIC_S {
+    Mix_Music *music;
+}MUSIC;
+typedef struct FONTS_S {
+    TTF_Font* font;
+} FONTS;
+
+typedef struct ASSETS_S {
+    IMAGES *images;
+    MUSIC *music;
+    FONTS *fonts;
+}ASSETS;
 
 
 typedef struct BUTTON_S {
@@ -62,7 +84,13 @@ typedef struct BUTTON_S {
     float yPercent;         // Posición Y relativa en porcentaje
 } BUTTON;
 
-#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
+
+typedef struct COLOUR_S {
+    Uint8 r;
+    Uint8 g;
+    Uint8 b;
+    Uint8 a;
+} COLOUR;
 
 // Definición de las cartas (un tipo de acción adicional en el juego)
 typedef enum {
@@ -79,15 +107,6 @@ typedef struct TERRITORYINFO_S {
 } TERRITORYINFO;
 
 // Estructura que representa a un jugador
-
-typedef struct {
-    Uint8 r;
-    Uint8 g;
-    Uint8 b;
-    Uint8 a;
-} COLOUR;
-
-
 typedef struct PLAYER_S {
     int id;                 // ID-a
     char name[MAX_STR];             // Nombre del jugador

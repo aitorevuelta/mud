@@ -1,5 +1,6 @@
 #include <global.h>
 
+#include <sdl_utils.h>
 #include <controls.h>
 #include <menu.h>
 #include <settings.h>
@@ -12,7 +13,7 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
+GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -27,8 +28,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
        case SETTINGS:
-            handleResolutionButtons(buttons,4, gameInfo,controls);
-            handleGameStateButtonsSettings(buttons, 1, &gameState,controls);
+            handleResolutionButtons(sdl->window, buttons, 5, controls, &gameState, config);
             break;
         case CREDITS:
             handleMenuEvents(buttons, 1, &gameState, controls);
@@ -39,7 +39,7 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
             break;
         case GAME:
             game(gameInfo);
-            updateCamera(&gameInfo->camera, controls, config->window_width, config->window_height);
+            updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
             break;
     }
 

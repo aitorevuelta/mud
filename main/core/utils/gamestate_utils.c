@@ -6,9 +6,9 @@
 
 static GAMESTATE lastGameState = 0; 
 
-void checkGameStateChange(ASSETS *loadedAssets, GAMESTATE* gameState, SDL_Renderer* renderer) {
+void checkGameStateChange(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE* gameState) {
     if (*gameState != lastGameState) {
-        LoadAssets(loadedAssets, *gameState, renderer);
+        LoadAssets(renderer, loadedAssets, *gameState);
         lastGameState = *gameState;
     }
 }

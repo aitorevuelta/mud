@@ -95,7 +95,7 @@ KEYS get_key_code(SDL_Keycode key) {
     return key_code;
 }
 
-bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
+bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config) {
     SDL_Event event;
     bool run = true;
     controls->scroll = 0;
@@ -138,8 +138,8 @@ void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
         case SDL_WINDOWEVENT_RESIZED:
         case SDL_WINDOWEVENT_MAXIMIZED:
             SDL_GetWindowSize(window, &screenWidth, &screenHeight);
-            config->window_width = screenWidth;
-            config->window_height = screenHeight;
+            config->window_size.width = screenWidth;
+            config->window_size.height = screenHeight;
             break;
 
         case SDL_WINDOWEVENT_MINIMIZED:

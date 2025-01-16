@@ -4,9 +4,9 @@
 #include <settings_render.h>
 #include <render.h>
 
-int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo, int rend_sett) {
-      // Variable estática para controlar la inicialización
-    int buttonCount = 4;
+int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config, int rend_sett) {
+    // Variable estática para controlar la inicialización
+    int buttonCount = 5;
 
     // Solo inicializa los botones una vez
     if (rend_sett == 0) {
@@ -24,13 +24,13 @@ int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAsset
     // Renderiza los botones
     renderTextureRelative(renderer, loadedAssets->images[8].texture, 100, 50, 50);
     renderButtons(renderer, *buttons, buttonCount);
-    renderSelectedResolution(renderer, loadedAssets->images, gameInfo->config.resolution);
+    renderSelectedResolution(renderer, loadedAssets->images, config->current_res);
    
    return rend_sett;
 }
 
 void initializeButtonsSettings(BUTTON *buttons, IMAGES *loadedImages) {
-        buttons[0] = (BUTTON){ //BOTON ATRAS
+        buttons[0] = (BUTTON){ // Itzuli
         .texture = loadedImages[9].texture, 
         .action = ACTION_EXIT, 
         .visible = 1, 

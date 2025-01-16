@@ -6,31 +6,13 @@
 int countPathsInState(GAMESTATE gamestate, char* path);
 char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
 
-typedef struct IMAGES_S {
-    SDL_Texture* texture;
-} IMAGES;
-
-typedef struct MUSIC_S {
-    Mix_Music *music;
-}MUSIC;
-typedef struct FONTS_S {
-    TTF_Font* font;
-} FONTS;
-
-typedef struct ASSETS_S {
-    IMAGES *images;
-    MUSIC *music;
-    FONTS *fonts;
-}ASSETS;
-
-
 SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer);
-void LoadImages(IMAGES** loadedImages, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameState);
 
 TTF_Font* CreateFont(const char* filePath, int fontSize);
-void LoadFonts(FONTS** loadedFonts, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState);
 
-void LoadAssets(ASSETS *loadedAssets, GAMESTATE gameState, SDL_Renderer* renderer);
+void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState);
 
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
 

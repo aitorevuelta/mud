@@ -37,8 +37,8 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         "MU Domination",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        config.window_width,
-        config.window_height,
+        config.window_size.width,
+        config.window_size.height,
         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE // | SDL_WINDOW_FULLSCREEN
     );
 
