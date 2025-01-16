@@ -55,10 +55,8 @@ void allocatePlayers(GAMEINFO *gameInfo) {
     }
 }
 
-void initializePlayer(PLAYER *player, int id, const char* name) {
+void initializePlayer(PLAYER *player, int id) {
     player->id = id;
-    strncpy(player->name, name, MAX_STR - 1);
-    player->name[MAX_STR - 1] = '\0'; 
     player->territories = NULL;      
     player->numTerritories = 0;
     player->troops = 0;

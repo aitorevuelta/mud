@@ -41,7 +41,8 @@
         "assets_utils.h": "c",
         "gamestate_manager.h": "c",
         "game.h": "c",
-        "howtoplay_render.h": "c"
+        "howtoplay_render.h": "c",
+        "gamestate_utils.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }
