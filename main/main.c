@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(&loadedAssets, gameState, sdl.renderer);
-
+    gameInfo.camera.zoom = 1.0f;
     do {
         is_running = process_events(&controls, sdl.window, &config);
         gameState = update(gameState, &gameInfo, buttons, &controls, &config);

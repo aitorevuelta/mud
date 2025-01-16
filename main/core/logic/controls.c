@@ -98,35 +98,27 @@ KEYS get_key_code(SDL_Keycode key) {
 bool process_events(CONTROLS *controls, SDL_Window *window, CONFIG *config) {
     SDL_Event event;
     bool run = true;
+    controls->scroll = 0;
+
     while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-            case SDL_KEYDOWN:
-            case SDL_KEYUP:
-                controls->key = get_key_code(event.key.keysym.sym);
-                break;
-            case SDL_MOUSEMOTION:
-                handle_mouse_motion(event, controls);
-                break;
-            case SDL_MOUSEBUTTONDOWN:
-                if (event.button.button == SDL_BUTTON_LEFT) {
-                    controls->click = true;
-                }
-                break;
-            case SDL_MOUSEBUTTONUP:
-                if (event.button.button == SDL_BUTTON_LEFT) {
-                    controls->click = false;
-                }
-                break;
-            case SDL_MOUSEWHEEL:
-                handle_mouse_wheel_event(event.wheel.y, controls);
-                break;
-            case SDL_WINDOWEVENT:
-                handle_window_event(event, window, config);
-                break;
-            case SDL_QUIT:
-                run = false;
-            default:
-                break;
+        if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
+            controls->key = get_key_code(event.key.keysym.sym);
+        } else if (event.type == SDL_MOUSEMOTION) {
+            handle_mouse_motion(event, controls);
+        } else if (event.type == SDL_MOUSEBUTTONDOWN) {
+            if (event.button.button == SDL_BUTTON_LEFT) {
+                controls->click = true;
+            }
+        } else if (event.type == SDL_MOUSEBUTTONUP) {
+            if (event.button.button == SDL_BUTTON_LEFT) {
+                controls->click = false;
+            }
+        } else if (event.type == SDL_MOUSEWHEEL) {
+            controls->scroll = event.wheel.y;
+        } else if (event.type == SDL_WINDOWEVENT) {
+            handle_window_event(event, window, config);
+        } else if (event.type == SDL_QUIT) {
+            run = false;
         }
     }
     return run;
@@ -137,15 +129,6 @@ void handle_mouse_motion(SDL_Event event, CONTROLS *controls) {
     controls->coords[1] = event.motion.y;
 }
 
-void handle_mouse_wheel_event(int wheel_y, CONTROLS *controls) {
-    if (wheel_y > 0) {
-        controls->scroll = 1; // Scroll hacia arriba
-    } else if (wheel_y < 0) {
-        controls->scroll = 0; // Scroll hacia abajo
-    } else {
-        controls->scroll = -1; // No se detecta movimiento de la rueda
-    }
-}
 
 void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
     int screenWidth, screenHeight;

@@ -24,7 +24,7 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
     // Render map with camera offset
     renderTextureRelative(renderer, 
                          loadedAssets->images[2].texture, 
-                         125,  // width percentage
+                         100 * gameInfo.camera.zoom,  // width percentage
                          mapX, // x position adjusted by camera
                          mapY  // y position adjusted by camera
     );

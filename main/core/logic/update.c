@@ -40,7 +40,6 @@ GAMESTATE update(GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTR
         case GAME:
             game(gameInfo);
             updateCamera(&gameInfo->camera, controls, config->window_width, config->window_height);
-            printf("zoom %f\n", gameInfo->camera.zoom);
             break;
     }
 

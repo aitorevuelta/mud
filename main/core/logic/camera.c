@@ -10,11 +10,18 @@
     
 void updateCamera(CAMERA* camera, CONTROLS* controls, int screenWidth, int screenHeight) {
 
-  //  if (controls->scroll != 0) {
-  //      camera->zoom += controls->scroll * 0.1f;
-        // Clamp zoom between 0 and 1
-   //     camera->zoom = (camera->zoom < 0.0f) ? 0.0f : (camera->zoom > 1.0f) ? 1.0f : camera->zoom;
- //   }
+    if (controls->scroll != 0) {
+        // Smaller increment for smoother zoom (0.1 to 1.0 range)
+        float zoomDelta = controls->scroll * 0.02f;
+        // Update and clamp zoom between 0.1 and 1.0
+        float newZoom = camera->zoom + zoomDelta;
+        if (camera->zoom < 0.5f) {
+            camera->zoom = 0.5f;
+        }
+        if (camera->zoom > 2.0f) {
+            camera->zoom = 2.0f;
+        }
+    }
 
     if (controls->click) {
         if (firstClick) {
@@ -28,8 +35,8 @@ void updateCamera(CAMERA* camera, CONTROLS* controls, int screenWidth, int scree
         int deltaY = controls->coords[1] - prevMouseY;
 
         // Update camera position
-        camera->pos[0] -= deltaX;
-        camera->pos[1] -= deltaY;
+        camera->pos[0] += deltaX;
+        camera->pos[1] += deltaY;
 
         // Clamp camera position
         camera->pos[0] = (camera->pos[0] < 0) ? 0 : (camera->pos[0] > screenWidth) ? screenWidth : camera->pos[0];
