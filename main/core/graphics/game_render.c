@@ -2,6 +2,7 @@
 
 #include <assets_utils.h>
 #include <render.h>
+
 #include <game_render.h>
 
 int renderGame(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo, CONFIG config, int rend_game) {
@@ -15,13 +16,13 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo) 
 }
 
 void renderUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo) {
-    renderPlayerUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players);
-
+   renderPlayerUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players);
+   renderTimeBar(renderer, gameInfo, 50);
     //player ui
 
 }
 
-void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER* playerinfo) {
+void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER playerinfo) {
     int espacio = 5;
     int playerHeight = 10;
     
@@ -32,9 +33,18 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
         for (int i = 0; i < numPlayers; i++) {
             int currentY = startY - (i * (playerHeight + espacio));
             if (i == 2) {
-                renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY);
+                renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY); // indicador de turno
             }
-            renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY);
+            // test
+            COLOR testColor = {255, 0, 0, 255};  
+            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, testColor); // Fondo para cada jugador
+            renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY); // marco
         }
     }
+}
+
+void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
+{
+    COLOR testColor = {255, 0, 0, 255};
+    renderShapeRelative(renderer, elapsed, 4, 0, 0, testColor); 
 }

@@ -78,15 +78,23 @@ typedef struct TERRITORYINFO_S {
     int troops;       // Número de tropas en el territorio
 } TERRITORYINFO;
 
-// Estructura que representa a un jugador
+typedef struct COLOUR_S {
+    Uint8 r;
+    Uint8 g;
+    Uint8 b;
+    Uint8 a; // 255 por defecto para colores opacos
+} COLOUR;
+
+// Jokalariaren struct-a
 typedef struct PLAYER_S {
-    int id;                 // Identificador único del jugador
+    int id;                 // ID-a
     char name[MAX_STR];             // Nombre del jugador
     int *territories;       // Lista de territorios controlados por el jugador
     int numTerritories;     // Número de territorios controlados
     int troops;             // Número total de tropas del jugador
     int numCards;           // Número de cartas que posee
-    CARDS *cards;           // Lista de cartas que posee el jugador
+    CARDS *cards;
+    COLOR playerColor;        // Lista de cartas que posee el jugador
 } PLAYER;
 
 // Estructura que representa la información del mapa

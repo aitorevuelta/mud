@@ -1,5 +1,7 @@
 #include <global.h>
 
+#include <assets_utils.h>
+
 #include <game.h>
 
 static bool is_initialized = false;
@@ -53,16 +55,16 @@ void allocatePlayers(GAMEINFO *gameInfo) {
     }
 }
 
-void initializePlayer(PLAYER *player, int id) {
-    player->id = id;  // Jokalarien  ID-a
-
-    player->territories = NULL;  // Al inicio, no poseen territorios
-    player->numTerritories = 0;  // territorio kopurua
-
-    player->troops = 0;  // hasierako tropak
-
-    player->cards = NULL; 
-    player->numCards = 0;  // karta kopurua
+void initializePlayer(PLAYER *player, int id, const char* name) {
+    player->id = id;
+    strncpy(player->name, name, MAX_STR - 1);
+    player->name[MAX_STR - 1] = '\0'; 
+    player->territories = NULL;      
+    player->numTerritories = 0;
+    player->troops = 0;
+    player->numCards = 0;
+    player->cards = NULL;
+    player->playerColor = getRandomColour();  
 }
 
 void initializePlayers(GAMEINFO *gameInfo) {
