@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
-    gameInfo.numPlayers = 4;
+    gameInfo.numPlayers = 2;
     gameInfo.mapInfo.numMaps = 1;
     gameInfo.mapInfo.totalMaps = 3;
 
