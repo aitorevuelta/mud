@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
         gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
         checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
+        //printf("%f", gameInfo.camera.zoom );
     } while(is_running);
 
 
