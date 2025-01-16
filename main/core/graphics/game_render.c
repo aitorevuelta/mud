@@ -28,14 +28,14 @@ void renderPlayerUI(SDL_Renderer *renderer, IMAGES *loadedImages, FONTS *loadedF
     int espacio = 5;
     int playerHeight = 10;
     
-    if (players > 0) {
+    if (numPlayers > 0) {
         int totalHeight = (numPlayers * playerHeight) + ((numPlayers - 1) * espacio);
         int startY = 50 + (totalHeight / 2);
         
         for (int i = 0; i < numPlayers; i++) {
             int currentY = startY - (i * (playerHeight + espacio));
             if (i == 2) {
-                 renderTextureRelative(renderer, loadedImages[1].texture, 5, 89, currentY);
+                renderTextureRelative(renderer, loadedImages[1].texture, 5, 89, currentY);
             }
             renderTextureRelative(renderer, loadedImages[0].texture, 7, 95, currentY);
         }

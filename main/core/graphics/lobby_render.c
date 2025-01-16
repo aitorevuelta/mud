@@ -1,9 +1,9 @@
 #include <global.h>
 
 #include <assets_utils.h>
+#include <render.h>
 
 #include <lobby_render.h>
-#include <render.h>
 
 int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo) {
     int buttonCount = 6;
@@ -85,6 +85,7 @@ void initializeButtonsLobby(BUTTON *buttons, IMAGES *loadedImages) {
         .yPercent = 6.0
     };
 }
+
 void renderPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
     for (float i = 0; i < playerCount; i++) {
     if(i<2){
