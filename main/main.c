@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState =   GAME;
+    GAMESTATE gameState = LOBBY;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
-    GAMEINFO gameInfo = {0};
+    GAMEINFO gameInfo;
 
     gameInfo.numPlayers = 2; // Establecer un valor por defecto
     gameInfo.mapInfo.numMaps = 1; // Empezar en el primer mapa
@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
     
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
-
     
     do {
         is_running = process_events(sdl.window, &controls, &config);

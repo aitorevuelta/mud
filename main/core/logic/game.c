@@ -27,9 +27,9 @@ void initialize_game(GAMEINFO *gameInfo) {
 }
 
 void initializeCamera(CAMERA *camera) {
-    camera->zoom = 2.0f;
-    camera->pos[0] = 50;
-    camera->pos[1] = 50;
+    camera->zoom = 1.0f;
+    camera->pos[0] = 1000;
+    camera->pos[1] = 500;
 }
 
 void cleanup_game(GAMEINFO *gameInfo) {
