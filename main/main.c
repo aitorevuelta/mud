@@ -16,10 +16,13 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState =   GAME;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
-    GAMEINFO gameInfo;
+    GAMEINFO gameInfo = {0};
+        gameInfo.camera.zoom = 1.0f;
+    gameInfo.camera.pos[0] = 0;
+    gameInfo.camera.pos[1] = 0;
 
     gameInfo.numPlayers = 2;
     gameInfo.mapInfo.numMaps = 1;
@@ -27,14 +30,12 @@ int main(int argc, char *argv[])
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
-    gameInfo.camera.zoom = 1.0f;
     
     do {
         is_running = process_events(sdl.window, &controls, &config);
         gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
         checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
-        //printf("%f", gameInfo.camera.zoom );
     } while(is_running);
 
 

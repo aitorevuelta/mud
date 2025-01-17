@@ -4,52 +4,48 @@
 
 #include <camera.h>
 
-static bool firstClick = true;  // Controla el estado del primer clic
-static int prevMouseX = 0;     // Posición previa del mouse (X)
-static int prevMouseY = 0;     // Posición previa del mouse (Y)
+static int prevMouseX = 0;
+static int prevMouseY = 0;
+static bool firstClick = true;
     
 void updateCamera(CAMERA* camera, CONTROLS* controls, int screenWidth, int screenHeight) {
-    updateCameraZoom(camera, controls);
-    updateCameraPosition(camera, controls, screenWidth, screenHeight);
-}
 
-void updateCameraZoom(CAMERA* camera, CONTROLS* controls) {
     if (controls->scroll != 0) {
-        // Ajustar el zoom suavemente
+        // Smaller increment for smoother zoom (0.1 to 1.0 range)
         float zoomDelta = controls->scroll * 0.02f;
-        float newZoom = camera->zoom + zoomDelta;
-
-        // Limitar el zoom dentro del rango permitido
-        camera->zoom = (newZoom < 0.5f) ? 0.5f : (newZoom > 2.0f) ? 2.0f : newZoom;
+        // Update and clamp zoom between 0.1 and 1.0
+        camera->zoom += zoomDelta;
+        if (camera->zoom < 0.5f) {
+            camera->zoom = 0.5f;
+        }
+        if (camera->zoom > 2.0f) {
+            camera->zoom = 2.0f;
+        }
     }
-}
 
-void updateCameraPosition(CAMERA* camera, CONTROLS* controls, int screenWidth, int screenHeight) {
     if (controls->click) {
         if (firstClick) {
-            // Inicializa la posición previa del mouse en el primer clic
             prevMouseX = controls->coords[0];
             prevMouseY = controls->coords[1];
             firstClick = false;
         }
 
-        // Calcular deltas de movimiento
+        // Calculate and print deltas
         int deltaX = controls->coords[0] - prevMouseX;
         int deltaY = controls->coords[1] - prevMouseY;
 
-        // Actualizar la posición de la cámara
+        // Update camera position
         camera->pos[0] += deltaX;
         camera->pos[1] += deltaY;
 
-        // Limitar la posición de la cámara dentro de los bordes de la pantalla
+        // Clamp camera position
         camera->pos[0] = (camera->pos[0] < 0) ? 0 : (camera->pos[0] > screenWidth) ? screenWidth : camera->pos[0];
         camera->pos[1] = (camera->pos[1] < 0) ? 0 : (camera->pos[1] > screenHeight) ? screenHeight : camera->pos[1];
 
-        // Actualizar la posición previa del mouse
+        // Update previous position
         prevMouseX = controls->coords[0];
         prevMouseY = controls->coords[1];
     } else {
-        // Reiniciar en caso de que se deje de hacer clic
         firstClick = true;
     }
 }
