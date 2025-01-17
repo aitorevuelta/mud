@@ -143,29 +143,16 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
 
         char fontName[MAX_STR];
 
-        if (sscanf(path, "%s", fontName) != 2) continue;
-
+        sscanf(path, "%s", fontName);
+        
         snprintf(filePath, sizeof(filePath), "../src/font/%s", fontName);
         (*loadedFonts)[i].font = CreateFont(filePath, 1000);
-
-        if ((*loadedFonts)[i].font == NULL) {
-            fprintf(stderr, "Error al cargar la fuente: %s con tamaño\n", fontName);
-        }
     }
 }
 
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState) {
     LoadImages( renderer, &(loadedAssets->images), gameState);
     LoadFonts(renderer, &(loadedAssets->fonts), gameState);
-}
-
-void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y){
-    SDL_Surface *surface = TTF_RenderText_Solid(loadedFonts[0].font, text, color);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    //SDL_Rect rect = {x, y, surface->w, surface->h};
-    SDL_RenderCopy(renderer, texture, NULL, NULL);
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(texture);
 }
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {

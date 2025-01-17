@@ -1,16 +1,16 @@
 0
-KGRedHands.ttf 200
+DailyBubble.ttf
 1
-KGRedHands.ttf 200
+DailyBubble.ttf
 2
-KGRedHands.ttf 200
+DailyBubble.ttf
 3
-KGRedHands.ttf 200
+DailyBubble.ttf
 4
-KGRedHands.ttf 200
+DailyBubble.ttf
 5
-KGRedHands.ttf 200
+DailyBubble.ttf
 6
-KGRedHands.ttf 200
+DailyBubble.ttf
 7
-KGRedHands.ttf 200
+DailyBubble.ttf

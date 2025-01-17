@@ -5,10 +5,10 @@
 #include <render.h>
 
 
-int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_menu) {
+int renderMenu(int rend_menu, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
     // Variable estática para controlar la inicialización
-    const int buttonCount = 5;
-    if(rend_menu == 0){
+    int buttonCount = 5;
+    if(rend_menu==0){
     // Solo inicializa los botones una vez
     
         *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
@@ -18,13 +18,13 @@ int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, i
         }
 
         // Inicializa los botones
-       initializeButtonsMenu(*buttons, loadedAssets->images);
+       initializeButtonsMenu(*buttons, loadedImages);
 
        rend_menu = 1;
     }
     // Renderiza los botones
-   renderTextureRelative(renderer, loadedAssets->images[5].texture, 100, 50, 50);
-   renderTextureRelative(renderer, loadedAssets->images[6].texture, 60, 50, 20);
+   renderTextureRelative(renderer, loadedImages[5].texture, 150, 50, 50);
+   renderTextureRelative(renderer, loadedImages[6].texture, 60, 50, 20);
    renderButtons(renderer, *buttons, buttonCount);
 
    return rend_menu;

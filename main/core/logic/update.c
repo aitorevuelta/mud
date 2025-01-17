@@ -13,7 +13,7 @@
 #include <update.h>
 
 
-GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
+GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config, SDL_Window *window) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -29,6 +29,7 @@ GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *butt
             break;
        case SETTINGS:
             handleResolutionButtons(sdl->window, buttons, 5, controls, &gameState, config);
+            handleSettingsButtons(buttons, 6, gameInfo, controls, &gameState, window);
             break;
         case CREDITS:
             handleMenuEvents(buttons, 1, &gameState, controls);
