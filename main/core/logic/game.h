@@ -16,6 +16,7 @@ void initializeTerritories(GAMEINFO *gameInfo); // territorioak hasieratu
 void initializePlayer(PLAYER *player, int id); // jokalari bat hasieratu
 void initializePlayers(GAMEINFO *gameInfo); // jokalariak hasieratu
 void initialize_game(GAMEINFO *gameInfo); // hasieratu jolasa
+void initializeCamera(CAMERA *camera);
 
 /*
 int getTerritoryOwner();

@@ -26,6 +26,12 @@ void initialize_game(GAMEINFO *gameInfo) {
     initializePlayers(gameInfo);
 }
 
+void initializeCamera(CAMERA *camera) {
+    camera->zoom = 2.0f;
+    camera->pos[0] = 50;
+    camera->pos[1] = 50;
+}
+
 void cleanup_game(GAMEINFO *gameInfo) {
     freeTerritories(gameInfo);
     freePlayers(gameInfo);

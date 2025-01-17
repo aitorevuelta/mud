@@ -38,8 +38,8 @@ GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *butt
             handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
         case GAME:
-            game(gameInfo);
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
+            game(gameInfo);
             break;
     }
 
