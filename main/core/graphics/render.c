@@ -98,6 +98,38 @@ void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPer
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Negro por defecto
 }
 
+void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color color, float widthPercent, float xPercent, float yPercent) {
+    if (!text || !font) return;
+
+    // Get window dimensions
+    int windowWidth, windowHeight;
+    SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
+
+    // Create text surface and texture
+    SDL_Surface *surface = TTF_RenderText_Blended(font, text, color);
+    if (!surface) return;
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    if (!texture) return;
+
+    // Get texture dimensions
+    int textureWidth, textureHeight;
+    SDL_QueryTexture(texture, NULL, NULL, &textureWidth, &textureHeight);
+    float textureRatio = (float)textureWidth / textureHeight;
+
+    // Calculate destination rect with relative positioning
+    SDL_Rect dstRect;
+    dstRect.w = (int)(windowWidth * (widthPercent / 100.0f));
+    dstRect.h = (int)(dstRect.w / textureRatio);
+    dstRect.x = (int)(windowWidth * (xPercent / 100.0f)) - (dstRect.w / 2);
+    dstRect.y = (int)(windowHeight * (yPercent / 100.0f)) - (dstRect.h / 2);
+
+    // Render text
+    SDL_RenderCopy(renderer, texture, NULL, &dstRect);
+    SDL_DestroyTexture(texture);
+}
+
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
     return mouseX >= rect->x && mouseX <= (rect->x + rect->w) &&
            mouseY >= rect->y && mouseY <= (rect->y + rect->h);

@@ -16,12 +16,12 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOBBY;
+    GAMESTATE gameState = GAME;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
-    gameInfo.numPlayers = 2; // Establecer un valor por defecto
+    gameInfo.numPlayers = 3; // Establecer un valor por defecto
     gameInfo.mapInfo.numMaps = 1; // Empezar en el primer mapa
     gameInfo.mapInfo.totalMaps = 3; // Establecer el total de mapas disponibles
     

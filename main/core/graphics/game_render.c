@@ -35,11 +35,12 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
 void renderUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
 {
    renderPlayerUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players);
+   renderDeployUI(renderer, loadedAssets, gameInfo);
    renderTimeBar(renderer, gameInfo, 50);
 
 }
 
-void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER players[]) {
+void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER *players) {
     int espacio = 5;
     int playerHeight = 10;
     
@@ -63,4 +64,18 @@ void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
 {
     COLOUR testColor = {255, 0, 0, 255};
     renderShapeRelative(renderer, elapsed, 4, 0, 0, testColor); 
+}
+
+void renderDeployUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
+{
+    renderTextureRelative(renderer, loadedAssets->images[0].texture, 10, 50, 85);
+      SDL_Color textColor = {0, 0, 0, 255};
+ renderTextRelative(renderer, 
+                      loadedAssets->fonts[0].font, 
+                      "3",  // Text to display
+                      textColor, 
+                      4,    // Width percentage (smaller than frame)
+                      50,   // Same X as frame
+                      85    // Same Y as frame
+    );
 }

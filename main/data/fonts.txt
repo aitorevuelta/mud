@@ -1,7 +1,16 @@
 0
-KGRedHands 14
+KGRedHands.ttf 200
 1
+KGRedHands.ttf 200
 2
+KGRedHands.ttf 200
 3
+KGRedHands.ttf 200
 4
+KGRedHands.ttf 200
 5
+KGRedHands.ttf 200
+6
+KGRedHands.ttf 200
+7
+KGRedHands.ttf 200
