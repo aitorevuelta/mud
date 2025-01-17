@@ -4,7 +4,7 @@
 #include <credits_render.h>
 #include <render.h>
 
-int renderCredits(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_cred) {
+int renderCredits(int rend_cred, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages) {
     // Variable estática para controlar la inicialización
     int buttonCount = 1;
 
@@ -17,12 +17,14 @@ int renderCredits(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets
         }
 
         // Inicializa los botones
-       initializeButtonsCredits(*buttons, loadedAssets->images);
+       initializeButtonsCredits(*buttons, loadedImages);
        rend_cred =  1;
     }
 
     // Renderiza los botones
-    renderTextureRelative(renderer, loadedAssets->images[0].texture, 100, 50, 50);
+    renderTextureRelative(renderer, loadedImages[0].texture, 150, 50, 50);
+    renderTextureRelative(renderer, loadedImages[2].texture, 35, 50, 10);
+    renderTextureRelative(renderer, loadedImages[3].texture, 25, 25, 58);
     renderButtons(renderer, *buttons, buttonCount);
    
    return rend_cred;
@@ -39,3 +41,4 @@ void initializeButtonsCredits(BUTTON *buttons, IMAGES *loadedImages) {
         .yPercent = 5.0 
     };
 }
+

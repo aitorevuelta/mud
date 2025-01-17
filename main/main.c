@@ -25,13 +25,17 @@ int main(int argc, char *argv[])
     gameInfo.currentMapID = 1; // Empezar en el primer mapa
     gameInfo.totalMaps = 3; // Establecer el total de mapas disponibles
 
+    gameInfo.config.resolution = 1;
+    gameInfo.config.totalRes = 7;
+    gameInfo.config.selectedVolume = 0;
+
     
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
     
     do {
         is_running = process_events(sdl.window, &controls, &config);
-        gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
+        gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config, sdl.window);
         checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
     } while(is_running);

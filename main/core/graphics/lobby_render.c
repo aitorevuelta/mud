@@ -1,11 +1,11 @@
 #include <global.h>
 
 #include <assets_utils.h>
-#include <render.h>
 
 #include <lobby_render.h>
+#include <render.h>
 
-int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo, int rend_lbby) {
+int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo) {
     int buttonCount = 6;
 
     // Solo inicializa los botones una vez
@@ -16,21 +16,21 @@ int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, 
             return -1;
         }
         // Inicializa los botones
-        initializeButtonsLobby(*buttons, loadedAssets->images);
+        initializeButtonsLobby(*buttons, loadedImages);
         rend_lbby = 1;
     }
 
     // Renderiza el fondo
-    renderTextureRelative(renderer, loadedAssets->images[0].texture, 100, 50, 50);
+    renderTextureRelative(renderer, loadedImages[0].texture, 100, 50, 50);
 
     // Renderiza los botones
     renderButtons(renderer, *buttons, buttonCount);
     
     // Renderiza los jugadores
-    renderPlayers(renderer, loadedAssets->images, gameInfo->numPlayers);
+    renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
 
     // Renderiza el mapa actual
-    renderSelectedMap(renderer, loadedAssets->images, gameInfo->currentMapID);
+    renderSelectedMap(renderer, loadedImages, gameInfo->mapInfo.numMaps);
 
     return rend_lbby;
 }
@@ -83,9 +83,9 @@ void initializeButtonsLobby(BUTTON *buttons, IMAGES *loadedImages) {
         .widthPercent = 3.7,
         .xPercent = 3.0,
         .yPercent = 6.0
+
     };
 }
-
 void renderPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
     for (float i = 0; i < playerCount; i++) {
     if(i<2){
