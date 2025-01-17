@@ -1,9 +1,9 @@
 #include <global.h>
 
 #include <assets_utils.h>
+#include <render.h>
 
 #include <lobby_render.h>
-#include <render.h>
 
 int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo, int rend_lbby) {
     int buttonCount = 6;
@@ -30,7 +30,7 @@ int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, 
     renderPlayers(renderer, loadedAssets->images, gameInfo->numPlayers);
 
     // Renderiza el mapa actual
-    renderSelectedMap(renderer, loadedAssets->images, gameInfo->numMaps);
+    renderSelectedMap(renderer, loadedAssets->images, gameInfo->currentMapID);
 
     return rend_lbby;
 }
@@ -83,9 +83,9 @@ void initializeButtonsLobby(BUTTON *buttons, IMAGES *loadedImages) {
         .widthPercent = 3.7,
         .xPercent = 3.0,
         .yPercent = 6.0
-
     };
 }
+
 void renderPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
     for (float i = 0; i < playerCount; i++) {
     if(i<2){

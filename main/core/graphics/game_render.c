@@ -22,8 +22,16 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
     // Calculate map position based on camera and zoom
     float mapX =((float)gameInfo.camera.pos[0] / windowWidth * 100.0f);
     float mapY =((float)gameInfo.camera.pos[1] / windowHeight * 100.0f);
-    
-    // Render map with camera offset
+
+    // mapa de mascara
+
+    renderTextureRelative(renderer, 
+                        loadedAssets->images[3].texture, 
+                        mapWidth,
+                        mapX,
+                        mapY
+    );
+
     renderTextureRelative(renderer, 
                         loadedAssets->images[2].texture, 
                         mapWidth,
