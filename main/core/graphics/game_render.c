@@ -2,6 +2,7 @@
 
 #include <assets_utils.h>
 #include <render.h>
+
 #include <game_render.h>
 
 int renderGame(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo, CONFIG config, int rend_game)
@@ -48,7 +49,7 @@ void renderUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
 
 }
 
-void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER *players) {
+void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER players[]) {
     int espacio = 5;
     int playerHeight = 10;
     
@@ -56,14 +57,15 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
         int totalHeight = (numPlayers * playerHeight) + ((numPlayers - 1) * espacio);
         int startY = 50 + (totalHeight / 2);
         
-        for (int i = 0; numPlayers > i; i++) {
+        int i;
+        for (i = 0; numPlayers > i; i++) {
             int currentY = startY - (i * (playerHeight + espacio));
             if (i == 2) {
                  renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY); // indicador de turno
             }
             
-
-            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, ); // Fondo para cada jugador
+            SDL_Color color = players[i].
+            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, color); // Fondo para cada jugador
             renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY); // marco
         }
     }
