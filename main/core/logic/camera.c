@@ -20,7 +20,7 @@ void updateCameraZoom(CAMERA* camera, CONTROLS* controls) {
         float newZoom = camera->zoom + zoomDelta;
 
         // Limitar el zoom dentro del rango permitido
-        camera->zoom = (newZoom < 0.5f) ? 0.5f : (newZoom > 2.0f) ? 2.0f : newZoom;
+        camera->zoom = (newZoom < 0.75f) ? 0.75f : (newZoom > 2.5f) ? 2.5f : newZoom;
     }
 }
 
