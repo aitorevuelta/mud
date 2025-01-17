@@ -14,14 +14,12 @@ void game(GAMEINFO *gameInfo) {
     }
 
 
-
     handleTurn(gameInfo);
 
     cleanup_game(gameInfo);
 }
 
 void initialize_game(GAMEINFO *gameInfo) {
-
     allocateTerritories(gameInfo);
     allocatePlayers(gameInfo);
     initializeTerritories(gameInfo);
@@ -37,6 +35,7 @@ void game_over(GAMEINFO *gameInfo){
     cleanup_game(gameInfo);
     is_initialized = false;
 }
+
 
 void allocateTerritories(GAMEINFO *gameInfo) {
     gameInfo->mapInfo.territories = malloc(sizeof(TERRITORYINFO) * TERRITORY_COUNT);
@@ -100,6 +99,11 @@ void handleTurn(GAMEINFO *gameInfo)
     if (gameInfo->currentPlayerID == 0) {
         gameInfo->turn++;
     }
+
+    if (gameInfo->currentPlayerID == 0) {
+        gameInfo->turn++;
+        printf("Turno %d completo. Volviendo al primer jugador.\n", gameInfo->turn);
+    }
 }
 
 
@@ -111,10 +115,4 @@ void freeTerritories(GAMEINFO *gameInfo) {
 void freePlayers(GAMEINFO *gameInfo) {
     free(gameInfo->players);
     gameInfo->players = NULL;
-}
-
-
-
-void updateGame(GAMEINFO *gameInfo) {
-
 }

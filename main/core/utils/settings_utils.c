@@ -1,6 +1,5 @@
 #include <global.h>
 
-
 #include <settings_utils.h>
 
 

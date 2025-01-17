@@ -128,7 +128,7 @@ typedef struct MAPINFO_S {
 } MAPINFO;
 
 typedef struct CAMERA_S {
-    int pos[1];
+    int pos[2];
     float zoom;
 } CAMERA;
 
@@ -136,7 +136,7 @@ typedef struct CAMERA_S {
 typedef struct GAMEINFO_S {
     MAPINFO mapInfo;          // Información sobre el mapa
     PLAYER *players;          // Jugadores en la partida
-    CONFIG config;
+    //CONFIG config;
     CAMERA camera;   
     int numPlayers;           // Número total de jugadores
     int currentPlayerID;   // Índice del jugador actual

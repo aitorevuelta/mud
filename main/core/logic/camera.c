@@ -16,7 +16,7 @@ void updateCamera(CAMERA* camera, CONTROLS* controls, int screenWidth, int scree
 void updateCameraZoom(CAMERA* camera, CONTROLS* controls) {
     if (controls->scroll != 0) {
         // Ajustar el zoom suavemente
-        float zoomDelta = controls->scroll * 0.02f;
+        float zoomDelta = controls->scroll * 0.04f;
         float newZoom = camera->zoom + zoomDelta;
 
         // Limitar el zoom dentro del rango permitido

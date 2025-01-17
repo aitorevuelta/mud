@@ -4,10 +4,9 @@
 #define TERRITORY_COUNT 6
 #define MAX_PLAYERS 4
 
-
 void game(GAMEINFO *gameInfo);
-void updateGame(GAMEINFO *gameInfo);
-void game_over(GAMEINFO *gameInfo);
+void handleTurn(GAMEINFO *gameInfo);
+//void endTurn();
 
 // Jokoa hasieratu
 
@@ -18,15 +17,29 @@ void initializePlayer(PLAYER *player, int id); // jokalari bat hasieratu
 void initializePlayers(GAMEINFO *gameInfo); // jokalariak hasieratu
 void initialize_game(GAMEINFO *gameInfo); // hasieratu jolasa
 
-void handleTurn(GAMEINFO *gameInfo);
+/*
+int getTerritoryOwner();
+bool isAdjacent();
 
-void cleanup_game(GAMEINFO *gameInfo);
+int calculateReinforcements();
+void placeReinforcements();
 
+bool canAttack();
+int rollDice();
+void resolveComabt();
+void conquerTerritory();
+
+bool canFortify();
+void moveTroops();
+
+bool checkVictoryCondition();
+*/
 
 
 // Memoria Hustu
+void cleanup_game(GAMEINFO *gameInfo);
 void freeTerritories(GAMEINFO *gameInfo); 
 void freePlayers(GAMEINFO *gameInfo);
-void cleanup_game(GAMEINFO *gameInfo);
+
 
 #endif // GAME_H
