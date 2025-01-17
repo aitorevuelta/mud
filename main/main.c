@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOBBY;
+    GAMESTATE gameState = LOADSCREEN;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;

@@ -16,7 +16,7 @@ void game(GAMEINFO *gameInfo) {
 
     handleTurn(gameInfo);
 
-    cleanup_game(gameInfo);
+    //cleanup_game(gameInfo);
 }
 
 void initialize_game(GAMEINFO *gameInfo) {
@@ -54,26 +54,28 @@ void allocatePlayers(GAMEINFO *gameInfo) {
     }
 }
 
-void initializePlayer(PLAYER *player, int id) {
-    player->id = id;
-    player->territories = NULL;      
-    player->numTerritories = 0;
-    player->troops = 0;
-    player->numCards = 0;
-    player->cards = NULL;
-    player->playerColor = getRandomColour();  
+PLAYER initializePlayer(int id) {
+    PLAYER player;  // Se crea un objeto PLAYER local
+    player.id = id;
+    player.territories = NULL;        // Inicializa puntero de territorios a NULL
+    player.numTerritories = 0;       // Inicializa número de territorios
+    player.troops = 0;               // Inicializa las tropas
+    player.numCards = 0;             // Inicializa el número de cartas
+    player.cards = NULL;             // Inicializa puntero de cartas a NULL
+    player.playerColor = getRandomColour();  // Asigna un color aleatorio
+    return player;  // Retorna el objeto inicializado
 }
+
 
 void initializePlayers(GAMEINFO *gameInfo) {
     int i = 0;
-
     if (!gameInfo->players) {
         fprintf(stderr, "Error al asignar memoria para los jugadores.\n");
         exit(EXIT_FAILURE);
     }
 
-    for(i = 0; gameInfo->numPlayers > i; i++) {
-        initializePlayer(&gameInfo->players[i], i+1);
+    for (i = 0; gameInfo->numPlayers > i; i++) {
+        gameInfo->players[i] = initializePlayer(i + 1);  // Asigna un nuevo PLAYER inicializado
     }
 }
 
