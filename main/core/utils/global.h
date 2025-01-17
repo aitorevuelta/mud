@@ -144,7 +144,6 @@ typedef struct GAMEINFO_S {
     int currentMapIndex;      // Índice del mapa actual
 } GAMEINFO;
 
-
 typedef enum {
     ACTION_HOWTOPLAY=2,
     ACTION_SETTINGS,

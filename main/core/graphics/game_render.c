@@ -36,11 +36,10 @@ void renderUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
 {
    renderPlayerUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players);
    renderTimeBar(renderer, gameInfo, 50);
-    //player ui
 
 }
 
-void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER* playerinfo) {
+void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER players[]) {
     int espacio = 5;
     int playerHeight = 10;
     
@@ -48,14 +47,13 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
         int totalHeight = (numPlayers * playerHeight) + ((numPlayers - 1) * espacio);
         int startY = 50 + (totalHeight / 2);
         
-        for (int i = 0; i < numPlayers; i++) {
+        for (int i = 0; numPlayers > i; i++) {
             int currentY = startY - (i * (playerHeight + espacio));
             if (i == 2) {
                  renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY); // indicador de turno
             }
-            // test
-            COLOUR testColor = {255, 0, 0, 255};  
-            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, testColor); // Fondo para cada jugador
+             
+            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, players[i].playerColor); // Fondo para cada jugador
             renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY); // marco
         }
     }
