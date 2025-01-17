@@ -213,8 +213,8 @@ SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {
     return color;
 }
 
-COLOUR getRandomColour() {
-    COLOUR randomColour;
+SDL_Color getRandomColour() {
+    SDL_Colour randomColour;
     randomColour.r = rand() % 256;
     randomColour.g = rand() % 256;
     randomColour.b = rand() % 256;

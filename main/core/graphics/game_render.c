@@ -54,7 +54,7 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
                  renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY); // indicador de turno
             }
             
-            COLOUR test_color = {255, 0, 0, 255};
+            SDL_Colour test_color = {255, 0, 0, 255};
             renderShapeRelative(renderer, 4, playerHeight, 97, currentY, test_color); // Fondo para cada jugador
             renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY); // marco
         }
@@ -63,15 +63,15 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
 
 void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
 {
-    COLOUR testColor = {255, 0, 0, 255};
+    SDL_Colour testColor = {255, 0, 0, 255};
     renderShapeRelative(renderer, elapsed, 4, 0, 0, testColor); 
 }
 
 void renderDeployUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
 {
     renderTextureRelative(renderer, loadedAssets->images[0].texture, 10, 50, 85);
-      SDL_Color textColor = {0, 0, 0, 255};
- renderTextRelative(renderer, 
+    SDL_Color textColor = {0, 0, 0, 255};
+    renderTextRelative(renderer, 
                       loadedAssets->fonts[0].font, 
                       "3",  // Text to display
                       textColor, 

@@ -17,7 +17,7 @@ void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameStat
 void renderText(SDL_Renderer *renderer, FONTS *loadedFonts, const char *text, SDL_Color color, int x, int y);
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y);
-COLOUR getRandomColour();
+SDL_Color getRandomColour();
 
 
 #endif // ASSETS_UTILS_H

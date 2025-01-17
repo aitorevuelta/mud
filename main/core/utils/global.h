@@ -88,13 +88,6 @@ typedef struct BUTTON_S {
 } BUTTON;
 
 
-typedef struct COLOUR_S {
-    Uint8 r;
-    Uint8 g;
-    Uint8 b;
-    Uint8 a;
-} COLOUR;
-
 // Definición de las cartas (un tipo de acción adicional en el juego)
 typedef enum {
     SOLDIER,  // Soldado
@@ -125,7 +118,7 @@ typedef struct PLAYER_S {
     int troops;             // Número total de tropas del jugador
     int numCards;           // Número de cartas que posee
     CARDS *cards;
-    COLOUR playerColor;        // Lista de cartas que posee el jugador
+    SDL_Color *playerColor;        // Lista de cartas que posee el jugador
 } PLAYER;
 
 

@@ -70,7 +70,7 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 }
 
 
-void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, COLOUR shapeColor) {
+void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, SDL_Color shapeColor) {
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
