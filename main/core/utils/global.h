@@ -119,7 +119,7 @@ typedef struct PLAYER_S {
     int troops;             // Número total de tropas del jugador
     int numCards;           // Número de cartas que posee
     CARDS *cards;
-    SDL_Color *playerColor;        // Lista de cartas que posee el jugador
+    SDL_Color playerColor;        // Lista de cartas que posee el jugador
 } PLAYER;
 
 

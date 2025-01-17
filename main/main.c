@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
+    srand((unsigned int)time(NULL));
+
     gameInfo.numPlayers = 2; // Establecer un valor por defecto
     gameInfo.currentMapID = 1; // Empezar en el primer mapa
     gameInfo.numMaps = 3; // Establecer el total de mapas disponibles
