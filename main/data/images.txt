@@ -51,7 +51,7 @@ fondo.png
 MAP1.png
 MAP2.png
 MAP3.png
-aÃ±adir.png
+añadir.png
 eliminar.png
 back.png
 start.png
