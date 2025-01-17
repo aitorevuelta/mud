@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
     config.total_res = 7;
     config.selectedVolume = 0;
 
-    
+    gameInfo.camera.zoom = 1.0f;
+    gameInfo.camera.pos[0] = config.window_size.width/2;
+    gameInfo.camera.pos[1] = config.window_size.height/2;
+
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
     

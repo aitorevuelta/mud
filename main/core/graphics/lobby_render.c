@@ -5,7 +5,7 @@
 #include <lobby_render.h>
 #include <render.h>
 
-int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo, int rend_lbby) {
+int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo, int rend_lbby) {
     int buttonCount = 6;
 
     // Solo inicializa los botones una vez
@@ -16,21 +16,21 @@ int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, 
             return -1;
         }
         // Inicializa los botones
-        initializeButtonsLobby(*buttons, loadedImages);
+        initializeButtonsLobby(*buttons, loadedAssets->images);
         rend_lbby = 1;
     }
 
     // Renderiza el fondo
-    renderTextureRelative(renderer, loadedImages[0].texture, 100, 50, 50);
+    renderTextureRelative(renderer, loadedAssets->images[0].texture, 100, 50, 50);
 
     // Renderiza los botones
     renderButtons(renderer, *buttons, buttonCount);
     
     // Renderiza los jugadores
-    renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
+    renderPlayers(renderer, loadedAssets->images, gameInfo->numPlayers);
 
     // Renderiza el mapa actual
-    renderSelectedMap(renderer, loadedImages, gameInfo->numMaps);
+    renderSelectedMap(renderer, loadedAssets->images, gameInfo->numMaps);
 
     return rend_lbby;
 }
