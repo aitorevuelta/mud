@@ -142,15 +142,14 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
         if (path == NULL) continue;
 
         char fontName[MAX_STR];
-        int fontSize;
 
-        if (sscanf(path, "%s %d", fontName, &fontSize) != 2) continue;
+        if (sscanf(path, "%s", fontName) != 2) continue;
 
         snprintf(filePath, sizeof(filePath), "../src/font/%s", fontName);
-        (*loadedFonts)[i].font = CreateFont(filePath, fontSize);
+        (*loadedFonts)[i].font = CreateFont(filePath, 1000);
 
         if ((*loadedFonts)[i].font == NULL) {
-            fprintf(stderr, "Error al cargar la fuente: %s con tamaño %d\n", fontName, fontSize);
+            fprintf(stderr, "Error al cargar la fuente: %s con tamaño\n", fontName);
         }
     }
 }
