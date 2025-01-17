@@ -146,7 +146,7 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
 
         if (sscanf(path, "%s %d", fontName, &fontSize) != 2) continue;
 
-        snprintf(filePath, sizeof(filePath), "../src/fonts/%s", fontName);
+        snprintf(filePath, sizeof(filePath), "../src/font/%s", fontName);
         (*loadedFonts)[i].font = CreateFont(filePath, fontSize);
 
         if ((*loadedFonts)[i].font == NULL) {
