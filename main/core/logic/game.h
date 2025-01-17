@@ -13,7 +13,7 @@ void handleTurn(GAMEINFO *gameInfo);
 void allocateTerritories(GAMEINFO *gameInfo); // malloc territorioak
 void allocatePlayers(GAMEINFO *gameInfo); // malloc jokalariak
 void initializeTerritories(GAMEINFO *gameInfo); // territorioak hasieratu
-PLAYER initializePlayer(PLAYER *player, int id); // jokalari bat hasieratu
+PLAYER initializePlayer(int id);// jokalari bat hasieratu
 void initializePlayers(GAMEINFO *gameInfo); // jokalariak hasieratu
 void initialize_game(GAMEINFO *gameInfo); // hasieratu jolasa
 
