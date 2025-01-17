@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
 
     gameInfo.numPlayers = 2; // Establecer un valor por defecto
     gameInfo.currentMapID = 1; // Empezar en el primer mapa
-    gameInfo.totalMaps = 3; // Establecer el total de mapas disponibles
+    gameInfo.numMaps = 3; // Establecer el total de mapas disponibles
 
-    gameInfo.config.resolution = 1;
-    gameInfo.config.totalRes = 7;
-    gameInfo.config.selectedVolume = 0;
+    config.current_res = 1;
+    config.total_res = 7;
+    config.selectedVolume = 0;
 
     
     bool is_running = init_sdl(&sdl, config);
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     
     do {
         is_running = process_events(sdl.window, &controls, &config);
-        gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config, sdl.window);
+        gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
         checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
     } while(is_running);

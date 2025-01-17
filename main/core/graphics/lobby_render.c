@@ -5,7 +5,7 @@
 #include <lobby_render.h>
 #include <render.h>
 
-int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo) {
+int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, IMAGES *loadedImages, GAMEINFO *gameInfo, int rend_lbby) {
     int buttonCount = 6;
 
     // Solo inicializa los botones una vez
@@ -30,7 +30,7 @@ int renderLobby(int rend_lbby, SDL_Renderer *renderer, BUTTON **buttons, IMAGES 
     renderPlayers(renderer, loadedImages, gameInfo->numPlayers);
 
     // Renderiza el mapa actual
-    renderSelectedMap(renderer, loadedImages, gameInfo->mapInfo.numMaps);
+    renderSelectedMap(renderer, loadedImages, gameInfo->numMaps);
 
     return rend_lbby;
 }

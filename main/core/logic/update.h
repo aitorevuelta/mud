@@ -2,6 +2,6 @@
 #define UPDATE_H
 
 void adjustFrameRate(Uint32 frameStart, int targetFPS);
-GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config, SDL_Window *window);
+GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config);
 
 #endif //UPDATE_H

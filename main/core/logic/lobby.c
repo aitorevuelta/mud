@@ -42,13 +42,13 @@ void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, C
 
                         case 2: // Botón de flecha izquierda (cambiar mapa hacia atrás)
                             gameInfo->currentMapID = (gameInfo->currentMapID == 0)
-                                ? gameInfo->totalMaps - 1
+                                ? gameInfo->numMaps - 1
                                 : gameInfo->currentMapID - 1;
                             printf("Mapa cambiado a índice %d\n", gameInfo->currentMapID);
                             break;
 
                         case 3: // Botón de flecha derecha (cambiar mapa hacia adelante)
-                            gameInfo->currentMapID = (gameInfo->currentMapID + 1) % gameInfo->totalMaps;
+                            gameInfo->currentMapID = (gameInfo->currentMapID + 1) % gameInfo->numMaps;
                             printf("Mapa cambiado a índice %d\n", gameInfo->currentMapID);
                             break;
 

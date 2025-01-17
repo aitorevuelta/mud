@@ -41,6 +41,7 @@ typedef struct CONFIG_S {
     RESOLUTION window_size;
     bool fullscreen;
     int volume;
+    int selectedVolume;
     int max_FPS;
     int current_res;
     int total_res;
@@ -130,7 +131,7 @@ typedef struct CAMERA_S {
 // Estructura que representa la información general del juego
 typedef struct GAMEINFO_S {
     MAPINFO *maps;              // Lista de mapas disponibles
-    int totalMaps;              // Número total de mapas disponibles
+    int numMaps;              // Número total de mapas disponibles
     int currentMapID;        // Índice del mapa actual
     PLAYER *players;            // Lista de jugadores en la partida
     int numPlayers;             // Número total de jugadores
