@@ -5,19 +5,18 @@
 #define MAX_PLAYERS 4
 
 void game(GAMEINFO *gameInfo);
+void initialize_game(GAMEINFO *gameInfo); // hasieratu jolasa
 void handleTurn(GAMEINFO *gameInfo);
 //void endTurn();
 
 // Jokoa hasieratu
 
-void allocateTerritories(GAMEINFO *gameInfo); // malloc territorioak
 void allocatePlayers(GAMEINFO *gameInfo); // malloc jokalariak
-void initializeTerritories(GAMEINFO *gameInfo); // territorioak hasieratu
 PLAYER initializePlayer(int id);// jokalari bat hasieratu
 void initializePlayers(GAMEINFO *gameInfo); // jokalariak hasieratu
-void initialize_game(GAMEINFO *gameInfo); // hasieratu jolasa
 
-/*
+
+
 int getTerritoryOwner();
 bool isAdjacent();
 
@@ -33,7 +32,7 @@ bool canFortify();
 void moveTroops();
 
 bool checkVictoryCondition();
-*/
+
 
 
 // Memoria Hustu

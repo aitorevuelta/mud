@@ -30,7 +30,7 @@ int renderLobby(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, 
     renderPlayers(renderer, loadedAssets->images, gameInfo->numPlayers);
 
     // Renderiza el mapa actual
-    renderSelectedMap(renderer, loadedAssets->images, gameInfo->mapInfo.numMaps);
+    renderSelectedMap(renderer, loadedAssets->images, gameInfo->currentMapID);
 
     return rend_lbby;
 }

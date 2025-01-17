@@ -24,6 +24,9 @@
 
 #define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
+#define MAX_PLAYERS 4
+#define MIN_PLAYERS 2
+
 typedef struct SDL_S {
     SDL_Window *window;
     SDL_Renderer *renderer;
@@ -101,10 +104,17 @@ typedef enum {
 
 // Estructura que representa la información de un territorio
 typedef struct TERRITORYINFO_S {
-    char *name;       // Nombre del territorio
-    int owner;        // ID del jugador que controla el territorio
+    char name[MAX_STR];       // Nombre del territorio
+    int ownerID;        // ID del jugador que controla el territorio
     int troops;       // Número de tropas en el territorio
 } TERRITORYINFO;
+
+// Estructura que representa la información del mapa
+typedef struct MAPINFO_S {
+    char mapName[MAX_STR];            // Nombre del mapa (Ej. Mundo, Europa, etc.)
+    TERRITORYINFO *territories; // Lista de territorios del mapa
+    int numTerritories;       // Número de territorios en el mapa 
+} MAPINFO;
 
 // Estructura que representa a un jugador
 typedef struct PLAYER_S {
@@ -118,14 +128,6 @@ typedef struct PLAYER_S {
     COLOUR playerColor;        // Lista de cartas que posee el jugador
 } PLAYER;
 
-// Estructura que representa la información del mapa
-typedef struct MAPINFO_S {
-    char mapName[MAX_STR];            // Nombre del mapa (Ej. Mundo, Europa, etc.)
-    TERRITORYINFO *territories; // Lista de territorios del mapa
-    int numTerritories;       // Número de territorios en el mapa
-    int numMaps; 
-    int totalMaps; 
-} MAPINFO;
 
 typedef struct CAMERA_S {
     int pos[2];
@@ -134,14 +136,15 @@ typedef struct CAMERA_S {
 
 // Estructura que representa la información general del juego
 typedef struct GAMEINFO_S {
-    MAPINFO mapInfo;          // Información sobre el mapa
-    PLAYER *players;          // Jugadores en la partida
-    //CONFIG config;
-    CAMERA camera;   
-    int numPlayers;           // Número total de jugadores
-    int currentPlayerID;   // Índice del jugador actual
-    int turn;                 // Número de turno actual
-    int currentMapIndex;      // Índice del mapa actual
+    MAPINFO *maps;              // Lista de mapas disponibles
+    int totalMaps;              // Número total de mapas disponibles
+    int currentMapID;        // Índice del mapa actual
+    PLAYER *players;            // Lista de jugadores en la partida
+    int numPlayers;             // Número total de jugadores
+    int currentPlayerID;        // Índice del jugador actual
+    int turn;                   // Número de turno actual
+    CAMERA camera;              // Configuración de la cámara
+    bool gameOver;              // Indicador de fin de juego
 } GAMEINFO;
 
 typedef enum {

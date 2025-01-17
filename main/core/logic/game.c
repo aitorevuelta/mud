@@ -20,10 +20,8 @@ void game(GAMEINFO *gameInfo) {
 }
 
 void initialize_game(GAMEINFO *gameInfo) {
-    allocateTerritories(gameInfo);
-    allocatePlayers(gameInfo);
-    initializeTerritories(gameInfo);
-    initializePlayers(gameInfo);
+    allocatePlayers(gameInfo); // memoria asignatu
+    initializePlayers(gameInfo); // jokalariak hasieratu
 }
 
 void cleanup_game(GAMEINFO *gameInfo) {
@@ -37,58 +35,28 @@ void game_over(GAMEINFO *gameInfo){
 }
 
 
-void allocateTerritories(GAMEINFO *gameInfo) {
-    gameInfo->mapInfo.territories = malloc(sizeof(TERRITORYINFO) * TERRITORY_COUNT);
-    if (!gameInfo->mapInfo.territories) {
-        fprintf(stderr, "Error al asignar memoria para territorios.\n");
-        exit(EXIT_FAILURE);
-    }
-}
-
 void allocatePlayers(GAMEINFO *gameInfo) {
-    gameInfo->players = malloc(sizeof(PLAYER) * MAX_PLAYERS);
+    gameInfo->players = malloc(sizeof(PLAYER) * gameInfo->numPlayers);
     if (!gameInfo->players) {
         fprintf(stderr, "Error al asignar memoria para jugadores.\n");
-        free(gameInfo->mapInfo.territories);
         exit(EXIT_FAILURE);
     }
 }
 
-PLAYER initializePlayer(int id) {
-    PLAYER player;  // Se crea un objeto PLAYER local
-    player.id = id;
-    player.territories = NULL;        // Inicializa puntero de territorios a NULL
-    player.numTerritories = 0;       // Inicializa número de territorios
-    player.troops = 0;               // Inicializa las tropas
-    player.numCards = 0;             // Inicializa el número de cartas
-    player.cards = NULL;             // Inicializa puntero de cartas a NULL
-    player.playerColor = getRandomColour();  // Asigna un color aleatorio
-    return player;  // Retorna el objeto inicializado
+PLAYER initializePlayer() {
+    PLAYER player = NULL;
+
+    player.id = 1;
+    player.name = "Player1";
+    player.playerColor = getRandomColour();
+
+    player.numTerritories = 0;
+    player.troops = 0;
+   
+    return player;
 }
 
 
-void initializePlayers(GAMEINFO *gameInfo) {
-    int i = 0;
-    if (!gameInfo->players) {
-        fprintf(stderr, "Error al asignar memoria para los jugadores.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    for (i = 0; gameInfo->numPlayers > i; i++) {
-        gameInfo->players[i] = initializePlayer(i + 1);  // Asigna un nuevo PLAYER inicializado
-    }
-}
-
-void initializeTerritories(GAMEINFO *gameInfo) {
-    char *territoryNames[TERRITORY_COUNT] = {"Territorio 1", "Territorio 2", "Territorio 3",
-                                             "Territorio 4", "Territorio 5", "Territorio 6"};
-
-    for (int i = 0; TERRITORY_COUNT > i; i++) {
-        gameInfo->mapInfo.territories[i].name = (char *)territoryNames[i];  // Asignación directa desde el array predefinido
-        gameInfo->mapInfo.territories[i].owner = i % MAX_PLAYERS;  // Asignación de dueño al territorio
-        gameInfo->mapInfo.territories[i].troops = rand() % 10 + 1;  // Tropas aleatorias entre 1 y 10
-    }
-}
 
 
 void handleTurn(GAMEINFO *gameInfo)
@@ -110,11 +78,54 @@ void handleTurn(GAMEINFO *gameInfo)
 
 
 void freeTerritories(GAMEINFO *gameInfo) {
-    free(gameInfo->mapInfo.territories);
-    gameInfo->mapInfo.territories = NULL;
+
 }
 
 void freePlayers(GAMEINFO *gameInfo) {
-    free(gameInfo->players);
-    gameInfo->players = NULL;
+
+}
+
+int getTerritoryOwner() {
+
+}
+
+bool isAdjacent(){
+    
+}
+
+int calculateReinforcements() {
+
+}
+
+void placeReinforcements() {
+
+}
+
+bool canAttack() {
+
+}
+
+int rollDice() {
+
+}
+
+void resolveComabt() {
+
+}
+
+void conquerTerritory() {
+
+
+}
+
+bool canFortify() {
+
+}
+
+void moveTroops() {
+
+}
+
+bool checkVictoryCondition() {
+
 }
