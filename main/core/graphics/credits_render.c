@@ -8,11 +8,10 @@
 #include <credits_render.h>
 
 int credits_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_cred) {
-    // Variable estática para controlar la inicialización
-    int buttonCount = 1;
+    const int buttonCount = 1;
 
     if (rend_cred == 0) {
-        rend_cred = setupCreditsButtons(buttons, loadedAssets);
+        rend_cred = setupCreditsButtons(buttons, buttonCount, loadedAssets);
         if (rend_cred == -1) return -1;
     }
 

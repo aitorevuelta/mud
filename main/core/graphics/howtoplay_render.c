@@ -12,7 +12,7 @@ int howtoplay_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAss
     const int buttonCount = 1;
 
     if (rend_h2p== 0) {
-        rend_h2p = setupH2PButtons(buttons, loadedAssets);
+        rend_h2p = setupH2PButtons(buttons, buttonCount, loadedAssets);
         if (rend_h2p == -1) return -1;
     }
 

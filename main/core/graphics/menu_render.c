@@ -13,7 +13,7 @@ int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, 
     const int buttonCount = 5;
 
     if (rend_menu == 0) {
-        rend_menu = setupMenuButtons(buttons, loadedAssets);
+        rend_menu = setupMenuButtons(buttons,buttonCount, loadedAssets);
         if (rend_menu == -1) return -1;
     }
 

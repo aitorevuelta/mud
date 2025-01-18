@@ -24,8 +24,7 @@ int allocateButtons(BUTTON **buttons, int buttonCount) {
 
 // MENU
 
-int setupMenuButtons(BUTTON **buttons, ASSETS *loadedAssets) {
-    const int buttonCount = 6;  // Number of buttons to initialize
+int setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
@@ -82,8 +81,8 @@ void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages) {
 
 // LOBBY
 
-int setupLobbyButtons(BUTTON **buttons, ASSETS *loadedAssets) {
-    const int buttonCount = 6;  // Number of buttons to initialize
+int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
+
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
@@ -147,8 +146,7 @@ void initializeButtonsLobby(BUTTON *buttons, IMAGES *loadedImages) {
 
 // HOWTOPLAY
 
-int setupH2PButtons(BUTTON **buttons, ASSETS *loadedAssets) {
-    const int buttonCount = 6;  // Number of buttons to initialize
+int setupH2PButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
@@ -173,8 +171,7 @@ void initializeButtonsH2P(BUTTON *buttons, IMAGES *loadedImages) {
 
 // SETTINGS
 
-int setupSettingsButtons(BUTTON **buttons, ASSETS *loadedAssets) {
-    const int buttonCount = 6;  // Number of buttons to initialize
+int setupSettingsButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
@@ -240,8 +237,7 @@ void initializeButtonsSettings(BUTTON *buttons, IMAGES *loadedImages) {
 
 // CREDITS
 
-int setupCreditsButtons(BUTTON **buttons, ASSETS *loadedAssets) {
-    const int buttonCount = 1;  // Number of buttons to initialize
+int setupCreditsButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {

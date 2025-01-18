@@ -12,7 +12,7 @@ int lobby_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets,
     const int buttonCount = 6;
 
     if (rend_lbby == 0) {
-        rend_lbby = setupLobbyButtons(buttons, loadedAssets);
+        rend_lbby = setupLobbyButtons(buttons, buttonCount, loadedAssets);
         if (rend_lbby == -1) return -1;
     }
 

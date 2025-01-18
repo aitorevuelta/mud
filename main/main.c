@@ -3,8 +3,10 @@
 //UTILS
 #include <sdl_utils.h>
 #include <settings_utils.h>
-#include <assets_utils.h>
 #include <gamestate_utils.h>
+#include <assets_utils.h>
+#include <buttons_utils.h>
+
 
 #include <menu.h>
 #include <controls.h>

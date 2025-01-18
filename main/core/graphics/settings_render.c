@@ -15,7 +15,7 @@ int settings_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAsse
     const int buttonCount = 5;
 
     if (rend_sett == 0) {
-        rend_sett = setupSettingsButtons(buttons, loadedAssets);
+        rend_sett = setupSettingsButtons(buttons, buttonCount, loadedAssets);
         if (rend_sett == -1) return -1;
     }
 
