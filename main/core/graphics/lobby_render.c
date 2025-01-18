@@ -4,7 +4,6 @@
 #include <buttons_utils.h> 
 
 #include <render.h>
-#include <lobby.h>
 
 #include <lobby_render.h>
 

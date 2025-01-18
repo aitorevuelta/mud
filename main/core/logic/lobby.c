@@ -7,7 +7,6 @@
 
 #include <lobby.h>
 
-/*
 
 void handlePlayerButtons(BUTTON *buttons, int buttonCount, GAMEINFO *gameInfo, CONTROLS *controls) {
     int i = 0;
@@ -92,7 +91,4 @@ void handleGameStateButtons(BUTTON *buttons, int buttonCount, GAMESTATE *gameSta
         }
     }
 }
-
-
-*/
 

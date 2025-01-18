@@ -2,7 +2,6 @@
 
 #include <assets_utils.h>
 #include <buttons_utils.h>
-#include <menu.h>
 #include <render.h>
 
 #include <credits_render.h>
