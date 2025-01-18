@@ -4,8 +4,6 @@
 #include <gamestate_utils.h>
 #include <buttons_utils.h> 
 
-#include <menu.h>
-
 #include <render.h>
 
 #include <settings_render.h>
