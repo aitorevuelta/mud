@@ -1,5 +1,7 @@
 #include <global.h>
 
+#include <time.h>
+
 //UTILS
 #include <sdl_utils.h>
 #include <settings_utils.h>
@@ -18,12 +20,12 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState = GAME;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
-    //srand((unsigned int)time(NULL));
+    srand((unsigned int)time(NULL));
 
     gameInfo.numPlayers = 2; // Establecer un valor por defecto
     gameInfo.currentMapID = 1; // Empezar en el primer mapa

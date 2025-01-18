@@ -64,8 +64,8 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
                  renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY); // indicador de turno
             }
             
-            SDL_Color color = {255, 0, 0, 255};
-            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, color); // Fondo para cada jugador
+
+            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, players[i].playerColor); // Fondo para cada jugador
             renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY); // marco
         }
     }
