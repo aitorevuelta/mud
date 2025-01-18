@@ -6,12 +6,17 @@
 
 
 void game_init(GAMEINFO *gameInfo) {
+    if (gameInfo == NULL) {
+        fprintf(stderr, "Información del juego no válida para la asignación de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
+
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
 }
 
 void allocatePlayers(GAMEINFO *gameInfo) {
-    size_t memorySize = sizeof(PLAYER) *gameInfo->numMaps;
+    size_t memorySize = sizeof(PLAYER) *gameInfo->numPlayers;
     gameInfo->players = (PLAYER *) malloc(memorySize);
 
     if (!gameInfo->players) {
@@ -36,7 +41,12 @@ PLAYER initializePlayer(int id) {
 void initializePlayers(GAMEINFO *gameInfo) {
     int i = 0;
 
-    for(i=0; gameInfo->numPlayers > i; i++) {
+    if (gameInfo == NULL || gameInfo->players == NULL) {
+    fprintf(stderr, "Información del juego o punteros no válidos.\n");
+        return;
+    }
+
+    for(i = 0; gameInfo->numPlayers > i; i++) {
         gameInfo->players[i] = initializePlayer(i);
     }
 }

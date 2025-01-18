@@ -18,7 +18,7 @@ int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, 
     }
 
     // Renderizar fondo y logo del menú
-    renderMenuBackground(renderer, loadedAssets->images);
+    renderMenuBackground(renderer, loadedAssets);
 
     // Renderizar los botones
     renderMenuButtons(renderer, *buttons, buttonCount);
