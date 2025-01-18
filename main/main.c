@@ -42,9 +42,8 @@ int main(int argc, char *argv[])
     
     do {
         is_running = process_events(sdl.window, &controls, &config);
-        gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
+        gameState = update(&sdl, gameState, &loadedAssets, &gameInfo, buttons, &controls, &config);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
-        checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
     } while(is_running);
 
 

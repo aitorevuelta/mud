@@ -8,14 +8,17 @@
 #include <game.h>
 #include <lobby.h>
 #include <assets_utils.h>
+#include <gamestate_utils.h>
 #include <camera.h>
 
 #include <update.h>
 
 
-GAMESTATE update(SDL *sdl, GAMESTATE gameState, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
+GAMESTATE update(SDL *sdl, GAMESTATE gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
+
+    checkGameStateChange(sdl->renderer, &loadedAssets, &gameState);
 
     switch (gameState) {
         case LOADSCREEN:
