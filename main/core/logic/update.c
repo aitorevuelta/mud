@@ -18,8 +18,6 @@ GAMESTATE update(SDL *sdl, GAMESTATE gameState, ASSETS *loadedAssets, GAMEINFO *
 
     Uint32 frameStart = SDL_GetTicks();
 
-    checkGameStateChange(sdl->renderer, &loadedAssets, &gameState);
-
     switch (gameState) {
         case LOADSCREEN:
             gameState = loadscreen();
@@ -45,7 +43,7 @@ GAMESTATE update(SDL *sdl, GAMESTATE gameState, ASSETS *loadedAssets, GAMEINFO *
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
             break;
     }
-
+    checkGameStateChange(sdl->renderer, loadedAssets, &gameState);
     adjustFrameRate(frameStart, config->max_FPS);
     return gameState;
 }
