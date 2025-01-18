@@ -1,4 +1,5 @@
 #include <global.h>
+
 #include <assets_utils.h>
 #include <loadscreen_render.h>
 #include <menu_render.h>
@@ -19,30 +20,30 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
 
     switch (gameState) {
         case LOADSCREEN:
-            renderLoadscreen(renderer, loadedAssets);
+            loadscreen_render(renderer, loadedAssets);
             break;
         case MAIN_MENU:
-            rend_menu = renderMenu(renderer, buttons, loadedAssets, rend_menu);
+            rend_menu = menu_render(renderer, buttons, loadedAssets, rend_menu);
             rend_general = 0;
             break;
         case LOBBY:
-            rend_general = renderLobby(renderer, buttons, loadedAssets, &gameInfo, rend_general);
+            rend_general = lobby_render(renderer, buttons, loadedAssets, &gameInfo, rend_general);
             rend_menu = 0;
             break;
         case GAME:
-            rend_general = renderGame(renderer, loadedAssets, gameInfo, config, rend_general);
+            rend_general = game_render(renderer, loadedAssets, gameInfo, config, rend_general);
             rend_menu = 0;
             break;
         case SETTINGS:
-            rend_general = renderSettings(renderer, buttons, loadedAssets, &config, rend_general);
+            rend_general = settings_render(renderer, buttons, loadedAssets, &config, rend_general);
             rend_menu = 0;
             break;
         case CREDITS:
-            rend_general = renderCredits(renderer, buttons, loadedAssets, rend_general);
+            rend_general = credits_render(renderer, buttons, loadedAssets, rend_general);
             rend_menu = 0;
             break;
         case HOWTOPLAY:
-            rend_general = renderHowtoplay(renderer, buttons, loadedAssets, rend_general);
+            rend_general = howtoplay_render(renderer, buttons, loadedAssets, rend_general);
             rend_menu = 0;
             break;
     }

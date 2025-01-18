@@ -1,74 +1,46 @@
 #include <global.h>
+
 #include <assets_utils.h>
+#include <buttons_utils.h>
+
 #include <menu.h>
-#include <menu_render.h>
 #include <render.h>
 
+#include <menu_render.h>
 
-int renderMenu(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_menu) {
-    // Variable estática para controlar la inicialización
+
+int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_menu) {
     const int buttonCount = 5;
-    if(rend_menu == 0){
-    // Solo inicializa los botones una vez
-    
-        *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
-        if (*buttons == NULL) {
-            fprintf(stderr, "Error al asignar memoria para los botones\n");
-            return -1;
-        }
 
-        // Inicializa los botones
-       initializeButtonsMenu(*buttons, loadedAssets->images);
-
-       rend_menu = 1;
+    if (rend_menu == 0) {
+        rend_menu = setupMenuButtons(buttons, loadedAssets);
+        if (rend_menu == -1) return -1;
     }
-    // Renderiza los botones
-   renderTextureRelative(renderer, loadedAssets->images[5].texture, 100, 50, 50);
-   renderTextureRelative(renderer, loadedAssets->images[6].texture, 60, 50, 20);
-   renderButtons(renderer, *buttons, buttonCount);
 
-   return rend_menu;
+    // Renderizar fondo y logo del menú
+    renderMenuBackground(renderer, loadedAssets->images);
+
+    // Renderizar los botones
+    renderMenuButtons(renderer, *buttons, buttonCount);
+
+    return rend_menu;
 }
 
-void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages) {
-    buttons[0] = (BUTTON){ //BOTON JUGAR
-        .texture = loadedImages[0].texture, 
-        .action = ACTION_PLAY, 
-        .visible = 1, 
-        .widthPercent = 20.0, 
-        .xPercent = 50.0, 
-        .yPercent = 50.0 
-    };
-    buttons[1] = (BUTTON){ //BOTON HOW TO PLAY
-        .texture = loadedImages[1].texture, 
-        .action = ACTION_HOWTOPLAY, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 25.0, 
-        .yPercent = 80.0 
-    };
-    buttons[2] = (BUTTON){ //BOTON CREDITOS
-        .texture = loadedImages[2].texture, 
-        .action = ACTION_CREDITS, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 50.0, 
-        .yPercent = 80.0 
-    };
-    buttons[3] = (BUTTON){ //BOTON SETTINGS
-        .texture = loadedImages[3].texture, 
-        .action = ACTION_SETTINGS, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 75.0, 
-        .yPercent = 80.0 
-    };
-    buttons[4] = (BUTTON){ //BOTON SALIR
-        .texture = loadedImages[4].texture, 
-        .action = ACTION_EXIT, 
-        .visible = 1, 
-        .widthPercent = 4.0, 
-        .xPercent = 3.0, 
-        .yPercent = 5.0 
-    };
+
+void renderMenuBackground(SDL_Renderer *renderer, ASSETS *loadedAssets) {
+    renderTextureRelative(renderer, loadedAssets->images[5].texture, 100, 50, 50);  // Fondo del menú
+    renderTextureRelative(renderer, loadedAssets->images[6].texture, 60, 50, 20);   // Logo del menú
 }
+
+
+void renderMenuButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
+    if (buttons != NULL) {
+        renderButtons(renderer, buttons, buttonCount);  // Renderiza los botones
+    } else {
+        fprintf(stderr, "Botones no están inicializados correctamente.\n");
+    }
+}
+
+
+
+

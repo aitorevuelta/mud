@@ -1,27 +1,24 @@
 #include <global.h>
 
 #include <assets_utils.h>
+#include <gamestate_utils.h>
+#include <buttons_utils.h> 
+
 #include <menu.h>
-#include <settings_render.h>
 
 #include <render.h>
 
-int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config, int rend_sett) {
-    // Variable estática para controlar la inicialización
-    int buttonCount = 6;
+#include <settings_render.h>
 
-    // Solo inicializa los botones una vez
+
+int settings_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config, int rend_sett) {
+    const int buttonCount = 5;
+
     if (rend_sett == 0) {
-        *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
-        if (*buttons == NULL) {
-            fprintf(stderr, "Error al asignar memoria para los botones\n");
-            return -1;
-        }
-
-        // Inicializa los botones
-       initializeButtonsSettings(*buttons, loadedAssets->images);
-       rend_sett =  1;
+        rend_sett = setupSettingsButtons(buttons, loadedAssets);
+        if (rend_sett == -1) return -1;
     }
+
     renderTextureRelative(renderer, loadedAssets->images[0].texture, 150, 50, 50);
     renderTextureRelative(renderer, loadedAssets->images[16].texture, 35, 50, 10);
 
@@ -33,57 +30,8 @@ int renderSettings(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAsset
    return rend_sett;
 }
 
-void initializeButtonsSettings(BUTTON *buttons, IMAGES *loadedImages) {
-    buttons[0] = (BUTTON){ // BOTON VOLVER
-        .texture = loadedImages[10].texture, 
-        .action = ACTION_EXIT,  // Acción para salir de la configuración
-        .visible = 1,
-        .widthPercent = 3.0,
-        .xPercent = 6.0,
-        .yPercent = 6.0
-    };  
-    buttons[1] = (BUTTON){ // BOTON PASAR RESOLUCION IZQUIERDA 
-        .texture = loadedImages[8].texture,
-        .action = ACTION_NONE,
-        .visible = 1,
-        .widthPercent = 3.5,
-        .xPercent = 25.0,
-        .yPercent = 35.0
-    };
-    buttons[2] = (BUTTON){ // BOTON PASAR RESOLUCION DERECHA
-        .texture = loadedImages[9].texture,
-        .action = ACTION_NONE,
-        .visible = 1,
-        .widthPercent = 3.5,
-        .xPercent = 45.0,
-        .yPercent = 35.0
-    };
-        buttons[3] = (BUTTON){ //BOTON APLICAR
-        .texture = loadedImages[11].texture, 
-        .action = ACTION_NONE, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 50.0, 
-        .yPercent = 80.0 
-    };
-        buttons[4] = (BUTTON){  //BOTON SUBIR VOLUMEN
-        .texture = loadedImages[12].texture,
-        .action = ACTION_NONE,
-        .visible = 1,
-        .widthPercent = 3.5,
-        .xPercent = 15.7,
-        .yPercent = 50.0
-        };
-        buttons[5] = (BUTTON){  //BOTON BAJAR VOLUMEN
-        .texture = loadedImages[13].texture,
-        .action = ACTION_NONE,
-        .visible = 1,
-        .widthPercent = 3.5,
-        .xPercent = 38.5,
-        .yPercent = 50.0
-        };
 
-}
+
 
 void renderSelectedResolution(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedResolution) {
     renderTextureRelative(renderer, loadedImages[14].texture, 50, 23, 35);

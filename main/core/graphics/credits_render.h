@@ -2,7 +2,6 @@
 #define CREDITS_RENDER_H
 
 
-int renderCredits(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_cred);
-void initializeButtonsCredits(BUTTON *buttons, IMAGES *loadedImages);
+int credits_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_cred);
 
 #endif 

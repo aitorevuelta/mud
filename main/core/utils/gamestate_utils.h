@@ -3,4 +3,7 @@
 
 void checkGameStateChange(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE* gameState);
 
+
+
+
 #endif //GAMESTATE_UTILS_H

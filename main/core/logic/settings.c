@@ -8,6 +8,11 @@
 #include <settings.h>
 
 
+
+
+
+
+
 void handleResolutionButtons(SDL_Window *window, BUTTON *buttons, int buttonCount, CONTROLS *controls, GAMESTATE *gameState, CONFIG *config) {
     if (window == NULL || buttons == NULL || controls == NULL || config == NULL) {
         fprintf(stderr, "Error: Parámetros nulos en handleResolutionButtons.\n");

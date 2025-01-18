@@ -12,3 +12,4 @@ void checkGameStateChange(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTAT
         lastGameState = *gameState;
     }
 }
+

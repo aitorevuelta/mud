@@ -4,6 +4,8 @@
 
 #include <menu.h>
 
+
+
 void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
     if (*newState == EXIT) {
         switch (currentState) {
@@ -19,6 +21,8 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
         }   
     }
 }
+
+
 void handleMenuEvents(BUTTON *buttons, int buttonCount, GAMESTATE *gameState, CONTROLS *controls) {
      // Check for click
     if (controls->click == 1) {
@@ -42,3 +46,4 @@ void handleMenuEvents(BUTTON *buttons, int buttonCount, GAMESTATE *gameState, CO
         }
     }
 }
+

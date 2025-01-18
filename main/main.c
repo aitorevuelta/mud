@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
 
-    srand((unsigned int)time(NULL));
+    //srand((unsigned int)time(NULL));
 
     gameInfo.numPlayers = 2; // Establecer un valor por defecto
     gameInfo.currentMapID = 1; // Empezar en el primer mapa
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
     do {
         is_running = process_events(sdl.window, &controls, &config);
         gameState = update(&sdl, gameState, &gameInfo, buttons, &controls, &config);
-        checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
         render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
+        checkGameStateChange(sdl.renderer, &loadedAssets, &gameState);
     } while(is_running);
 
 
