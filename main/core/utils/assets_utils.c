@@ -150,9 +150,9 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
     }
 }
 
-void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState) {
-    LoadImages( renderer, &(loadedAssets->images), gameState);
-    LoadFonts(renderer, &(loadedAssets->fonts), gameState);
+void LoadAssets(GAMECONTEXT *gameContext) {
+    LoadImages(gameContext->sdl.renderer, gameContext->loadedAssets.images, gameContext->gameState);
+    LoadFonts(gameContext->sdl.renderer, gameContext->loadedAssets.fonts, gameContext->gameState);
 }
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {

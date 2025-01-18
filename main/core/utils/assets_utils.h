@@ -12,7 +12,7 @@ void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameSta
 TTF_Font* CreateFont(const char* filePath, int fontSize);
 void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState);
 
-void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState);
+void LoadAssets(GAMECONTEXT *gameContext);
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y);
 SDL_Color getRandomColour();

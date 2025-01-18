@@ -12,44 +12,61 @@
 #include <render.h>
 
 
-void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON** buttons, CONFIG config) {
+void render(GAMECONTEXT* gameContext) {
+    // Inicio del frame
     Uint32 frameStart = SDL_GetTicks();
-    SDL_RenderClear(renderer);
+    SDL_RenderClear(gameContext->sdl.renderer);
 
+    // Variables persistentes para renderizado
     static int rend_general = 0, rend_menu = 0;
 
-    switch (gameState) {
+    // Selección de renderizado según el estado del juego
+    switch (gameContext->gameInfo.state) {
         case LOADSCREEN:
-            loadscreen_render(renderer, loadedAssets);
+            loadscreen_render(gameContext->sdl.renderer, &gameContext->loadedAssets);
             break;
+
         case MAIN_MENU:
-            rend_menu = menu_render(renderer, buttons, loadedAssets, rend_menu);
-            rend_general = 0;
+            rend_menu = menu_render(gameContext->sdl.renderer, gameContext->buttons, 
+                                    &gameContext->loadedAssets, rend_menu);
+            rend_general = 0; // Reinicia otros estados
             break;
+
         case LOBBY:
-            rend_general = lobby_render(renderer, buttons, loadedAssets, &gameInfo, rend_general);
+            rend_general = lobby_render(gameContext->sdl.renderer, gameContext->buttons, 
+                                        &gameContext->loadedAssets, &gameContext->gameInfo, rend_general);
             rend_menu = 0;
             break;
+
         case GAME:
-            rend_general = game_render(renderer, loadedAssets, gameInfo, config, rend_general);
+            rend_general = game_render(gameContext->sdl.renderer, &gameContext->loadedAssets, 
+                                       gameContext->gameInfo, gameContext->config, rend_general);
             rend_menu = 0;
             break;
+
         case SETTINGS:
-            rend_general = settings_render(renderer, buttons, loadedAssets, &config, rend_general);
+            rend_general = settings_render(gameContext->sdl.renderer, gameContext->buttons, 
+                                           &gameContext->loadedAssets, &gameContext->config, rend_general);
             rend_menu = 0;
             break;
+
         case CREDITS:
-            rend_general = credits_render(renderer, buttons, loadedAssets, rend_general);
+            rend_general = credits_render(gameContext->sdl.renderer, gameContext->buttons, 
+                                          &gameContext->loadedAssets, rend_general);
             rend_menu = 0;
             break;
+
         case HOWTOPLAY:
-            rend_general = howtoplay_render(renderer, buttons, loadedAssets, rend_general);
+            rend_general = howtoplay_render(gameContext->sdl.renderer, gameContext->buttons, 
+                                            &gameContext->loadedAssets, rend_general);
             rend_menu = 0;
             break;
     }
 
-    SDL_RenderPresent(renderer);
+    // Final del frame
+    SDL_RenderPresent(gameContext->sdl.renderer);
 }
+
 
 void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float widthPercent, float xPercent, float yPercent) {
     

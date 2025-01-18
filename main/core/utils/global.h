@@ -142,6 +142,17 @@ typedef struct GAMEINFO_S {
     bool gameOver;              // Indicador de fin de juego
 } GAMEINFO;
 
+
+typedef struct GAMECONTEXT_S {
+    SDL sdl;
+    CONTROLS controls;
+    CONFIG config;
+    GAMESTATE gameState;
+    ASSETS loadedAssets;
+    BUTTON* buttons;
+    GAMEINFO gameInfo;
+}GAMECONTEXT;
+
 typedef enum {
     ACTION_HOWTOPLAY=2,
     ACTION_SETTINGS,
