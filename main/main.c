@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
     ASSETS loadedAssets = {NULL, NULL, NULL};
     BUTTON* buttons = NULL;
     GAMEINFO gameInfo;
-    //GAMECONTEXT gameContext;
 
     srand((unsigned int)time(NULL));
 
