@@ -95,51 +95,34 @@ KEYS get_key_code(SDL_Keycode key) {
     return key_code;
 }
 
-bool process_events(GAMECONTEXT* gameContext) {
+bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config) {
     SDL_Event event;
     bool run = true;
+    controls->scroll = 0;
 
-    // Reinicia valores de control que deben ser temporales
-    gameContext->controls.scroll = 0;
-
-    // Procesar todos los eventos en la cola
     while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-            case SDL_KEYDOWN:
-            case SDL_KEYUP:
-                handle_keyboard_event(&event, &gameContext->controls);
-                break;
-
-            case SDL_MOUSEMOTION:
-                handle_mouse_motion(event, &gameContext->controls);
-                break;
-
-            case SDL_MOUSEBUTTONDOWN:
-            case SDL_MOUSEBUTTONUP:
-                handle_mouse_button_event(&event, &gameContext->controls);
-                break;
-
-            case SDL_MOUSEWHEEL:
-                handle_mouse_wheel_event(&event, &gameContext->controls);
-                break;
-
-            case SDL_WINDOWEVENT:
-                handle_window_event(event, gameContext);
-                break;
-
-            case SDL_QUIT:
-                run = false;
-                break;
-
-            default:
-                // Manejo de eventos adicionales (opcional)
-                break;
+        if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
+            controls->key = get_key_code(event.key.keysym.sym);
+        } else if (event.type == SDL_MOUSEMOTION) {
+            handle_mouse_motion(event, controls);
+        } else if (event.type == SDL_MOUSEBUTTONDOWN) {
+            if (event.button.button == SDL_BUTTON_LEFT) {
+                controls->click = true;
+            }
+        } else if (event.type == SDL_MOUSEBUTTONUP) {
+            if (event.button.button == SDL_BUTTON_LEFT) {
+                controls->click = false;
+            }
+        } else if (event.type == SDL_MOUSEWHEEL) {
+            controls->scroll = event.wheel.y;
+        } else if (event.type == SDL_WINDOWEVENT) {
+            handle_window_event(event, window, config);
+        } else if (event.type == SDL_QUIT) {
+            run = false;
         }
     }
-
     return run;
 }
-
 
 void handle_mouse_motion(SDL_Event event, CONTROLS *controls) {
     controls->coords[0] = event.motion.x;

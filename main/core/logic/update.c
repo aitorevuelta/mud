@@ -1,5 +1,6 @@
 #include <global.h>
 
+#include <gamecontext.h>
 #include <sdl_utils.h>
 #include <controls.h>
 #include <menu.h>
@@ -14,61 +15,39 @@
 #include <update.h>
 
 
-GAMESTATE update(GAMECONTEXT *gameContext) {
+GAMESTATE update(SDL *sdl, GAMESTATE gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON *buttons, CONTROLS *controls, CONFIG* config) {
+
     Uint32 frameStart = SDL_GetTicks();
 
-    // Determinar el estado actual del juego
-    switch (gameContext->gameInfo.state) {
+    switch (gameState) {
         case LOADSCREEN:
-            gameContext->gameInfo.state = loadscreen();
+            gameState = loadscreen();
             break;
-
         case MAIN_MENU:
-        case HOWTOPLAY:
+            handleMenuEvents(buttons, 5, &gameState, controls);
+            break;
+       case HOWTOPLAY:
+            handleMenuEvents(buttons, 1, &gameState, controls);
+            break;
+       case SETTINGS:
+            handleResolutionButtons(sdl->window, buttons, 5, controls, &gameState, config);
+            break;
         case CREDITS:
-            handleMenuEvents(gameContext->buttons, 
-                             getButtonCountForState(gameContext->gameInfo.state), 
-                             &gameContext->gameInfo.state, 
-                             &gameContext->controls);
+            handleMenuEvents(buttons, 1, &gameState, controls);
             break;
-
-        case SETTINGS:
-            handleResolutionButtons(gameContext->sdl.window, 
-                                    gameContext->buttons, 
-                                    5, 
-                                    &gameContext->controls, 
-                                    &gameContext->gameInfo.state, 
-                                    &gameContext->config);
-            break;
-
         case LOBBY:
-            handleGameStateButtons(gameContext->buttons, 6, 
-                                   &gameContext->gameInfo.state, 
-                                   &gameContext->controls);
-            handlePlayerButtons(gameContext->buttons, 4, 
-                                &gameContext->gameInfo, 
-                                &gameContext->controls);
+            handleGameStateButtons(buttons,  6, &gameState, controls);
+            handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
-
         case GAME:
-            // Inicializar el estado del juego si es necesario
-            game_init(&gameContext->gameInfo);
-            updateCamera(&gameContext->gameInfo.camera, 
-                         &gameContext->controls, 
-                         gameContext->config.window_size.width, 
-                         gameContext->config.window_size.height);
+            game_init(gameInfo);
+            updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
             break;
     }
-
-    // Verificar cambios en el estado del juego
-    checkGameStateChange(gameContext->sdl.renderer, 
-                         &gameContext->loadedAssets, 
-                         &gameContext->gameInfo.state);
-
-    // Ajustar la velocidad de fotogramas
-    adjustFrameRate(frameStart, gameContext->config.max_FPS);
-
-    return gameContext->gameInfo.state;
+    
+    checkGameStateChange(sdl->renderer, loadedAssets, &gameState);
+    adjustFrameRate(frameStart, config->max_FPS);
+    return gameState;
 }
 
 

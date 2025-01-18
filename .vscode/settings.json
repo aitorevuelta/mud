@@ -43,7 +43,10 @@
         "game.h": "c",
         "gamestate_utils.h": "c",
         "lobby.h": "c",
-        "howtoplay_render.h": "c"
+        "howtoplay_render.h": "c",
+        "control.h": "c",
+        "gamecontext.h": "c",
+        "buttons_utils.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }
