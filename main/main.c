@@ -17,7 +17,9 @@
 
 int main(int argc, char *argv[])
 {
-    GAMECONTEXT gameContext = {0};
+    GAMECONTEXT gameContext;
+    
+    gameContext.config = readConfig();
 
     srand((unsigned int)time(NULL));
 
@@ -43,8 +45,8 @@ int main(int argc, char *argv[])
     }while(is_running);
 
 
-    saveConfig(config);
-    cleanUp_sdl(&sdl);
+    saveConfig(gameContext.config);
+    cleanUp_sdl(gameContext.sdl);
 
     return 0;
 }
