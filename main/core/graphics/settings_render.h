@@ -2,10 +2,9 @@
 #define SETTINGS_RENDER_H
 
 
-int settings_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config);
-void initializeButtonsSettings(BUTTON *buttons, IMAGES *loadedImages);
+void settings_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, CONFIG config);
 
-void renderSelectedResolution(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedResolution);
-void renderSelectedVolume(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedVolume);
+void renderSelectedResolution(SDL_Renderer *renderer, IMAGES loadedImages[], int selectedResolution);
+void renderSelectedVolume(SDL_Renderer *renderer, IMAGES loadedImages[], int selectedVolume);
 
 #endif 

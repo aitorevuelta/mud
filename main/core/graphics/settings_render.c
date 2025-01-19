@@ -9,30 +9,28 @@
 #include <settings_render.h>
 
 
-int settings_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config) {
+void settings_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, CONFIG config) {
     const int buttonCount = 5;
 
-    renderTextureRelative(renderer, loadedAssets->images[0].texture, 150, 50, 50);
-    renderTextureRelative(renderer, loadedAssets->images[16].texture, 35, 50, 10);
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50);
+    renderTextureRelative(renderer, loadedAssets.images[16].texture, 35, 50, 10);
 
-    renderSelectedResolution(renderer, loadedAssets->images, config->current_res); 
-    renderSelectedVolume(renderer, loadedAssets->images, config->selectedVolume);
+    renderSelectedResolution(renderer, loadedAssets.images, config.current_res); 
+    renderSelectedVolume(renderer, loadedAssets.images, config.selectedVolume);
     
-    renderButtons(renderer, *buttons, buttonCount);
-   
-   return rend_sett;
+    renderButtons(renderer, buttons, buttonCount);
 }
 
 
 
 
-void renderSelectedResolution(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedResolution) {
+void renderSelectedResolution(SDL_Renderer *renderer, IMAGES loadedImages[], int selectedResolution) {
     renderTextureRelative(renderer, loadedImages[14].texture, 50, 23, 35);
     renderTextureRelative(renderer, loadedImages[17].texture, 15, 8.5, 35);
     renderTextureRelative(renderer, loadedImages[selectedResolution].texture, 16.5, 35, 35); //Resolucion
 }
 
-void renderSelectedVolume(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedVolume) {
+void renderSelectedVolume(SDL_Renderer *renderer, IMAGES loadedImages[], int selectedVolume) {
     renderTextureRelative(renderer, loadedImages[14].texture, 50, 18, 50);
     renderTextureRelative(renderer, loadedImages[18].texture, 4, 6, 50);
     renderTextureRelative(renderer, loadedImages[19].texture, 16.5, 27.5, 50);

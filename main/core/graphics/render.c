@@ -13,7 +13,7 @@
 #include <render.h>
 
 
-void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON** buttons, CONFIG config) {
+void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON buttons[], CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
 
