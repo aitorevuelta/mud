@@ -163,7 +163,7 @@ bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
            mouseY >= rect->y && mouseY <= (rect->y + rect->h);
 }
 
-void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
+void renderButtons(SDL_Renderer *renderer, BUTTON buttons[], int buttonCount) {
     int windowWidth, windowHeight, mouseX, mouseY;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
     SDL_GetMouseState(&mouseX, &mouseY);

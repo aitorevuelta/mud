@@ -7,6 +7,6 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent);
 void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, SDL_Color shapeColor, int borderWidth, SDL_Color borderColor);
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY);
-void renderButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount);
+void renderButtons(SDL_Renderer *renderer, BUTTON buttons[], int buttonCount);
 
 #endif

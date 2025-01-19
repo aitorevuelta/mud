@@ -4,7 +4,7 @@
 
 int allocateButtons(BUTTON **buttons, int buttonCount);
 
-int setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets);
+void setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets);
 void initializeButtonsMenu(BUTTON buttons[], IMAGES *loadedImages);
 
 int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets);

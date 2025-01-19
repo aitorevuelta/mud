@@ -19,7 +19,7 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON buttons[], ASSETS *loadedAs
 void loadGameStateVariables(BUTTON buttons[], ASSETS* loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case MAIN_MENU:
-            setupMenuButtons(&buttons, 5, loadedAssets);
+            setupMenuButtons(&buttons, 5, *loadedAssets);
             break;
        case HOWTOPLAY:
             setupH2PButtons(&buttons, 1, loadedAssets);

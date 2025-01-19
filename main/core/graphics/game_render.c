@@ -23,7 +23,6 @@ void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
     // Calculate map position based on camera and zoom
     float mapX =((float)gameInfo.camera.pos[0] / windowWidth * 100.0f);
     float mapY =((float)gameInfo.camera.pos[1] / windowHeight * 100.0f);
-
     // mapa de mascara
 
     renderTextureRelative(renderer, 
@@ -106,5 +105,6 @@ void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameIn
 
 void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
 {
-    renderShapeRelative(renderer, elapsed, 4, 0, 0, gameInfo.players[0].playerColor, 2, (SDL_Color){0, 0, 0, 255}); 
+    renderShapeRelative(renderer, 100, 4, 0, 0, (SDL_Color) {0, 0, 0, 100}, 0, (SDL_Color){0, 0, 0, 255}); 
+    renderShapeRelative(renderer, elapsed, 4, 0, 0, gameInfo.players[0].playerColor, 0, (SDL_Color){0, 0, 0, 255}); 
 }

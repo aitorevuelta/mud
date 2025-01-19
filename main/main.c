@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     srand((unsigned int)time(NULL));
     
-    gameInfo.numPlayers = 2; // Establecer un valor por defecto
+    gameInfo.numPlayers = 4; // Establecer un valor por defecto
     gameInfo.currentMapID = 1; // Empezar en el primer mapa
     gameInfo.numMaps = 3; // Establecer el total de mapas disponibles
 

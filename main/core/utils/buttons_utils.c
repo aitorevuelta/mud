@@ -24,15 +24,14 @@ int allocateButtons(BUTTON **buttons, int buttonCount) {
 
 // MENU
 
-int setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
+void setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
         return -1;  // Indicate failure in initialization
     }
 
-    initializeButtonsMenu(*buttons, loadedAssets->images);  // Specific lobby initialization
-    return 1;  // Indicate that the initialization was successful
+    initializeButtonsMenu(*buttons, loadedAssets.images);  // Specific lobby initialization
 }
 
 void initializeButtonsMenu(BUTTON buttons[], IMAGES *loadedImages) {
