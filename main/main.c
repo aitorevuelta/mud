@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     ASSETS loadedAssets = {NULL, NULL, NULL};
     GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo;
+    GAMECONTEXT* gameContext = initializeGameContext();
     
     BUTTON* buttons = NULL;
 
