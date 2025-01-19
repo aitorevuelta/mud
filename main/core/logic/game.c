@@ -6,24 +6,6 @@
 
 
 
-void initGameInfo(GAMEINFO *gameInfo, CONFIG* config) {
-        
-    if (gameInfo == NULL || config == NULL) {
-        fprintf(stderr, "Error: Información del juego o configuración no válidas para inicialización.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    static bool init = false;
-
-    if (!init) {
-        gameInfo->camera.zoom = 1.0f;
-        gameInfo->camera.pos[0] = config->window_size.width/2;
-        gameInfo->camera.pos[1] = config->window_size.height/2;
-        gameInfo->turn = 0;
-        gameInfo->gameOver = 0;
-        init = true;
-    }
-}
 
 
 

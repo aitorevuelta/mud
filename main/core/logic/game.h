@@ -4,7 +4,7 @@
 #define TERRITORY_COUNT 6
 #define MAX_PLAYERS 4
 
-void initGameInfo(GAMEINFO *gameInfo, CONFIG* config);
+
 
 
 void allocatePlayers(GAMEINFO *gameInfo);

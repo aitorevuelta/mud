@@ -82,8 +82,7 @@ void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages) {
 // LOBBY
 
 int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
-
-
+    
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
         return -1;  // Indicate failure in initialization
