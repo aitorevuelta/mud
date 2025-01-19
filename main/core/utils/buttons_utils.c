@@ -35,7 +35,7 @@ int setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsMenu(BUTTON *buttons, IMAGES *loadedImages) {
+void initializeButtonsMenu(BUTTON buttons[], IMAGES *loadedImages) {
     buttons[0] = (BUTTON){ //BOTON JUGAR
         .texture = loadedImages[0].texture, 
         .action = ACTION_PLAY, 
@@ -92,7 +92,7 @@ int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsLobby(BUTTON *buttons, IMAGES *loadedImages) {
+void initializeButtonsLobby(BUTTON buttons[], IMAGES *loadedImages) {
     buttons[0] = (BUTTON){ // BOTON AÑADIR
         .texture = loadedImages[4].texture,
         .action = ACTION_NONE,
@@ -156,7 +156,7 @@ int setupH2PButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsH2P(BUTTON *buttons, IMAGES *loadedImages) {
+void initializeButtonsH2P(BUTTON buttons[], IMAGES *loadedImages) {
         buttons[0] = (BUTTON){ 
         .texture = loadedImages[1].texture, 
         .action = ACTION_EXIT, 
@@ -181,7 +181,7 @@ int setupSettingsButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsSettings(BUTTON *buttons, IMAGES *loadedImages) {
+void initializeButtonsSettings(BUTTON buttons[], IMAGES *loadedImages) {
     buttons[0] = (BUTTON){ // BOTON VOLVER
         .texture = loadedImages[10].texture, 
         .action = ACTION_EXIT,  // Acción para salir de la configuración

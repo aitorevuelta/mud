@@ -8,30 +8,30 @@
 
 static GAMESTATE lastGameState = 0; 
 
-void gameStateManager(SDL_Renderer* renderer, BUTTON** buttons, ASSETS *loadedAssets, GAMESTATE* gameState, GAMEINFO* gameInfo, CONFIG* config) {
+void gameStateManager(SDL_Renderer* renderer, BUTTON buttons[], ASSETS *loadedAssets, GAMESTATE* gameState, GAMEINFO* gameInfo, CONFIG* config) {
     if (*gameState != lastGameState) {
         LoadAssets(renderer, loadedAssets, *gameState);
-        loadGameStateVariables(buttons, *gameState, gameInfo, config);
+        loadGameStateVariables(buttons, loadedAssets, *gameState, gameInfo, config);
         lastGameState = *gameState;
     }
 }
 
-void loadGameStateVariables(BUTTON** buttons, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
+void loadGameStateVariables(BUTTON buttons[], ASSETS* loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case MAIN_MENU:
-            setupMenuButtons(buttons, gameInfo, config);
+            setupMenuButtons(&buttons, 5, loadedAssets);
             break;
        case HOWTOPLAY:
-            setupH2PButtons(buttons, gameInfo, config);
+            setupH2PButtons(&buttons, 1, loadedAssets);
             break;
        case SETTINGS:
-            setupSettingsButtons(buttons, gameInfo, config);
+            setupSettingsButtons(&buttons, 6, loadedAssets);
             break;
         case CREDITS:
-            setupCreditsButtons(buttons, gameInfo, config);
+            setupCreditsButtons(&buttons, 1, loadedAssets);
             break;
         case LOBBY:
-            setupLobbyButtons(buttons, gameInfo, config);
+            setupLobbyButtons(&buttons, 6, loadedAssets);
             break;
         case GAME:
 

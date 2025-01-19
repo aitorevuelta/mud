@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONFIG config = readConfig();
     CONTROLS controls;
-    ASSETS loadedAssets;
+    ASSETS loadedAssets = {NULL, NULL, NULL};
     GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo;
     BUTTON buttons;

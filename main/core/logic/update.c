@@ -44,7 +44,7 @@ void update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameI
             break;
     }
     
-    gameStateManager(sdl.renderer, buttons, loadedAssets, &gameState, gameInfo, config);
+    gameStateManager(sdl.renderer, buttons, loadedAssets, gameState, gameInfo, config);
     adjustFrameRate(frameStart, config->max_FPS);
 
 }
