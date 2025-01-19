@@ -6,15 +6,12 @@
 
 #include <credits_render.h>
 
-int credits_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets) {
+void credits_render(SDL_Renderer *renderer, BUTTON *buttons, ASSETS *loadedAssets) {
     const int buttonCount = 1;
-
-    // Renderiza los botones
+    
     renderTextureRelative(renderer, loadedAssets->images[0].texture, 150, 50, 50);
     renderTextureRelative(renderer, loadedAssets->images[2].texture, 35, 50, 10);
     renderTextureRelative(renderer, loadedAssets->images[3].texture, 25, 25, 58);
-    renderButtons(renderer, *buttons, buttonCount);
-   
-   return rend_cred;
+    renderButtons(renderer, buttons, buttonCount);
 }
 

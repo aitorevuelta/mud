@@ -36,20 +36,18 @@ int main(int argc, char *argv[])
     config.total_res = 7;
     config.selectedVolume = 0;
 
-
-
     bool is_running = init_sdl(&sdl, config);
-    LoadAssets(sdl.renderer, loadedAssets, gameState);
+    LoadAssets(sdl.renderer, &loadedAssets, gameState);
     
     do {
-        is_running = process_events(sdl.window, controls, config);
-        update(sdl, gameState, &loadedAssets, gameInfo, buttons, controls, config);
-        render(sdl.renderer, loadedAssets, gameState, gameInfo, buttons, config);
+        is_running = process_events(sdl.window, &controls, &config);
+        update(sdl, &gameState, &loadedAssets, &gameInfo, &buttons, &controls, &config);
+        render(sdl.renderer, &loadedAssets, gameState, gameInfo, &buttons, config);
     }while(is_running);
 
 
     saveConfig(config);
-    cleanUp_sdl(&sdl);
+    cleanUp_sdl(sdl);
 
     return 0;
 }

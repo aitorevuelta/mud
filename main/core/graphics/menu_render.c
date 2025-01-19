@@ -8,21 +8,13 @@
 #include <menu_render.h>
 
 
-int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAsset) {
-    const int buttonCount = 5;
-
-    if (rend_menu == 0) {
-        rend_menu = setupMenuButtons(buttons,buttonCount, loadedAssets);
-        if (rend_menu == -1) return -1;
-    }
-
+void menu_render(SDL_Renderer *renderer, BUTTON *buttons, ASSETS *loadedAssets) {
     // Renderizar fondo y logo del menú
     renderMenuBackground(renderer, loadedAssets);
 
     // Renderizar los botones
     renderButtons(renderer, buttons, buttonCount);  
 
-    return rend_menu;
 }
 
 
