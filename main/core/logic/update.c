@@ -15,28 +15,28 @@
 #include <update.h>
 
 
-GAMESTATE update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON* buttons, CONTROLS *controls, CONFIG* config) {
+void update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON buttons[], CONTROLS controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
 
-    switch (gameState) {
+    switch (*gameState) {
         case LOADSCREEN:
-            gameState = loadscreen();
+            *gameState = loadscreen();
             break;
         case MAIN_MENU:
-            handleMenuEvents(buttons, 5, &gameState, controls);
+            handleMenuEvents(buttons, 5, gameState, controls);
             break;
        case HOWTOPLAY:
-            handleMenuEvents(buttons, 1, &gameState, controls);
+            handleMenuEvents(buttons, 1, gameState, controls);
             break;
        case SETTINGS:
             
             break;
         case CREDITS:
-            handleMenuEvents(buttons, 1, &gameState, controls);
+            handleMenuEvents(buttons, 1, gameState, controls);
             break;
         case LOBBY:
-            handleGameStateButtons(buttons,  6, &gameState, controls);
+            handleGameStateButtons(buttons,  6, gameState, controls);
             handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
         case GAME:

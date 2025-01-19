@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     SDL sdl;
     CONFIG config = readConfig();
     CONTROLS controls;
-    ASSETS loadedAssets = {NULL, NULL, NULL};
+    ASSETS loadedAssets;
     GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo;
     BUTTON buttons;
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     config.total_res = 7;
     config.selectedVolume = 0;
 
-    bool is_running = init_sdl(&sdl, config);
+    bool is_running = init_sdl(sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
     
     do {

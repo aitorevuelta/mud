@@ -7,18 +7,19 @@
 
 #include <lobby_render.h>
 
-void lobby_render(SDL_Renderer *renderer, BUTTON *buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo) {
+void lobby_render(SDL_Renderer *renderer, BUTTON buttons, ASSETS loadedAssets, GAMEINFO gameInfo) {
+    const int buttonCount = 6;
     // Renderiza el fondo
-    renderTextureRelative(renderer, loadedAssets->images[0].texture, 100, 50, 50);
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 100, 50, 50);
 
     // Renderiza los botones
-    renderButtons(renderer, *buttons, buttonCount);
+    renderButtons(renderer, buttons, buttonCount);
     
     // Renderiza los jugadores
-    renderLobbyPlayers(renderer, loadedAssets->images, gameInfo->numPlayers);
+    renderLobbyPlayers(renderer, loadedAssets.images, gameInfo.numPlayers);
 
     // Renderiza el mapa actual
-    renderLobbySelectedMap(renderer, loadedAssets->images, gameInfo->currentMapID);
+    renderLobbySelectedMap(renderer, loadedAssets.images, gameInfo.currentMapID);
 
 }
 
