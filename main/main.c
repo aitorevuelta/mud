@@ -18,7 +18,7 @@
 
 int main(int argc, char *argv[])
 {  
-    SDL sdl;
+    SDL sdl = {NULL, NULL};
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     config.total_res = 7;
     config.selectedVolume = 0;
 
-    bool is_running = init_sdl(sdl, config);
+    bool is_running = init_sdl(&sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
     
     do {
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 
 
     saveConfig(config);
-    cleanUp_sdl(sdl);
+    cleanUp_sdl(&sdl);
 
     return 0;
 }
