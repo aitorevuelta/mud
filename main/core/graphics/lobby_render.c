@@ -7,14 +7,7 @@
 
 #include <lobby_render.h>
 
-int lobby_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo, int rend_lbby) {
-    const int buttonCount = 6;
-
-    if (rend_lbby == 0) {
-        rend_lbby = setupLobbyButtons(buttons, buttonCount, loadedAssets);
-        if (rend_lbby == -1) return -1;
-    }
-
+int lobby_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMEINFO *gameInfo) {
     // Renderiza el fondo
     renderTextureRelative(renderer, loadedAssets->images[0].texture, 100, 50, 50);
 

@@ -7,14 +7,7 @@
 #include <howtoplay_render.h>
 
 
-int howtoplay_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_h2p) {
-    const int buttonCount = 1;
-
-    if (rend_h2p== 0) {
-        rend_h2p = setupH2PButtons(buttons, buttonCount, loadedAssets);
-        if (rend_h2p == -1) return -1;
-    }
-
+int howtoplay_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets) {
     // Renderiza los botones
     renderTextureRelative(renderer, loadedAssets->images[0].texture, 100, 50, 50);
 

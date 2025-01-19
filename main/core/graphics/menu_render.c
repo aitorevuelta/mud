@@ -8,7 +8,7 @@
 #include <menu_render.h>
 
 
-int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, int rend_menu) {
+int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAsset) {
     const int buttonCount = 5;
 
     if (rend_menu == 0) {
@@ -20,7 +20,7 @@ int menu_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, 
     renderMenuBackground(renderer, loadedAssets);
 
     // Renderizar los botones
-    renderMenuButtons(renderer, *buttons, buttonCount);
+    renderButtons(renderer, buttons, buttonCount);  
 
     return rend_menu;
 }
@@ -30,16 +30,6 @@ void renderMenuBackground(SDL_Renderer *renderer, ASSETS *loadedAssets) {
     renderTextureRelative(renderer, loadedAssets->images[5].texture, 100, 50, 50);  // Fondo del menú
     renderTextureRelative(renderer, loadedAssets->images[6].texture, 60, 50, 20);   // Logo del menú
 }
-
-
-void renderMenuButtons(SDL_Renderer *renderer, BUTTON *buttons, int buttonCount) {
-    if (buttons != NULL) {
-        renderButtons(renderer, buttons, buttonCount);  // Renderiza los botones
-    } else {
-        fprintf(stderr, "Botones no están inicializados correctamente.\n");
-    }
-}
-
 
 
 

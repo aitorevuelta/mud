@@ -9,13 +9,8 @@
 #include <settings_render.h>
 
 
-int settings_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config, int rend_sett) {
+int settings_render(SDL_Renderer *renderer, BUTTON **buttons, ASSETS *loadedAssets, CONFIG *config) {
     const int buttonCount = 5;
-
-    if (rend_sett == 0) {
-        rend_sett = setupSettingsButtons(buttons, buttonCount, loadedAssets);
-        if (rend_sett == -1) return -1;
-    }
 
     renderTextureRelative(renderer, loadedAssets->images[0].texture, 150, 50, 50);
     renderTextureRelative(renderer, loadedAssets->images[16].texture, 35, 50, 10);

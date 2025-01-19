@@ -17,35 +17,27 @@ void render(SDL_Renderer* renderer, ASSETS* loadedAssets, GAMESTATE gameState, G
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
 
-    static int rend_general = 0, rend_menu = 0;
-
     switch (gameState) {
         case LOADSCREEN:
             loadscreen_render(renderer, loadedAssets);
             break;
         case MAIN_MENU:
-            rend_menu = menu_render(renderer, buttons, loadedAssets, rend_menu);
-            rend_general = 0;
+            menu_render(renderer, buttons, loadedAssets);
             break;
         case LOBBY:
-            rend_general = lobby_render(renderer, buttons, loadedAssets, &gameInfo, rend_general);
-            rend_menu = 0;
+            lobby_render(renderer, buttons, loadedAssets, gameInfo);
             break;
         case GAME:
-            rend_general = game_render(renderer, loadedAssets, gameInfo, config, rend_general);
-            rend_menu = 0;
+            game_render(renderer, loadedAssets, gameInfo, config);
             break;
         case SETTINGS:
-            rend_general = settings_render(renderer, buttons, loadedAssets, &config, rend_general);
-            rend_menu = 0;
+            settings_render(renderer, buttons, loadedAssets, config);
             break;
         case CREDITS:
-            rend_general = credits_render(renderer, buttons, loadedAssets, rend_general);
-            rend_menu = 0;
+            credits_render(renderer, buttons, loadedAssets);
             break;
         case HOWTOPLAY:
-            rend_general = howtoplay_render(renderer, buttons, loadedAssets, rend_general);
-            rend_menu = 0;
+            howtoplay_render(renderer, buttons, loadedAssets);
             break;
     }
 
