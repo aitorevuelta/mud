@@ -46,7 +46,8 @@
         "howtoplay_render.h": "c",
         "control.h": "c",
         "gamecontext.h": "c",
-        "buttons_utils.h": "c"
+        "buttons_utils.h": "c",
+        "string.h": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }

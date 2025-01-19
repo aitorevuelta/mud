@@ -14,6 +14,7 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
 
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState);
 
+
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y);
 SDL_Color getRandomColour();
 

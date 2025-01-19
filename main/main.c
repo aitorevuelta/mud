@@ -9,26 +9,26 @@
 #include <assets_utils.h>
 #include <buttons_utils.h>
 
-#include <gamecontext.h>
-
 #include <controls.h>
-
 #include <menu.h>
 #include <render.h>
 #include <update.h>
+#include <gamecontext.h>
+
 
 int main(int argc, char *argv[])
-{
+{  
     SDL sdl;
-    CONTROLS controls;
     CONFIG config = readConfig();
-    GAMESTATE gameState = LOADSCREEN;
+    CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    BUTTON* buttons = NULL;
+    GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo;
+    
+    BUTTON* buttons = NULL;
 
-    srand((unsigned int)time(NULL));
-
+    //srand((unsigned int)time(NULL));
+    
     gameInfo.numPlayers = 2; // Establecer un valor por defecto
     gameInfo.currentMapID = 1; // Empezar en el primer mapa
     gameInfo.numMaps = 3; // Establecer el total de mapas disponibles

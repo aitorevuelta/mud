@@ -30,7 +30,7 @@ GAMESTATE update(SDL *sdl, GAMESTATE gameState, ASSETS *loadedAssets, GAMEINFO *
             handleMenuEvents(buttons, 1, &gameState, controls);
             break;
        case SETTINGS:
-            handleResolutionButtons(sdl->window, buttons, 5, controls, &gameState, config);
+            
             break;
         case CREDITS:
             handleMenuEvents(buttons, 1, &gameState, controls);
