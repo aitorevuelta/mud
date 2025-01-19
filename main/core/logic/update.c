@@ -40,6 +40,7 @@ void update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameI
             handlePlayerButtons(buttons, 4, *gameInfo, controls);
             break;
         case GAME:
+            game_init(gameInfo);
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
             break;
     }

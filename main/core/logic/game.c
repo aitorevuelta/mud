@@ -5,8 +5,18 @@
 #include <game.h>
 
 
-
-
+static int init = 0;
+void game_init(GAMEINFO *gameInfo) {
+    if (gameInfo == NULL) {
+        fprintf(stderr, "Información del juego no válida para la asignación de memoria.\n");
+        exit(EXIT_FAILURE);
+    }
+    if (!init) {
+        allocatePlayers(gameInfo);
+        initializePlayers(gameInfo);
+        init = true;
+    }
+}
 
 
 void allocatePlayers(GAMEINFO *gameInfo) {

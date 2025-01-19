@@ -93,36 +93,64 @@ void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPer
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Negro por defecto
 }
 
-void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color color, float widthPercent, float xPercent, float yPercent) {
+void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent) {
     if (!text || !font) return;
 
-    // Get window dimensions
+    // Obtener dimensiones de la ventana
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
-    // Create text surface and texture
-    SDL_Surface *surface = TTF_RenderText_Blended(font, text, color);
-    if (!surface) return;
+    // Crear superficie y textura del texto principal
+    SDL_Surface *textSurface = TTF_RenderText_Blended(font, text, textColor);
+    if (!textSurface) return;
 
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    if (!texture) return;
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    SDL_FreeSurface(textSurface);
+    if (!textTexture) return;
 
-    // Get texture dimensions
+    // Crear superficie y textura para el borde
+    SDL_Surface *borderSurface = TTF_RenderText_Blended(font, text, borderColor);
+    if (!borderSurface) {
+        SDL_DestroyTexture(textTexture);
+        return;
+    }
+
+    SDL_Texture *borderTexture = SDL_CreateTextureFromSurface(renderer, borderSurface);
+    SDL_FreeSurface(borderSurface);
+    if (!borderTexture) {
+        SDL_DestroyTexture(textTexture);
+        return;
+    }
+
+    // Obtener dimensiones de la textura
     int textureWidth, textureHeight;
-    SDL_QueryTexture(texture, NULL, NULL, &textureWidth, &textureHeight);
+    SDL_QueryTexture(textTexture, NULL, NULL, &textureWidth, &textureHeight);
     float textureRatio = (float)textureWidth / textureHeight;
 
-    // Calculate destination rect with relative positioning
+    // Calcular rectángulo de destino con posicionamiento relativo
     SDL_Rect dstRect;
     dstRect.w = (int)(windowWidth * (widthPercent / 100.0f));
     dstRect.h = (int)(dstRect.w / textureRatio);
     dstRect.x = (int)(windowWidth * (xPercent / 100.0f)) - (dstRect.w / 2);
     dstRect.y = (int)(windowHeight * (yPercent / 100.0f)) - (dstRect.h / 2);
 
-    // Render text
-    SDL_RenderCopy(renderer, texture, NULL, &dstRect);
-    SDL_DestroyTexture(texture);
+    // Renderizar el borde en las posiciones alrededor del texto principal
+    for (int dx = -borderWidth; dx <= borderWidth; dx++) {
+        for (int dy = -borderWidth; dy <= borderWidth; dy++) {
+            if (dx != 0 || dy != 0) { // Saltar la posición central
+                SDL_Rect borderRect = dstRect;
+                borderRect.x += dx;
+                borderRect.y += dy;
+                SDL_RenderCopy(renderer, borderTexture, NULL, &borderRect);
+            }
+        }
+    }
+
+    SDL_DestroyTexture(borderTexture);
+
+    // Renderizar el texto principal
+    SDL_RenderCopy(renderer, textTexture, NULL, &dstRect);
+    SDL_DestroyTexture(textTexture);
 }
 
 bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {

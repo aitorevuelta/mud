@@ -18,11 +18,11 @@
 
 int main(int argc, char *argv[])
 {  
-    SDL sdl = {NULL, NULL};
+    SDL sdl;
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState = GAME;
     GAMEINFO gameInfo;
     BUTTON buttons;
 

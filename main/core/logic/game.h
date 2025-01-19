@@ -6,7 +6,7 @@
 
 
 
-
+void game_init(GAMEINFO *gameInfo);
 void allocatePlayers(GAMEINFO *gameInfo);
 PLAYER initializePlayer(int id);
 void initializePlayers(GAMEINFO *gameInfo);
