@@ -38,12 +38,12 @@ int main(int argc, char *argv[])
 
 
 
-    bool is_running = init_sdl(&sdl, config);
+    bool is_running = init_sdl(sdl, config);
     LoadAssets(sdl.renderer, loadedAssets, gameState);
     
     do {
         is_running = process_events(sdl.window, controls, config);
-        update(sdl, gameState, &loadedAssets, gameInfo, buttons, controls, config);
+        update(sdl, gameState, loadedAssets, gameInfo, buttons, controls, config);
         render(sdl.renderer, loadedAssets, gameState, gameInfo, buttons, config);
     }while(is_running);
 

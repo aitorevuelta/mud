@@ -2,7 +2,7 @@
 
 #include <sdl_utils.h>
 
-bool init_sdl(SDL *sdl, CONFIG config) {
+bool init_sdl(SDL *sdl, CONFIG* config) {
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         printf("Error al inicializar SDL: %s\n", SDL_GetError());
