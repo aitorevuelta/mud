@@ -6,20 +6,20 @@
 
 #include <gamestate_utils.h>
 
-static GAMESTATE lastGameState = 0; 
+static GAMESTATE lastGameState = LOADSCREEN; 
 
-void gameStateManager(SDL_Renderer* renderer, BUTTON buttons[], ASSETS *loadedAssets, GAMESTATE* gameState, GAMEINFO* gameInfo, CONFIG* config) {
-    if (*gameState != lastGameState) {
-        LoadAssets(renderer, loadedAssets, *gameState);
-        loadGameStateVariables(buttons, loadedAssets, *gameState, gameInfo, config);
-        lastGameState = *gameState;
+void gameStateManager(SDL_Renderer* renderer, BUTTON buttons[], ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config) {
+    if (gameState != lastGameState) {
+        LoadAssets(renderer, loadedAssets, gameState);
+        loadGameStateVariables(renderer, buttons, *loadedAssets, gameState, gameInfo, config);
+        lastGameState = gameState;
     }
 }
 
-void loadGameStateVariables(BUTTON buttons[], ASSETS* loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
+void loadGameStateVariables(SDL_Renderer* renderer, BUTTON buttons[], ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case MAIN_MENU:
-            setupMenuButtons(&buttons, 5, *loadedAssets);
+            setupMenuButtons(&buttons, 5, loadedAssets);
             break;
        case HOWTOPLAY:
             setupH2PButtons(&buttons, 1, loadedAssets);
@@ -34,7 +34,7 @@ void loadGameStateVariables(BUTTON buttons[], ASSETS* loadedAssets, GAMESTATE ga
             setupLobbyButtons(&buttons, 6, loadedAssets);
             break;
         case GAME:
-
+            game_init(renderer, gameInfo);
             break;
     }
 }

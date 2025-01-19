@@ -27,14 +27,10 @@ int allocateButtons(BUTTON **buttons, int buttonCount) {
 void setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
-    if (*buttons == NULL) {
-        return -1;  // Indicate failure in initialization
-    }
-
     initializeButtonsMenu(*buttons, loadedAssets.images);  // Specific lobby initialization
 }
 
-void initializeButtonsMenu(BUTTON buttons[], IMAGES *loadedImages) {
+void initializeButtonsMenu(BUTTON buttons[], IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ //BOTON JUGAR
         .texture = loadedImages[0].texture, 
         .action = ACTION_PLAY, 
@@ -80,18 +76,18 @@ void initializeButtonsMenu(BUTTON buttons[], IMAGES *loadedImages) {
 
 // LOBBY
 
-int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
+int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
     
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
         return -1;  // Indicate failure in initialization
     }
 
-    initializeButtonsLobby(*buttons, loadedAssets->images);  // Specific lobby initialization
+    initializeButtonsLobby(*buttons, loadedAssets.images);  // Specific lobby initialization
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsLobby(BUTTON buttons[], IMAGES *loadedImages) {
+void initializeButtonsLobby(BUTTON buttons[], IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON AÑADIR
         .texture = loadedImages[4].texture,
         .action = ACTION_NONE,
@@ -144,18 +140,18 @@ void initializeButtonsLobby(BUTTON buttons[], IMAGES *loadedImages) {
 
 // HOWTOPLAY
 
-int setupH2PButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
+int setupH2PButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
         return -1;  // Indicate failure in initialization
     }
 
-    initializeButtonsH2P(*buttons, loadedAssets->images);  // Specific lobby initialization
+    initializeButtonsH2P(*buttons, loadedAssets.images);  // Specific lobby initialization
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsH2P(BUTTON buttons[], IMAGES *loadedImages) {
+void initializeButtonsH2P(BUTTON buttons[], IMAGES loadedImages[]) {
         buttons[0] = (BUTTON){ 
         .texture = loadedImages[1].texture, 
         .action = ACTION_EXIT, 
@@ -169,18 +165,18 @@ void initializeButtonsH2P(BUTTON buttons[], IMAGES *loadedImages) {
 
 // SETTINGS
 
-int setupSettingsButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
+int setupSettingsButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
         return -1;  // Indicate failure in initialization
     }
 
-    initializeButtonsSettings(*buttons, loadedAssets->images);  // Specific lobby initialization
+    initializeButtonsSettings(*buttons, loadedAssets.images);  // Specific lobby initialization
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsSettings(BUTTON buttons[], IMAGES *loadedImages) {
+void initializeButtonsSettings(BUTTON buttons[], IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON VOLVER
         .texture = loadedImages[10].texture, 
         .action = ACTION_EXIT,  // Acción para salir de la configuración
@@ -235,18 +231,18 @@ void initializeButtonsSettings(BUTTON buttons[], IMAGES *loadedImages) {
 
 // CREDITS
 
-int setupCreditsButtons(BUTTON **buttons, int buttonCount, ASSETS *loadedAssets) {
+int setupCreditsButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
 
     allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
     if (*buttons == NULL) {
         return -1;  // Indicate failure in initialization
     }
 
-    initializeButtonsCredits(*buttons, loadedAssets->images);  // Specific lobby initialization
+    initializeButtonsCredits(*buttons, loadedAssets.images);  // Specific lobby initialization
     return 1;  // Indicate that the initialization was successful
 }
 
-void initializeButtonsCredits(BUTTON *buttons, IMAGES *loadedImages) {
+void initializeButtonsCredits(BUTTON *buttons, IMAGES loadedImages[]) {
 
     buttons[0] = (BUTTON){
         .texture = loadedImages[1].texture, 

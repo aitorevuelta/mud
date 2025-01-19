@@ -40,12 +40,11 @@ void update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameI
             handlePlayerButtons(buttons, 4, *gameInfo, controls);
             break;
         case GAME:
-            game_init(gameInfo);
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
             break;
     }
     
-    gameStateManager(sdl.renderer, buttons, loadedAssets, gameState, gameInfo, config);
+    gameStateManager(sdl.renderer, buttons, loadedAssets, *gameState, gameInfo, config);
     adjustFrameRate(frameStart, config->max_FPS);
 
 }

@@ -6,7 +6,7 @@
 
 
 
-void game_init(GAMEINFO *gameInfo);
+void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo);
 void allocatePlayers(GAMEINFO *gameInfo);
 PLAYER initializePlayer(int id);
 void initializePlayers(GAMEINFO *gameInfo);
