@@ -6,14 +6,13 @@
 #include <game_render.h>
 
 
-int game_render(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo, CONFIG config, int rend_game)
+void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo, CONFIG config)
 {
     renderMap(renderer, loadedAssets, gameInfo);
     renderUI(renderer, loadedAssets, gameInfo);
-    return rend_game;
 }
 
-void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
+void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 {
     // Get current renderer dimensions
     int windowWidth, windowHeight;
@@ -28,21 +27,21 @@ void renderMap(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
     // mapa de mascara
 
     renderTextureRelative(renderer, 
-                        loadedAssets->images[3].texture, 
+                        loadedAssets.images[3].texture, 
                         mapWidth,
                         mapX,
                         mapY
     );
 
     renderTextureRelative(renderer, 
-                        loadedAssets->images[2].texture, 
+                        loadedAssets.images[2].texture, 
                         mapWidth,
                         mapX,
                         mapY
     );
 }
 
-void renderUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
+void renderUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 {
    renderPlayerUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players);
    renderDeployUI(renderer, loadedAssets, gameInfo);
@@ -50,7 +49,7 @@ void renderUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
 
 }
 
-void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers, PLAYER players[]) {
+void renderPlayerUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[]) {
     int espacio = 5;
     int playerHeight = 10;
     
@@ -62,12 +61,12 @@ void renderPlayerUI(SDL_Renderer *renderer, ASSETS *loadedAssets, int numPlayers
         for (i = 0; numPlayers > i; i++) {
             int currentY = startY - (i * (playerHeight + espacio));
             if (i == 2) {
-                renderTextureRelative(renderer, loadedAssets->images[1].texture, 5, 89, currentY); // indicador de turno
+                renderTextureRelative(renderer, loadedAssets.images[1].texture, 5, 89, currentY); // indicador de turno
             }
             
 
             renderShapeRelative(renderer, 4, playerHeight, 97, currentY, players[i].playerColor); // Fondo para cada jugador
-            renderTextureRelative(renderer, loadedAssets->images[0].texture, 7, 95, currentY); // marco
+            renderTextureRelative(renderer, loadedAssets.images[0].texture, 7, 95, currentY); // marco
         }
     }
 }
@@ -78,12 +77,12 @@ void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
     renderShapeRelative(renderer, elapsed, 4, 0, 0, testColor); 
 }
 
-void renderDeployUI(SDL_Renderer *renderer, ASSETS *loadedAssets, GAMEINFO gameInfo)
+void renderDeployUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 {
-    renderTextureRelative(renderer, loadedAssets->images[0].texture, 10, 50, 85);
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 10, 50, 85);
     SDL_Color textColor = {0, 0, 0, 255};
     renderTextRelative(renderer, 
-                      loadedAssets->fonts[0].font, 
+                      loadedAssets.fonts[0].font, 
                       "3",  // Text to display
                       textColor, 
                       4,    // Width percentage (smaller than frame)
