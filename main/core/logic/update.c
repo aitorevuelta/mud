@@ -40,12 +40,13 @@ GAMESTATE update(SDL *sdl, GAMESTATE gameState, ASSETS *loadedAssets, GAMEINFO *
             handlePlayerButtons(buttons, 4, gameInfo, controls);
             break;
         case GAME:
-            game_init(gameInfo);
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
             break;
     }
     
     checkGameStateChange(sdl->renderer, loadedAssets, &gameState);
+    loadGameStateVariables(gameState, gameInfo, loadedAssets);
+    
     adjustFrameRate(frameStart, config->max_FPS);
     return gameState;
 }

@@ -4,18 +4,28 @@
 
 #include <game.h>
 
-static int init = 0;
-void game_init(GAMEINFO *gameInfo) {
-    if (gameInfo == NULL) {
-        fprintf(stderr, "Información del juego no válida para la asignación de memoria.\n");
+
+
+void initGameInfo(GAMEINFO *gameInfo, CONFIG* config) {
+        
+    if (gameInfo == NULL || config == NULL) {
+        fprintf(stderr, "Error: Información del juego o configuración no válidas para inicialización.\n");
         exit(EXIT_FAILURE);
     }
+
+    static bool init = false;
+
     if (!init) {
-        allocatePlayers(gameInfo);
-        initializePlayers(gameInfo);
+        gameInfo->camera.zoom = 1.0f;
+        gameInfo->camera.pos[0] = config->window_size.width/2;
+        gameInfo->camera.pos[1] = config->window_size.height/2;
+        gameInfo->turn = 0;
+        gameInfo->gameOver = 0;
         init = true;
     }
 }
+
+
 
 void allocatePlayers(GAMEINFO *gameInfo) {
     size_t memorySize = sizeof(PLAYER) *gameInfo->numPlayers;
