@@ -53,6 +53,7 @@ bool init_sdl(SDL *sdl, CONFIG config) {
         -1,
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
     );
+    SDL_SetRenderDrawBlendMode(sdl->renderer, SDL_BLENDMODE_BLEND); //transparencias
 
     if (sdl->renderer == NULL) {
         printf("Error al crear el renderer: %s\n", SDL_GetError());

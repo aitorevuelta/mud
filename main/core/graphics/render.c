@@ -40,7 +40,7 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
             howtoplay_render(renderer, buttons, loadedAssets);
             break;
     }
-
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderPresent(renderer);
 }
 
@@ -65,33 +65,38 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 }
 
 
-void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, int xPercent, int yPercent, SDL_Color shapeColor) {
+void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, 
+                        int xPercent, int yPercent, SDL_Color shapeColor, 
+                        int borderWidth, SDL_Color borderColor) {
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
-    // Establecer el color del pincel
-    SDL_SetRenderDrawColor(renderer, shapeColor.r, shapeColor.g, shapeColor.b, shapeColor.a);
-
-    // Calcular las dimensiones relativas a la ventana
+    // Calculate dimensions
     int shapeWidth = (int)(windowWidth * (widthPercent / 100.0f));
     int shapeHeight = (int)(windowHeight * (heightPercent / 100.0f));
-
-    // Calcular la posición basada en los porcentajes especificados
     int posX = (int)(windowWidth * (xPercent / 100.0f));
-    int posY = (int)(windowHeight * (yPercent / 100.0f));
+    int posY = (int)(windowHeight * (yPercent / 100.0f)) - shapeHeight / 2;
 
-    // Ajustar la posición para el alto en relación al centro vertical
-    posY -= shapeHeight / 2;
+    // Draw inner fill if not transparent
+    if (shapeColor.a > 0) {
+        SDL_SetRenderDrawColor(renderer, shapeColor.r, shapeColor.g, shapeColor.b, shapeColor.a);
+        SDL_Rect fillRect = {posX, posY, shapeWidth, shapeHeight};
+        SDL_RenderFillRect(renderer, &fillRect);
+    }
 
-    // Crear el rectángulo con las dimensiones y posición calculadas
-    SDL_Rect rect = {posX, posY, shapeWidth, shapeHeight};
-
-    // Dibujar el rectángulo con el color especificado
-    SDL_RenderFillRect(renderer, &rect);
-
-    // Restablecer el color del pincel al predeterminado (opcional)
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Negro por defecto
+    // Draw border lines
+    SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
+    for(int i = 0; i < borderWidth; i++) {
+        SDL_Rect borderRect = {
+            posX - i,
+            posY - i,
+            shapeWidth + (i * 2),
+            shapeHeight + (i * 2)
+        };
+        SDL_RenderDrawRect(renderer, &borderRect);
+    }
 }
+
 
 void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent) {
     if (!text || !font) return;

@@ -65,7 +65,7 @@ void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, P
             }
             
 
-            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, players[i].playerColor); // Fondo para cada jugador
+            renderShapeRelative(renderer, 4, playerHeight, 97, currentY, players[i].playerColor, 0, (SDL_Color){0,0,0,0}); // Fondo para cada jugador
             renderTextureRelative(renderer, loadedAssets.images[0].texture, 7, 95, currentY); // marco
         }
     }
@@ -73,15 +73,18 @@ void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, P
 
 void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo) {
     int center = 50;
-    int height = 90;
+    int height = 88;
     // Cuadrado central
-    renderShapeRelative(renderer, 20, 10, center - 10, height, gameInfo.players[0].playerColor);
-    renderTextureRelative(renderer, loadedAssets.images[0].texture, 9, center - 12, height); // imagen player
+
+    SDL_Color color = gameInfo.players[0].playerColor;
+    color.a = 200;
+    renderShapeRelative(renderer, 20, 10, center - 10, height, (SDL_Color){0,0,0,150} , 5, color);  // cuadrado de atras
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 8, center - 12, height); // imagen player
     renderTextureRelative(renderer, loadedAssets.images[0].texture, 8, center + 12, height); // imagen dados o tropas dependiendo de la fase
     renderTextRelative(renderer, loadedAssets.fonts[0].font, "DESPLIEGE", 
                    (SDL_Color){255, 255, 255, 255},  // Color del texto (blanco)
-                   (SDL_Color){0, 0, 0, 255},        // Color del borde (negro)
-                   2,                                // Grosor del borde (5 píxeles)
+                   (SDL_Color){55, 55, 55, 12},        // Color del borde (negro)
+                   3,                                // Grosor del borde (5 píxeles)
                    10,                               // Porcentaje del ancho del texto
                    center,                           // Posición X relativa (centro)
                    height - 5);                      // Posición Y relativa
@@ -91,18 +94,17 @@ void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameIn
     int gap = 1;
     int totalWidth = (squareWidth * 3) + (gap * 2);
     int startX = center - (totalWidth / 2);
-    
     for (int i = 0; i < 3; i++) {
-        renderShapeRelative(renderer, squareWidth,3, 
+
+        renderShapeRelative(renderer, squareWidth,2, 
             startX + (i * (squareWidth + gap)), 
             height -1 , 
-            (SDL_Color){0, 0, 0, 255}); 
+           gameInfo.players[0].playerColor, 3, (SDL_Color){30, 30, 30, 200} ); 
     }
     
 }
 
 void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
 {
-    SDL_Colour testColor = {255, 0, 0, 255};
-    renderShapeRelative(renderer, elapsed, 4, 0, 0, testColor); 
+    renderShapeRelative(renderer, elapsed, 4, 0, 0, gameInfo.players[0].playerColor, 2, (SDL_Color){0, 0, 0, 255}); 
 }
