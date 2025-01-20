@@ -18,9 +18,6 @@
 
 #define MAX_STR 128
 
-#define MAX_LINE_LENGTH 50
-#define IMAGES_FILE "../data/images.txt"
-#define FONTS_FILE "../data/fonts.txt"
 
 #define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
@@ -70,9 +67,9 @@ typedef struct IMAGES_S {
     SDL_Texture* texture;
 } IMAGES;
 
-typedef struct MUSIC_S {
-    Mix_Music *music;
-}MUSIC;
+typedef struct SOUNDS_S {
+    Mix_Music* sound;
+}SOUNDS;
 
 typedef struct FONTS_S {
     TTF_Font* font;
@@ -80,7 +77,7 @@ typedef struct FONTS_S {
 
 typedef struct ASSETS_S {
     IMAGES *images;
-    MUSIC *music;
+    SOUNDS *sounds;
     FONTS *fonts;
 }ASSETS;
 

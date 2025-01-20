@@ -80,11 +80,22 @@ SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer) {
     return texture;
 }
 
+Mix_Music* CreateSounds(const char* filePath) {
+    Mix_Music* sound = Mix_LoadMUS(filePath);
+    if (sound == NULL) {
+        fprintf(stderr, "Error al cargar la música: %s\n", Mix_GetError());
+        return NULL;  // Devuelve NULL si hubo un error en la carga
+    }
 
-TTF_Font* CreateFont(const char* filePath, int fontSize) {
-    TTF_Font* font = TTF_OpenFont(filePath, fontSize);
+    return sound;
+}
+
+
+TTF_Font* CreateFont(const char* filePath) {
+    TTF_Font* font = TTF_OpenFont(filePath, 50);
     if (!font) {
         fprintf(stderr, "Error al cargar la fuente: %s, %s\n", filePath, TTF_GetError());
+        return NULL;
     }
     return font;
 }
@@ -126,6 +137,30 @@ void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameSta
     }
 }
 
+void LoadSounds(SOUNDS** loadedSounds, GAMESTATE gameState) {
+    int i = 0;
+    int numSounds = countPathsInState(gameState, SOUNDS_FILE);
+    char filePath[MAX_STR];
+
+    free(*loadedSounds);
+
+    *loadedSounds = (SOUNDS*)malloc(numSounds * sizeof(SOUNDS));
+
+    if (*loadedSounds == NULL) return;
+
+    for (i = 0; i < numSounds; i++) {
+        char* path = getPathByIndex(gameState, SOUNDS_FILE, i);
+        if (path == NULL) continue;
+
+        char soundName[MAX_STR];
+
+        sscanf(path, "%s", soundName);
+        
+        snprintf(filePath, sizeof(filePath), "../src/sound/%s", soundName);
+        (*loadedSounds)[i].sound = CreateSounds(filePath);
+    }
+}
+
 
 void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState) {
     int numFonts = countPathsInState(gameState, FONTS_FILE);
@@ -146,14 +181,33 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
         sscanf(path, "%s", fontName);
         
         snprintf(filePath, sizeof(filePath), "../src/font/%s", fontName);
-        (*loadedFonts)[i].font = CreateFont(filePath, 50);
+        (*loadedFonts)[i].font = CreateFont(filePath);
     }
 }
 
-
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState) {
     LoadImages( renderer, &(loadedAssets->images), gameState);
+    LoadSounds(&(loadedAssets->sounds), gameState);
     LoadFonts(renderer, &(loadedAssets->fonts), gameState);
+}
+
+void FreeAssets(ASSETS* loadedAssets) {
+    if (loadedAssets != NULL) {
+        if (loadedAssets->images != NULL) {
+            free(loadedAssets->images);  // IMAGES
+            loadedAssets->images = NULL;  // NULL
+        }
+
+        if (loadedAssets->sounds != NULL) {
+            free(loadedAssets->sounds);  // SOUNDS
+            loadedAssets->sounds = NULL;  // NULL
+        }
+
+        if (loadedAssets->fonts != NULL) {
+            free(loadedAssets->fonts);   // FONTS
+            loadedAssets->fonts = NULL;   // NULL
+        }
+    }
 }
 
 

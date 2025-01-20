@@ -23,6 +23,7 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
                 break;
             default:
                 *newState = MAIN_MENU;
+            break;
         }   
     }
 }

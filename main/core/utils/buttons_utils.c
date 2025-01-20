@@ -2,73 +2,56 @@
 #include <buttons_utils.h>
 
 int allocateButtons(BUTTON **buttons, int buttonCount) {
-    if (!buttons || buttonCount <= 0) {
-        return -1;
-    }
+    if (!buttons || buttonCount <= 0) return -1;
 
     *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
     return (*buttons) ? 0 : -1;
 }
 
-void LoadButtonsByGameState(BUTTON **buttons, GAMESTATE gameState, IMAGES loadedImages[]) {
+void LoadButtonsByGameState(BUTTON** buttons, GAMESTATE gameState, IMAGES loadedImages[]) {
     int buttonCount = 0;
 
-    if (!buttons) {
-        fprintf(stderr, "Error: Invalid buttons pointer\n");
-        return;
-    }
+    if (!buttons) return;
 
     switch (gameState) {
         case MAIN_MENU:
             buttonCount = 5;
-            if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error: Failed to allocate MAIN_MENU buttons\n");
-                return;
-            }
+            if (allocateButtons(buttons, buttonCount) != 0) return;
             initializeButtonsMenu(*buttons, loadedImages);
             break;
-
         case LOBBY:
             buttonCount = 6;
-            if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error: Failed to allocate LOBBY buttons\n");
-                return;
-            }
+            if (allocateButtons(buttons, buttonCount) != 0) return;
             initializeButtonsLobby(*buttons, loadedImages);
+            break;
+        case GAME:
+            buttonCount = 2;
+            if (allocateButtons(buttons, buttonCount) != 0) return;
+            initializeButtonsGame(*buttons, loadedImages);
             break;
         case HOWTOPLAY:
             buttonCount = 1;
-            if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error al asignar memoria para botones en HOWTOPLAY.\n");
-                return;
-            }
+            if (allocateButtons(buttons, buttonCount) != 0) return;
             initializeButtonsH2P(*buttons, loadedImages);
             break;
         case SETTINGS:
             buttonCount = 6;
-            if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error al asignar memoria para botones en SETTINGS.\n");
-                return;
-            }
+            if (allocateButtons(buttons, buttonCount) != 0) return;
             initializeButtonsSettings(*buttons, loadedImages);
             break;
         case CREDITS:
             buttonCount = 1;
-            if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error al asignar memoria para botones en CREDITS.\n");
-                return;
-            }
+            if (allocateButtons(buttons, buttonCount) != 0) return;
             initializeButtonsCredits(*buttons, loadedImages);
             break;
         default:
-            fprintf(stderr, "Error: Estado del juego desconocido.\n");
             return;
     }
 }
 
 // FUNCIONES DE INICIALIZACIÓN
 
-void initializeButtonsMenu(BUTTON *buttons, IMAGES loadedImages[]) {
+void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON JUGAR
         .texture = loadedImages[0].texture,
         .action = ACTION_PLAY,
@@ -113,7 +96,7 @@ void initializeButtonsMenu(BUTTON *buttons, IMAGES loadedImages[]) {
 
 // LOBBY
 
-void initializeButtonsLobby(BUTTON *buttons, IMAGES loadedImages[]) {
+void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON AÑADIR
         .texture = loadedImages[4].texture,
         .action = ACTION_NONE,
@@ -164,9 +147,20 @@ void initializeButtonsLobby(BUTTON *buttons, IMAGES loadedImages[]) {
     };
 }
 
+
+// GAME 
+
+void initializeButtonsGame(BUTTON* buttons, IMAGES loadedImages[]) {
+
+}
+
+
+
+
+
 // HOWTOPLAY
 
-void initializeButtonsH2P(BUTTON *buttons, IMAGES loadedImages[]) {
+void initializeButtonsH2P(BUTTON* buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ 
         .texture = loadedImages[1].texture,
         .action = ACTION_EXIT,
@@ -179,7 +173,7 @@ void initializeButtonsH2P(BUTTON *buttons, IMAGES loadedImages[]) {
 
 // SETTINGS
 
-void initializeButtonsSettings(BUTTON *buttons, IMAGES loadedImages[]) {
+void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON VOLVER
         .texture = loadedImages[13].texture,
         .action = ACTION_NONE,
@@ -232,7 +226,7 @@ void initializeButtonsSettings(BUTTON *buttons, IMAGES loadedImages[]) {
 
 // CREDITS
 
-void initializeButtonsCredits(BUTTON *buttons, IMAGES loadedImages[]) {
+void initializeButtonsCredits(BUTTON* buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){
         .texture = loadedImages[1].texture,
         .action = ACTION_EXIT,
