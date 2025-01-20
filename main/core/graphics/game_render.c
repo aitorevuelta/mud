@@ -3,7 +3,7 @@
 #include <render.h>
 #include <game_render.h>
 
-void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo, CONFIG config)
+void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, BUTTON *buttons, GAMEINFO gameInfo, CONFIG config)
 {
     renderMap(renderer, loadedAssets, gameInfo);
     renderUI(renderer, loadedAssets, gameInfo);
