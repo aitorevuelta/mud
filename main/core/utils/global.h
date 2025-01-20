@@ -48,7 +48,7 @@ typedef struct CONFIG_S {
     RESOLUTION *resolutions;
 } CONFIG;
 
-typedef enum {
+typedef enum GAMESTATE_E {
     LOADSCREEN = 0,
     MAIN_MENU,
     HOWTOPLAY,
@@ -73,6 +73,7 @@ typedef struct IMAGES_S {
 typedef struct MUSIC_S {
     Mix_Music *music;
 }MUSIC;
+
 typedef struct FONTS_S {
     TTF_Font* font;
 } FONTS;

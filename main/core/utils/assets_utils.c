@@ -1,7 +1,6 @@
 #include <global.h>
 
 #include <string.h>
-#include <gamecontext.h>
 
 #include <assets_utils.h>
 

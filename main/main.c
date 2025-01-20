@@ -13,8 +13,6 @@
 #include <menu.h>
 #include <render.h>
 #include <update.h>
-#include <gamecontext.h>
-
 
 
 int main(int argc, char *argv[])
