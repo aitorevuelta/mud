@@ -59,9 +59,11 @@ jugador.png
 der.png
 izq.png
 6
-marco.png
-der.png
 map.png
 mapd.png
-7
+marco.png
+numerocartas.png
+der.png
+marcotropas.png
+fotoplayer.png
 7

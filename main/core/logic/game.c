@@ -4,6 +4,20 @@
 
 #include <game.h>
 
+/*
+void checkClickOnTerritory ({
+    int mouseX = controls.coords[0];
+    int mouseY = controls.coords[1];
+    int i = 0;
+    for (i = 0; i < TERRITORY_COUNT; i++) {
+        if (mouseX >= territories[i].x && mouseX <= territories[i].x + territories[i].w &&
+            mouseY >= territories[i].y && mouseY <= territories[i].y + territories[i].h) {
+            printf("Territory %d clicked\n", i);
+            break;
+        }
+    }
+}) 
+*/
 
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
     int windowWidth, windowHeight;
