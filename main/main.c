@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = HOWTOPLAY;
+    GAMESTATE gameState = GAME;
     GAMEINFO gameInfo = { .numPlayers = 4, .currentMapID = 1, .numMaps = 3 };
     BUTTON *buttons = NULL;
  

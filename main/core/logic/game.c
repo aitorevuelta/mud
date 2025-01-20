@@ -8,9 +8,6 @@ void update_game(GAMEINFO *gameInfo) {
     updateTime(gameInfo);
 }
 
-
-
-
 static Uint32 lastUpdateTime = 0;
 
 void updateTime(GAMEINFO *gameInfo) {

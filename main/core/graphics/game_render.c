@@ -33,13 +33,13 @@ void renderUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[], int turn)
 {
     int i = 0;
-    int espacio = 5;
-    int playerHeight = 10;
-    int totalHeight = (numPlayers * playerHeight) + ((numPlayers - 1) * espacio);
-    int startY = 50 + (totalHeight / 2);
+    float espacio = 5;
+    float playerHeight = 10;
+    float totalHeight = (numPlayers * playerHeight) + ((numPlayers - 1) * espacio);
+    float startY = 50 + (totalHeight / 2);
 
     for (i = 0; numPlayers > i; i++) {
-        int currentY = startY - (i * (10 + 5));
+        float currentY = startY - (i * (10 + 5));
 
         if (i == turn) { //Puesto de prueba
             renderTextureRelative(renderer, loadedAssets.images[4].texture, 3, 88, currentY); // Indicador turno
@@ -55,8 +55,8 @@ void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, P
 
 void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 {
-    int center = 50;
-    int height = 88;
+    float center = 50;
+    float height = 88;
 
     SDL_Color PlayerColor = gameInfo.players[0].playerColor;
     PlayerColor.a = 200;
@@ -73,9 +73,9 @@ void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameIn
     renderTextRelative(renderer, loadedAssets.fonts[0].font, "DESPLIEGE", (SDL_Color){255, 255, 255, 255}, 
                       (SDL_Color){55, 55, 55, 12}, 3, 10, center, height - 5); // Texto fase
 
-    int squareWidth = 4, gap = 1;
-    int totalWidth = (squareWidth * 3) + (gap * 2);
-    int startX = center - (totalWidth / 2);
+    float squareWidth = 4, gap = 1;
+    float totalWidth = (squareWidth * 3) + (gap * 2);
+    float startX = center - (totalWidth / 2);
 
     for (int i = 0; i < 3; i++) {
         renderShapeRelative(renderer, squareWidth, 2, startX + (i * (squareWidth + gap)), height - 1, 
