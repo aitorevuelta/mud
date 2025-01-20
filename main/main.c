@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = CREDITS;
-    GAMEINFO gameInfo = { .numPlayers = 4, .currentMapID = 1, .numMaps = 3 };;
-    BUTTON* buttons = NULL;
+    GAMESTATE gameState = MAIN_MENU;
+    GAMEINFO gameInfo = { .numPlayers = 4, .currentMapID = 1, .numMaps = 3 };
+    BUTTON *buttons;
  
     srand((unsigned int)time(NULL));
 
@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
     
     do {
         is_running = process_events(sdl.window, &controls, &config);
-        update(sdl.renderer, &gameState, &loadedAssets, &gameInfo, buttons, controls, &config);
-        render(sdl.renderer, loadedAssets, gameState, gameInfo, &buttons, config);
+        update(sdl.renderer, &gameState, &loadedAssets, &gameInfo, &buttons, controls, &config);
+        render(sdl.renderer, loadedAssets, gameState, gameInfo, buttons, config);
     }while(is_running);
 
 

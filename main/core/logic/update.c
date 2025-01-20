@@ -15,7 +15,7 @@
 #include <update.h>
 
 
-void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON buttons[], CONTROLS controls, CONFIG* config) {
+void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON **buttons, CONTROLS controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -24,20 +24,20 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             *gameState = loadscreen();
             break;
         case MAIN_MENU:
-            handleMenuEvents(buttons, 5, gameState, controls);
+            handleMenuEvents(*buttons, 5, gameState, controls);
             break;
        case HOWTOPLAY:
-            handleMenuEvents(buttons, 1, gameState, controls);
+            handleMenuEvents(*buttons, 1, gameState, controls);
             break;
        case SETTINGS:
             
             break;
         case CREDITS:
-            handleMenuEvents(buttons, 1, gameState, controls);
+            handleMenuEvents(*buttons, 1, gameState, controls);
             break;
         case LOBBY:
-            handleGameStateButtons(buttons,  6, gameState, controls);
-            handlePlayerButtons(buttons, 4, *gameInfo, controls);
+            handleGameStateButtons(*buttons,  6, gameState, controls);
+            handlePlayerButtons(*buttons, 4, *gameInfo, controls);
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
