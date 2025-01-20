@@ -1,5 +1,4 @@
 #include <global.h>
-#include <gamecontext.h>
 
 #include <assets_utils.h>
 #include <loadscreen_render.h>

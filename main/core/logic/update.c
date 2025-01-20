@@ -1,6 +1,5 @@
 #include <global.h>
 
-#include <gamecontext.h>
 #include <sdl_utils.h>
 #include <controls.h>
 #include <menu.h>

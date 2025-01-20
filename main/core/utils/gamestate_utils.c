@@ -12,7 +12,7 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
     if (gameState != lastGameState) {
         LoadAssets(renderer, loadedAssets, gameState);
         LoadButtonsByGameState(buttons, gameState, loadedAssets->images);
-        loadGameStateVariables(renderer, *buttons, *loadedAssets, gameState, gameInfo, config);
+        loadGameStateVariables(renderer, *loadedAssets, gameState, gameInfo, config);
         lastGameState = gameState;
     }
 }
