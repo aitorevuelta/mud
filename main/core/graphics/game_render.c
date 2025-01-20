@@ -26,7 +26,8 @@ void renderUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
     int turn = gameInfo.turn;
     renderSideUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players, turn); // UI lateral
     renderBottomUI(renderer, loadedAssets, gameInfo); // UI inferior
-    renderTimeBar(renderer, gameInfo); // Barra de tiempo
+    renderTimeBar(renderer, gameInfo.elapsedTime, gameInfo.players[turn].playerColor); // Barra de tiempo
+    renderRound(renderer, loadedAssets, gameInfo.round); // Ronda
 }
 
 void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[], int turn)
@@ -81,10 +82,10 @@ void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameIn
     }
 }
 
-void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo)
+void renderTimeBar(SDL_Renderer *renderer, float elapsedTime, SDL_Color playerColor)
 {
     // Calculate percentage (0s = 0%, 60s = 100%)
-    float timePercentage = (gameInfo.elapsedTime / 60.0f) * 100.0f;
+    float timePercentage = (elapsedTime / 60.0f) * 100.0f;
     
     // Render background bar
     renderShapeRelative(renderer, 100, 4, 0, 0, 
@@ -93,6 +94,12 @@ void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo)
     
     // Render elapsed time bar
     renderShapeRelative(renderer, timePercentage, 4, 0, 0, 
-                       gameInfo.players[gameInfo.turn].playerColor, 0, 
+                       playerColor, 0, 
                        (SDL_Color){0, 0, 0, 255});
+}
+
+void renderRound(SDL_Renderer *renderer, ASSETS loadedAssets, int round) {
+    renderTextureRelative(renderer, loadedAssets.images[7].texture, 30, -5, 9); // Indicador ronda
+    renderTextRelative(renderer, loadedAssets.fonts[0].font, "ROUND 1", (SDL_Color){255, 255, 255, 255}, 
+                      (SDL_Color){55, 55, 55, 12}, 3, 7, 4.5, 9); // Texto ronda
 }

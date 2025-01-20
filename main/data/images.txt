@@ -66,4 +66,5 @@ numerocartas.png
 der.png
 marcotropas.png
 fotoplayer.png
+barra.png
 7

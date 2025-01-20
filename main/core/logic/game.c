@@ -25,12 +25,18 @@ void updateTime(GAMEINFO *gameInfo) {
     // Reset timer and change turn at 60 seconds
     if (gameInfo->elapsedTime >= 60.0f) {
         gameInfo->elapsedTime = 0.0f;
+        
+        // Increment turn
         gameInfo->turn = (gameInfo->turn + 1) % gameInfo->numPlayers;
+        
+        // If we've completed a full round of players
+        if (gameInfo->turn == 0) {
+            gameInfo->round++;
+        }
     }
     
     lastUpdateTime = currentTime;
 }
-
 // Inicializar
 
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
@@ -43,6 +49,7 @@ void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
     // Iniciar juego
     gameInfo->turn = 0;
     gameInfo->elapsedTime = 0;
+    gameInfo->round = 1;
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
 }

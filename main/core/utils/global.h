@@ -144,10 +144,11 @@ typedef struct GAMEINFO_S {
     int numPlayers;             // Número total de jugadores
     int currentPlayerID;        // Índice del jugador actual
     int turn;                   // Número de turno actual
+    PHASE phase;            // Fase actual del juego
+    int round;
     float elapsedTime;
-    
     CAMERA camera;              // Configuración de la cámara
-    bool gameOver;              // Indicador de fin de juego
+    bool inGame;          // indicador si esta en juego
 } GAMEINFO;
 
 typedef enum {
