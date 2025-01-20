@@ -9,7 +9,7 @@
 
 void howtoplay_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets) {
 
-    renderTextureRelative(renderer, loadedAssets.images[0].texture, 100, 50, 50);
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50);
 
     renderTextureRelative(renderer, loadedAssets.images[2].texture, 23, 20, 25);
     renderTextureRelative(renderer, loadedAssets.images[3].texture, 18, 40, 25);

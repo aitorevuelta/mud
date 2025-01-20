@@ -9,7 +9,7 @@
 
 void lobby_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMEINFO gameInfo) {
 
-    renderTextureRelative(renderer, loadedAssets.images[0].texture, 100, 50, 50); // Renderizar background
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50); // Renderizar background
 
     renderButtons(renderer, buttons, 6); // Renderizar botones
 

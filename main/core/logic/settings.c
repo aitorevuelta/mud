@@ -44,7 +44,7 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, GAMEINFO gameInfo,
                             if (config->selectedVolume <5) {
                                 (config->selectedVolume)++;
                             }
-                        } else if (i == 0) { // Botón de bajar volumen
+                        } else if (i == 5) { // Botón de bajar volumen
                             if (config->selectedVolume >0) {
                                 (config->selectedVolume)--;
                             }
