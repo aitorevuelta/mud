@@ -34,6 +34,8 @@ void updateTime(GAMEINFO *gameInfo) {
     
     lastUpdateTime = currentTime;
 }
+
+
 // Inicializar
 
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
@@ -55,6 +57,7 @@ void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
 void allocatePlayers(GAMEINFO *gameInfo) {
     size_t memorySize = sizeof(PLAYER) *gameInfo->numPlayers;
     gameInfo->players = (PLAYER *) malloc(memorySize);
+    if(!gameInfo->players) exit(1);
 }
 
 PLAYER initializePlayer(int id) {
@@ -70,11 +73,31 @@ PLAYER initializePlayer(int id) {
 
 void initializePlayers(GAMEINFO *gameInfo) {
     int i = 0;
-
     for(i = 0; gameInfo->numPlayers > i; i++) {
         gameInfo->players[i] = initializePlayer(i);
     }
 }
+
+void allocateTerritories(GAMEINFO* gameInfo) {
+
+}
+
+
+void initializeTerritories(MAPINFO* mapInfo) {
+    int i = 0;
+    for(i = 0; mapInfo->numTerritories > i; i++) {
+
+    }
+}
+
+void initializeMap(GAMEINFO* gameInfo){
+
+}
+
+
+
+
+
 
 
 void freeTerritories(GAMEINFO* gameInfo) {
@@ -86,4 +109,11 @@ void freePlayers(GAMEINFO *gameInfo) {
     free(gameInfo->players);
     gameInfo->players = NULL;
     }
+}
+
+bool checkGameOver(GAMEINFO* gameInfo) {
+    int i = 0;
+    for(i = 0; gameInfo->numPlayers > i; i++) {
+    }
+    return false;
 }

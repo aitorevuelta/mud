@@ -14,6 +14,15 @@ void allocatePlayers(GAMEINFO *gameInfo);
 PLAYER initializePlayer(int id);
 void initializePlayers(GAMEINFO *gameInfo);
 
+void allocateTerritories(GAMEINFO* gameInfo);
+void initializeTerritories(GAMEINFO* gameInfo);
+
+void initializeMap(GAMEINFO* gameInfo);
+
+
+
+bool checkGameOver(GAMEINFO* gameInfo);
+
 void freeTerritories(GAMEINFO* gameInfo);
 void freePlayers(GAMEINFO* gameInfo);
 
