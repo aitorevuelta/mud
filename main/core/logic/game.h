@@ -15,4 +15,4 @@ void initializePlayers(GAMEINFO *gameInfo);
 void freePlayers(GAMEINFO *gameInfo);
 
 
-#endif // GAME_H
+#endif // GAME_H3

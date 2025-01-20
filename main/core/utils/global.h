@@ -101,6 +101,7 @@ typedef struct TERRITORYINFO_S {
     char name[MAX_STR];       // Nombre del territorio
     int ownerID;        // ID del jugador que controla el territorio
     int troops;       // Número de tropas en el territorio
+    int center[2];
 } TERRITORYINFO;
 
 // Estructura que representa la información del mapa
@@ -113,7 +114,7 @@ typedef struct MAPINFO_S {
 // Estructura que representa a un jugador
 typedef struct PLAYER_S {
     int id;                 // ID-a
-    char name[MAX_STR];             // Nombre del jugador
+    char name[MAX_STR];     // Nombre del jugador
     int *territories;       // Lista de territorios controlados por el jugador
     int numTerritories;     // Número de territorios controlados
     int troops;             // Número total de tropas del jugador
@@ -121,7 +122,6 @@ typedef struct PLAYER_S {
     CARDS *cards;
     SDL_Color playerColor;        // Lista de cartas que posee el jugador
 } PLAYER;
-
 
 typedef struct CAMERA_S {
     int pos[2];
