@@ -32,12 +32,13 @@ void renderUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 
 void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[], int turn)
 {
+    int i = 0;
     int espacio = 5;
     int playerHeight = 10;
     int totalHeight = (numPlayers * playerHeight) + ((numPlayers - 1) * espacio);
     int startY = 50 + (totalHeight / 2);
 
-    for (int i = 0; i < numPlayers; i++) {
+    for (i = 0; numPlayers > i; i++) {
         int currentY = startY - (i * (10 + 5));
 
         if (i == turn) { //Puesto de prueba

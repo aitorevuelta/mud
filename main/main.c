@@ -15,7 +15,6 @@
 #include <update.h>
 #include <gamecontext.h>
 
-#define MAX_BUTTONS 5
 
 
 int main(int argc, char *argv[])
@@ -24,15 +23,11 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = GAME;
-    GAMEINFO gameInfo;
-    BUTTON buttons;
+    GAMESTATE gameState = CREDITS;
+    GAMEINFO gameInfo = { .numPlayers = 4, .currentMapID = 1, .numMaps = 3 };;
+    BUTTON* buttons = NULL;
  
     srand((unsigned int)time(NULL));
-    
-    gameInfo.numPlayers = 4; // Establecer un valor por defecto
-    gameInfo.currentMapID = 1; // Empezar en el primer mapa
-    gameInfo.numMaps = 3; // Establecer el total de mapas disponibles
 
     config.current_res = 1;
     config.total_res = 7;
@@ -43,7 +38,7 @@ int main(int argc, char *argv[])
     
     do {
         is_running = process_events(sdl.window, &controls, &config);
-        update(sdl, &gameState, &loadedAssets, &gameInfo, &buttons, controls, &config);
+        update(sdl.renderer, &gameState, &loadedAssets, &gameInfo, buttons, controls, &config);
         render(sdl.renderer, loadedAssets, gameState, gameInfo, &buttons, config);
     }while(is_running);
 

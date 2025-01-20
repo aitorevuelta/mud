@@ -25,7 +25,7 @@ void LoadButtonsByGameState(BUTTON *buttons, GAMESTATE gameState, IMAGES loadedI
                 fprintf(stderr, "Error: Failed to allocate MAIN_MENU buttons\n");
                 return;
             }
-            initializeButtonsMenu(buttons, loadedImages);
+            initializeButtonsMenu(*buttons, loadedImages);
             break;
 
         case LOBBY:
@@ -34,7 +34,7 @@ void LoadButtonsByGameState(BUTTON *buttons, GAMESTATE gameState, IMAGES loadedI
                 fprintf(stderr, "Error: Failed to allocate LOBBY buttons\n");
                 return;
             }
-            initializeButtonsLobby(buttons, loadedImages);
+            initializeButtonsLobby(*buttons, loadedImages);
             break;
         case HOWTOPLAY:
             buttonCount = 1;
@@ -42,7 +42,7 @@ void LoadButtonsByGameState(BUTTON *buttons, GAMESTATE gameState, IMAGES loadedI
                 fprintf(stderr, "Error al asignar memoria para botones en HOWTOPLAY.\n");
                 return;
             }
-            initializeButtonsH2P(buttons, loadedImages);
+            initializeButtonsH2P(*buttons, loadedImages);
             break;
         case SETTINGS:
             buttonCount = 6;
@@ -50,7 +50,7 @@ void LoadButtonsByGameState(BUTTON *buttons, GAMESTATE gameState, IMAGES loadedI
                 fprintf(stderr, "Error al asignar memoria para botones en SETTINGS.\n");
                 return;
             }
-            initializeButtonsSettings(buttons, loadedImages);
+            initializeButtonsSettings(*buttons, loadedImages);
             break;
         case CREDITS:
             buttonCount = 1;
@@ -58,7 +58,7 @@ void LoadButtonsByGameState(BUTTON *buttons, GAMESTATE gameState, IMAGES loadedI
                 fprintf(stderr, "Error al asignar memoria para botones en CREDITS.\n");
                 return;
             }
-            initializeButtonsCredits(buttons, loadedImages);
+            initializeButtonsCredits(*buttons, loadedImages);
             break;
         default:
             fprintf(stderr, "Error: Estado del juego desconocido.\n");

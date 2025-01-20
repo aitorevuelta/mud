@@ -15,7 +15,7 @@
 #include <update.h>
 
 
-void update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON buttons[], CONTROLS controls, CONFIG* config) {
+void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON buttons[], CONTROLS controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
 
@@ -45,7 +45,7 @@ void update(SDL sdl, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameI
             break;
     }
     
-    gameStateManager(sdl.renderer, buttons, loadedAssets, *gameState, gameInfo, config);
+    gameStateManager(renderer, buttons, loadedAssets, *gameState, gameInfo, config);
     adjustFrameRate(frameStart, config->max_FPS);
 
 }
