@@ -67,4 +67,5 @@ der.png
 marcotropas.png
 fotoplayer.png
 barra.png
+cards.png
 7
