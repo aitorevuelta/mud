@@ -7,17 +7,7 @@
 #include <gamestate_utils.h>
 
 static GAMESTATE lastGameState = LOADSCREEN; 
-static bool musicPlaying = false;
 
-void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets) {
-    if (newState == MAIN_MENU && !musicPlaying) {
-        Mix_PlayMusic(loadedAssets->sounds[0].sound, -1);
-        musicPlaying = true;
-    } else if (newState == GAME && musicPlaying) {
-        Mix_HaltMusic();
-        musicPlaying = false;
-    }
-}
 void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config) {
     if (gameState != lastGameState) {
         LoadAssets(renderer, loadedAssets, gameState);
@@ -30,8 +20,23 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
 
 void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
+        case SETTINGS:
+            config->selectedVolume =  config->volume / 20;
+            break;
         case GAME:
             game_init(renderer, gameInfo);
             break;
+    }
+}
+
+static bool musicPlaying = false;
+
+void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets) {
+    if (newState == MAIN_MENU && !musicPlaying) {
+        Mix_PlayMusic(loadedAssets->sounds[0].sound, -1);
+        musicPlaying = true;
+    } else if (newState == GAME && musicPlaying) {
+        Mix_HaltMusic();
+        musicPlaying = false;
     }
 }
