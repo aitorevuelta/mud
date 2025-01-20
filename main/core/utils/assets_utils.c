@@ -185,8 +185,6 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
     }
 }
 
-
-
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState) {
     LoadImages( renderer, &(loadedAssets->images), gameState);
     LoadSounds(&(loadedAssets->sounds), gameState);

@@ -76,6 +76,11 @@ void initializePlayers(GAMEINFO *gameInfo) {
     }
 }
 
+
+void freeTerritories(GAMEINFO* gameInfo) {
+
+}
+
 void freePlayers(GAMEINFO *gameInfo) {
     if (gameInfo->players) {
     free(gameInfo->players);

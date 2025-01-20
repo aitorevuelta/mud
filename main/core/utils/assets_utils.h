@@ -3,6 +3,10 @@
 
 #define MAX_TEXTURES 50
 
+#define MAX_LINE_LENGTH 50
+#define IMAGES_FILE "../data/images.txt"
+#define SOUNDS_FILE "../data/sounds.txt"
+#define FONTS_FILE "../data/fonts.txt"
 
 
 int countPathsInState(GAMESTATE gamestate, char* path);
@@ -19,7 +23,6 @@ void LoadSounds(SOUNDS** loadedSounds, GAMESTATE gameState);
 
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState);
 void FreeAssets(ASSETS* loadedAssets);
-
 
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y);

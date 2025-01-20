@@ -14,8 +14,8 @@ void allocatePlayers(GAMEINFO *gameInfo);
 PLAYER initializePlayer(int id);
 void initializePlayers(GAMEINFO *gameInfo);
 
-
-void freePlayers(GAMEINFO *gameInfo);
+void freeTerritories(GAMEINFO* gameInfo);
+void freePlayers(GAMEINFO* gameInfo);
 
 
 #endif // GAME_H3

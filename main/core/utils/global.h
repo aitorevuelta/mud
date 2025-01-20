@@ -18,10 +18,6 @@
 
 #define MAX_STR 128
 
-#define MAX_LINE_LENGTH 50
-#define IMAGES_FILE "../data/images.txt"
-#define SOUNDS_FILE "../data/sounds.txt"
-#define FONTS_FILE "../data/fonts.txt"
 
 #define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
 
