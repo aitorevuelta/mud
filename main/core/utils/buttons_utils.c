@@ -6,16 +6,11 @@ int allocateButtons(BUTTON **buttons, int buttonCount) {
         return -1;
     }
 
-    // Free existing memory if any
-    if (*buttons) {
-        free(*buttons);
-    }
-
     *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
     return (*buttons) ? 0 : -1;
 }
 
-void LoadButtonsByGameState(BUTTON **buttons, GAMESTATE gameState, IMAGES loadedImages[]) {
+void LoadButtonsByGameState(BUTTON *buttons, GAMESTATE gameState, IMAGES loadedImages[]) {
     int buttonCount = 0;
 
     if (!buttons) {
@@ -26,44 +21,44 @@ void LoadButtonsByGameState(BUTTON **buttons, GAMESTATE gameState, IMAGES loaded
     switch (gameState) {
         case MAIN_MENU:
             buttonCount = 5;
-            if (allocateButtons(buttons, buttonCount) != 0) {
+            if (allocateButtons(&buttons, buttonCount) != 0) {
                 fprintf(stderr, "Error: Failed to allocate MAIN_MENU buttons\n");
                 return;
             }
-            initializeButtonsMenu(*buttons, loadedImages);
+            initializeButtonsMenu(buttons, loadedImages);
             break;
 
         case LOBBY:
             buttonCount = 6;
-            if (allocateButtons(buttons, buttonCount) != 0) {
+            if (allocateButtons(&buttons, buttonCount) != 0) {
                 fprintf(stderr, "Error: Failed to allocate LOBBY buttons\n");
                 return;
             }
-            initializeButtonsLobby(*buttons, loadedImages);
+            initializeButtonsLobby(buttons, loadedImages);
             break;
         case HOWTOPLAY:
             buttonCount = 1;
-            if (allocateButtons(buttons, buttonCount) != 0) {
+            if (allocateButtons(&buttons, buttonCount) != 0) {
                 fprintf(stderr, "Error al asignar memoria para botones en HOWTOPLAY.\n");
                 return;
             }
-            initializeButtonsH2P(*buttons, loadedImages);
+            initializeButtonsH2P(buttons, loadedImages);
             break;
         case SETTINGS:
             buttonCount = 6;
-            if (allocateButtons(buttons, buttonCount) != 0) {
+            if (allocateButtons(&buttons, buttonCount) != 0) {
                 fprintf(stderr, "Error al asignar memoria para botones en SETTINGS.\n");
                 return;
             }
-            initializeButtonsSettings(*buttons, loadedImages);
+            initializeButtonsSettings(buttons, loadedImages);
             break;
         case CREDITS:
             buttonCount = 1;
-            if (allocateButtons(buttons, buttonCount) != 0) {
+            if (allocateButtons(&buttons, buttonCount) != 0) {
                 fprintf(stderr, "Error al asignar memoria para botones en CREDITS.\n");
                 return;
             }
-            initializeButtonsCredits(*buttons, loadedImages);
+            initializeButtonsCredits(buttons, loadedImages);
             break;
         default:
             fprintf(stderr, "Error: Estado del juego desconocido.\n");
