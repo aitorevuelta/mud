@@ -17,11 +17,13 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
             case CREDITS:
             case LOBBY:
                 *newState = MAIN_MENU;
+                break;
             case GAME:
             *newState = EXIT_TOTAL;
                 break;
             default:
                 *newState = MAIN_MENU;
+            break;
         }   
     }
 }
