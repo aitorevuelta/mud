@@ -31,7 +31,7 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
 
 void handleMenuEvents(BUTTON buttons[], int buttonCount, GAMESTATE *gameState, CONTROLS controls) {
     int i = 0;
-     static Uint32 lastClickTime = 0;
+    static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
 
     if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time

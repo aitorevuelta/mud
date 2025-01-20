@@ -21,9 +21,12 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
 Mix_Music* CreateSounds(const char* filePath);
 void LoadSounds(SOUNDS** loadedSounds, GAMESTATE gameState);
 
+
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState);
 void FreeAssets(ASSETS* loadedAssets);
 
+
+//void playMusic(SOUNDS loadedSounds);
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y);
 SDL_Color getRandomColour();

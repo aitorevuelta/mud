@@ -24,6 +24,7 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             break;
         case MAIN_MENU:
             handleMenuEvents(*buttons, 5, gameState, controls);
+            
             break;
        case HOWTOPLAY:
             handleMenuEvents(*buttons, 1, gameState, controls);

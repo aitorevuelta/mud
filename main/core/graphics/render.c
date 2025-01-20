@@ -12,6 +12,8 @@
 #include <render.h>
 
 
+
+
 void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON buttons[], CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
@@ -22,6 +24,7 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
             break;
         case MAIN_MENU:
             menu_render(renderer, buttons, loadedAssets);
+            Mix_PlayMusic(loadedAssets.sounds[0].sound, -1);
             break;
         case LOBBY:
             lobby_render(renderer, buttons, loadedAssets, gameInfo);
@@ -39,7 +42,6 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
             howtoplay_render(renderer, buttons, loadedAssets);
             break;
         case EXIT_TOTAL:
-            SDL_Quit();
             exit(0);
             break;
     }

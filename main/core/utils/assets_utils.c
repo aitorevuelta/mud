@@ -191,6 +191,9 @@ void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameStat
     LoadFonts(renderer, &(loadedAssets->fonts), gameState);
 }
 
+
+
+
 void FreeAssets(ASSETS* loadedAssets) {
     if (loadedAssets != NULL) {
         if (loadedAssets->images != NULL) {
@@ -209,6 +212,7 @@ void FreeAssets(ASSETS* loadedAssets) {
         }
     }
 }
+
 
 
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {
