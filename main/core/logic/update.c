@@ -29,7 +29,7 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             handleMenuEvents(*buttons, 1, gameState, controls);
             break;
        case SETTINGS:
-            
+            handleSettingsButtons(*buttons, 6, *gameInfo, controls, config, gameState);
             break;
         case CREDITS:
             handleMenuEvents(*buttons, 1, gameState, controls);

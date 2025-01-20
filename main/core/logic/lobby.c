@@ -71,7 +71,7 @@ void handlePlayerButtons(BUTTON buttons[], int buttonCount, GAMEINFO gameInfo, C
 
 void handleGameStateButtons(BUTTON buttons[], int buttonCount, GAMESTATE *gameState, CONTROLS controls) {
     if (controls.click == 1) {
-        for (int i = 4; i < buttonCount; i++) {
+        for (int i = 0; i < buttonCount; i++) {
             if (buttons[i].visible) {
                 SDL_Rect rect = buttons[i].rect;
                 if (controls.coords[0] >= rect.x &&

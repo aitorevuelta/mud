@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = GAME;
+    GAMESTATE gameState = MAIN_MENU;
     GAMEINFO gameInfo = { .numPlayers = 4, .currentMapID = 1, .numMaps = 3 };
     BUTTON *buttons = NULL;
  
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     config.current_res = 1;
     config.total_res = 7;
-    config.selectedVolume = 0;
+    config.selectedVolume = 5;
 
     bool is_running = init_sdl(&sdl, config);
     LoadAssets(sdl.renderer, &loadedAssets, gameState);

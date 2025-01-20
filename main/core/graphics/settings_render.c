@@ -10,7 +10,7 @@
 
 
 void settings_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, CONFIG config) {
-    const int buttonCount = 5;
+    const int buttonCount = 6;
 
     renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50);
     renderTextureRelative(renderer, loadedAssets.images[16].texture, 35, 50, 10);
