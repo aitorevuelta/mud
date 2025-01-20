@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
     GAMEINFO gameInfo = { .numPlayers = 2, .currentMapID = 1, .numMaps = NUM_MAPS};
     BUTTON *buttons = NULL;
  
-
+    srand((unsigned int)time(NULL));
+    
     config.current_res = 1;
     config.total_res = 7;
 
