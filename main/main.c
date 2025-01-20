@@ -2,7 +2,7 @@
 
 #include <time.h>
 
-//UTILS
+// utils
 #include <sdl_utils.h>
 #include <settings_utils.h>
 #include <gamestate_utils.h>
