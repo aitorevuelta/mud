@@ -13,7 +13,7 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
         LoadAssets(renderer, loadedAssets, gameState);
         LoadButtonsByGameState(buttons, gameState, loadedAssets->images);
         loadGameStateVariables(renderer, *loadedAssets, gameState, gameInfo, config);
-        handleMusicChange(gameState, loadedAssets, config->selectedVolume * 20);
+        handleMusicChange(gameState, loadedAssets, config->volume);
         lastGameState = gameState;
     }
 }
@@ -21,10 +21,10 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
 void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case MAIN_MENU:
-            config->volume =  config->selectedVolume * 20;
+            config->selectedVolume =  config->volume / 20;
             break;
         case SETTINGS:
-            config->selectedVolume =  config->volume / 20;
+            config->volume =  config->selectedVolume * 20;
             break;
         case GAME:
             game_init(renderer, gameInfo);
