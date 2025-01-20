@@ -14,12 +14,16 @@
 #include <SDL_mixer.h>
 #include <SDL_net.h>
 
+#include <time.h>
+
 // Define-ak
 
 #define MAX_STR 128
 
 
 #define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
+
+#define NUM_MAPS 3 // mapa kopurua
 
 #define MAX_PLAYERS 4
 #define MIN_PLAYERS 2
@@ -56,12 +60,6 @@ typedef enum GAMESTATE_E {
     EXIT,
     EXIT_TOTAL,
 } GAMESTATE;
-
-typedef enum PHASE_E {
-    DEPLOY, 
-    ATTACK,
-    REINFORCE,
-} PHASE;
 
 typedef struct IMAGES_S {
     SDL_Texture* texture;
@@ -128,6 +126,12 @@ typedef struct PLAYER_S {
     SDL_Color playerColor;        // Lista de cartas que posee el jugador
 } PLAYER;
 
+typedef enum {
+    DEPLOY, 
+    ATTACK,
+    REINFORCE,
+} PHASE;
+
 typedef struct CAMERA_S {
     int pos[2];
     float zoom;
@@ -135,7 +139,7 @@ typedef struct CAMERA_S {
 
 // Estructura que representa la información general del juego
 typedef struct GAMEINFO_S {
-    MAPINFO *maps;              // Lista de mapas disponibles
+    MAPINFO maps[NUM_MAPS];              // Lista de mapas disponibles
     int numMaps;              // Número total de mapas disponibles
     int currentMapID;        // Índice del mapa actual
     PLAYER *players;            // Lista de jugadores en la partida
@@ -146,7 +150,7 @@ typedef struct GAMEINFO_S {
     int round;
     float elapsedTime;
     CAMERA camera;              // Configuración de la cámara
-    bool inGame;          // indicador si esta en juego
+    bool isGameOver;          // indicador si esta en juego
 } GAMEINFO;
 
 typedef enum {
