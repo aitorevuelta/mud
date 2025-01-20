@@ -100,7 +100,10 @@ void renderTimeBar(SDL_Renderer *renderer, float elapsedTime, SDL_Color playerCo
 }
 
 void renderRound(SDL_Renderer *renderer, ASSETS loadedAssets, int round) {
+    char roundText[20];
+    sprintf(roundText, "ROUND %d", round);
+
     renderTextureRelative(renderer, loadedAssets.images[7].texture, 30, -5, 9); // Indicador ronda
-    renderTextRelative(renderer, loadedAssets.fonts[0].font, "ROUND 1", (SDL_Color){255, 255, 255, 255}, 
+    renderTextRelative(renderer, loadedAssets.fonts[0].font, roundText, (SDL_Color){255, 255, 255, 255}, 
                       (SDL_Color){55, 55, 55, 12}, 3, 7, 4.5, 9); // Texto ronda
 }

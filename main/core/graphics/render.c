@@ -77,26 +77,34 @@ void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heigh
     float posX = windowWidth * (xPercent / 100.0f);
     float posY = windowHeight * (yPercent / 100.0f) - shapeHeight / 2.0f;
 
-    // Convert to int only for SDL_Rect
-    SDL_Rect rect = {
+    // Draw border if width > 0
+    if (borderWidth > 0) {
+        SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
+        for(int i = 0; i < borderWidth; i++) {
+            SDL_Rect borderRect = {
+                (int)(posX - i),
+                (int)(posY - i),
+                (int)(shapeWidth + (i * 2)),
+                (int)(shapeHeight + (i * 2))
+            };
+            SDL_RenderDrawRect(renderer, &borderRect);
+        }
+    }
+
+    // Draw inner fill if not transparent
+    SDL_Rect fillRect = {
         (int)posX,
         (int)posY,
         (int)shapeWidth,
         (int)shapeHeight
     };
 
-    // Draw inner fill if not transparent
     if (shapeColor.a > 0) {
         SDL_SetRenderDrawColor(renderer, shapeColor.r, shapeColor.g, shapeColor.b, shapeColor.a);
-        SDL_RenderFillRect(renderer, &rect);
-    }
-
-    // Draw border if width > 0
-    if (borderWidth > 0) {
-        SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
-        SDL_RenderDrawRect(renderer, &rect);
+        SDL_RenderFillRect(renderer, &fillRect);
     }
 }
+
 void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent) {
     if (!text || !font) return;
 
