@@ -7,7 +7,7 @@ void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, BUTTON *buttons, G
 {
     renderMap(renderer, loadedAssets, gameInfo);
     renderUI(renderer, loadedAssets, gameInfo);
-    renderButtons(renderer, buttons, 1);
+    renderButtons(renderer, buttons, 2);
 }
 
 void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
@@ -102,7 +102,7 @@ void renderTimeBar(SDL_Renderer *renderer, float elapsedTime, SDL_Color playerCo
 
 void renderRound(SDL_Renderer *renderer, ASSETS loadedAssets, int round) {
     char roundText[20];
-    sprintf(roundText, "ROUND %d", round);
+    sprintf(roundText, "RONDA %d", round);
 
     renderTextureRelative(renderer, loadedAssets.images[7].texture, 30, -5, 9); // Indicador ronda
     renderTextRelative(renderer, loadedAssets.fonts[0].font, roundText, (SDL_Color){255, 255, 255, 255}, 

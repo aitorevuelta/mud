@@ -38,6 +38,10 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
         case HOWTOPLAY:
             howtoplay_render(renderer, buttons, loadedAssets);
             break;
+        case EXIT_TOTAL:
+            SDL_Quit();
+            exit(0);
+            break;
     }
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderPresent(renderer);

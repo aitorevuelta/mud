@@ -159,6 +159,14 @@ void initializeButtonsGame(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 5.0,
         .yPercent = 89.0
     };
+    buttons[1] = (BUTTON){ 
+        .texture = loadedImages[9].texture,
+        .action = ACTION_NONE,
+        .visible = 1,
+        .widthPercent = 6.5,
+        .xPercent = 50.0,
+        .yPercent = 93.5
+    };
  }
 
 
