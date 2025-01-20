@@ -68,4 +68,5 @@ marcotropas.png
 fotoplayer.png
 barra.png
 cards.png
+nextphase.png
 7
