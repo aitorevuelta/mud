@@ -36,20 +36,18 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, GAMEINFO gameInfo,
                             }
                         } else if (i == 3) { // Aplicar resolución
                              config->current_res = config->current_res; // Placeholder para lógica de aplicación
+                            config->volume=config->selectedVolume*20;
+                            Mix_VolumeMusic(config->volume);
                             saveConfig(*config);
                             applyResolution(config->current_res);
                         }
                         else if (i == 4) { // Botón de subiir volumen
                             if (config->selectedVolume <5) {
                                 (config->selectedVolume)++;
-                                config->volume=config->selectedVolume*20;
-                                Mix_VolumeMusic(config->volume);
                             }
                         } else if (i == 5) { // Botón de bajar volumen
                             if (config->selectedVolume >0) {
                                 (config->selectedVolume)--;
-                                config->volume=config->selectedVolume*20;
-                                Mix_VolumeMusic(config->volume);
                             }
                         } 
                         }

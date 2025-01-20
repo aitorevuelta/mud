@@ -13,7 +13,7 @@ CONFIG readConfig() {
                &settings.window_size.height,
                &fullscreen,
                &settings.max_FPS,
-               &settings.volume);
+               &settings.selectedVolume);
 
     settings.fullscreen = fullscreen;
 
@@ -30,7 +30,7 @@ void saveConfig(CONFIG config) {
             config.window_size.height, 
             (config.fullscreen),
             config.max_FPS, 
-            config.volume);
+            config.selectedVolume);
 
     fclose(fp);
 }
