@@ -8,7 +8,11 @@
 
 #include <settings.h>
 void handleSettingsButtons(BUTTON buttons[], int buttonCount, GAMEINFO gameInfo, CONTROLS controls, CONFIG* config, GAMESTATE* gameState) {
-    if (controls.click == 1) {
+     static Uint32 lastClickTime = 0;
+    Uint32 currentTime = SDL_GetTicks();
+
+    if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time
+        lastClickTime = currentTime;
         controls.click = 0;
         for (int i = 0; i < buttonCount; i++) {
             if (buttons[i].visible) {

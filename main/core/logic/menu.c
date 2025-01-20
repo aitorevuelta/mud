@@ -31,8 +31,12 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
 
 void handleMenuEvents(BUTTON buttons[], int buttonCount, GAMESTATE *gameState, CONTROLS controls) {
     int i = 0;
-    if (controls.click == 1) {
-        // Process visible buttons
+     static Uint32 lastClickTime = 0;
+    Uint32 currentTime = SDL_GetTicks();
+
+    if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time
+        lastClickTime = currentTime;
+        controls.click = 0;
         for (i = 0; buttonCount > i; i++) {
             if (buttons[i].visible) {
                 SDL_Rect rect = buttons[i].rect;

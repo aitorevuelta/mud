@@ -35,8 +35,7 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             handleMenuEvents(*buttons, 1, gameState, controls);
             break;
         case LOBBY:
-            handleGameStateButtons(*buttons,  6, gameState, controls);
-            handlePlayerButtons(*buttons, 4, *gameInfo, controls);
+            handleLobbyButtons(*buttons,6,gameInfo, gameState, controls);
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
