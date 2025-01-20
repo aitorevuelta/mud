@@ -3,7 +3,7 @@
 
 
 int allocateButtons(BUTTON **buttons, int buttonCount);
-void LoadButtonsByGameState(BUTTON *buttons[], GAMESTATE gameState, IMAGES loadedImages[]);
+void LoadButtonsByGameState(BUTTON **buttons, GAMESTATE gameState, IMAGES loadedImages[]);
 void initializeButtonsMenu(BUTTON *buttons, IMAGES loadedImages[]);
 void initializeButtonsLobby(BUTTON *buttons, IMAGES loadedImages[]);
 void initializeButtonsH2P(BUTTON *buttons, IMAGES loadedImages[]);

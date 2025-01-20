@@ -2,28 +2,24 @@
 #include <buttons_utils.h>
 
 int allocateButtons(BUTTON **buttons, int buttonCount) {
-    if (buttonCount <= 0) {
-        fprintf(stderr, "Error: El conteo de botones debe ser mayor que 0.\n");
-        *buttons = NULL;
+    if (!buttons || buttonCount <= 0) {
         return -1;
+    }
+
+    // Free existing memory if any
+    if (*buttons) {
+        free(*buttons);
     }
 
     *buttons = (BUTTON *)malloc(buttonCount * sizeof(BUTTON));
-    if (*buttons == NULL) {
-        fprintf(stderr, "Error al asignar memoria para los botones\n");
-        return -1;
-    } else {
-        printf("Memoria asignada correctamente para %d botones.\n", buttonCount);
-        return 0;
-    }
+    return (*buttons) ? 0 : -1;
 }
 
-void LoadButtonsByGameState(BUTTON *buttons[], GAMESTATE gameState, IMAGES loadedImages[]) {
+void LoadButtonsByGameState(BUTTON **buttons, GAMESTATE gameState, IMAGES loadedImages[]) {
     int buttonCount = 0;
 
-    // Verificación de la validez del puntero buttons
-    if (buttons == NULL) {
-        fprintf(stderr, "Error: El puntero a botones es NULL.\n");
+    if (!buttons) {
+        fprintf(stderr, "Error: Invalid buttons pointer\n");
         return;
     }
 
@@ -31,15 +27,16 @@ void LoadButtonsByGameState(BUTTON *buttons[], GAMESTATE gameState, IMAGES loade
         case MAIN_MENU:
             buttonCount = 5;
             if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error al asignar memoria para botones en MAIN_MENU.\n");
+                fprintf(stderr, "Error: Failed to allocate MAIN_MENU buttons\n");
                 return;
             }
             initializeButtonsMenu(*buttons, loadedImages);
             break;
+
         case LOBBY:
             buttonCount = 6;
             if (allocateButtons(buttons, buttonCount) != 0) {
-                fprintf(stderr, "Error al asignar memoria para botones en LOBBY.\n");
+                fprintf(stderr, "Error: Failed to allocate LOBBY buttons\n");
                 return;
             }
             initializeButtonsLobby(*buttons, loadedImages);
