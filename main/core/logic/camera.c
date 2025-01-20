@@ -1,55 +1,58 @@
-#include <global.h>
+#include <global.h>          // Global funtzioak eta egitura orokorrak
+#include <controls.h>        // Kontrolen kudeaketa
+#include <camera.h>           // Kamera egituren kudeaketa
 
-#include <controls.h>
+static bool firstClick = true;   // Lehenengo klikaren egoera gordetzen duen bandera
+static int prevMouseX = 0;       // Aurreko saguen kokapenaren X koordenada
+static int prevMouseY = 0;       // Aurreko saguen kokapenaren Y koordenada
 
-#include <camera.h>
-
-static bool firstClick = true;  // Controla el estado del primer clic
-static int prevMouseX = 0;     // Posición previa del mouse (X)
-static int prevMouseY = 0;     // Posición previa del mouse (Y)
-    
+// Kamera eguneratze nagusia
 void updateCamera(CAMERA* camera, CONTROLS controls, int screenWidth, int screenHeight) {
-    updateCameraZoom(camera, controls);
-    updateCameraPosition(camera, controls, screenWidth, screenHeight);
+    updateCameraZoom(camera, controls);         // Zoom-a eguneratzen
+    updateCameraPosition(camera, controls, screenWidth, screenHeight);  // Kamera posizioa eguneratzen
 }
 
+// Kamera zoom-a eguneratzeko logika
 void updateCameraZoom(CAMERA* camera, CONTROLS controls) {
     if (controls.scroll != 0) {
-        // Ajustar el zoom suavemente
-        float zoomDelta = controls.scroll * 0.06f;
-        float newZoom = camera->zoom + zoomDelta;
+        // Zoom-a doikuntza leunki egitea
+        float zoomDelta = controls.scroll * 0.06f;   // Scrollaren arabera doikuntza
+        float newZoom = camera->zoom + zoomDelta;    // Zoom berria
 
-        // Limitar el zoom dentro del rango permitido
+        // Zooma mugarik gabekoan mugatzen
         camera->zoom = (newZoom < 0.75f) ? 0.75f : (newZoom > 2.5f) ? 2.5f : newZoom;
     }
 }
 
+// Kamera posizioa eguneratzeko logika
 void updateCameraPosition(CAMERA* camera, CONTROLS controls, int screenWidth, int screenHeight) {
     if (controls.click) {
         if (firstClick) {
-            // Inicializa la posición previa del mouse en el primer clic
+            // Lehenengo klikaren kokapenak gordetzen dira
             prevMouseX = controls.coords[0];
             prevMouseY = controls.coords[1];
-            firstClick = false;
+            firstClick = false;   // Lehenengo klikaren bandera desaktibatuta
         }
 
-        // Calcular deltas de movimiento
+        // Saguaren mugimenduaren aldagaiak kalkulatzen dira
         int deltaX = controls.coords[0] - prevMouseX;
         int deltaY = controls.coords[1] - prevMouseY;
 
-        // Actualizar la posición de la cámara
+        // Kamera posizioa eguneratzen
         camera->pos[0] += deltaX;
         camera->pos[1] += deltaY;
 
-        // Limitar la posición de la cámara dentro de los bordes de la pantalla
-        camera->pos[0] = (camera->pos[0] < 0) ? 0 : (camera->pos[0] > screenWidth) ? screenWidth : camera->pos[0];
-        camera->pos[1] = (camera->pos[1] < 0) ? 0 : (camera->pos[1] > screenHeight) ? screenHeight : camera->pos[1];
+        // Kamera posizioa pantailaren barnean mugatzen
+        if (camera->pos[0] < 0) camera->pos[0] = 0;          // Ez gainditu ezkerreko muga
+        if (camera->pos[0] > screenWidth) camera->pos[0] = screenWidth;  // Ez gainditu eskuineko muga
+        if (camera->pos[1] < 0) camera->pos[1] = 0;          // Ez gainditu goiko muga
+        if (camera->pos[1] > screenHeight) camera->pos[1] = screenHeight;  // Ez gainditu beheko muga
 
-        // Actualizar la posición previa del mouse
+        // Saguaren aurreko kokapena eguneratzen da
         prevMouseX = controls.coords[0];
         prevMouseY = controls.coords[1];
     } else {
-        // Reiniciar en caso de que se deje de hacer clic
+        // Klika utzi bada, lehenengo klikaren bandera berriro martxan jarri
         firstClick = true;
     }
 }

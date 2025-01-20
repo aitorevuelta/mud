@@ -17,17 +17,21 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
             case CREDITS:
             case LOBBY:
                 *newState = MAIN_MENU;
+            case GAME:
+            *newState = EXIT_TOTAL;
                 break;
+            default:
+                *newState = MAIN_MENU;
         }   
     }
 }
 
 
 void handleMenuEvents(BUTTON buttons[], int buttonCount, GAMESTATE *gameState, CONTROLS controls) {
-     // Check for click
+    int i = 0;
     if (controls.click == 1) {
         // Process visible buttons
-        for (int i = 0; i < buttonCount; i++) {
+        for (i = 0; buttonCount > i; i++) {
             if (buttons[i].visible) {
                 SDL_Rect rect = buttons[i].rect;
                 if (controls.coords[0] >= rect.x &&
