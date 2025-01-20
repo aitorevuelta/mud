@@ -13,6 +13,9 @@ void handleGameStateChange(GAMESTATE newState, ASSETS *loadedAssets) {
     if (newState == MAIN_MENU && !musicPlaying) {
         Mix_PlayMusic(loadedAssets->sounds[0].sound, -1);
         musicPlaying = true;
+    } else if (newState == GAME && musicPlaying) {
+        Mix_HaltMusic();
+        musicPlaying = false;
     }
 }
 void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config) {
