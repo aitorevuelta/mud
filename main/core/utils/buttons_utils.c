@@ -90,7 +90,7 @@ void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
         .visible = 1,
         .widthPercent = 4.0,
         .xPercent = 3.0,
-        .yPercent = 5.0
+        .yPercent = 10.0
     };
 }
 
@@ -141,9 +141,9 @@ void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
         .texture = loadedImages[6].texture,
         .action = ACTION_EXIT,
         .visible = 1,
-        .widthPercent = 3.7,
+        .widthPercent = 4.0,
         .xPercent = 3.0,
-        .yPercent = 6.0
+        .yPercent = 4.0
     };
 }
 
@@ -189,12 +189,12 @@ void initializeButtonsH2P(BUTTON* buttons, IMAGES loadedImages[]) {
 
 void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON VOLVER
-        .texture = loadedImages[13].texture,
-        .action = ACTION_NONE,
+        .texture = loadedImages[10].texture,
+        .action = ACTION_EXIT,  // Acción para salir de la configuración
         .visible = 1,
-        .widthPercent = 3.5,
-        .xPercent = 38.5,
-        .yPercent = 50.0
+        .widthPercent = 4.0,
+        .xPercent = 3.0,
+        .yPercent = 5.0
     };
     buttons[1] = (BUTTON){ // BOTON PASAR RESOLUCION IZQUIERDA
         .texture = loadedImages[8].texture,
@@ -225,16 +225,16 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
         .action = ACTION_NONE,
         .visible = 1,
         .widthPercent = 3.5,
-        .xPercent = 15.7,
+        .xPercent = 17.0,
         .yPercent = 50.0
     };
     buttons[5] = (BUTTON){  // BOTON BAJAR VOLUMEN
-        .texture = loadedImages[10].texture,
-        .action = ACTION_EXIT,  // Acción para salir de la configuración
+        .texture = loadedImages[13].texture,
+        .action = ACTION_NONE,
         .visible = 1,
-        .widthPercent = 3.0,
-        .xPercent = 6.0,
-        .yPercent = 6.0
+        .widthPercent = 3.5,
+        .xPercent = 39.0,
+        .yPercent = 50.0
     };
 }
 
