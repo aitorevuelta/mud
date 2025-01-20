@@ -1,9 +1,5 @@
 #include <global.h>
-
-
 #include <buttons_utils.h>
-
-// MALLOC BUTTONS
 
 int allocateButtons(BUTTON **buttons, int buttonCount) {
     if (buttonCount <= 0) {
@@ -22,72 +18,110 @@ int allocateButtons(BUTTON **buttons, int buttonCount) {
     }
 }
 
-// MENU
+void LoadButtonsByGameState(BUTTON *buttons[], GAMESTATE gameState, IMAGES loadedImages[]) {
+    int buttonCount = 0;
 
-void setupMenuButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
+    // Verificación de la validez del puntero buttons
+    if (buttons == NULL) {
+        fprintf(stderr, "Error: El puntero a botones es NULL.\n");
+        return;
+    }
 
-    allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
-    initializeButtonsMenu(*buttons, loadedAssets.images);  // Specific lobby initialization
+    switch (gameState) {
+        case MAIN_MENU:
+            buttonCount = 5;
+            if (allocateButtons(buttons, buttonCount) != 0) {
+                fprintf(stderr, "Error al asignar memoria para botones en MAIN_MENU.\n");
+                return;
+            }
+            initializeButtonsMenu(*buttons, loadedImages);
+            break;
+        case LOBBY:
+            buttonCount = 6;
+            if (allocateButtons(buttons, buttonCount) != 0) {
+                fprintf(stderr, "Error al asignar memoria para botones en LOBBY.\n");
+                return;
+            }
+            initializeButtonsLobby(*buttons, loadedImages);
+            break;
+        case HOWTOPLAY:
+            buttonCount = 1;
+            if (allocateButtons(buttons, buttonCount) != 0) {
+                fprintf(stderr, "Error al asignar memoria para botones en HOWTOPLAY.\n");
+                return;
+            }
+            initializeButtonsH2P(*buttons, loadedImages);
+            break;
+        case SETTINGS:
+            buttonCount = 6;
+            if (allocateButtons(buttons, buttonCount) != 0) {
+                fprintf(stderr, "Error al asignar memoria para botones en SETTINGS.\n");
+                return;
+            }
+            initializeButtonsSettings(*buttons, loadedImages);
+            break;
+        case CREDITS:
+            buttonCount = 1;
+            if (allocateButtons(buttons, buttonCount) != 0) {
+                fprintf(stderr, "Error al asignar memoria para botones en CREDITS.\n");
+                return;
+            }
+            initializeButtonsCredits(*buttons, loadedImages);
+            break;
+        default:
+            fprintf(stderr, "Error: Estado del juego desconocido.\n");
+            return;
+    }
 }
 
-void initializeButtonsMenu(BUTTON buttons[], IMAGES loadedImages[]) {
-    buttons[0] = (BUTTON){ //BOTON JUGAR
-        .texture = loadedImages[0].texture, 
-        .action = ACTION_PLAY, 
-        .visible = 1, 
-        .widthPercent = 20.0, 
-        .xPercent = 50.0, 
-        .yPercent = 50.0 
+// FUNCIONES DE INICIALIZACIÓN
+
+void initializeButtonsMenu(BUTTON *buttons, IMAGES loadedImages[]) {
+    buttons[0] = (BUTTON){ // BOTON JUGAR
+        .texture = loadedImages[0].texture,
+        .action = ACTION_PLAY,
+        .visible = 1,
+        .widthPercent = 20.0,
+        .xPercent = 50.0,
+        .yPercent = 50.0
     };
-    buttons[1] = (BUTTON){ //BOTON HOW TO PLAY
-        .texture = loadedImages[1].texture, 
-        .action = ACTION_HOWTOPLAY, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 25.0, 
-        .yPercent = 80.0 
+    buttons[1] = (BUTTON){ // BOTON HOW TO PLAY
+        .texture = loadedImages[1].texture,
+        .action = ACTION_HOWTOPLAY,
+        .visible = 1,
+        .widthPercent = 15.0,
+        .xPercent = 25.0,
+        .yPercent = 80.0
     };
-    buttons[2] = (BUTTON){ //BOTON CREDITOS
-        .texture = loadedImages[2].texture, 
-        .action = ACTION_CREDITS, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 50.0, 
-        .yPercent = 80.0 
+    buttons[2] = (BUTTON){ // BOTON CREDITOS
+        .texture = loadedImages[2].texture,
+        .action = ACTION_CREDITS,
+        .visible = 1,
+        .widthPercent = 15.0,
+        .xPercent = 50.0,
+        .yPercent = 80.0
     };
-    buttons[3] = (BUTTON){ //BOTON SETTINGS
-        .texture = loadedImages[3].texture, 
-        .action = ACTION_SETTINGS, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 75.0, 
-        .yPercent = 80.0 
+    buttons[3] = (BUTTON){ // BOTON SETTINGS
+        .texture = loadedImages[3].texture,
+        .action = ACTION_SETTINGS,
+        .visible = 1,
+        .widthPercent = 15.0,
+        .xPercent = 75.0,
+        .yPercent = 80.0
     };
-    buttons[4] = (BUTTON){ //BOTON SALIR
-        .texture = loadedImages[4].texture, 
-        .action = ACTION_EXIT, 
-        .visible = 1, 
-        .widthPercent = 4.0, 
-        .xPercent = 3.0, 
-        .yPercent = 5.0 
+    buttons[4] = (BUTTON){ // BOTON SALIR
+        .texture = loadedImages[4].texture,
+        .action = ACTION_EXIT,
+        .visible = 1,
+        .widthPercent = 4.0,
+        .xPercent = 3.0,
+        .yPercent = 5.0
     };
 }
-
 
 // LOBBY
 
-int setupLobbyButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
-    
-    allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
-    if (*buttons == NULL) {
-        return -1;  // Indicate failure in initialization
-    }
-
-    initializeButtonsLobby(*buttons, loadedAssets.images);  // Specific lobby initialization
-    return 1;  // Indicate that the initialization was successful
-}
-
-void initializeButtonsLobby(BUTTON buttons[], IMAGES loadedImages[]) {
+void initializeButtonsLobby(BUTTON *buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON AÑADIR
         .texture = loadedImages[4].texture,
         .action = ACTION_NONE,
@@ -140,52 +174,29 @@ void initializeButtonsLobby(BUTTON buttons[], IMAGES loadedImages[]) {
 
 // HOWTOPLAY
 
-int setupH2PButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
-
-    allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
-    if (*buttons == NULL) {
-        return -1;  // Indicate failure in initialization
-    }
-
-    initializeButtonsH2P(*buttons, loadedAssets.images);  // Specific lobby initialization
-    return 1;  // Indicate that the initialization was successful
-}
-
-void initializeButtonsH2P(BUTTON buttons[], IMAGES loadedImages[]) {
-        buttons[0] = (BUTTON){ 
-        .texture = loadedImages[1].texture, 
-        .action = ACTION_EXIT, 
-        .visible = 1, 
-        .widthPercent = 4.0, 
-        .xPercent = 3.0, 
-        .yPercent = 5.0 
+void initializeButtonsH2P(BUTTON *buttons, IMAGES loadedImages[]) {
+    buttons[0] = (BUTTON){ 
+        .texture = loadedImages[1].texture,
+        .action = ACTION_EXIT,
+        .visible = 1,
+        .widthPercent = 4.0,
+        .xPercent = 3.0,
+        .yPercent = 5.0
     };
 }
 
-
 // SETTINGS
 
-int setupSettingsButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
-
-    allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
-    if (*buttons == NULL) {
-        return -1;  // Indicate failure in initialization
-    }
-
-    initializeButtonsSettings(*buttons, loadedAssets.images);  // Specific lobby initialization
-    return 1;  // Indicate that the initialization was successful
-}
-
-void initializeButtonsSettings(BUTTON buttons[], IMAGES loadedImages[]) {
+void initializeButtonsSettings(BUTTON *buttons, IMAGES loadedImages[]) {
     buttons[0] = (BUTTON){ // BOTON VOLVER
-        .texture = loadedImages[10].texture, 
+        .texture = loadedImages[10].texture,
         .action = ACTION_EXIT,  // Acción para salir de la configuración
         .visible = 1,
         .widthPercent = 3.0,
         .xPercent = 6.0,
         .yPercent = 6.0
-    };  
-    buttons[1] = (BUTTON){ // BOTON PASAR RESOLUCION IZQUIERDA 
+    };
+    buttons[1] = (BUTTON){ // BOTON PASAR RESOLUCION IZQUIERDA
         .texture = loadedImages[8].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -201,55 +212,41 @@ void initializeButtonsSettings(BUTTON buttons[], IMAGES loadedImages[]) {
         .xPercent = 45.0,
         .yPercent = 35.0
     };
-        buttons[3] = (BUTTON){ //BOTON APLICAR
-        .texture = loadedImages[11].texture, 
-        .action = ACTION_NONE, 
-        .visible = 1, 
-        .widthPercent = 15.0, 
-        .xPercent = 50.0, 
-        .yPercent = 80.0 
+    buttons[3] = (BUTTON){ // BOTON APLICAR
+        .texture = loadedImages[11].texture,
+        .action = ACTION_NONE,
+        .visible = 1,
+        .widthPercent = 15.0,
+        .xPercent = 50.0,
+        .yPercent = 80.0
     };
-        buttons[4] = (BUTTON){  //BOTON SUBIR VOLUMEN
+    buttons[4] = (BUTTON){  // BOTON SUBIR VOLUMEN
         .texture = loadedImages[12].texture,
         .action = ACTION_NONE,
         .visible = 1,
         .widthPercent = 3.5,
         .xPercent = 15.7,
         .yPercent = 50.0
-        };
-        buttons[5] = (BUTTON){  //BOTON BAJAR VOLUMEN
+    };
+    buttons[5] = (BUTTON){  // BOTON BAJAR VOLUMEN
         .texture = loadedImages[13].texture,
         .action = ACTION_NONE,
         .visible = 1,
         .widthPercent = 3.5,
         .xPercent = 38.5,
         .yPercent = 50.0
-        };
-
+    };
 }
-
 
 // CREDITS
 
-int setupCreditsButtons(BUTTON **buttons, int buttonCount, ASSETS loadedAssets) {
-
-    allocateButtons(buttons, buttonCount);  // Use the new function to allocate memory
-    if (*buttons == NULL) {
-        return -1;  // Indicate failure in initialization
-    }
-
-    initializeButtonsCredits(*buttons, loadedAssets.images);  // Specific lobby initialization
-    return 1;  // Indicate that the initialization was successful
-}
-
 void initializeButtonsCredits(BUTTON *buttons, IMAGES loadedImages[]) {
-
     buttons[0] = (BUTTON){
-        .texture = loadedImages[1].texture, 
-        .action = ACTION_EXIT, 
-        .visible = 1, 
-        .widthPercent = 4.0, 
-        .xPercent = 3.0, 
-        .yPercent = 5.0 
+        .texture = loadedImages[1].texture,
+        .action = ACTION_EXIT,
+        .visible = 1,
+        .widthPercent = 4.0,
+        .xPercent = 3.0,
+        .yPercent = 5.0
     };
 }

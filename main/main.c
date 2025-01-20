@@ -15,6 +15,8 @@
 #include <update.h>
 #include <gamecontext.h>
 
+#define MAX_BUTTONS 5
+
 
 int main(int argc, char *argv[])
 {  
@@ -22,10 +24,10 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = GAME;
+    GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo;
     BUTTON buttons;
-
+ 
     srand((unsigned int)time(NULL));
     
     gameInfo.numPlayers = 4; // Establecer un valor por defecto

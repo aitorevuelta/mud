@@ -86,6 +86,7 @@ typedef struct BUTTON_S {
     float widthPercent;     // Ancho relativo del botón (y la imagen) en porcentaje
     float xPercent;         // Posición X relativa en porcentaje
     float yPercent;         // Posición Y relativa en porcentaje
+    bool hover;             // Si el botón está siendo pulsado
 } BUTTON;
 
 
