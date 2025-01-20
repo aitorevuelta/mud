@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = MAIN_MENU;
+    GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo = { .numPlayers = 4, .currentMapID = 1, .numMaps = 3 };
-    BUTTON *buttons;
+    BUTTON *buttons = NULL;
  
     srand((unsigned int)time(NULL));
 

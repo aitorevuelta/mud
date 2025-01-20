@@ -17,7 +17,7 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
     }
 }
 
-void loadGameStateVariables(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
+void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case GAME:
             game_init(renderer, gameInfo);
