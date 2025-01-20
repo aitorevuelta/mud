@@ -9,7 +9,7 @@
 static GAMESTATE lastGameState = LOADSCREEN; 
 static bool musicPlaying = false;
 
-void handleGameStateChange(GAMESTATE newState, ASSETS *loadedAssets) {
+void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets) {
     if (newState == MAIN_MENU && !musicPlaying) {
         Mix_PlayMusic(loadedAssets->sounds[0].sound, -1);
         musicPlaying = true;
@@ -23,7 +23,7 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
         LoadAssets(renderer, loadedAssets, gameState);
         LoadButtonsByGameState(buttons, gameState, loadedAssets->images);
         loadGameStateVariables(renderer, *loadedAssets, gameState, gameInfo, config);
-        handleGameStateChange(gameState, loadedAssets);
+        handleMusicChange(gameState, loadedAssets);
         lastGameState = gameState;
     }
 }
