@@ -8,10 +8,18 @@
 
 static GAMESTATE lastGameState = LOADSCREEN; 
 
-void gameStateManager(SDL_Renderer* renderer, BUTTON *buttons, ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config) {
+void gameStateManager(SDL_Renderer* renderer, BUTTON buttons[], ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config) {
     if (gameState != lastGameState) {
         LoadAssets(renderer, loadedAssets, gameState);
-        LoadButtonsByGameState(buttons, gameState, loadedAssets->images); // Remove & operator
+        loadGameStateVariables(renderer, buttons, *loadedAssets, gameState, gameInfo, config);
         lastGameState = gameState;
+    }
+}
+
+void loadGameStateVariables(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
+    switch (gameState) {
+        case GAME:
+            game_init(renderer, gameInfo);
+            break;
     }
 }
