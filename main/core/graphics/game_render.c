@@ -23,12 +23,13 @@ void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 
 void renderUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
 {
-    renderSideUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players); // UI lateral
+    int turn = gameInfo.turn;
+    renderSideUI(renderer, loadedAssets, gameInfo.numPlayers, gameInfo.players, turn); // UI lateral
     renderBottomUI(renderer, loadedAssets, gameInfo); // UI inferior
-    renderTimeBar(renderer, gameInfo, 50); // Barra de tiempo
+    renderTimeBar(renderer, gameInfo); // Barra de tiempo
 }
 
-void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[])
+void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[], int turn)
 {
     int espacio = 5;
     int playerHeight = 10;
@@ -38,7 +39,7 @@ void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, P
     for (int i = 0; i < numPlayers; i++) {
         int currentY = startY - (i * (10 + 5));
 
-        if (i == 0) { //Puesto de prueba
+        if (i == turn) { //Puesto de prueba
             renderTextureRelative(renderer, loadedAssets.images[4].texture, 3, 88, currentY); // Indicador turno
         }
         renderTextureRelative(renderer, loadedAssets.images[3].texture, 6, 92, currentY-4); // Indicador de cartas jugador
@@ -76,12 +77,22 @@ void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameIn
 
     for (int i = 0; i < 3; i++) {
         renderShapeRelative(renderer, squareWidth, 2, startX + (i * (squareWidth + gap)), height - 1, 
-                            gameInfo.players[0].playerColor, 3, (SDL_Color){75, 59, 117, 255}); // Cuadrados fase
+                            gameInfo.players[gameInfo.turn].playerColor, 3, (SDL_Color){75, 59, 117, 255}); // Cuadrados fase
     }
 }
 
-void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed)
+void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo)
 {
-    renderShapeRelative(renderer, 100, 4, 0, 0, (SDL_Color){0, 0, 0, 100}, 0, (SDL_Color){0, 0, 0, 255}); // Background barra
-    renderShapeRelative(renderer, elapsed, 4, 0, 0, gameInfo.players[0].playerColor, 0, (SDL_Color){0, 0, 0, 255}); // Barra de tiempo
+    // Calculate percentage (0s = 0%, 60s = 100%)
+    float timePercentage = (gameInfo.elapsedTime / 60.0f) * 100.0f;
+    
+    // Render background bar
+    renderShapeRelative(renderer, 100, 4, 0, 0, 
+                       (SDL_Color){0, 0, 0, 100}, 0, 
+                       (SDL_Color){0, 0, 0, 255});
+    
+    // Render elapsed time bar
+    renderShapeRelative(renderer, timePercentage, 4, 0, 0, 
+                       gameInfo.players[gameInfo.turn].playerColor, 0, 
+                       (SDL_Color){0, 0, 0, 255});
 }

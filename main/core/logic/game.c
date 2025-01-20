@@ -4,20 +4,34 @@
 
 #include <game.h>
 
-/*
-void checkClickOnTerritory ({
-    int mouseX = controls.coords[0];
-    int mouseY = controls.coords[1];
-    int i = 0;
-    for (i = 0; i < TERRITORY_COUNT; i++) {
-        if (mouseX >= territories[i].x && mouseX <= territories[i].x + territories[i].w &&
-            mouseY >= territories[i].y && mouseY <= territories[i].y + territories[i].h) {
-            printf("Territory %d clicked\n", i);
-            break;
-        }
+void update_game(GAMEINFO *gameInfo) {
+    updateTime(gameInfo);
+}
+
+
+
+
+static Uint32 lastUpdateTime = 0;
+
+void updateTime(GAMEINFO *gameInfo) {
+    if (!gameInfo) return;
+    
+    Uint32 currentTime = SDL_GetTicks();
+    float deltaTime = (currentTime - lastUpdateTime) / 1000.0f;
+    
+    // Update elapsed time
+    gameInfo->elapsedTime += deltaTime;
+    
+    // Reset timer and change turn at 60 seconds
+    if (gameInfo->elapsedTime >= 60.0f) {
+        gameInfo->elapsedTime = 0.0f;
+        gameInfo->turn = (gameInfo->turn + 1) % gameInfo->numPlayers;
     }
-}) 
-*/
+    
+    lastUpdateTime = currentTime;
+}
+
+// Inicializar
 
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
     int windowWidth, windowHeight;
@@ -25,6 +39,10 @@ void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
     gameInfo->camera.pos[0] = windowWidth / 2;
     gameInfo->camera.pos[1] = windowHeight / 2;
     gameInfo->camera.zoom = 1.0f;
+
+    // Iniciar juego
+    gameInfo->turn = 0;
+    gameInfo->elapsedTime = 0;
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
 }
@@ -53,7 +71,6 @@ void initializePlayers(GAMEINFO *gameInfo) {
         gameInfo->players[i] = initializePlayer(i);
     }
 }
-
 
 void freePlayers(GAMEINFO *gameInfo) {
     if (gameInfo->players) {

@@ -4,8 +4,8 @@
 void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo, CONFIG config);
 void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo);
 void renderUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo);
-void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[]);
+void renderSideUI(SDL_Renderer *renderer, ASSETS loadedAssets, int numPlayers, PLAYER players[], int turn);
 void renderBottomUI(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo);
-void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo, int elapsed);
+void renderTimeBar(SDL_Renderer *renderer, GAMEINFO gameInfo);
 
 #endif // GAME_RENDER_H

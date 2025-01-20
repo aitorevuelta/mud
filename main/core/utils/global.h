@@ -60,6 +60,12 @@ typedef enum {
     EXIT_TOTAL,
 } GAMESTATE;
 
+typedef enum PHASE_E {
+    DEPLOY, 
+    ATTACK,
+    REINFORCE,
+} PHASE;
+
 typedef struct IMAGES_S {
     SDL_Texture* texture;
 } IMAGES;
@@ -138,10 +144,11 @@ typedef struct GAMEINFO_S {
     int numPlayers;             // Número total de jugadores
     int currentPlayerID;        // Índice del jugador actual
     int turn;                   // Número de turno actual
+    float elapsedTime;
+    
     CAMERA camera;              // Configuración de la cámara
     bool gameOver;              // Indicador de fin de juego
 } GAMEINFO;
-
 
 typedef enum {
     ACTION_HOWTOPLAY=2,

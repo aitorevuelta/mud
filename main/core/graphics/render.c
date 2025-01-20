@@ -65,39 +65,38 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
 }
 
 
-void renderShapeRelative(SDL_Renderer *renderer, int widthPercent, int heightPercent, 
-                        int xPercent, int yPercent, SDL_Color shapeColor, 
-                        int borderWidth, SDL_Color borderColor) {
+void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heightPercent, 
+                        float xPercent, float yPercent, SDL_Color shapeColor, 
+                        float borderWidth, SDL_Color borderColor) {
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
-    // Calculate dimensions
-    int shapeWidth = (int)(windowWidth * (widthPercent / 100.0f));
-    int shapeHeight = (int)(windowHeight * (heightPercent / 100.0f));
-    int posX = (int)(windowWidth * (xPercent / 100.0f));
-    int posY = (int)(windowHeight * (yPercent / 100.0f)) - shapeHeight / 2;
+    // Calculate dimensions with float precision
+    float shapeWidth = windowWidth * (widthPercent / 100.0f);
+    float shapeHeight = windowHeight * (heightPercent / 100.0f);
+    float posX = windowWidth * (xPercent / 100.0f);
+    float posY = windowHeight * (yPercent / 100.0f) - shapeHeight / 2.0f;
+
+    // Convert to int only for SDL_Rect
+    SDL_Rect rect = {
+        (int)posX,
+        (int)posY,
+        (int)shapeWidth,
+        (int)shapeHeight
+    };
 
     // Draw inner fill if not transparent
     if (shapeColor.a > 0) {
         SDL_SetRenderDrawColor(renderer, shapeColor.r, shapeColor.g, shapeColor.b, shapeColor.a);
-        SDL_Rect fillRect = {posX, posY, shapeWidth, shapeHeight};
-        SDL_RenderFillRect(renderer, &fillRect);
+        SDL_RenderFillRect(renderer, &rect);
     }
 
-    // Draw border lines
-    SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
-    for(int i = 0; i < borderWidth; i++) {
-        SDL_Rect borderRect = {
-            posX - i,
-            posY - i,
-            shapeWidth + (i * 2),
-            shapeHeight + (i * 2)
-        };
-        SDL_RenderDrawRect(renderer, &borderRect);
+    // Draw border if width > 0
+    if (borderWidth > 0) {
+        SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
+        SDL_RenderDrawRect(renderer, &rect);
     }
 }
-
-
 void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent) {
     if (!text || !font) return;
 
