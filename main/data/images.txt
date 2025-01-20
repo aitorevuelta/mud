@@ -61,7 +61,7 @@ izq.png
 6
 marco.png
 der.png
-map.jpg
+map.png
 mapd.png
 7
 7
