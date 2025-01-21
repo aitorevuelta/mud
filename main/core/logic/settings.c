@@ -62,13 +62,12 @@ void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) 
         case VOLUME_UP:
             if (config->selectedVolume < 5) {
                 config->selectedVolume++;
-                Mix_VolumeMusic(config->selectedVolume * 20);
+                
             }
             break;
         case VOLUME_DOWN:
             if (config->selectedVolume > 0) {
                 config->selectedVolume--;
-                Mix_VolumeMusic(config->selectedVolume * 20);
             }
             break;
         default:
