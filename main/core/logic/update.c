@@ -41,7 +41,7 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
-            loadMapMask(renderer, loadedAssets, gameInfo->camera, gameInfo->currentMapID);
+            loadMapMask(renderer, *loadedAssets, gameInfo->camera, gameInfo->currentMapID);
             update_game(gameInfo);
             break;
     }
