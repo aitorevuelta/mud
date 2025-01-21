@@ -67,7 +67,10 @@ void loadGameInfo(GAMEINFO* gameInfo) {
     gameInfo->numPlayers = 2;
     gameInfo->currentMapID = 1;
     gameInfo->numMaps = NUM_MAPS;
-
-    
-
+    gameInfo->camera.pos[0] = windowWidth / 2;
+    gameInfo->camera.pos[1] = windowHeight / 2;
+    gameInfo->camera.zoom = 1.0f;
+    gameInfo->turn = 0;
+    gameInfo->elapsedTime = 0;
+    gameInfo->round = 1;
 }

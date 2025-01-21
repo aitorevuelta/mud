@@ -41,14 +41,8 @@ void updateTime(GAMEINFO *gameInfo) {
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
-    gameInfo->camera.pos[0] = windowWidth / 2;
-    gameInfo->camera.pos[1] = windowHeight / 2;
-    gameInfo->camera.zoom = 1.0f;
 
-    // Iniciar juego
-    gameInfo->turn = 0;
-    gameInfo->elapsedTime = 0;
-    gameInfo->round = 1;
+
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
 }
