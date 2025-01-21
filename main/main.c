@@ -21,10 +21,12 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = LOADSCREEN;
+    GAMESTATE gameState = GAME;
     GAMEINFO gameInfo = loadGameInfo();
     BUTTON* buttons = NULL;
 
+    srand((unsigned int)time(NULL));
+    
     bool is_running = init_sdl(&sdl, config);
     if(!is_running) return EXIT_FAILURE;
     LoadAssets(sdl.renderer, &loadedAssets, gameState);

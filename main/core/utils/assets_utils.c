@@ -257,7 +257,6 @@ SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {
 }
 
 SDL_Color getRandomColour() {
-    srand((unsigned int)time(NULL));
     SDL_Color randomColour;
     randomColour.r = rand() % 256;
     randomColour.g = rand() % 256;
