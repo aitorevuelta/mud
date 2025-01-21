@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
     GAMEINFO gameInfo = loadGameInfo();
     BUTTON *buttons = NULL;
 
+    srand((unsigned int)time(NULL));
+    
     bool is_running = init_sdl(&sdl, config);
     if(!is_running) return EXIT_FAILURE;
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
