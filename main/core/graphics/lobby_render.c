@@ -32,7 +32,7 @@ void renderLobbyPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int player
             x = positions[maxPositions - 1][0];
             y = positions[maxPositions - 1][1];
         }
-        renderTextureRelative(renderer, loadedImages[8].texture, 20, x, y); // Renderizar jugador con respecto a i
+        renderTextureRelative(renderer, loadedImages[8].texture, 20, (float)x, (float)y); // Renderizar jugador con respecto a i
     }
 }
 

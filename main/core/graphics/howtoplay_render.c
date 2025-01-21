@@ -22,7 +22,7 @@ void howtoplay_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAss
     renderTextRelative(renderer, loadedAssets.fonts[0].font, "- 2. Atakatu : Tropa guztiak desplegatu ostean, atakatzea posiblea da lurraldeak lortzeko. Atakatzerako momentuan, ", (SDL_Color){255, 255, 255, 255}, 
                     (SDL_Color){55, 55, 55, 12}, 3, 62, 46, 34);
     renderTextRelative(renderer, loadedAssets.fonts[0].font, " bakarrik alboko lurraldeei atakatu ahal da. Guda horren irabazlea aukeratzeko, tropen kopurua kontuan eukitzen da.", (SDL_Color){255, 255, 255, 255}, 
-                    (SDL_Color){55, 55, 55, 12}, 3, 62, 52.4, 37);
+                    (SDL_Color){55, 55, 55, 12}, 3, 62, 52.4f, 37);
     renderTextRelative(renderer, loadedAssets.fonts[0].font, "- 3. Indartu: Behin atakatuta, lurraldeak indartzea posiblea da, zure lurraldetako tropak, beste lurralde batera mugituz.", (SDL_Color){255, 255, 255, 255}, 
                     (SDL_Color){55, 55, 55, 12}, 3, 62, 46, 40);
 

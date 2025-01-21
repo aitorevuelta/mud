@@ -38,7 +38,7 @@ void renderSelectedVolume(SDL_Renderer *renderer, IMAGES loadedImages[], int sel
     // Verificar si hay barras que renderizar
     if (selectedVolume > 0) {
         for (int i = 0; i < selectedVolume; i++) {
-            renderTextureRelative(renderer, loadedImages[15].texture, 1.5, (22.5 + (i * 2.5)), 50);
+            renderTextureRelative(renderer, loadedImages[15].texture, 1.5f, (22.5f + (i * 2.5f)), 50);
         }
     }
 }
