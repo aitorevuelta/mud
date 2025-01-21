@@ -35,7 +35,6 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             handleMenuEvents(*buttons, 1, gameState, controls);
             break;
         case LOBBY:
-            //loadGameInfo(gameInfo);
             handleLobbyButtons(*buttons, 6, gameInfo, gameState, controls);
             break;
         case GAME:
