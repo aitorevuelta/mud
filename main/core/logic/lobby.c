@@ -37,18 +37,24 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
                             } else printf("Jokalari kopurua %d\n", gameInfo->numPlayers);
                             break;
                         case 2: // Botón de flecha izquierda (cambiar mapa hacia atrás)
-                            gameInfo->currentMapID = (gameInfo->currentMapID == 0)
-                                ? gameInfo->numMaps - 1
-                                : gameInfo->currentMapID - 1;
+                            if (gameInfo->currentMapID > 1) {
+                                gameInfo->currentMapID--;
+                            } else if(gameInfo->currentMapID == 1){
+                                gameInfo->currentMapID=NUM_MAPS;
+                            }
                             break;
                         case 3: // Botón de flecha derecha (cambiar mapa hacia adelante)
-                            gameInfo->currentMapID = (gameInfo->currentMapID + 1) % gameInfo->numMaps;
+                            if (gameInfo->currentMapID < NUM_MAPS) {
+                                gameInfo->currentMapID++;
+                            } else if(gameInfo->currentMapID == NUM_MAPS){
+                                gameInfo->currentMapID=1;
+                            }
                             break;
                         default:
                             break;
                     }
                     // Verifica si la acción es válida antes de ejecutarla
-                    if (gameState != NULL && buttons[i].action != ACTION_NONE) {
+                    if (gameState != NULL && buttons[i].action != ACTION_NONE && gameInfo->currentMapID==1) {
                         GAMESTATE currentState = *gameState;
                         *gameState = buttons[i].action;
                         handleExitStates(currentState, gameState);  

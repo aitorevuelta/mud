@@ -48,7 +48,7 @@ creditsTitulo.png
 nombres.png
 5
 fondo.png
-MAP1.png
+map.png
 MAP2.png
 MAP3.png
 añadir.png
@@ -58,6 +58,7 @@ start.png
 jugador.png
 der.png
 izq.png
+error.png
 6
 map.png
 mapd.png
