@@ -25,7 +25,7 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
                             adjustPlayerCount(gameInfo, 1);
                             break;
                         case REMOVE_PLAYER:
-                            adjustPlayerCount(gameInfo, 1);
+                            adjustPlayerCount(gameInfo, -1);
                             break;
                         case PREV_MAP:
                             adjustMapID(gameInfo, -1);
