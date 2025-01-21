@@ -2,6 +2,7 @@
 
 #include <sdl_utils.h>
 #include <controls.h>
+#include <render.h>
 #include <menu.h>
 #include <settings.h>
 #include <loadscreen.h>
@@ -41,7 +42,8 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
-            loadMapMask(renderer, *loadedAssets, gameInfo->camera, gameInfo->currentMapID);
+            loadMapMask(renderer, *loadedAssets, gameInfo->camera, gameInfo->currentMapID, config->resolutions[config->current_res]);
+            SDL_Color color = getPixelColor(loadedAssets->images[1].texture, controls.coords[0], controls.coords[1]);
             update_game(gameInfo);
             break;
     }

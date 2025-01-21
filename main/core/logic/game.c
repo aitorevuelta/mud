@@ -24,6 +24,8 @@ GAMEINFO loadGameInfo() {
 
 
 void update_game(GAMEINFO *gameInfo) {
+    //checkMapTerritoryClick
+    
     handleTurn(gameInfo);
 }
 
@@ -50,7 +52,7 @@ void handleTurn(GAMEINFO *gameInfo) {
             gameInfo->round++;
         }
     }
-     handlePhase(gameInfo);
+    //handlePhase(gameInfo);
     lastUpdateTime = currentTime;
 }
 

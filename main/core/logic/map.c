@@ -1,5 +1,6 @@
 #include <global.h>
 #include <game.h>
+#include <render.h>
 #include <map.h>
 
 // Función para renderizar los territorios con el color del dueño

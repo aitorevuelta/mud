@@ -7,7 +7,7 @@ void initializeMap(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalT
 void allocateTerritories(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalTerritories);
 void initializeTerritories(MAPINFO* mapInfo, int totalTerritories);
 
-void loadMapMask(SDL_Renderer *renderer, ASSETS loadedAssets, CAMERA camera, int currentMapID);
+void loadMapMask(SDL_Renderer *renderer, ASSETS loadedAssets, CAMERA camera, int currentMapID, RESOLUTION resolution);
 
 void shuffleTerritories(TERRITORYINFO* territories, int numTerritories);
 
