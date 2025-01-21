@@ -6,13 +6,14 @@
 #include <lobby.h>
 
 void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls) {
+    int i = 0;
     static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
 
     if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time
         lastClickTime = currentTime;
         controls.click = 0;
-        for (int i = 0; i < buttonCount; i++) {
+        for (i = 0; i < buttonCount; i++) {
             if (buttons[i].visible) {
                 SDL_Rect rect = buttons[i].rect;
 
