@@ -24,19 +24,19 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             break;
         case MAIN_MENU:
             handleMenuEvents(*buttons, 5, gameState, controls);
-            
             break;
        case HOWTOPLAY:
             handleMenuEvents(*buttons, 1, gameState, controls);
             break;
        case SETTINGS:
-            handleSettingsButtons(*buttons, 6, *gameInfo, controls, config, gameState);
+            handleSettingsButtons(*buttons, 6, controls, config, gameState);
             break;
         case CREDITS:
             handleMenuEvents(*buttons, 1, gameState, controls);
             break;
         case LOBBY:
-            handleLobbyButtons(*buttons,6,gameInfo, gameState, controls);
+            loadGameInfo(gameInfo);
+            handleLobbyButtons(*buttons, 6, gameInfo, gameState, controls);
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
