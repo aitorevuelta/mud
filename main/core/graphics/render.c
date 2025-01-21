@@ -18,18 +18,12 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
 
- static bool musicPlaying = false;
-
     switch (gameState) {
         case LOADSCREEN:
             loadscreen_render(renderer, loadedAssets);
             break;
         case MAIN_MENU:
             menu_render(renderer, buttons, loadedAssets);
-             if (!musicPlaying) {
-                Mix_PlayMusic(loadedAssets.sounds[0].sound, -1);
-                musicPlaying = true;
-            }
             break;
         case LOBBY:
             lobby_render(renderer, buttons, loadedAssets, gameInfo);

@@ -13,15 +13,18 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
         LoadAssets(renderer, loadedAssets, gameState);
         LoadButtonsByGameState(buttons, gameState, loadedAssets->images);
         loadGameStateVariables(renderer, *loadedAssets, gameState, gameInfo, config);
-        handleMusicChange(gameState, loadedAssets);
+        handleMusicChange(gameState, loadedAssets, config->volume);
         lastGameState = gameState;
     }
 }
 
 void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
-        case SETTINGS:
+        case MAIN_MENU:
             config->selectedVolume =  config->volume / 20;
+            break;
+        case SETTINGS:
+            config->volume =  config->selectedVolume * 20;
             break;
         case GAME:
             game_init(renderer, gameInfo);
@@ -31,9 +34,10 @@ void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTA
 
 static bool musicPlaying = false;
 
-void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets) {
+void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets, int volume) {
     if (newState == MAIN_MENU && !musicPlaying) {
         Mix_PlayMusic(loadedAssets->sounds[0].sound, -1);
+        Mix_VolumeMusic(volume);
         musicPlaying = true;
     } else if (newState == GAME && musicPlaying) {
         Mix_HaltMusic();

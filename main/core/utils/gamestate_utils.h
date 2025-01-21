@@ -3,5 +3,5 @@
 
 void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config);
 void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config);
-void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets);
+void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets, int volume);
 #endif //GAMESTATE_UTILS_H
