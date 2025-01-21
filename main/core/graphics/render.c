@@ -29,7 +29,7 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
             lobby_render(renderer, buttons, loadedAssets, gameInfo);
             break;
         case GAME:
-            game_render(renderer, loadedAssets, buttons, gameInfo, config);
+            game_render(renderer, loadedAssets, buttons, gameInfo, config.window_size);
             break;
         case SETTINGS:
             settings_render(renderer, buttons, loadedAssets, config);

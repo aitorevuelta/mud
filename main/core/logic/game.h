@@ -11,7 +11,8 @@ GAMEINFO loadGameInfo();
 
 // Logica del juego
 void update_game(GAMEINFO *gameInfo);
-void updateTime(GAMEINFO *gameInfo);
+void handleTurn(GAMEINFO *gameInfo);
+void handlePhase();
 
 
 

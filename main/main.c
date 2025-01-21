@@ -37,7 +37,6 @@ int main(int argc, char *argv[])
         render(sdl.renderer, loadedAssets, gameState, gameInfo, buttons, config);
     }while(is_running);
 
-
     FreeAssets(&loadedAssets);
     saveConfig(config);
     cleanUp_sdl(&sdl);

@@ -3,21 +3,18 @@
 #include <render.h>
 #include <game_render.h>
 
-void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, BUTTON *buttons, GAMEINFO gameInfo, CONFIG config)
+void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, BUTTON *buttons, GAMEINFO gameInfo, RESOLUTION resolution)
 {
-    renderMap(renderer, loadedAssets, gameInfo);
+    renderMap(renderer, loadedAssets, gameInfo, resolution);
     renderUI(renderer, loadedAssets, gameInfo);
     renderButtons(renderer, buttons, 3);
 }
 
-void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)
+void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo, RESOLUTION resolution)
 {
-    int windowWidth, windowHeight;
-    SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
-
     float mapWidth = 200.0f * gameInfo.camera.zoom; // Escala del mapa con respecto al zoom
-    float mapX = ((float)gameInfo.camera.pos[0] / windowWidth * 100.0f); // Posicion x ajustada del mapa con la camara
-    float mapY = ((float)gameInfo.camera.pos[1] / windowHeight * 100.0f); // Posicion y ajustada del mapa con la camara
+    float mapX = ((float)gameInfo.camera.pos[0] / resolution.width * 100.0f); // Posicion x ajustada del mapa con la camara
+    float mapY = ((float)gameInfo.camera.pos[1] / resolution.height * 100.0f); // Posicion y ajustada del mapa con la camara
 
     renderTextureRelative(renderer, loadedAssets.images[0].texture, mapWidth, mapX, mapY); // Renderizar mapa
 }

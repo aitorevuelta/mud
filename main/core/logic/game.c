@@ -28,7 +28,7 @@ void update_game(GAMEINFO *gameInfo) {
 
 static Uint32 lastUpdateTime = 0;
 
-void updateTime(GAMEINFO *gameInfo) {
+void handleTurn(GAMEINFO *gameInfo) {
     if (!gameInfo) return;
     
     Uint32 currentTime = SDL_GetTicks();
@@ -51,6 +51,10 @@ void updateTime(GAMEINFO *gameInfo) {
     }
     
     lastUpdateTime = currentTime;
+}
+
+void handlePhase() {
+    
 }
 
 
