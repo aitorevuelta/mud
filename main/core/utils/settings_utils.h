@@ -5,6 +5,6 @@
 
 CONFIG readConfig();
 void saveConfig(CONFIG config);
-void applyResolution(int resolution);
+
 
 #endif // SETTINGS_UTILS_H

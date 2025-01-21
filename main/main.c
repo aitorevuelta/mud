@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     BUTTON *buttons = NULL;
 
     bool is_running = init_sdl(&sdl, config);
+    if(!is_running) return EXIT_FAILURE;
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
 
     do {
