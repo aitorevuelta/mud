@@ -17,7 +17,7 @@ void initializePlayers(GAMEINFO *gameInfo);
 void allocateTerritories(GAMEINFO* gameInfo);
 void initializeTerritories(GAMEINFO* gameInfo);
 
-void initializeMap(GAMEINFO* gameInfo);
+void initializeTerritories(MAPINFO* mapInfo);
 
 
 
