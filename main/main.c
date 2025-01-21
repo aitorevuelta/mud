@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     CONFIG config = readConfig();
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
-    GAMESTATE gameState = GAME;
+    GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo = loadGameInfo();
     BUTTON* buttons = NULL;
 

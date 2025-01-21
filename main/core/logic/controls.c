@@ -153,3 +153,12 @@ void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
             break;
     }
 }
+
+bool isClickAllowed(Uint32* lastClickTime, Uint32 debounceTime) {
+    Uint32 currentTime = SDL_GetTicks();
+    if (currentTime - *lastClickTime > debounceTime) {
+        *lastClickTime = currentTime;
+        return true;
+    }
+    return false;
+}

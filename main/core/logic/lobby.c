@@ -14,35 +14,24 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
     static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
 
-    if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time
-        lastClickTime = currentTime;
+    if (controls.click == 1 && isClickAllowed(&lastClickTime, 200)) {
         controls.click = 0;
         for (i = 0; buttonCount > i; i++) {
             if (buttons[i].visible) {
                 SDL_Rect rect = buttons[i].rect;
-                if (isClickInsideButton(control.coords, rect)) {
+                if (isClickInsideButton(controls.coords, rect)) {
                     switch (i) {
                         case ADD_PLAYER:
-                            
+                            adjustPlayerCount(gameInfo, 1);
                             break;
                         case REMOVE_PLAYER:
-                            if (gameInfo->numPlayers > MIN_PLAYERS) {
-                                gameInfo->numPlayers--;
-                            } else printf("Jokalari kopurua %d\n", gameInfo->numPlayers);
+                            adjustPlayerCount(gameInfo, 1);
                             break;
-                        case PREV_MAP: 
-                            if (gameInfo->currentMapID > 1) {
-                                gameInfo->currentMapID--;
-                            } else if(gameInfo->currentMapID == 1){
-                                gameInfo->currentMapID=NUM_MAPS;
-                            }
+                        case PREV_MAP:
+                            adjustMapID(gameInfo, -1);
                             break;
                         case NEXT_MAP:
-                            if (gameInfo->currentMapID < NUM_MAPS) {
-                                gameInfo->currentMapID++;
-                            } else if(gameInfo->currentMapID == NUM_MAPS){
-                                gameInfo->currentMapID=1;
-                            }
+                            adjustMapID(gameInfo, 1);
                             break;
                         default:
                             break;
@@ -54,12 +43,24 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
                         handleExitStates(currentState, gameState);  
                     }
 
-
                     controls.click = 0;
                     return;
                 }
             }
         }
+    }
+}
+
+
+void adjustPlayerCount(GAMEINFO* gameInfo, int change) {
+    if (change > 0 && gameInfo->numPlayers < MAX_PLAYERS) {
+        gameInfo->numPlayers++;
+        printf("Número de jugadores: %d\n", gameInfo->numPlayers);
+    } else if (change < 0 && gameInfo->numPlayers > MIN_PLAYERS) {
+        gameInfo->numPlayers--;
+        printf("Número de jugadores: %d\n", gameInfo->numPlayers);
+    } else {
+        printf("Número de jugadores fuera de límites: %d\n", gameInfo->numPlayers);
     }
 }
 

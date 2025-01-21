@@ -24,7 +24,7 @@ void renderLobbyPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int player
     int maxPositions = sizeof(positions) / sizeof(positions[0]); // Jugadores maximos cogiendo el array de posiciones
     int i = 0, x = 0, y = 0;
 
-    for (i = 0; i < playerCount; i++) {
+    for (i = 0; playerCount > i; i++) {
         if (i < maxPositions) {
             x = positions[i][0];
             y = positions[i][1];

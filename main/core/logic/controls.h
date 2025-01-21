@@ -100,6 +100,8 @@ void handle_mouse_motion(SDL_Event event, CONTROLS *controls);
 
 void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config);
 
+bool isClickAllowed(Uint32* lastClickTime, Uint32 debounceTime);
+
 
 
 
