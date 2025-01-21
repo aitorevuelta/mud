@@ -16,6 +16,8 @@ GAMEINFO loadGameInfo() {
     info.currentMapID = 1;
     info.numMaps = NUM_MAPS;
     info.numPlayers = 2;
+    info.totalTerritories=23;
+    
 
     return info;
 }

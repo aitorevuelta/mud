@@ -153,6 +153,7 @@ typedef struct GAMEINFO_S {
     float elapsedTime;
     CAMERA camera;              // Configuración de la cámara
     bool isGameOver;          // indicador si esta en juego
+    int totalTerritories;
 } GAMEINFO;
 
 typedef enum {

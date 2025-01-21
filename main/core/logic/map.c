@@ -1,9 +1,42 @@
 #include <global.h>
-
 #include <game.h>
-
 #include <map.h>
 
+// Función para renderizar los territorios con el color del dueño
+void renderTerritories(SDL_Renderer *renderer, MAPINFO *mapInfo, PLAYER *players) {
+    for (int i = 0; i < mapInfo->numTerritories; i++) {
+        TERRITORYINFO *territory = &mapInfo->territories[i];
+        PLAYER *owner = &players[territory->ownerID];
+
+        // Establecer el color del territorio basado en el color del dueño
+        SDL_SetRenderDrawColor(renderer, owner->playerColor.r, owner->playerColor.g, owner->playerColor.b, 255);
+
+        // Dibujar el territorio como un círculo
+        for (int w = 0; w < territory->radius * 2; w++) {
+            for (int h = 0; h < territory->radius * 2; h++) {
+                int dx = territory->radius - w; // horizontal offset
+                int dy = territory->radius - h; // vertical offset
+                if ((dx * dx + dy * dy) <= (territory->radius * territory->radius)) {
+                    SDL_RenderDrawPoint(renderer, territory->center[0] + dx, territory->center[1] + dy);
+                }
+            }
+        }
+    }
+}
+
+// Función para manejar el cambio de dueño de un territorio
+void changeTerritoryOwner(TERRITORYINFO *territory, PLAYER *newOwner) {
+    territory->ownerID = newOwner->id;
+    // Aquí puedes agregar lógica adicional si es necesario
+}
+
+// Función para manejar el ataque y cambio de dueño de un territorio
+void handleTerritoryAttack(TERRITORYINFO *territory, PLAYER *attacker, PLAYER *defender) {
+    if (territory->troops <= 0) {
+        changeTerritoryOwner(territory, attacker);
+        printf("Territory %s conquered by Player %d!\n", territory->name, attacker->id);
+    }
+}
 
 void loadMapMask(SDL_Renderer *renderer, ASSETS loadedAssets, CAMERA camera, int currentMapID, RESOLUTION resolution) {
     if (!renderer) return;
@@ -35,7 +68,6 @@ void checkMapTerritoryClick(MAPINFO* mapInfo, int mouseX, int mouseY) {
     printf("No territory selected.\n");
 }
 
-
 void shuffleTerritories(TERRITORYINFO* territories, int numTerritories) {
     if (!territories || numTerritories <= 1) return;
 
@@ -49,10 +81,10 @@ void shuffleTerritories(TERRITORYINFO* territories, int numTerritories) {
     }
 }
 
-void allocateTerritories(MAPINFO* mapInfo, PLAYER* players, int numPlayers) {
+void allocateTerritories(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalTerritories) {
     if (!mapInfo || !players || numPlayers == 0) return;
 
-    int numTerritories = mapInfo->numTerritories;
+    int numTerritories = totalTerritories;
     if (numTerritories == 0) return;
 
     // Barajar territorios
@@ -97,7 +129,8 @@ void allocateTerritories(MAPINFO* mapInfo, PLAYER* players, int numPlayers) {
     }
 }
 
-void initializeTerritories(MAPINFO* mapInfo) {
+void initializeTerritories(MAPINFO* mapInfo, int totalTerritories) {
+    mapInfo->numTerritories = totalTerritories;
     for (int i = 0; i < mapInfo->numTerritories; i++) {
         TERRITORYINFO* territory = &mapInfo->territories[i];
         territory->ownerID = -1;        // Sin dueño inicialmente
@@ -110,12 +143,11 @@ void initializeTerritories(MAPINFO* mapInfo) {
     printf("Territories initialized.\n");
 }
 
-
-void initializeMap(MAPINFO* mapInfo, PLAYER* players, int numPlayers) {
+void initializeMap(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalTerritories) {
     if (!mapInfo || !players) return;
 
-    initializeTerritories(mapInfo);
-    allocateTerritories(mapInfo, players, numPlayers);
+    initializeTerritories(mapInfo, totalTerritories);
+    allocateTerritories(mapInfo, players, numPlayers, totalTerritories);
 }
 
 void freeTerritories(MAPINFO* mapInfo) {
@@ -123,4 +155,4 @@ void freeTerritories(MAPINFO* mapInfo) {
         free(mapInfo->territories);
         mapInfo->territories = NULL;
     }
-}   
+}
