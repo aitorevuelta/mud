@@ -1,6 +1,10 @@
 #include <global.h>
 
 #include <assets_utils.h>
+#include <settings.h>
+
+#include <map.h>
+#include <player.h>
 
 #include <game.h>
 
@@ -52,73 +56,23 @@ void updateTime(GAMEINFO *gameInfo) {
 
 // Inicializar
 
-void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo) {
-    int windowWidth, windowHeight;
-    SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
-    gameInfo->camera.pos[0] = windowWidth / 2;
-    gameInfo->camera.pos[1] = windowHeight / 2;
+void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution) {
+    SDL_GetRendererOutputSize(renderer, &resolution.width, &resolution.height);
+    gameInfo->camera.pos[0] = resolution.width / 2;
+    gameInfo->camera.pos[1] = resoltion.height / 2;
     gameInfo->camera.zoom = 1.0f;
+
+
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
 }
 
 
-void allocatePlayers(GAMEINFO *gameInfo) {
-    size_t memorySize = sizeof(PLAYER) *gameInfo->numPlayers;
-    gameInfo->players = (PLAYER *) malloc(memorySize);
-    if(!gameInfo->players) exit(1);
-}
-
-PLAYER initializePlayer(int id) {
-    PLAYER player;
-    player.id = id;
-    player.numCards = 0;
-    player.cards = NULL;
-    player.numTerritories = 0;
-    player.territories = NULL;
-    player.playerColor = getRandomColour();
-    return player;
-}
-
-void initializePlayers(GAMEINFO *gameInfo) {
-    int i = 0;
-    for(i = 0; gameInfo->numPlayers > i; i++) {
-        gameInfo->players[i] = initializePlayer(i);
-    }
-}
-
-void allocateTerritories(GAMEINFO* gameInfo) {
-
-}
-
-
-void initializeTerritories(MAPINFO* mapInfo) {
-    int i = 0;
-    for(i = 0; mapInfo->numTerritories > i; i++) {
-
-    }
-}
-
-void initializeMap(GAMEINFO* gameInfo){
-
-}
 
 
 
 
 
-
-
-void freeTerritories(GAMEINFO* gameInfo) {
-
-}
-
-void freePlayers(GAMEINFO *gameInfo) {
-    if (gameInfo->players) {
-    free(gameInfo->players);
-    gameInfo->players = NULL;
-    }
-}
 
 bool checkGameOver(GAMEINFO* gameInfo) {
     int i = 0;

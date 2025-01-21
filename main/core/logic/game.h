@@ -13,23 +13,12 @@ GAMEINFO loadGameInfo();
 void update_game(GAMEINFO *gameInfo);
 void updateTime(GAMEINFO *gameInfo);
 
-// Iniciar players
-void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo);
-void allocatePlayers(GAMEINFO *gameInfo);
-PLAYER initializePlayer(int id);
-void initializePlayers(GAMEINFO *gameInfo);
 
-void allocateTerritories(GAMEINFO* gameInfo);
-void initializeTerritories(GAMEINFO* gameInfo);
 
-void initializeTerritories(MAPINFO* mapInfo);
-
+void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution);
 
 
 bool checkGameOver(GAMEINFO* gameInfo);
-
-void freeTerritories(GAMEINFO* gameInfo);
-void freePlayers(GAMEINFO* gameInfo);
 
 
 #endif // GAME_H3

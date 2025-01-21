@@ -49,7 +49,7 @@ typedef struct CONFIG_S {
     RESOLUTION *resolutions;
 } CONFIG;
 
-typedef enum GAMESTATE_E {
+typedef enum {
     LOADSCREEN = 0,
     MAIN_MENU,
     HOWTOPLAY,

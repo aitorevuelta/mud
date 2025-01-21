@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     ASSETS loadedAssets = {NULL, NULL, NULL};
     GAMESTATE gameState = LOADSCREEN;
     GAMEINFO gameInfo = loadGameInfo();
-    BUTTON *buttons = NULL;
+    BUTTON* buttons = NULL;
 
     bool is_running = init_sdl(&sdl, config);
     if(!is_running) return EXIT_FAILURE;
@@ -42,4 +42,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-

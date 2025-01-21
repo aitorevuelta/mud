@@ -21,13 +21,13 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
 void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case MAIN_MENU:
-            config->selectedVolume =  config->volume / 20;
+            config->selectedVolume = config->volume / 20;
             break;
         case SETTINGS:
             config->volume =  config->selectedVolume * 20;
             break;
         case GAME:
-            game_init(renderer, gameInfo);
+            game_init(renderer, gameInfo, config->window_size);
             break;
     }
 }

@@ -33,7 +33,6 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls,
                     }
                     controls.click = 0;
                     return; 
-                    
                 }
             }
         }
@@ -62,7 +61,6 @@ void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) 
         case VOLUME_UP:
             if (config->selectedVolume < 5) {
                 config->selectedVolume++;
-                
             }
             break;
         case VOLUME_DOWN:
@@ -70,11 +68,11 @@ void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) 
                 config->selectedVolume--;
             }
             break;
+        case RESET:
+            resetConfiguration(config);
         default:
             break;
     }
-
-
 }
 
 bool isClickInsideButton(int coords[2], SDL_Rect rect) {
@@ -128,4 +126,17 @@ void applyResolution(int resolution) {
 
     SDL_SetWindowSize(SDL_GetWindowFromID(1), width, height);
     SDL_SetWindowPosition(SDL_GetWindowFromID(1), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+}
+
+void resetConfiguration(CONFIG* config) {
+
+    if(config != NULL) free(config);
+    
+    config->window_size.width = 1280;
+    config->window_size.height = 720;
+    config->fullscreen = 0;
+    config->selectedVolume = 3;
+    config->current_res = 3;
+
+    saveConfig(*config);
 }
