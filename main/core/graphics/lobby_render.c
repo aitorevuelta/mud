@@ -37,5 +37,5 @@ void renderLobbyPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int player
 }
 
 void renderLobbySelectedMap(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedMap) {
- // Renderizar mapa
+  renderTextureRelative(renderer, loadedImages[selectedMap].texture, 30, 80, 50);
 }
