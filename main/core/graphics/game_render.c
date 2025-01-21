@@ -7,7 +7,7 @@ void game_render(SDL_Renderer *renderer, ASSETS loadedAssets, BUTTON *buttons, G
 {
     renderMap(renderer, loadedAssets, gameInfo);
     renderUI(renderer, loadedAssets, gameInfo);
-    renderButtons(renderer, buttons, 2);
+    renderButtons(renderer, buttons, 3);
 }
 
 void renderMap(SDL_Renderer *renderer, ASSETS loadedAssets, GAMEINFO gameInfo)

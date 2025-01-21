@@ -30,10 +30,15 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls,
                         if (i == 1) { // Botón de flecha izquierda
                             if (config->current_res > 1) {
                                 (config->current_res)--;
+                            }else if(config->current_res == 1){
+                                (config->current_res)=7;
                             }
                         } else if (i == 2) { // Botón de flecha derecha
-                            if (config->current_res < 6) {
+                            if (config->current_res < 7) {
                                 (config->current_res)++;
+                            }
+                            else if(config->current_res == 7){
+                                (config->current_res)=1;
                             }
                         } else if (i == 3) { // Aplicar resolución
                             config->current_res = config->current_res; // Placeholder para lógica de aplicación
