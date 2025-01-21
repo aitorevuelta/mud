@@ -27,34 +27,26 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
                         case 0: // Botón para agregar jugadores
                             if (gameInfo->numPlayers < MAX_PLAYERS) {
                                 gameInfo->numPlayers++;
-                                printf("Número de jugadores incrementado a %d\n", gameInfo->numPlayers);
-                            } else {
-                                printf("Límite máximo de jugadores alcanzado.\n");
-                            }
+                                printf("Jokalari kopurua %d\n", gameInfo->numPlayers);
+                            } else printf("Jokalari kopurua %d\n", gameInfo->numPlayers);
                             break;
                         case 1: // Botón para eliminar jugadores
                             if (gameInfo->numPlayers > MIN_PLAYERS) {
                                 gameInfo->numPlayers--;
-                                printf("Número de jugadores reducido a %d\n", gameInfo->numPlayers);
-                            } else {
-                                printf("Límite mínimo de jugadores alcanzado.\n");
-                            }
+                                 printf("Jokalari kopurua %d\n", gameInfo->numPlayers);
+                            } else printf("Jokalari kopurua %d\n", gameInfo->numPlayers);
                             break;
                         case 2: // Botón de flecha izquierda (cambiar mapa hacia atrás)
                             gameInfo->currentMapID = (gameInfo->currentMapID == 0)
                                 ? gameInfo->numMaps - 1
                                 : gameInfo->currentMapID - 1;
-                            printf("Mapa cambiado a índice %d\n", gameInfo->currentMapID);
                             break;
                         case 3: // Botón de flecha derecha (cambiar mapa hacia adelante)
                             gameInfo->currentMapID = (gameInfo->currentMapID + 1) % gameInfo->numMaps;
-                            printf("Mapa cambiado a índice %d\n", gameInfo->currentMapID);
                             break;
                         default:
-                            printf("Acción no definida para el botón %d\n", i);
                             break;
                     }
-
                     // Verifica si la acción es válida antes de ejecutarla
                     if (gameState != NULL && buttons[i].action != ACTION_NONE) {
                         GAMESTATE currentState = *gameState;
@@ -69,4 +61,13 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
             }
         }
     }
+}
+
+void loadGameInfo(GAMEINFO* gameInfo) {
+    gameInfo->numPlayers = 2;
+    gameInfo->currentMapID = 1;
+    gameInfo->numMaps = NUM_MAPS;
+
+    
+
 }

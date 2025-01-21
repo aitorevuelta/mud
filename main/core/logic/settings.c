@@ -7,8 +7,9 @@
 #include <menu.h>
 
 #include <settings.h>
-void handleSettingsButtons(BUTTON buttons[], int buttonCount, GAMEINFO gameInfo, CONTROLS controls, CONFIG* config, GAMESTATE* gameState) {
-     static Uint32 lastClickTime = 0;
+
+void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls, CONFIG* config, GAMESTATE* gameState) {
+    static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
 
     if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time
@@ -40,7 +41,7 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, GAMEINFO gameInfo,
                                 (config->current_res)=1;
                             }
                         } else if (i == 3) { // Aplicar resolución
-                             config->current_res = config->current_res; // Placeholder para lógica de aplicación
+                            config->current_res = config->current_res; // Placeholder para lógica de aplicación
                             config->volume=config->selectedVolume*20;
                             Mix_VolumeMusic(config->volume);
                             saveConfig(*config);

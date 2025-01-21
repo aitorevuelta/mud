@@ -15,7 +15,7 @@ void menu_render(SDL_Renderer* renderer, BUTTON buttons[], ASSETS loadedAssets) 
 
 
 void renderMenuBackground(SDL_Renderer* renderer, ASSETS loadedAssets) {
-    renderTextureRelative(renderer, loadedAssets.images[5].texture, 100, 50, 50);  // menu fondoa
+    renderTextureRelative(renderer, loadedAssets.images[5].texture, 200, 50, 50);  // menu fondoa
     renderTextureRelative(renderer, loadedAssets.images[6].texture, 30, 50, 20);   // menu logoa
 }
 
