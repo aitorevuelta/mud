@@ -2,6 +2,7 @@
 
 #include <controls.h>
 #include <assets_utils.h>
+#include <buttons_utils.h>
 #include <settings_utils.h>
 #include <render.h>
 #include <menu.h>
@@ -75,12 +76,7 @@ void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) 
     }
 }
 
-bool isClickInsideButton(int coords[2], SDL_Rect rect) {
-    return coords[0] >= rect.x &&
-           coords[0] <= rect.x + rect.w &&
-           coords[1] >= rect.y &&
-           coords[1] <= rect.y + rect.h;
-}
+
 
 void applyResolution(int resolution) {
     int width, height;

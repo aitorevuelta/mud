@@ -11,7 +11,6 @@ typedef enum {
 } SETTINGS_BUTTONS;
 
 void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls, CONFIG* config, GAMESTATE* gameState);
-bool isClickInsideButton(int coords[2], SDL_Rect rect);
 void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState);
 void applyResolution(int resolution);
 void resetConfiguration(CONFIG* config);

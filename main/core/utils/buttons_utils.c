@@ -1,5 +1,15 @@
 #include <global.h>
+
+
 #include <buttons_utils.h>
+
+
+bool isClickInsideButton(int coords[2], SDL_Rect rect) {
+    return coords[0] >= rect.x &&
+           coords[0] <= rect.x + rect.w &&
+           coords[1] >= rect.y &&
+           coords[1] <= rect.y + rect.h;
+}
 
 int allocateButtons(BUTTON **buttons, int buttonCount) {
     if (!buttons || buttonCount <= 0) return -1;

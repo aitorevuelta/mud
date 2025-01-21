@@ -1,7 +1,15 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 
-void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls);
+typedef enum {
+    ADD_PLAYER = 1,
+    REMOVE_PLAYER,
+    PREV_MAP,
+    NEXT_MAP,
+} LOBBY_BUTTONS;
 
+
+void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls);
+void adjustMapID(GAMEINFO* gameInfo, int direction);
 
 #endif // SETTINGS_H

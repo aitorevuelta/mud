@@ -115,12 +115,10 @@ void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameSta
         return;
     }
 
-    // Inicializar todas las texturas a NULL
     for (i = 0; i < numTextures; i++) {
         (*loadedImages)[i].texture = NULL;
     }
 
-    // Cargar cada textura
     for (i = 0; i < numTextures; i++) {
         char* path = getPathByIndex(gameState, IMAGES_FILE, i);
         if (path == NULL) {
@@ -190,7 +188,6 @@ void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameStat
     LoadSounds(&(loadedAssets->sounds), gameState);
     LoadFonts(renderer, &(loadedAssets->fonts), gameState);
 }
-
 
 
 

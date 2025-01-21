@@ -1,7 +1,7 @@
 #include <global.h>
 
 #include <assets_utils.h>
-#include <settings.h>
+
 
 #include <map.h>
 #include <player.h>
@@ -59,7 +59,7 @@ void updateTime(GAMEINFO *gameInfo) {
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution) {
     SDL_GetRendererOutputSize(renderer, &resolution.width, &resolution.height);
     gameInfo->camera.pos[0] = resolution.width / 2;
-    gameInfo->camera.pos[1] = resoltion.height / 2;
+    gameInfo->camera.pos[1] = resolution.height / 2;
     gameInfo->camera.zoom = 1.0f;
 
 
