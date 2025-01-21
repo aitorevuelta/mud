@@ -105,6 +105,8 @@ typedef struct TERRITORYINFO_S {
     int ownerID;        // ID del jugador que controla el territorio
     int troops;       // Número de tropas en el territorio
     int center[2];
+     int radius;               // Tamaño del territorio (radio)
+    bool isSelected;       // Indicador si el territorio está seleccionado
 } TERRITORYINFO;
 
 // Estructura que representa la información del mapa
