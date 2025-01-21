@@ -15,8 +15,7 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls,
     static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
 
-    if (controls.click == 1 && (currentTime - lastClickTime > 200)) { // 200 ms debounce time
-        lastClickTime = currentTime;
+    if (controls.click == 1 && isClickAllowed(&lastClickTime, 200)) {
         controls.click = 0;
         for (i = 0; buttonCount > i; i++) {
             if (buttons[i].visible) {

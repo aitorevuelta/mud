@@ -10,6 +10,7 @@
 #include <assets_utils.h>
 #include <gamestate_utils.h>
 #include <buttons_utils.h>
+#include <map.h>
 #include <camera.h>
 
 #include <update.h>
@@ -40,6 +41,7 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
+            loadMapMask(renderer, loadedAssets, gameInfo->camera, gameInfo->currentMapID);
             update_game(gameInfo);
             break;
     }

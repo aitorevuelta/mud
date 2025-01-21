@@ -23,7 +23,7 @@ GAMEINFO loadGameInfo() {
 
 
 void update_game(GAMEINFO *gameInfo) {
-    updateTime(gameInfo);
+    handleTurn(gameInfo);
 }
 
 static Uint32 lastUpdateTime = 0;
