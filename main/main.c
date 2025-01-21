@@ -12,6 +12,7 @@
 #include <menu.h>
 #include <render.h>
 #include <update.h>
+#include <game.h>
 
 
 int main(int argc, char *argv[])
@@ -21,7 +22,7 @@ int main(int argc, char *argv[])
     CONTROLS controls;
     ASSETS loadedAssets = {NULL, NULL, NULL};
     GAMESTATE gameState = LOADSCREEN;
-    GAMEINFO gameInfo;
+    GAMEINFO gameInfo = loadGameInfo();
     BUTTON *buttons = NULL;
 
     bool is_running = init_sdl(&sdl, config);
@@ -40,3 +41,4 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+

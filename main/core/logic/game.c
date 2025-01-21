@@ -4,6 +4,20 @@
 
 #include <game.h>
 
+
+
+
+GAMEINFO loadGameInfo() {
+    GAMEINFO info = {0};
+    
+    info.currentMapID = 1;
+    info.numMaps = NUM_MAPS;
+    info.numPlayers = 2;
+
+    return info;
+}
+
+
 void update_game(GAMEINFO *gameInfo) {
     updateTime(gameInfo);
 }

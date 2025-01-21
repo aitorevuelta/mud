@@ -4,6 +4,11 @@
 #define TERRITORY_COUNT 6
 #define MAX_PLAYERS 4
 
+
+
+
+GAMEINFO loadGameInfo();
+
 // Logica del juego
 void update_game(GAMEINFO *gameInfo);
 void updateTime(GAMEINFO *gameInfo);
