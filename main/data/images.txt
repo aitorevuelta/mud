@@ -69,4 +69,5 @@ fotoplayer.png
 barra.png
 cards.png
 nextphase.png
+pausa.png
 7

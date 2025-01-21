@@ -25,7 +25,7 @@ void LoadButtonsByGameState(BUTTON** buttons, GAMESTATE gameState, IMAGES loaded
             initializeButtonsLobby(*buttons, loadedImages);
             break;
         case GAME:
-            buttonCount = 2;
+            buttonCount = 3;
             if (allocateButtons(buttons, buttonCount) != 0) return;
             initializeButtonsGame(*buttons, loadedImages);
             break;
@@ -167,6 +167,14 @@ void initializeButtonsGame(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 50.0,
         .yPercent = 93.5
     };
+    buttons[2] = (BUTTON){ 
+        .texture = loadedImages[10].texture,
+        .action = ACTION_EXIT,
+        .visible = 1,
+        .widthPercent = 10.0,
+        .xPercent = 90.0,
+        .yPercent = 6.0
+    };
  }
 
 
@@ -181,7 +189,7 @@ void initializeButtonsH2P(BUTTON* buttons, IMAGES loadedImages[]) {
         .visible = 1,
         .widthPercent = 4.0,
         .xPercent = 3.0,
-        .yPercent = 5.0
+        .yPercent = 4.0
     };
 }
 
@@ -194,7 +202,7 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
         .visible = 1,
         .widthPercent = 4.0,
         .xPercent = 3.0,
-        .yPercent = 5.0
+        .yPercent = 4.0
     };
     buttons[1] = (BUTTON){ // BOTON PASAR RESOLUCION IZQUIERDA
         .texture = loadedImages[8].texture,
@@ -247,6 +255,6 @@ void initializeButtonsCredits(BUTTON* buttons, IMAGES loadedImages[]) {
         .visible = 1,
         .widthPercent = 4.0,
         .xPercent = 3.0,
-        .yPercent = 5.0
+        .yPercent = 4.0
     };
 }

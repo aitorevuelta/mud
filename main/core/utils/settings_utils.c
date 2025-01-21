@@ -43,26 +43,35 @@ void applyResolution(int resolution) {
         case 1:
             width = 800;
             height = 600;
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), 0);
             break;
         case 2:
             width = 1024;
             height = 768;
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), 0);
             break;
         case 3:
             width = 1280;
             height = 720;
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), 0);
             break;
         case 4:
             width = 1366;
             height = 768;
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), 0);
             break;
         case 5:
             width = 1600;
             height = 900;
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), 0);
             break;
         case 6:
             width = 1920;
             height = 1080;
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), 0);
+            break;
+        case 7:
+            SDL_SetWindowFullscreen(SDL_GetWindowFromID(1), SDL_WINDOW_FULLSCREEN_DESKTOP);
             break;
         default:
             width = 800;
