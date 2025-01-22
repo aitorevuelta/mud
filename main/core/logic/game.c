@@ -16,7 +16,7 @@ GAMEINFO loadGameInfo() {
     info.currentMapID = 1;
     info.numMaps = NUM_MAPS;
     info.numPlayers = 2;
-    info.totalTerritories=23;
+    info.totalTerritories= TERRITORY_COUNT;
     
 
     return info;
@@ -24,8 +24,7 @@ GAMEINFO loadGameInfo() {
 
 
 void update_game(GAMEINFO *gameInfo) {
-    //checkMapTerritoryClick
-    
+
     handleTurn(gameInfo);
 }
 
@@ -37,22 +36,18 @@ void handleTurn(GAMEINFO *gameInfo) {
     Uint32 currentTime = SDL_GetTicks();
     float deltaTime = (currentTime - lastUpdateTime) / 1000.0f;
     
-    // Update elapsed time
     gameInfo->elapsedTime += deltaTime;
-    
-    // Reset timer and change turn at 60 seconds
+
     if (gameInfo->elapsedTime >= 60.0f) {
         gameInfo->elapsedTime = 0.0f;
         
-        // Increment turn
         gameInfo->turn = (gameInfo->turn + 1) % gameInfo->numPlayers;
         
-        // If we've completed a full round of players
         if (gameInfo->turn == 0) {
             gameInfo->round++;
         }
     }
-    //handlePhase(gameInfo);
+    handlePhase(gameInfo);
     lastUpdateTime = currentTime;
 }
 
@@ -62,24 +57,20 @@ void handlePhase(GAMEINFO* gameInfo) {
     switch (gameInfo->phase) {
         case DEPLOY:
             deployTroopsPhase(gameInfo);
-            gameInfo->phase = ATTACK; // Cambiar a la siguiente fase
+            gameInfo->phase = ATTACK; 
             break;
-
         case ATTACK:
             attackPhase(gameInfo);
-            gameInfo->phase = REINFORCE; // Cambiar a la siguiente fase
+            gameInfo->phase = REINFORCE;
             break;
-
         case REINFORCE:
             reinforcePhase(gameInfo);
-            // Cambiar al siguiente jugador
             gameInfo->currentPlayerID = (gameInfo->currentPlayerID + 1) % gameInfo->numPlayers;
-            if (gameInfo->currentPlayerID == 0) {
-                gameInfo->round++; // Nueva ronda
+            if(gameInfo->currentPlayerID == 0) {
+                gameInfo->round++; 
             }
-            gameInfo->phase = DEPLOY; // Volver a la fase inicial
+            gameInfo->phase = DEPLOY; 
             break;
-
         default:
             break;
     }
@@ -88,78 +79,90 @@ void handlePhase(GAMEINFO* gameInfo) {
 void deployTroopsPhase(GAMEINFO* gameInfo) {
     PLAYER* currentPlayer = &gameInfo->players[gameInfo->currentPlayerID];
     MAPINFO* mapInfo = &gameInfo->maps[gameInfo->currentMapID];
-
     int troopsToDeploy = currentPlayer->troops;
-    printf("Player %d is deploying %d troops.\n", currentPlayer->id, troopsToDeploy);
 
     while (troopsToDeploy > 0) {
-        int randomIndex = rand() % currentPlayer->numTerritories;
-        int territoryID = currentPlayer->territories[randomIndex];
-        TERRITORYINFO* territory = &mapInfo->territories[territoryID];
-
+        TERRITORYINFO* territory = selectRandomTarget(mapInfo, currentPlayer);
         territory->troops++;
         troopsToDeploy--;
     }
-
-    currentPlayer->troops = 0; // Tropas desplegadas
-    printf("Player %d finished deploying troops.\n", currentPlayer->id);
+    currentPlayer->troops = 0; 
 }
+
 void attackPhase(GAMEINFO* gameInfo) {
+    int i = 0, j = 0;
     PLAYER* currentPlayer = &gameInfo->players[gameInfo->currentPlayerID];
     MAPINFO* mapInfo = &gameInfo->maps[gameInfo->currentMapID];
 
-    printf("Player %d is in the attack phase.\n", currentPlayer->id);
-
-    for (int i = 0; i < currentPlayer->numTerritories; i++) {
+    // jokalariaren territorio guztiak aztertu
+    for (i = 0; currentPlayer->numTerritories > i; i++) {
         int territoryID = currentPlayer->territories[i];
         TERRITORYINFO* attacker = &mapInfo->territories[territoryID];
-
+        // tropa kopurua 1 baino handiagoa bada atakatu
         if (attacker->troops > 1) {
-            // Buscar territorio enemigo adyacente (asumiendo conexión)
-            int randomTargetID = rand() % mapInfo->numTerritories; // Aquí deberías implementar la lógica de adyacencia
-            TERRITORYINFO* defender = &mapInfo->territories[randomTargetID];
-
-            if (defender->ownerID != currentPlayer->id) {
-                // Simulación de ataque
-                printf("Attacking from %s to %s.\n", attacker->name, defender->name);
-                if (rand() % 2 == 0) { // Gana atacante
-                    defender->troops--;
-                    if (defender->troops <= 0) {
-                        defender->ownerID = currentPlayer->id;
-                        defender->troops = 1;
-                        attacker->troops--;
-                    }
-                } else { // Gana defensor
-                    attacker->troops--;
-                }
-                return;
-            }
+            // etsaien territorioak aztertu 
+            TERRITORYINFO* defender = findEnemyTerritory(territoryID, mapInfo, currentPlayer);
+            if (defender) performBattle(attacker, defender, currentPlayer);
         }
     }
 }
+
+TERRITORYINFO* findEnemyTerritory(int attackerID, MAPINFO* mapInfo, PLAYER* currentPlayer) {
+    int i = 0;
+    TERRITORYINFO* attacker = &mapInfo->territories[attackerID];
+
+    for (i = 0; mapInfo->numTerritories > i; i++) {
+        TERRITORYINFO* defender = &mapInfo->territories[i];
+        if (isAdjacent(attackerID, i, mapInfo) && defender->ownerID != currentPlayer->id) return defender;
+    }
+    return NULL; 
+}
+
+void performBattle(TERRITORYINFO* attacker, TERRITORYINFO* defender, PLAYER* currentPlayer) {
+    if(!attacker || !defender || !currentPlayer) return;
+    if (attacker->troops <= 1) return;
+    if (defender->troops <= 0) return;
+
+    attacker->troops--;     // erasotzaileak tropa galdu
+    if (rand() % 2 == 0) {
+        defender->troops--;
+        if (defender->troops <= 0) {
+            defender->ownerID = currentPlayer->id;      // territorioaren jabea aldatu
+            defender->troops = 1;       // territorioa okupatu
+            attacker->troops--;     // erasotzaileak tropa galdu
+        }
+    } else attacker->troops--;      // erasotzaileak galdu
+}
+
+TERRITORYINFO* selectRandomTarget(MAPINFO* mapInfo, PLAYER* currentPlayer) {
+    if(currentPlayer->numTerritories == 0) return NULL;
+    int randomTargetID = rand() % currentPlayer->numTerritories;
+    int targetTerritoryID = currentPlayer->territories[randomTargetID];
+    return &mapInfo->territories[targetTerritoryID];
+}
+
+void moveTroops(TERRITORYINFO* source, TERRITORYINFO* target) {
+    int troopsToMove = rand() % (source->troops - 1) + 1;
+    source->troops -= troopsToMove;
+    target->troops += troopsToMove;
+}
+
 void reinforcePhase(GAMEINFO* gameInfo) {
+    int i = 0;
     PLAYER* currentPlayer = &gameInfo->players[gameInfo->currentPlayerID];
     MAPINFO* mapInfo = &gameInfo->maps[gameInfo->currentMapID];
 
-    printf("Player %d is in the reinforcement phase.\n", currentPlayer->id);
-
-    for (int i = 0; i < currentPlayer->numTerritories; i++) {
+    for (i = 0;currentPlayer->numTerritories > i; i++) {
         int sourceID = currentPlayer->territories[i];
         TERRITORYINFO* source = &mapInfo->territories[sourceID];
-
         if (source->troops > 1) {
-            int randomTargetID = rand() % currentPlayer->numTerritories;
-            TERRITORYINFO* target = &mapInfo->territories[currentPlayer->territories[randomTargetID]];
-
-            int troopsToMove = rand() % (source->troops - 1) + 1;
-            source->troops -= troopsToMove;
-            target->troops += troopsToMove;
-
-            printf("Moved %d troops from %s to %s.\n", troopsToMove, source->name, target->name);
-            return;
+            TERRITORYINFO* target = selectRandomTarget(mapInfo, currentPlayer);
+            moveTroops(source, target);
+            return; // txanda amaitu
         }
     }
 }
+
 
 // Inicializar
 
@@ -169,42 +172,37 @@ void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution
     gameInfo->camera.pos[1] = resolution.height / 2;
     gameInfo->camera.zoom = 1.0f;
 
-
+    
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
+    allocateTerritories()
+    initializeTerritories(gameInfo->map);
 }
 
 
 
+bool checkGameOver(GAMEINFO* gameInfo) {
+    int survivingPlayers = 0, lastPlayer = -1;
+    int i = 0, j = 0;
 
-
-
-
-
-/*bool checkGameOver(GAMEINFO* gameInfo) {
-     int survivingPlayers = 0;
-    int lastPlayer = -1;
-
-    for (int i = 0; i < gameInfo->numPlayers; i++) {
+    for (i = 0; gameInfo->numPlayers > i; i++) {
         bool hasTerritories = false;
-        for (int j = 0; j < gameInfo->mapInfo.numTerritories; j++) {
-            if (gameInfo->mapInfo.territories[j].owner == i) {
+        for (j = 0; gameInfo->totalTerritories > j; j++) {
+            if (gameInfo->maps[gameInfo->currentMapID].territories[j].ownerID == i) {
                 hasTerritories = true;
                 break;
             }
         }
-
         if (hasTerritories) {
             survivingPlayers++;
             lastPlayer = i;
         }
     }
 
-    if (survivingPlayers == 1) {
-        printf("Game Over! Player %d wins!\n", lastPlayer);
-        return true;
-    }
+    if (survivingPlayers == 1) return true;
 
     return false;
-    }
-*/
+}
+
+
+

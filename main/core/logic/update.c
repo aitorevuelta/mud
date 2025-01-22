@@ -42,17 +42,17 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
             break;
         case GAME:
             updateCamera(&gameInfo->camera, controls, config->window_size.width, config->window_size.height);
-            loadMapMask(renderer, *loadedAssets, gameInfo->camera, gameInfo->currentMapID, config->resolutions[config->current_res]);
+            loadMapMask(renderer, *loadedAssets, gameInfo->camera, gameInfo->currentMapID, config->window_size);
             SDL_Color color = getPixelColor(loadedAssets->images[1].texture, controls.coords[0], controls.coords[1]);
             update_game(gameInfo);
             break;
     }
     
-    gameStateManager(renderer, buttons, loadedAssets, *gameState, gameInfo, config);
-    adjustFrameRate(frameStart, config->max_FPS);
+    gameStateManager(renderer, buttons, loadedAssets, *gameState, gameInfo, config); // Gamestate-aren aldaketa kudeatu
+    adjustFrameRate(frameStart, config->max_FPS); //
 }
 
-
+// Frame rate-a kudeatzeko funtzioa
 void adjustFrameRate(Uint32 frameStart, int targetFPS) {
     Uint32 frameDelay = 1000 / targetFPS;
     Uint32 frameTime = SDL_GetTicks() - frameStart;

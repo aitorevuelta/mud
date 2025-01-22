@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     srand((unsigned int)time(NULL));
     
     bool is_running = init_sdl(&sdl, config);
-    if(!is_running) return EXIT_FAILURE;
+    if(!is_running) return LOADSCREEN;
     LoadAssets(sdl.renderer, &loadedAssets, gameState);
 
     do {

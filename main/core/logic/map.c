@@ -54,7 +54,8 @@ void loadMapMask(SDL_Renderer *renderer, ASSETS loadedAssets, CAMERA camera, int
 }
 
 void checkMapTerritoryClick(MAPINFO* mapInfo, int mouseX, int mouseY) {
-    for (int i = 0; i < mapInfo->numTerritories; i++) {
+int i = 0;
+    for (i = 0; i < mapInfo->numTerritories; i++) {
         TERRITORYINFO* territory = &mapInfo->territories[i];
         int dx = mouseX - territory->center[0];
         int dy = mouseY - territory->center[1];
@@ -70,11 +71,12 @@ void checkMapTerritoryClick(MAPINFO* mapInfo, int mouseX, int mouseY) {
 }
 
 void shuffleTerritories(TERRITORYINFO* territories, int numTerritories) {
+    int i = 0;
     if (!territories || numTerritories <= 1) return;
 
     srand((unsigned int)time(NULL)); // Inicializar semilla aleatoria
 
-    for (int i = numTerritories - 1; i > 0; i--) {
+    for ( i = numTerritories - 1; i > 0; i--) {
         int j = rand() % (i + 1); // Índice aleatorio
         TERRITORYINFO temp = territories[i];
         territories[i] = territories[j];
@@ -131,29 +133,55 @@ void allocateTerritories(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int 
 }
 
 void initializeTerritories(MAPINFO* mapInfo, int totalTerritories) {
+    int i = 0;
     mapInfo->numTerritories = totalTerritories;
-    for (int i = 0; i < mapInfo->numTerritories; i++) {
+    for (i = 0; mapInfo->numTerritories > i; i++) {
         TERRITORYINFO* territory = &mapInfo->territories[i];
-        territory->ownerID = -1;        // Sin dueño inicialmente
-        territory->troops = 0;         // Tropas iniciales
-        territory->center[0] = rand() % 800; // Posición X aleatoria (ajusta según resolución)
-        territory->center[1] = rand() % 600; // Posición Y aleatoria
-        territory->radius = 30;        // Radio fijo inicial
-        territory->isSelected = false; // No seleccionado inicialmente
+        territory->ownerID = -1;        
+        territory->troops = 0;         
+        territory->center[0] = rand() % 800; 
+        territory->center[1] = rand() % 600; 
+        territory->radius = 30;    
+        territory->isSelected = false; 
     }
-    printf("Territories initialized.\n");
 }
 
 void initializeMap(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalTerritories) {
     if (!mapInfo || !players) return;
-
-    initializeTerritories(mapInfo, totalTerritories);
     allocateTerritories(mapInfo, players, numPlayers, totalTerritories);
+    initializeTerritories(mapInfo, totalTerritories);
 }
+
 
 void freeTerritories(MAPINFO* mapInfo) {
     if(mapInfo->territories) {
         free(mapInfo->territories);
         mapInfo->territories = NULL;
     }
+}
+
+void initializeAdjencyMatrix(MAPINFO* mapInfo) {
+    int i = 0;
+    mapInfo->adjMatrix = malloc(mapInfo->numTerritories * sizeof(int*));
+    if(!mapInfo->adjMatrix)return;
+
+    for(i = 0; mapInfo->numTerritories > i; i++) {
+        mapInfo->adjMatrix[i] = calloc(mapInfo->numTerritories, sizeof(int));
+    }
+    // Territorioen konexioa
+    mapInfo->adjMatrix[0][1] = 1;
+}
+
+bool isAdjacent(int territory1, int territory2, MAPINFO* mapInfo) {
+    if(!mapInfo || !mapInfo->adjMatrix) return false;
+    return mapInfo->adjMatrix[territory1][territory2] == 1;
+}
+
+void freeAdjencyMatrix(MAPINFO* mapInfo) {
+    int i = 0;
+    if(!mapInfo || !mapInfo->adjMatrix) return;
+    for(i = 0; mapInfo->numTerritories > i; i++) {
+        free(mapInfo->adjMatrix[i]);
+    }
+    free(mapInfo->adjMatrix);
 }

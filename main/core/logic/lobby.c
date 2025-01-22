@@ -1,6 +1,5 @@
 #include <global.h>
 
-
 #include <assets_utils.h>
 #include <buttons_utils.h>
 #include <controls.h>
@@ -55,12 +54,8 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
 void adjustPlayerCount(GAMEINFO* gameInfo, int change) {
     if (change > 0 && gameInfo->numPlayers < MAX_PLAYERS) {
         gameInfo->numPlayers++;
-        printf("Número de jugadores: %d\n", gameInfo->numPlayers);
     } else if (change < 0 && gameInfo->numPlayers > MIN_PLAYERS) {
         gameInfo->numPlayers--;
-        printf("Número de jugadores: %d\n", gameInfo->numPlayers);
-    } else {
-        printf("Número de jugadores fuera de límites: %d\n", gameInfo->numPlayers);
     }
 }
 
@@ -70,5 +65,4 @@ void adjustMapID(GAMEINFO* gameInfo, int direction) {
     } else if (direction < 0) {
         gameInfo->currentMapID = (gameInfo->currentMapID - 2 + NUM_MAPS) % NUM_MAPS + 1;
     }
-    printf("Mapa actual: %d\n", gameInfo->currentMapID);
 }

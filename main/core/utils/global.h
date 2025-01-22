@@ -46,7 +46,6 @@ typedef struct CONFIG_S {
     int max_FPS;
     int current_res;
     int total_res;
-    RESOLUTION *resolutions;
 } CONFIG;
 
 typedef enum {
@@ -92,14 +91,14 @@ typedef struct BUTTON_S {
 } BUTTON;
 
 
-// Definición de las cartas (un tipo de acción adicional en el juego)
+// kartak
 typedef enum {
-    SOLDIER,  // Soldado
-    HORSE,    // Caballo
-    CANNON    // Cañón
+    SOLDIER,  
+    HORSE,    
+    CANNON,
 } CARDS;
 
-// Estructura que representa la información de un territorio
+// territorioen informazioa
 typedef struct TERRITORYINFO_S {
     char name[MAX_STR];       // Nombre del territorio
     int ownerID;        // ID del jugador que controla el territorio
@@ -109,23 +108,24 @@ typedef struct TERRITORYINFO_S {
     bool isSelected;       // Indicador si el territorio está seleccionado
 } TERRITORYINFO;
 
-// Estructura que representa la información del mapa
+// mapen informazioa
 typedef struct MAPINFO_S {
-    char mapName[MAX_STR];            // Nombre del mapa (Ej. Mundo, Europa, etc.)
-    TERRITORYINFO *territories; // Lista de territorios del mapa
-    int numTerritories;       // Número de territorios en el mapa 
+    char mapName[MAX_STR];      // maparen izena
+    TERRITORYINFO *territories;     // mapan dauden territorioen informazioa
+    int numTerritories;     // territorio kopurua 
+    int** adjMatrix;    // territorioen arteko konexioak
 } MAPINFO;
 
-// Estructura que representa a un jugador
+// jokalarien informazioa
 typedef struct PLAYER_S {
-    int id;                 // ID-a
-    char name[MAX_STR];     // Nombre del jugador
-    int *territories;       // Lista de territorios controlados por el jugador
-    int numTerritories;     // Número de territorios controlados
-    int troops;             // Número total de tropas del jugador
-    int numCards;           // Número de cartas que posee
+    int id;                 
+    char name[MAX_STR];     
+    int *territories;       
+    int numTerritories;     
+    int troops;             
+    int numCards;           
     CARDS *cards;
-    SDL_Color playerColor;        // Lista de cartas que posee el jugador
+    SDL_Color playerColor;        
 } PLAYER;
 
 typedef enum {
@@ -134,25 +134,26 @@ typedef enum {
     REINFORCE,
 } PHASE;
 
+// kameraren informazioa
 typedef struct CAMERA_S {
-    int pos[2];
-    float zoom;
+    int pos[2]; // posizioa
+    float zoom; // zoom-a
 } CAMERA;
 
-// Estructura que representa la información general del juego
+// jokoa informazioa
 typedef struct GAMEINFO_S {
-    MAPINFO maps[NUM_MAPS];              // Lista de mapas disponibles
-    int numMaps;              // Número total de mapas disponibles
-    int currentMapID;        // Índice del mapa actual
-    PLAYER *players;            // Lista de jugadores en la partida
-    int numPlayers;             // Número total de jugadores
-    int currentPlayerID;        // Índice del jugador actual
-    int turn;                   // Número de turno actual
-    PHASE phase;            // Fase actual del juego
+    MAPINFO maps[NUM_MAPS]; // mapen arraya 
+    int numMaps; // mapen kopurua
+    int currentMapID;        
+    PLAYER *players;            
+    int numPlayers;           
+    int currentPlayerID;    
+    int turn;                   
+    PHASE phase;           
     int round;
     float elapsedTime;
-    CAMERA camera;              // Configuración de la cámara
-    bool isGameOver;          // indicador si esta en juego
+    CAMERA camera;              
+    bool isGameOver;         
     int totalTerritories;
 } GAMEINFO;
 

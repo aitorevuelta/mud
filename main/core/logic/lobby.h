@@ -11,7 +11,7 @@ typedef enum {
 
 
 void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls);
-void adjustPlayerCount(GAMEINFO* gameInfo, int change);
-void adjustMapID(GAMEINFO* gameInfo, int direction);
+void adjustPlayerCount(int numPlayers, int change);
+void adjustMapID(int currentMapID, int direction);
 
 #endif // SETTINGS_H

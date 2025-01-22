@@ -49,7 +49,8 @@
         "buttons_utils.h": "c",
         "string.h": "c",
         "camera.h": "c",
-        "map.h": "c"
+        "map.h": "c",
+        "map": "c"
       },
       "C_Cpp.errorSquiggles": "disabled",
 }
