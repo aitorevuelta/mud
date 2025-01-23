@@ -47,7 +47,7 @@ void handleTurn(GAMEINFO *gameInfo) {
             gameInfo->round++;
         }
     }
-    handlePhase(gameInfo);
+    //handlePhase(gameInfo);
     lastUpdateTime = currentTime;
 }
 
@@ -175,8 +175,6 @@ void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution
     
     allocatePlayers(gameInfo);
     initializePlayers(gameInfo);
-    allocateTerritories()
-    initializeTerritories(gameInfo->map);
 }
 
 

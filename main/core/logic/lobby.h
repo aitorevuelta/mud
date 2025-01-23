@@ -9,9 +9,8 @@ typedef enum {
 } LOBBY_BUTTONS;
 
 
-
 void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls);
-void adjustPlayerCount(int numPlayers, int change);
-void adjustMapID(int currentMapID, int direction);
+void adjustPlayerCount(GAMEINFO* gameInfo, int change);
+void adjustMapID(GAMEINFO* gameInfo, int direction);
 
 #endif // SETTINGS_H

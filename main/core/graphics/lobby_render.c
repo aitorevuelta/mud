@@ -8,23 +8,24 @@
 #include <lobby_render.h>
 
 void lobby_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMEINFO gameInfo) {
+    if(!buttons || !loadedAssets.images || !loadedAssets.fonts) return;
 
-    renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50); // Renderizar background
+    renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50); 
 
-    renderButtons(renderer, buttons, 6); // Renderizar botones
+    renderButtons(renderer, buttons, 6); 
 
-    renderLobbyPlayers(renderer, loadedAssets.images, gameInfo.numPlayers); // Renderizar numero de jugadores
+    renderLobbyPlayers(renderer, loadedAssets, gameInfo.numPlayers);
 
-    renderLobbySelectedMap(renderer, loadedAssets.images, gameInfo.currentMapID); // Renderizar preview mapa seleccionado
-
+    renderLobbySelectedMap(renderer, loadedAssets.images, gameInfo.currentMapID);
 }
 
-void renderLobbyPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int playerCount) {
-    int positions[][2] = {{20, 20}, {20, 45}, {45, 20}, {45, 45}}; // Posiciones de los jugadores
-    int maxPositions = sizeof(positions) / sizeof(positions[0]); // Jugadores maximos cogiendo el array de posiciones
+void renderLobbyPlayers(SDL_Renderer *renderer, ASSETS loadedAssets, int playerCount) {
+    if(playerCount < 0) return;
+    int positions[][2] = {{20, 20}, {20, 45}, {45, 20}, {45, 45}}; // jokalarien posizioak
+    int maxPositions = sizeof(positions) / sizeof(positions[0]); 
     int i = 0, x = 0, y = 0;
 
-    for (i = 0; i < playerCount; i++) {
+    for (i = 0; playerCount > i ; i++) {
         if (i < maxPositions) {
             x = positions[i][0];
             y = positions[i][1];
@@ -32,7 +33,8 @@ void renderLobbyPlayers(SDL_Renderer *renderer, IMAGES *loadedImages, int player
             x = positions[maxPositions - 1][0];
             y = positions[maxPositions - 1][1];
         }
-        renderTextureRelative(renderer, loadedImages[8].texture, 20, (float)x, (float)y); // Renderizar jugador con respecto a i
+        renderTextureRelative(renderer, loadedAssets.images[8].texture, 20, (float)x, (float)y); 
+        renderTextRelative(renderer, loadedAssets.fonts[0].font, "Player", (SDL_Color){255, 255, 255, 255}, (SDL_Color){55, 55, 55, 12}, 3, 5, x + 5, y + 5);
     }
 }
 

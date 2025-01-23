@@ -125,7 +125,6 @@ void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text
     SDL_FreeSurface(textSurface);
     if (!textTexture) return;
 
-    // Crear superficie y textura para el borde
     SDL_Surface *borderSurface = TTF_RenderText_Blended(font, text, borderColor);
     if (!borderSurface) {
         SDL_DestroyTexture(textTexture);
@@ -151,10 +150,9 @@ void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text
     dstRect.x = (int)(windowWidth * (xPercent / 100.0f)) - (dstRect.w / 2);
     dstRect.y = (int)(windowHeight * (yPercent / 100.0f)) - (dstRect.h / 2);
 
-    // Renderizar el borde en las posiciones alrededor del texto principal
     for (int dx = -borderWidth; dx <= borderWidth; dx++) {
         for (int dy = -borderWidth; dy <= borderWidth; dy++) {
-            if (dx != 0 || dy != 0) { // Saltar la posición central
+            if (dx != 0 || dy != 0) { 
                 SDL_Rect borderRect = dstRect;
                 borderRect.x += dx;
                 borderRect.y += dy;
@@ -165,7 +163,6 @@ void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text
 
     SDL_DestroyTexture(borderTexture);
 
-    // Renderizar el texto principal
     SDL_RenderCopy(renderer, textTexture, NULL, &dstRect);
     SDL_DestroyTexture(textTexture);
 }
