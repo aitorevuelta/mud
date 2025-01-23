@@ -94,9 +94,9 @@ typedef struct CONTROLS_S {
 KEYS get_key_code(SDL_Keycode key);
 
 
-bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config); //
+bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config);
 
-void handle_mouse_motion(SDL_Event event, CONTROLS *controls); //
+void handle_mouse_motion(SDL_Event event, CONTROLS *controls); // 
 
 void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config); // 
 

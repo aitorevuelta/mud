@@ -3,6 +3,6 @@
 
 
 void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON **buttons, CONTROLS controls, CONFIG* config);
-void adjustFrameRate(Uint32 frameStart, int targetFPS); // Frame rate-a kontrolatzeko funtzioa
+void adjustFrameRate(Uint32 frameStart, int targetFPS);
 
 #endif //UPDATE_H

@@ -13,7 +13,7 @@
 
 
 
-
+// Pantaila marrazteko funtzioa
 void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON buttons[], CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
@@ -49,7 +49,7 @@ void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GA
     SDL_RenderPresent(renderer);
 }
 
-
+// Textura marrazteko funtzioa erlatiboki
 void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float widthPercent, float xPercent, float yPercent) {
     
     int windowWidth, windowHeight;
@@ -69,7 +69,7 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
     SDL_RenderCopy(renderer, texture, NULL, &dstRect);
 }
 
-
+// Forma marrazteko funtzioa erlatiboki
 void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heightPercent, 
                         float xPercent, float yPercent, SDL_Color shapeColor, 
                         float borderWidth, SDL_Color borderColor) {
@@ -110,6 +110,8 @@ void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heigh
     }
 }
 
+
+// Testua marrazteko funtzioa erlatiboki
 void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent) {
     if (!text || !font) return;
 
@@ -167,7 +169,7 @@ bool isMouseOverButton(const SDL_Rect *rect, int mouseX, int mouseY) {
     return mouseX >= rect->x && mouseX <= (rect->x + rect->w) &&
            mouseY >= rect->y && mouseY <= (rect->y + rect->h);
 }
-
+// Botoiak marrazteko funtzioa
 void renderButtons(SDL_Renderer *renderer, BUTTON buttons[], int buttonCount) {
     int windowWidth, windowHeight, mouseX, mouseY;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);

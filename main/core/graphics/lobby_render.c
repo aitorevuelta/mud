@@ -7,7 +7,7 @@
 
 #include <lobby_render.h>
 
-void lobby_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMEINFO gameInfo) {
+void lobby_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMEINFO gameInfo) { // lobbya erakutsi
     if(!buttons || !loadedAssets.images || !loadedAssets.fonts) return;
 
     renderTextureRelative(renderer, loadedAssets.images[0].texture, 150, 50, 50); 
@@ -19,7 +19,7 @@ void lobby_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets,
     renderLobbySelectedMap(renderer, loadedAssets.images, gameInfo.currentMapID);
 }
 
-void renderLobbyPlayers(SDL_Renderer *renderer, ASSETS loadedAssets, int playerCount) {
+void renderLobbyPlayers(SDL_Renderer *renderer, ASSETS loadedAssets, int playerCount) { // jokalariak erakutsi
     if(playerCount < 0) return;
     int positions[][2] = {{20, 20}, {20, 45}, {45, 20}, {45, 45}}; // jokalarien posizioak
     int maxPositions = sizeof(positions) / sizeof(positions[0]); 
@@ -32,12 +32,12 @@ void renderLobbyPlayers(SDL_Renderer *renderer, ASSETS loadedAssets, int playerC
     }
 }
 
-void renderLobbySelectedMap(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedMap) {
+void renderLobbySelectedMap(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedMap) { // hautatutako mapa erakutsi
     renderTextureRelative(renderer, loadedImages[selectedMap].texture, 30,80, 40);
     renderTextureRelative(renderer, loadedImages[11].texture, 40,80,45);
 }
 
-void getPlayerPosition(int index, int positions[][2], int maxPositions, int *x, int *y) {
+void getPlayerPosition(int index, int positions[][2], int maxPositions, int *x, int *y) { // jokalarien posizioa lortu
     if (index < maxPositions) {
         *x = positions[index][0];
         *y = positions[index][1];

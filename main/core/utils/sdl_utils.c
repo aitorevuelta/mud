@@ -2,6 +2,7 @@
 
 #include <sdl_utils.h>
 
+// SDL hasieratzea
 bool init_sdl(SDL *sdl, CONFIG config) {
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -59,6 +60,7 @@ bool init_sdl(SDL *sdl, CONFIG config) {
     return true;
 }
 
+// SDL garbitu
 void cleanUp_sdl(SDL *sdl) {
     if (sdl->renderer) {
         SDL_DestroyRenderer(sdl->renderer);

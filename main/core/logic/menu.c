@@ -6,7 +6,7 @@
 
 
 
-void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
+void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) { // exit egoerak kudeatu
     if (*newState == EXIT) {
         switch (currentState) {
             case MAIN_MENU:
@@ -29,7 +29,7 @@ void handleExitStates(GAMESTATE currentState, GAMESTATE *newState) {
 }
 
 
-void handleMenuEvents(BUTTON buttons[], int buttonCount, GAMESTATE *gameState, CONTROLS controls) {
+void handleMenuEvents(BUTTON buttons[], int buttonCount, GAMESTATE *gameState, CONTROLS controls) { // botoiak kudeatu
     int i = 0;
     static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
