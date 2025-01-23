@@ -2,7 +2,6 @@
 
 #include <assets_utils.h>
 
-
 #include <map.h>
 #include <player.h>
 

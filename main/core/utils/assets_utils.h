@@ -26,8 +26,6 @@ void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameStat
 void FreeAssets(ASSETS* loadedAssets);
 
 
-//void playMusic(SOUNDS loadedSounds);
-
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y);
 SDL_Color getRandomColour();
 

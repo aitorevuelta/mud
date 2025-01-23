@@ -1,6 +1,5 @@
 #include <global.h>
 
-
 // utils
 #include <sdl_utils.h>
 #include <settings_utils.h>
@@ -8,6 +7,7 @@
 #include <assets_utils.h>
 #include <buttons_utils.h>
 
+// logika
 #include <controls.h>
 #include <menu.h>
 #include <render.h>
@@ -25,21 +25,21 @@ int main(int argc, char *argv[])
     GAMEINFO gameInfo = loadGameInfo();
     BUTTON* buttons = NULL;
 
-    srand((unsigned int)time(NULL));
+    srand((unsigned int)time(NULL));    // random seed-a hasieratu getRandomColour() funtzioarentzat
     
-    bool is_running = init_sdl(&sdl, config);
+    bool is_running = init_sdl(&sdl, config);   // sdl hasieratu
     if(!is_running) return LOADSCREEN;
-    LoadAssets(sdl.renderer, &loadedAssets, gameState);
+    LoadAssets(sdl.renderer, &loadedAssets, gameState); // kargatu assetak
 
-    do {
+    do {    // bukle nagusia
         is_running = process_events(sdl.window, &controls, &config);
-        update(sdl.renderer, &gameState, &loadedAssets, &gameInfo, &buttons, controls, &config);
+        update(sdl.renderer, &gameState, &loadedAssets, &gameInfo, &buttons, controls, &config); 
         render(sdl.renderer, loadedAssets, gameState, gameInfo, buttons, config);
-    }while(is_running);
+    }while(is_running); // jokoa bukatu arte
 
-    FreeAssets(&loadedAssets);
-    saveConfig(config);
-    cleanUp_sdl(&sdl);
+    FreeAssets(&loadedAssets); // Free assets 
+    saveConfig(config); // konfigurazioa gorde
+    cleanUp_sdl(&sdl);  // sdl guztia garbitu
 
     return 0;
 }

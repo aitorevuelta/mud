@@ -6,7 +6,7 @@ typedef enum {
     REMOVE_PLAYER,
     PREV_MAP,
     NEXT_MAP,
-} LOBBY_BUTTONS;
+} LOBBY_BUTTONS; // lobby botoien enum-a
 
 
 void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls);

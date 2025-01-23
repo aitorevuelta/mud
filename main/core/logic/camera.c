@@ -1,12 +1,12 @@
-#include <global.h>          // Global funtzioak eta egitura orokorrak
-#include <controls.h>        // Kontrolen kudeaketa
-#include <camera.h>           // Kamera egituren kudeaketa
+#include <global.h>          
+#include <controls.h>       
+#include <camera.h>           
 
-static bool firstClick = true;   // Lehenengo klikaren egoera gordetzen duen bandera
-static int prevMouseX = 0;       // Aurreko saguen kokapenaren X koordenada
-static int prevMouseY = 0;       // Aurreko saguen kokapenaren Y koordenada
+static bool firstClick = true;   
+static int prevMouseX = 0;       
+static int prevMouseY = 0;      
 
-// Kamera eguneratze nagusia
+// kamararen eguneraketa
 void updateCamera(CAMERA* camera, CONTROLS controls, int screenWidth, int screenHeight) {
     updateCameraZoom(camera, controls);         // Zoom-a eguneratzen
     updateCameraPosition(camera, controls, screenWidth, screenHeight);  // Kamera posizioa eguneratzen
@@ -15,11 +15,9 @@ void updateCamera(CAMERA* camera, CONTROLS controls, int screenWidth, int screen
 // Kamera zoom-a eguneratzeko logika
 void updateCameraZoom(CAMERA* camera, CONTROLS controls) {
     if (controls.scroll != 0) {
-        // Zoom-a doikuntza leunki egitea
         float zoomDelta = controls.scroll * 0.06f;   // Scrollaren arabera doikuntza
         float newZoom = camera->zoom + zoomDelta;    // Zoom berria
-
-        // Zooma mugarik gabekoan mugatzen
+        // Zooma mugatzen
         camera->zoom = (newZoom < 0.75f) ? 0.75f : (newZoom > 2.5f) ? 2.5f : newZoom;
     }
 }

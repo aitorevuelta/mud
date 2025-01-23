@@ -15,9 +15,6 @@ void handleTurn(GAMEINFO *gameInfo);
 void handlePhase(GAMEINFO* gameInfo);
 
 
-void deployTroopsPhase(GAMEINFO* gameInfo);
-void attackPhase(GAMEINFO* gameInfo);
-void reinforcePhase(GAMEINFO* gameInfo);
 
 
 TERRITORYINFO* findEnemyTerritory(int attackerID, MAPINFO* mapInfo, PLAYER* currentPlayer);
@@ -31,7 +28,14 @@ TERRITORYINFO* selectRandomTarget(MAPINFO* mapInfo, PLAYER* currentPlayer);
 void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution);
 
 
-bool checkGameOver(GAMEINFO* gameInfo);
 
+
+// hainbat funtzio eginda daude, baina jokoaren logikan inplementatzea falta da
+
+void deployTroopsPhase(GAMEINFO* gameInfo); // 1. FASEA: jokalariak tropak kokatzen ditu
+void attackPhase(GAMEINFO* gameInfo); // 2. FASEA: jokalariak erasotzen ditu
+void reinforcePhase(GAMEINFO* gameInfo); // 3. FASEA: jokalariak tropak mugitzen ditu
+
+bool checkGameOver(GAMEINFO* gameInfo); // jokoa amaitu den ala ez egiaztatzen du
 
 #endif // GAME_H3
