@@ -26,19 +26,23 @@ void renderLobbyPlayers(SDL_Renderer *renderer, ASSETS loadedAssets, int playerC
     int i = 0, x = 0, y = 0;
 
     for (i = 0; playerCount > i ; i++) {
-        if (i < maxPositions) {
-            x = positions[i][0];
-            y = positions[i][1];
-        } else {
-            x = positions[maxPositions - 1][0];
-            y = positions[maxPositions - 1][1];
-        }
+        getPlayerPosition(i, positions, maxPositions, &x, &y);
         renderTextureRelative(renderer, loadedAssets.images[8].texture, 20, (float)x, (float)y); 
-        renderTextRelative(renderer, loadedAssets.fonts[0].font, "Player", (SDL_Color){255, 255, 255, 255}, (SDL_Color){55, 55, 55, 12}, 3, 5, x + 5, y + 5);
+        renderTextRelative(renderer, loadedAssets.fonts[0].font, "Player", (SDL_Color){255, 255, 255, 255}, (SDL_Color){55, 55, 55, 12}, 3, 10, x, y);
     }
 }
 
 void renderLobbySelectedMap(SDL_Renderer *renderer, IMAGES *loadedImages, int selectedMap) {
     renderTextureRelative(renderer, loadedImages[selectedMap].texture, 30,80, 40);
     renderTextureRelative(renderer, loadedImages[11].texture, 40,80,45);
+}
+
+void getPlayerPosition(int index, int positions[][2], int maxPositions, int *x, int *y) {
+    if (index < maxPositions) {
+        *x = positions[index][0];
+        *y = positions[index][1];
+    } else {
+        *x = positions[maxPositions - 1][0];
+        *y = positions[maxPositions - 1][1];
+    }
 }

@@ -113,11 +113,9 @@ void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heigh
 void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text, SDL_Color textColor, SDL_Color borderColor, int borderWidth, float widthPercent, float xPercent, float yPercent) {
     if (!text || !font) return;
 
-    // Obtener dimensiones de la ventana
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
-    // Crear superficie y textura del texto principal
     SDL_Surface *textSurface = TTF_RenderText_Blended(font, text, textColor);
     if (!textSurface) return;
 
@@ -138,12 +136,10 @@ void renderTextRelative(SDL_Renderer *renderer, TTF_Font *font, const char *text
         return;
     }
 
-    // Obtener dimensiones de la textura
     int textureWidth, textureHeight;
     SDL_QueryTexture(textTexture, NULL, NULL, &textureWidth, &textureHeight);
     float textureRatio = (float)textureWidth / textureHeight;
 
-    // Calcular rectángulo de destino con posicionamiento relativo
     SDL_Rect dstRect;
     dstRect.w = (int)(windowWidth * (widthPercent / 100.0f));
     dstRect.h = (int)(dstRect.w / textureRatio);

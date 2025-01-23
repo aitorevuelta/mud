@@ -62,7 +62,7 @@ void LoadButtonsByGameState(BUTTON** buttons, GAMESTATE gameState, IMAGES loaded
 // MENU
 
 void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
-    buttons[0] = (BUTTON){ // BOTON JUGAR
+    buttons[0] = (BUTTON){ // PLAY
         .texture = loadedImages[0].texture,
         .action = ACTION_PLAY,
         .visible = 1,
@@ -70,7 +70,7 @@ void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 50.0,
         .yPercent = 80.0
     };
-    buttons[1] = (BUTTON){ // BOTON HOW TO PLAY
+    buttons[1] = (BUTTON){ // HOW TO PLAY
         .texture = loadedImages[1].texture,
         .action = ACTION_HOWTOPLAY,
         .visible = 1,
@@ -78,7 +78,7 @@ void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 25.0,
         .yPercent = 80.0
     };
-    buttons[2] = (BUTTON){ // BOTON CREDITOS
+    buttons[2] = (BUTTON){ // CREDITS
         .texture = loadedImages[2].texture,
         .action = ACTION_CREDITS,
         .visible = 1,
@@ -86,7 +86,7 @@ void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 75.0,
         .yPercent = 80.0
     };
-    buttons[3] = (BUTTON){ // BOTON SETTINGS
+    buttons[3] = (BUTTON){ // SETTINGS
         .texture = loadedImages[3].texture,
         .action = ACTION_SETTINGS,
         .visible = 1,
@@ -94,7 +94,7 @@ void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 95.0,
         .yPercent = 5.0
     };
-    buttons[4] = (BUTTON){ // BOTON SALIR
+    buttons[4] = (BUTTON){ // IRTEN
         .texture = loadedImages[4].texture,
         .action = ACTION_EXIT,
         .visible = 1,
@@ -108,7 +108,7 @@ void initializeButtonsMenu(BUTTON* buttons, IMAGES loadedImages[]) {
 // LOBBY
 
 void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
-    buttons[0] = (BUTTON){ // BOTON AÑADIR
+    buttons[0] = (BUTTON){ // JOKALARIAK GEHITU
         .texture = loadedImages[4].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -116,7 +116,7 @@ void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 15.0,
         .yPercent = 80.0
     };
-    buttons[1] = (BUTTON){ // BOTON ELIMINAR
+    buttons[1] = (BUTTON){ // JOKALARIAK KENDU
         .texture = loadedImages[5].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -124,7 +124,7 @@ void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 20.0,
         .yPercent = 80.0
     };
-    buttons[2] = (BUTTON){ // BOTON PASAR MAPA IZQUIERDA
+    buttons[2] = (BUTTON){ // MAPAK EZKERRETARA
         .texture = loadedImages[10].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -132,7 +132,7 @@ void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 75.0,
         .yPercent = 90.0
     };
-    buttons[3] = (BUTTON){ // BOTON PASAR MAPA DERECHA
+    buttons[3] = (BUTTON){ // MAPAK ESKUINETARA
         .texture = loadedImages[9].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -140,7 +140,7 @@ void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 85.0,
         .yPercent = 90.0
     };
-    buttons[4] = (BUTTON){ // BOTON JUGAR
+    buttons[4] = (BUTTON){ // JOLASTU
         .texture = loadedImages[7].texture,
         .action = ACTION_GAME,
         .visible = 1,
@@ -148,7 +148,7 @@ void initializeButtonsLobby(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 50.0,
         .yPercent = 90.0
     };
-    buttons[5] = (BUTTON){ // BOTON BACK
+    buttons[5] = (BUTTON){ // ATZERA
         .texture = loadedImages[6].texture,
         .action = ACTION_EXIT,
         .visible = 1,
@@ -178,7 +178,7 @@ void initializeButtonsGame(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 50.0,
         .yPercent = 93.5
     };
-    buttons[2] = (BUTTON){ 
+    buttons[2] = (BUTTON){  // ITZULI
         .texture = loadedImages[10].texture,
         .action = ACTION_EXIT,
         .visible = 1,
@@ -194,7 +194,7 @@ void initializeButtonsGame(BUTTON* buttons, IMAGES loadedImages[]) {
 // HOWTOPLAY
 
 void initializeButtonsH2P(BUTTON* buttons, IMAGES loadedImages[]) {
-    buttons[0] = (BUTTON){ 
+    buttons[0] = (BUTTON){ // ITZULI
         .texture = loadedImages[1].texture,
         .action = ACTION_EXIT,
         .visible = 1,
@@ -207,15 +207,15 @@ void initializeButtonsH2P(BUTTON* buttons, IMAGES loadedImages[]) {
 // SETTINGS
 
 void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
-    buttons[0] = (BUTTON){ // BOTON VOLVER
+    buttons[0] = (BUTTON){ // ITZULI
         .texture = loadedImages[10].texture,
-        .action = ACTION_EXIT,  // Acción para salir de la configuración
+        .action = ACTION_EXIT, 
         .visible = 1,
         .widthPercent = 4.0,
         .xPercent = 3.0,
         .yPercent = 4.0
     };
-    buttons[1] = (BUTTON){ // BOTON PASAR RESOLUCION IZQUIERDA
+    buttons[1] = (BUTTON){ // ERRESOLUZIOA EZKERRETARA
         .texture = loadedImages[8].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -223,7 +223,7 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 25.0,
         .yPercent = 35.0
     };
-    buttons[2] = (BUTTON){ // BOTON PASAR RESOLUCION DERECHA
+    buttons[2] = (BUTTON){ // ERRESOLUZIOA ESKUINETARA
         .texture = loadedImages[9].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -231,7 +231,7 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 45.0,
         .yPercent = 35.0
     };
-    buttons[3] = (BUTTON){ // BOTON APLICAR
+    buttons[3] = (BUTTON){ // APPLY
         .texture = loadedImages[11].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -239,7 +239,7 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 50.0,
         .yPercent = 80.0
     };
-    buttons[4] = (BUTTON){  // BOTON SUBIR VOLUMEN
+    buttons[4] = (BUTTON){  // BOLUMENA IGO
         .texture = loadedImages[12].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -247,7 +247,7 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
         .xPercent = 17.0,
         .yPercent = 50.0
     };
-    buttons[5] = (BUTTON){  // BOTON BAJAR VOLUMEN
+    buttons[5] = (BUTTON){  // BOLUMENA BAJATU
         .texture = loadedImages[13].texture,
         .action = ACTION_NONE,
         .visible = 1,
@@ -260,7 +260,7 @@ void initializeButtonsSettings(BUTTON* buttons, IMAGES loadedImages[]) {
 // CREDITS
 
 void initializeButtonsCredits(BUTTON* buttons, IMAGES loadedImages[]) {
-    buttons[0] = (BUTTON){
+    buttons[0] = (BUTTON){  // ITZULI
         .texture = loadedImages[1].texture,
         .action = ACTION_EXIT,
         .visible = 1,

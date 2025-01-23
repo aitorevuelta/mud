@@ -36,7 +36,11 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
                             break;
                     }
 
-                    if (gameState != NULL && buttons[i].action != ACTION_NONE && gameInfo->currentMapID==1) {
+                    if (gameState != NULL && buttons[i].action == ACTION_GAME  && gameInfo->currentMapID==1) {
+                        GAMESTATE currentState = *gameState;
+                        *gameState = buttons[i].action;
+                        handleExitStates(currentState, gameState);  
+                    }else if (gameState != NULL && buttons[i].action == ACTION_EXIT) {
                         GAMESTATE currentState = *gameState;
                         *gameState = buttons[i].action;
                         handleExitStates(currentState, gameState);  
@@ -50,7 +54,7 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
     }
 }
 
-
+// jokalarien kopurua aldatzeko funtzioa
 void adjustPlayerCount(GAMEINFO* gameInfo, int change) {
     if (change > 0 && gameInfo->numPlayers < MAX_PLAYERS) {
         gameInfo->numPlayers++;
@@ -59,6 +63,7 @@ void adjustPlayerCount(GAMEINFO* gameInfo, int change) {
     }
 }
 
+// maparen IDa aldatzeko funtzioa
 void adjustMapID(GAMEINFO* gameInfo, int direction) {
     if (direction > 0) {
         gameInfo->currentMapID = (gameInfo->currentMapID % NUM_MAPS) + 1;

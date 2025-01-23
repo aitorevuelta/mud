@@ -17,7 +17,7 @@ GAMEINFO loadGameInfo() {
     info.numMaps = NUM_MAPS;
     info.numPlayers = 2;
     info.totalTerritories= TERRITORY_COUNT;
-    
+    info.phase = DEPLOY;
 
     return info;
 }
