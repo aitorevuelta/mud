@@ -2,7 +2,7 @@
 
 #include <loadscreen.h>
 
-GAMESTATE loadscreen() {
+GAMESTATE loadscreen() { // pantaila kargatzeko denbora kalkulatu
     static Uint32 startTime = 0;
     if (startTime == 0) {
         startTime = SDL_GetTicks();

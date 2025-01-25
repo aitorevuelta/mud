@@ -2,7 +2,7 @@
 
 #include <settings_utils.h>
 
-
+// Konfigurazio fitxategia
 CONFIG readConfig() {
     CONFIG settings = {0};
     FILE *fp;
@@ -23,6 +23,7 @@ CONFIG readConfig() {
     return settings;
 }
 
+// Konfigurazioa gorde
 void saveConfig(CONFIG config) {
     FILE *fp;
     fp = fopen(CONFIG_FILE, "w");

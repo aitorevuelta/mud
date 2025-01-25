@@ -16,7 +16,7 @@
 
 #include <update.h>
 
-
+// Jokoa eguneratzen duen funtzio nagusia
 void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, GAMEINFO *gameInfo, BUTTON **buttons, CONTROLS controls, CONFIG* config) {
 
     Uint32 frameStart = SDL_GetTicks();
@@ -49,7 +49,7 @@ void update(SDL_Renderer* renderer, GAMESTATE *gameState, ASSETS *loadedAssets, 
     }
     
     gameStateManager(renderer, buttons, loadedAssets, *gameState, gameInfo, config); // Gamestate-aren aldaketa kudeatu
-    adjustFrameRate(frameStart, config->max_FPS); //
+    adjustFrameRate(frameStart, config->max_FPS); // Frame rate-a kudeatu
 }
 
 // Frame rate-a kudeatzeko funtzioa

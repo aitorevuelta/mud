@@ -10,7 +10,7 @@
 #include <settings.h>
 
 
-void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls, CONFIG* config, GAMESTATE* gameState) {
+void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls, CONFIG* config, GAMESTATE* gameState) { // botoiak kudeatu
     int i = 0;
     static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
@@ -40,7 +40,7 @@ void handleSettingsButtons(BUTTON buttons[], int buttonCount, CONTROLS controls,
 }
 
 
-void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) {
+void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) { //    botoiaren ekintza prozesatu
     switch (buttonIndex) {
         case LEFT_ARROW:
             if (config->current_res > 1) {
@@ -77,7 +77,7 @@ void proccesButtonAction(int buttonIndex, CONFIG* config, GAMESTATE* gameState) 
 
 
 
-void applyResolution(int resolution) {
+void applyResolution(int resolution) { // erresoluzioa aplikatu
     int width, height;
     switch (resolution) {
         case 1:
@@ -123,7 +123,7 @@ void applyResolution(int resolution) {
     SDL_SetWindowPosition(SDL_GetWindowFromID(1), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 }
 
-void resetConfiguration(CONFIG* config) {
+void resetConfiguration(CONFIG* config) { // konfigurazioa berrezarri
 
     if(config != NULL) free(config);
     

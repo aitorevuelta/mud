@@ -4,7 +4,7 @@
 #include <controls.h>
 
 
-KEYS get_key_code(SDL_Keycode key) {
+KEYS get_key_code(SDL_Keycode key) { // tekla bakoitzaren kodea itzultzen du
     KEYS key_code;
     switch (key) {
         case SDLK_ESCAPE: key_code = ESC_KEY; break;
@@ -96,7 +96,7 @@ KEYS get_key_code(SDL_Keycode key) {
     return key_code;
 }
 
-bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config) {
+bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config) { // eventuak prozesatzen ditu
     SDL_Event event;
     bool run = true;
     controls->scroll = 0;
@@ -125,13 +125,13 @@ bool process_events(SDL_Window *window, CONTROLS *controls, CONFIG *config) {
     return run;
 }
 
-void handle_mouse_motion(SDL_Event event, CONTROLS *controls) {
+void handle_mouse_motion(SDL_Event event, CONTROLS *controls) { // saguaren mugimenduaren logika
     controls->coords[0] = event.motion.x;
     controls->coords[1] = event.motion.y;
 }
 
 
-void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
+void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) { // leihoaren mungimenduaren logika
     int screenWidth, screenHeight;
 
     switch (event.window.event) {
@@ -154,7 +154,7 @@ void handle_window_event(SDL_Event event, SDL_Window *window, CONFIG *config) {
     }
 }
 
-bool isClickAllowed(Uint32* lastClickTime, Uint32 debounceTime) {
+bool isClickAllowed(Uint32* lastClickTime, Uint32 debounceTime) { // klikak debounceren arabera kontrolatzen du
     Uint32 currentTime = SDL_GetTicks();
     if (currentTime - *lastClickTime > debounceTime) {
         *lastClickTime = currentTime;

@@ -4,6 +4,7 @@
 #include <buttons_utils.h>
 
 
+// Botoiak kudeatzeko funtzioak
 bool isClickInsideButton(int coords[2], SDL_Rect rect) {
     return coords[0] >= rect.x &&
            coords[0] <= rect.x + rect.w &&
@@ -11,6 +12,7 @@ bool isClickInsideButton(int coords[2], SDL_Rect rect) {
            coords[1] <= rect.y + rect.h;
 }
 
+// Memoria esleitu botoiak gordetzeko
 int allocateButtons(BUTTON **buttons, int buttonCount) {
     if (!buttons || buttonCount <= 0) return -1;
 
@@ -18,6 +20,7 @@ int allocateButtons(BUTTON **buttons, int buttonCount) {
     return (*buttons) ? 0 : -1;
 }
 
+// Cargar botones según el estado del juego
 void LoadButtonsByGameState(BUTTON** buttons, GAMESTATE gameState, IMAGES loadedImages[]) {
     int buttonCount = 0;
 

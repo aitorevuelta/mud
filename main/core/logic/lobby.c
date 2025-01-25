@@ -8,7 +8,7 @@
 
 #include <lobby.h>
 
-void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls) {
+void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, GAMESTATE *gameState, CONTROLS controls) { // botoiak kudeatu
     int i = 0;
     static Uint32 lastClickTime = 0;
     Uint32 currentTime = SDL_GetTicks();
@@ -55,7 +55,7 @@ void handleLobbyButtons(BUTTON buttons[], int buttonCount, GAMEINFO *gameInfo, G
 }
 
 // jokalarien kopurua aldatzeko funtzioa
-void adjustPlayerCount(GAMEINFO* gameInfo, int change) {
+void adjustPlayerCount(GAMEINFO* gameInfo, int change) { //
     if (change > 0 && gameInfo->numPlayers < MAX_PLAYERS) {
         gameInfo->numPlayers++;
     } else if (change < 0 && gameInfo->numPlayers > MIN_PLAYERS) {

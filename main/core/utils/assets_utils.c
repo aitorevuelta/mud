@@ -4,6 +4,7 @@
 
 #include <assets_utils.h>
 
+// Contar el número de líneas en un archivo
 int countPathsInState(GAMESTATE gamestate, char* path) {
     FILE* file = fopen(path, "r");
     char line[MAX_LINE_LENGTH];
@@ -36,6 +37,7 @@ int countPathsInState(GAMESTATE gamestate, char* path) {
     return wordCount;
 }
 
+// Obtener la ruta de un archivo por índice
 char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex) {
     FILE* file = fopen(path, "r");
 
@@ -71,7 +73,7 @@ char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex) {
     return NULL;
 }
 
-
+// Crear una textura a partir de un archivo
 SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer) {
     SDL_Texture* texture = NULL;
     SDL_Surface* surface = IMG_Load(filePath);
@@ -80,6 +82,7 @@ SDL_Texture* CreateTexture(const char* filePath, SDL_Renderer* renderer) {
     return texture;
 }
 
+// Crear un sonido a partir de un archivo
 Mix_Music* CreateSounds(const char* filePath) {
     Mix_Music* sound = Mix_LoadMUS(filePath);
     if (sound == NULL) {
@@ -90,7 +93,7 @@ Mix_Music* CreateSounds(const char* filePath) {
     return sound;
 }
 
-
+// Crear una fuente a partir de un archivo
 TTF_Font* CreateFont(const char* filePath) {
     TTF_Font* font = TTF_OpenFont(filePath, 50);
     if (!font) {
@@ -100,7 +103,7 @@ TTF_Font* CreateFont(const char* filePath) {
     return font;
 }
 
-
+// Cargar las texturas de un estado
 void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameState) {
     int numTextures = countPathsInState(gameState, IMAGES_FILE); // Obtener número de texturas para el estado actual
     int i;
@@ -135,6 +138,7 @@ void LoadImages(SDL_Renderer* renderer, IMAGES** loadedImages, GAMESTATE gameSta
     }
 }
 
+// Cargar los sonidos de un estado
 void LoadSounds(SOUNDS** loadedSounds, GAMESTATE gameState) {
     int i = 0;
     int numSounds = countPathsInState(gameState, SOUNDS_FILE);
@@ -159,7 +163,7 @@ void LoadSounds(SOUNDS** loadedSounds, GAMESTATE gameState) {
     }
 }
 
-
+// Cargar las fuentes de un estado
 void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState) {
     int numFonts = countPathsInState(gameState, FONTS_FILE);
     char filePath[MAX_STR];
@@ -183,14 +187,14 @@ void LoadFonts(SDL_Renderer* renderer, FONTS** loadedFonts, GAMESTATE gameState)
     }
 }
 
+// Cargar todos los recursos de un estado
 void LoadAssets(SDL_Renderer* renderer, ASSETS *loadedAssets, GAMESTATE gameState) {
     LoadImages( renderer, &(loadedAssets->images), gameState);
     LoadSounds(&(loadedAssets->sounds), gameState);
     LoadFonts(renderer, &(loadedAssets->fonts), gameState);
 }
 
-
-
+// Liberar los recursos cargados
 void FreeAssets(ASSETS* loadedAssets) {
     if (loadedAssets != NULL) {
         if (loadedAssets->images != NULL) {
@@ -211,7 +215,7 @@ void FreeAssets(ASSETS* loadedAssets) {
 }
 
 
-
+// Obtener el color de un píxel de una textura
 SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {
     if (!texture) {
         fprintf(stderr, "Error: La textura proporcionada es NULL.\n");
@@ -254,6 +258,7 @@ SDL_Color getPixelColor(SDL_Texture *texture, int x, int y) {
     return color;
 }
 
+// Obtener un color aleatorio
 SDL_Color getRandomColour() {
     SDL_Color randomColour;
     randomColour.r = rand() % 256;

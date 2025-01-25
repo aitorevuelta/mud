@@ -8,6 +8,7 @@
 
 static GAMESTATE lastGameState = LOADSCREEN; 
 
+// Jokoa kudeatzeko funtzioa
 void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAssets, GAMESTATE gameState, GAMEINFO* gameInfo, CONFIG* config) {
     if (gameState != lastGameState) {
         LoadAssets(renderer, loadedAssets, gameState);
@@ -18,6 +19,7 @@ void gameStateManager(SDL_Renderer* renderer, BUTTON **buttons, ASSETS *loadedAs
     }
 }
 
+// Jokoa kargatzeko aldaketa kudeatzeko funtzioa
 void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO *gameInfo, CONFIG* config) {
     switch (gameState) {
         case MAIN_MENU:
@@ -34,6 +36,7 @@ void loadGameStateVariables(SDL_Renderer *renderer, ASSETS loadedAssets, GAMESTA
 
 static bool musicPlaying = false;
 
+// Musika kudeatzeko funtzioa
 void handleMusicChange(GAMESTATE newState, ASSETS *loadedAssets, int volume) {
     if (newState == MAIN_MENU && !musicPlaying) {
         Mix_PlayMusic(loadedAssets->sounds[0].sound, -1);

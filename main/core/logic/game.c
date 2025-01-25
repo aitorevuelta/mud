@@ -9,7 +9,7 @@
 
 
 
-GAMEINFO loadGameInfo() {
+GAMEINFO loadGameInfo() { //hasieratu informazioa
     GAMEINFO info = {0};
     
     info.currentMapID = 1;
@@ -24,7 +24,7 @@ GAMEINFO loadGameInfo() {
 
 void update_game(GAMEINFO *gameInfo) {
 
-    handleTurn(gameInfo);
+    handleTurn(gameInfo); // Turnoa kudeatu
 }
 
 static Uint32 lastUpdateTime = 0;
@@ -49,7 +49,7 @@ void handleTurn(GAMEINFO *gameInfo) {
     lastUpdateTime = currentTime;
 }
 
-void handlePhase(GAMEINFO* gameInfo) {
+void handlePhase(GAMEINFO* gameInfo) { // faseak kudeatu
     if (!gameInfo) return;
 
     switch (gameInfo->phase) {
