@@ -1,6 +1,8 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 
+
+
 typedef enum {
     ADD_PLAYER = 0,
     REMOVE_PLAYER,

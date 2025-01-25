@@ -2,9 +2,7 @@
 #define GAME_H
 
 
-#define TERRITORY_COUNT 23
-#define DEFAULT_TROOPS_COUNT 25
-#define MAX_PLAYERS 4
+
 
 
 GAMEINFO loadGameInfo();
@@ -39,4 +37,4 @@ void reinforcePhase(GAMEINFO* gameInfo); // 3. FASEA: jokalariak tropak mugitzen
 
 bool checkGameOver(GAMEINFO* gameInfo); // jokoa amaitu den ala ez egiaztatzen du
 
-#endif // GAME_H3
+#endif // GAME_H

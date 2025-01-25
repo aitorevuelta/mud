@@ -18,7 +18,11 @@
 #define MAX_STR 128
 #define HOVER_SCALE 1.1f        // hover-a
 #define ACTION_NONE -1
-
+#define TERRITORY_COUNT 23
+#define DEFAULT_TROOPS_COUNT 25
+#define NUM_MAPS 3 // mapa kopurua
+#define MAX_PLAYERS 4   // jokalari kopurua maximoa
+#define MIN_PLAYERS 2   // jokalari kopurua minimoa
 
 typedef struct SDL_S {
     SDL_Window *window;
