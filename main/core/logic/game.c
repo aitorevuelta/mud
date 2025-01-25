@@ -46,7 +46,6 @@ void handleTurn(GAMEINFO *gameInfo) {
             gameInfo->round++;
         }
     }
-    //handlePhase(gameInfo);
     lastUpdateTime = currentTime;
 }
 

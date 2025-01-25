@@ -8,7 +8,6 @@
 #define SOUNDS_FILE "../data/sounds.txt"
 #define FONTS_FILE "../data/fonts.txt"
 
-
 int countPathsInState(GAMESTATE gamestate, char* path);
 char* getPathByIndex(GAMESTATE gamestate, char* path, int pathIndex);
 

@@ -2,6 +2,8 @@
 #define MAP_H
 
 
+#define NUM_MAPS 3 // mapa kopurua
+
 void initializeMap(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalTerritories);
 
 void allocateTerritories(MAPINFO* mapInfo, PLAYER* players, int numPlayers, int totalTerritories);

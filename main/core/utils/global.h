@@ -4,7 +4,6 @@
 
 
 // Beharrezko include-ak
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -13,30 +12,23 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 #include <SDL_net.h>
-
 #include <time.h>
 
 // Define-ak
-
 #define MAX_STR 128
+#define HOVER_SCALE 1.1f        // hover-a
+#define ACTION_NONE -1
 
-
-#define HOVER_SCALE 1.1f // Escalado del botón al hacer hover (10% más grande)
-
-#define NUM_MAPS 3 // mapa kopurua
-
-#define MAX_PLAYERS 4
-#define MIN_PLAYERS 2
 
 typedef struct SDL_S {
     SDL_Window *window;
     SDL_Renderer *renderer;
-} SDL;
+} SDL;      // sdl struct-a
 
 typedef struct RESOLUTION_S {
     int width;
     int height; 
-} RESOLUTION;
+} RESOLUTION;   // erresoluzioaren struct-a
 
 typedef struct CONFIG_S {
     RESOLUTION window_size;
@@ -46,7 +38,7 @@ typedef struct CONFIG_S {
     int max_FPS;
     int current_res;
     int total_res;
-} CONFIG;
+} CONFIG;       // konfigurazioaren struct-a
 
 typedef enum {
     LOADSCREEN = 0,
@@ -58,65 +50,65 @@ typedef enum {
     GAME,
     EXIT,
     EXIT_TOTAL,
-} GAMESTATE;
+} GAMESTATE;        // jokoaren egoera
 
 typedef struct IMAGES_S {
     SDL_Texture* texture;
-} IMAGES;
+} IMAGES;       // irudien struct-a
 
 typedef struct SOUNDS_S {
     Mix_Music* sound;
-}SOUNDS;
+}SOUNDS;    // soinuen struct-a
 
 typedef struct FONTS_S {
     TTF_Font* font;
-} FONTS;
+} FONTS;   // letren iturrien struct-a
 
 typedef struct ASSETS_S {
     IMAGES *images;
     SOUNDS *sounds;
     FONTS *fonts;
-}ASSETS;
+}ASSETS;    // asset-en struct-a
 
 
 typedef struct BUTTON_S {
-    SDL_Rect rect;          // Rectángulo calculado del botón
-    SDL_Texture* texture;   // Textura del botón
-    int action;             // Acción asociada al botón
-    bool visible;           // Si el botón está visible
-    float widthPercent;     // Ancho relativo del botón (y la imagen) en porcentaje
-    float xPercent;         // Posición X relativa en porcentaje
-    float yPercent;         // Posición Y relativa en porcentaje
-    bool hover;             // Si el botón está siendo pulsado
-} BUTTON;
+    SDL_Rect rect;          
+    SDL_Texture* texture;  
+    int action;             
+    bool visible;          
+    float widthPercent;     
+    float xPercent;        
+    float yPercent;         
+    bool hover;             
+} BUTTON;       // botoien struct-a
 
 
-// kartak
+
 typedef enum {
     SOLDIER,  
     HORSE,    
     CANNON,
-} CARDS;
+} CARDS;    // kartak
 
-// territorioen informazioa
+
 typedef struct TERRITORYINFO_S {
-    char name[MAX_STR];       // Nombre del territorio
-    int ownerID;        // ID del jugador que controla el territorio
-    int troops;       // Número de tropas en el territorio
+    char name[MAX_STR];       
+    int ownerID;        
+    int troops;       
     int center[2];
-     int radius;               // Tamaño del territorio (radio)
-    bool isSelected;       // Indicador si el territorio está seleccionado
-} TERRITORYINFO;
+     int radius;               
+    bool isSelected;       
+} TERRITORYINFO;        // territorioen struct-a
 
-// mapen informazioa
+
 typedef struct MAPINFO_S {
     char mapName[MAX_STR];      // maparen izena
     TERRITORYINFO *territories;     // mapan dauden territorioen informazioa
     int numTerritories;     // territorio kopurua 
     int** adjMatrix;    // territorioen arteko konexioak
-} MAPINFO;
+} MAPINFO;      // mapen struct-a
 
-// jokalarien informazioa
+
 typedef struct PLAYER_S {
     int id;                 
     char name[MAX_STR];     
@@ -126,21 +118,21 @@ typedef struct PLAYER_S {
     int numCards;           
     CARDS *cards;
     SDL_Color playerColor;        
-} PLAYER;
+} PLAYER;       // jokalarien struct-a 
 
 typedef enum {
     DEPLOY, 
     ATTACK,
     REINFORCE,
-} PHASE;
+} PHASE;        // faseak
 
-// kameraren informazioa
+
 typedef struct CAMERA_S {
     int pos[2]; // posizioa
     float zoom; // zoom-a
-} CAMERA;
+} CAMERA;       // kameraren struct-a
 
-// jokoa informazioa
+
 typedef struct GAMEINFO_S {
     MAPINFO maps[NUM_MAPS]; // mapen arraya 
     int numMaps; // mapen kopurua
@@ -155,7 +147,7 @@ typedef struct GAMEINFO_S {
     CAMERA camera;              
     bool isGameOver;         
     int totalTerritories;
-} GAMEINFO;
+} GAMEINFO;     // jokoa informazioaren struct-a
 
 typedef enum {
     ACTION_HOWTOPLAY=2,
@@ -168,8 +160,7 @@ typedef enum {
     ACTION_ELIMINAR,
 }ACTION;
 
-#define ACTION_NONE -1
 
 
 
-#endif
+#endif // GLOBAL_H

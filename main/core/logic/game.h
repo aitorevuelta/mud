@@ -9,10 +9,11 @@
 
 GAMEINFO loadGameInfo();
 
+void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution); // jokoaren datuak hasieratzen ditu
 
-void update_game(GAMEINFO *gameInfo);
-void handleTurn(GAMEINFO *gameInfo);
-void handlePhase(GAMEINFO* gameInfo);
+void update_game(GAMEINFO *gameInfo); // jokoa eguneratzen du
+void handleTurn(GAMEINFO *gameInfo);    // jokalarien txanda kudeatzen du
+void handlePhase(GAMEINFO* gameInfo); // jokalarien faseak kudeatzen ditu
 
 
 
@@ -25,7 +26,7 @@ void performBattle(TERRITORYINFO* attacker, TERRITORYINFO* defender, PLAYER* cur
 void moveTroops(TERRITORYINFO* source, TERRITORYINFO* target);
 TERRITORYINFO* selectRandomTarget(MAPINFO* mapInfo, PLAYER* currentPlayer);
 
-void game_init(SDL_Renderer *renderer, GAMEINFO *gameInfo, RESOLUTION resolution);
+
 
 
 

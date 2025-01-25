@@ -7,6 +7,8 @@
 
 #include <lobby_render.h>
 
+
+
 void lobby_render(SDL_Renderer *renderer, BUTTON buttons[], ASSETS loadedAssets, GAMEINFO gameInfo) {
     if(!buttons || !loadedAssets.images || !loadedAssets.fonts) return;
 

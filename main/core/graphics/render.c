@@ -13,7 +13,6 @@
 
 
 
-
 void render(SDL_Renderer* renderer, ASSETS loadedAssets, GAMESTATE gameState, GAMEINFO gameInfo, BUTTON buttons[], CONFIG config) {
     Uint32 frameStart = SDL_GetTicks();
     SDL_RenderClear(renderer);
@@ -54,15 +53,15 @@ void renderTextureRelative(SDL_Renderer *renderer, SDL_Texture *texture, float w
     
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
-    // Get original texture dimensions
+   
     int textureWidth, textureHeight;
     SDL_QueryTexture(texture, NULL, NULL, &textureWidth, &textureHeight);
     float textureRatio = (float)textureWidth / textureHeight;
     SDL_Rect dstRect;
-    // Calculate size maintaining aspect ratio
+
     dstRect.w = (int)(windowWidth * (widthPercent / 100.0f));
     dstRect.h = (int)(dstRect.w / textureRatio);
-    // Center at specified position
+
     dstRect.x = (int)(windowWidth * (xPercent / 100.0f)) - (dstRect.w / 2);
     dstRect.y = (int)(windowHeight * (yPercent / 100.0f)) - (dstRect.h / 2);
 
@@ -76,13 +75,12 @@ void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heigh
     int windowWidth, windowHeight;
     SDL_GetRendererOutputSize(renderer, &windowWidth, &windowHeight);
 
-    // Calculate dimensions with float precision
+ 
     float shapeWidth = windowWidth * (widthPercent / 100.0f);
     float shapeHeight = windowHeight * (heightPercent / 100.0f);
     float posX = windowWidth * (xPercent / 100.0f);
     float posY = windowHeight * (yPercent / 100.0f) - shapeHeight / 2.0f;
 
-    // Draw border if width > 0
     if (borderWidth > 0) {
         SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
         for(int i = 0; i < borderWidth; i++) {
@@ -96,7 +94,7 @@ void renderShapeRelative(SDL_Renderer *renderer, float widthPercent, float heigh
         }
     }
 
-    // Draw inner fill if not transparent
+
     SDL_Rect fillRect = {
         (int)posX,
         (int)posY,
